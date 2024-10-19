@@ -39,4 +39,4 @@ jobs:
         run: deno lint
 
       - name: Run build
-        run: deno build
+        run: deno run build
