@@ -2,7 +2,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -13,10 +12,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Details, Pokemon, Stat } from "./types";
+import { Details } from "./types";
 import { ReactNode, useState } from "react";
 import Image from "next/image";
-import { ChevronsUpDown, Plus, X } from "lucide-react";
+import { ChevronsUpDown } from "lucide-react";
 
 interface PokemonCardProps {
   pokemon: Details;

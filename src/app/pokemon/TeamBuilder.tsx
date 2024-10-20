@@ -1,6 +1,5 @@
 "use client";
-import { Details, Pokemon, PokemonRes } from "./types";
-import TestButton from "./testButton";
+import { Details } from "./types";
 import PokemonCard from "./PokemonCard";
 import { getList, getPokemon } from "../../api/pokemon";
 import { ReactNode, useState } from "react";

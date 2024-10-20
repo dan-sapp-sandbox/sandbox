@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Details, Pokemon, PokemonRes } from "../app/pokemon/types";
-import { useQuery } from "@tanstack/react-query";
 
 interface listProps {
   data: PokemonRes;

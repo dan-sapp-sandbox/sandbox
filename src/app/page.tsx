@@ -62,7 +62,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <p>Technologies Used:</p>
-            <p>What's cool about it:</p>
+            <p>What&apos;s cool about it:</p>
           </CardContent>
           <CardFooter className="flex justify-end gap-2 mt-auto">
             <Button asChild>
@@ -77,7 +77,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <p>Technologies Used:</p>
-            <p>What's cool about it:</p>
+            <p>What&apos;s cool about it:</p>
           </CardContent>
           <CardFooter className="flex justify-end gap-2 mt-auto">
             <Button asChild>
