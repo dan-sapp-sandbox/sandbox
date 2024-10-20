@@ -14,7 +14,7 @@ export default function PokemonPage(
 ): ReactNode {
   const [team, updateTeam] = useState([] as Details[]);
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["pokemon"],
     queryFn: async () => {
       const list = await getList();
