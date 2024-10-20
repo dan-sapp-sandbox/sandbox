@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import PokemonCard from "./PokemonCard";
-import { Details } from "./types";
+import { Details } from "../api/types";
 
 // @refresh reset
 interface TeamProps {

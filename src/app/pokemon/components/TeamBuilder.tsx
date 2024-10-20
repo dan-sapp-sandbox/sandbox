@@ -1,7 +1,7 @@
 "use client";
-import { Details } from "./types";
+import { Details } from "../api/types";
 import PokemonCard from "./PokemonCard";
-import { getList, getPokemon } from "../../api/pokemon";
+import { getList, getPokemon } from "../api/pokemon";
 import { ReactNode, useState } from "react";
 import Team from "./Team";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +15,7 @@ export default function PokemonPage(
   const [team, updateTeam] = useState([] as Details[]);
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
   const { data, isLoading } = useQuery({
-    queryKey: ["pokemon"],
+    queryKey: ["pokemon"], //use pokedex number here too
     queryFn: async () => {
       const list = await getList();
       return await getPokemon(list.results);
@@ -39,13 +39,10 @@ export default function PokemonPage(
         <Analysis team={team} />
         <div id="chart"></div>
       </div>
-      <div className="text-3xl px-6 py-6">
+      <div className="text-3xl my-6">
         List
       </div>
-      <div className="text-3xl px-6 py-6">
-        <div>
-          Filters
-        </div>
+      <div className="text-3xl mb-6">
         <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
           <Filters
             filterTypes={filterTypes}
@@ -53,11 +50,10 @@ export default function PokemonPage(
           />
         </div>
       </div>
-      <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
+      <div className="gap-2 grid grid-flow-row-dense grid-cols-12 lg:grid-cols-10">
         {data?.filter((x) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type.type.name);
-          console.log("types", types);
           return filterTypes.some((type) => types.includes(type));
         }).map((entry: Details, index: number) => (
           <PokemonCard

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Details, Pokemon, PokemonRes } from "../app/pokemon/types";
+import { Details, Pokemon, PokemonRes } from "./types";
 
 interface listProps {
   data: PokemonRes;

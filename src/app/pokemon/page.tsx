@@ -1,7 +1,7 @@
-import { getList, getPokemon } from "../../api/pokemon";
+import { getList, getPokemon } from "./api/pokemon";
 import { ReactNode } from "react";
-import TeamBuilder from "./TeamBuilder";
-import { Details } from "./types";
+import TeamBuilder from "./components/TeamBuilder";
+import { Details } from "./api/types";
 
 export default async function PokemonPage(): Promise<ReactNode> {
   async function getInitialData(): Promise<Details[]> {
