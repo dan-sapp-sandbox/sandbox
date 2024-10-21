@@ -48,13 +48,14 @@ export default function Analysis(
   { team }: Props,
 ): ReactNode {
   const teamStats = team.reduce((acc, pokemon) => {
+    const scaling = 20;
     return {
-      hp: acc.hp + pokemon.stats[0].base_stat,
-      attack: acc.attack + pokemon.stats[1].base_stat,
-      defense: acc.defense + pokemon.stats[2].base_stat,
-      specialAttack: acc.specialAttack + pokemon.stats[3].base_stat,
-      specialDefense: acc.specialDefense + pokemon.stats[4].base_stat,
-      speed: acc.speed + pokemon.stats[5].base_stat,
+      hp: acc.hp + pokemon.stats[0].base_stat - scaling,
+      attack: acc.attack + pokemon.stats[1].base_stat - scaling,
+      defense: acc.defense + pokemon.stats[2].base_stat - scaling,
+      specialAttack: acc.specialAttack + pokemon.stats[3].base_stat - scaling,
+      specialDefense: acc.specialDefense + pokemon.stats[4].base_stat - scaling,
+      speed: acc.speed + pokemon.stats[5].base_stat - scaling,
     };
   }, {
     hp: 0,
@@ -76,51 +77,57 @@ export default function Analysis(
     }
     return newAcc;
   }, [] as string[]);
+  // TODO: instead of guessing, just calculate the average and minimum stats, probably a reduce
 
-  // TODO: change this to use a hashmap and show number of occurances
-  const weaknesses = teamTypes.reduce((acc, type) => {
-    let newAcc = acc;
-    const newWeaknesses = weaknessesMap[type];
-    newWeaknesses.forEach((weakness) => {
-      if (!newAcc.includes(weakness)) {
-        newAcc = [...newAcc, weakness];
+  let weaknessMap = new Map<string, number>();
+  teamTypes.forEach((type) => {
+    const typeWeaknesses = weaknessesMap[type];
+    typeWeaknesses.forEach((weakness) => {
+      if (weaknessMap.has(weakness)) {
+        weaknessMap.set(weakness, (weaknessMap.get(weakness) || 0) + 1);
+      } else {
+        weaknessMap.set(weakness, 1);
       }
     });
-    return newAcc;
-  }, [] as string[]);
+  });
+
+  weaknessMap = new Map(
+    Array.from(weaknessMap).filter((x) => x[1] > 1).sort((a, b) => b[1] - a[1]),
+  );
 
   const coverageGaps = Object.keys(weaknessesMap).filter((type) => {
     const typeWeaknesses = weaknessesMap[type];
     return !typeWeaknesses.some((weakness) => teamTypes.includes(weakness));
   });
+  const teamScaling = 150 * team.length || 9999;
   return (
     <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
-      <div className="col-span-4 items-center justify-center">
+      <div className="p-5 col-span-4 items-center justify-center">
         <Radar
           data={teamStats}
           width={500}
           height={400}
           axisConfig={[
-            { title: "Hp", name: "hp", max: 140 * team.length },
-            { title: "Attack", name: "attack", max: 140 * team.length },
-            { title: "Defense", name: "defense", max: 140 * team.length },
-            { title: "Speed", name: "speed", max: 140 * team.length },
+            { title: "Hp", name: "hp", max: teamScaling },
+            { title: "Attack", name: "attack", max: teamScaling },
+            { title: "Defense", name: "defense", max: teamScaling },
+            { title: "Speed", name: "speed", max: teamScaling },
             {
               title: "Special-Attack",
               name: "specialAttack",
-              max: 140 * team.length,
+              max: teamScaling,
             },
             {
               title: "Special-Defense",
               name: "specialDefense",
-              max: 140 * team.length,
+              max: teamScaling,
             },
           ]}
         />
       </div>
-      <div className="col-span-8 mt-8">
+      <div className="col-span-8 mt-12 pl-8 ">
         <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4">
+          <div className="flex text-xl mt-4 font-bold">
             Pokemon Team Types:
           </div>
           {teamTypes.map((type, index) => (
@@ -135,22 +142,22 @@ export default function Analysis(
           ))}
         </div>
         <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4">
+          <div className="flex text-xl mt-4 font-bold">
             Common Vulnerablilities:
           </div>
-          {weaknesses.map((type, index) => (
+          {Array.from(weaknessMap.entries()).map((type, index) => (
             <div
               key={index}
               className={`flex px-5 py-3 rounded-3xl m-1 capitalize ${
-                typeColorMap[type]
+                typeColorMap[type[0]]
               }`}
             >
-              {type}
+              {type[0]}
             </div>
           ))}
         </div>
         <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4">
+          <div className="flex text-xl mt-4 font-bold">
             Offensive Coverage Gaps:
           </div>
           {coverageGaps.map((type, index) => (

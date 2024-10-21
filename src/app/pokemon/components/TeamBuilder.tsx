@@ -29,7 +29,7 @@ export default function PokemonPage(
       <div className="flex-grow font-semibold mx-auto text-center flex flex-col my-6">
         <h1 className="flex-1 text-4xl">Pokemon Team Builder</h1>
       </div>
-      <div className="text-3xl p-6">
+      <div className="text-3xl p-6 font-bold">
         Current Team
       </div>
       <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
@@ -39,7 +39,7 @@ export default function PokemonPage(
         <Analysis team={team} />
         <div id="chart"></div>
       </div>
-      <div className="text-3xl my-6">
+      <div className="text-3xl my-6 font-bold">
         List
       </div>
       <div className="text-3xl mb-6">
@@ -50,7 +50,7 @@ export default function PokemonPage(
           />
         </div>
       </div>
-      <div className="gap-2 grid grid-flow-row-dense grid-cols-12 lg:grid-cols-10">
+      <div className="gap-2 grid grid-flow-row sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
         {data?.filter((x) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type.type.name);

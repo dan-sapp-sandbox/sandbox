@@ -31,6 +31,7 @@ export default function PokemonCard(
   const alreadyOnTeam = team?.length &&
     team.find((member) => member.name === pokemon.name);
   function makeNewTeam(pokemon: Details): void {
+    if (team.length >= 6 && !alreadyOnTeam) return;
     let newTeam: Details[] = team;
     if (alreadyOnTeam) {
       newTeam = team.filter((member) => member.name !== pokemon.name);
@@ -39,24 +40,31 @@ export default function PokemonCard(
     }
     updateTeam(newTeam);
   }
+  // TODO: cursor on hover, and highlight on hover, click state would be cool too
+  // TODO: make these a fixed height so they don't jump around
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Card
         className={`${
-          isTeam ? "col-span-2" : "col-span-2 md:col-span-4 lg:col-span-1"
-        }
-      bg-gray-200 rounded-lg justify-center items-center ${
-          alreadyOnTeam ? "border-blue-400 border-4" : ""
-        }`}
+          isTeam ? "col-span-1" : "col-span-1"
+        } bg-slate-50 rounded-lg justify-center items-center 
+        hover:bg-sky-100 active:bg-sky-200 cursor-pointer
+        ${alreadyOnTeam ? "border-blue-400 border-4 bg-slate-100" : ""}`}
         onClick={() => makeNewTeam(pokemon)}
       >
         <CardHeader className="pt-1 pb-0">
-          <CardTitle className="capitalize text-lg p-1 mx-auto">
+          <CardTitle className="capitalize text-lg font-bold p-1 mx-auto">
             {pokemon.name}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          <Image className="mx-auto" src={frontSprite} alt="" width="200" height="200" />
+          <Image
+            className="mx-auto"
+            src={frontSprite}
+            alt=""
+            width="200"
+            height="200"
+          />
           {
             /* <Collapsible
             open={isOpen}

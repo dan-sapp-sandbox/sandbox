@@ -33,7 +33,7 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
 function EmptyCard(): ReactNode {
   return (
     <div className="col-span-2 flex bg-gray-200 py-5 rounded-lg justify-center items-center border-indigo-500/100">
-      <p className="text-2xl ">Empty Slot</p>
+      <p className="text-2xl my-20 py-5">Empty Slot</p>
     </div>
   );
 }
