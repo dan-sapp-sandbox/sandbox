@@ -118,8 +118,8 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-8">
-        <div className="flex flex-wrap ">
+      <div className="col-span-8 mt-8">
+        <div className="flex flex-wrap my-3">
           <div className="flex text-xl mt-4">
             Pokemon Team Types:
           </div>
@@ -134,9 +134,9 @@ export default function Analysis(
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap ">
+        <div className="flex flex-wrap my-3">
           <div className="flex text-xl mt-4">
-            Defensive Vulnerablilities:
+            Common Vulnerablilities:
           </div>
           {weaknesses.map((type, index) => (
             <div
@@ -149,7 +149,7 @@ export default function Analysis(
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap ">
+        <div className="flex flex-wrap my-3">
           <div className="flex text-xl mt-4">
             Offensive Coverage Gaps:
           </div>
