@@ -32,7 +32,7 @@ export default function PokemonPage(
       <div className="text-3xl p-6 font-bold">
         Current Team
       </div>
-      <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
+      <div className="gap-2 grid grid-flow-row-dense grid-cols-6">
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <div>
