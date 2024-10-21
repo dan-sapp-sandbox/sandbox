@@ -25,32 +25,31 @@ export default function PokemonPage(
   });
   if (isLoading) return <div>Loading</div>;
   return (
-    <div className="mx-auto mt-8">
-      <div className="flex-grow font-semibold mx-auto text-center flex flex-col my-6">
-        <h1 className="flex-1 text-4xl">Pokemon Team Builder</h1>
+    <div className="mt-8">
+      <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
+        <span className="font-bold xs:text-4xl lg:text-4xl">
+          Pokemon Team Builder
+        </span>
       </div>
-      <div className="text-3xl p-6 font-bold">
+      <div className="xs:text-xl lg:text-3xl xs:py-1 md:py-3 font-bold mx-auto text-center">
         Current Team
       </div>
-      <div className="gap-2 grid grid-flow-row-dense grid-cols-6">
+      <div className="mx-3 gap-2 grid grid-flow-row grid-cols-3 md:grid-cols-6">
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
-      <div>
-        <Analysis team={team} />
-        <div id="chart"></div>
-      </div>
-      <div className="text-3xl my-6 font-bold">
+      <Analysis team={team} />
+      <div className="xs:text-lg lg:text-3xl xs:my-2 lg:my-6 font-bold">
         List
       </div>
-      <div className="text-3xl mb-6">
-        <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
+      <div className="md:mb-6">
+        <div className="gap-2 grid grid-flow-row grid-cols-6">
           <Filters
             filterTypes={filterTypes}
             updateFilterTypes={updateFilterTypes}
           />
         </div>
       </div>
-      <div className="gap-2 grid grid-flow-row sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
+      <div className="gap-2 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
         {data?.filter((x) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type.type.name);

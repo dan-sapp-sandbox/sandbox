@@ -53,17 +53,17 @@ export default function PokemonCard(
         onClick={() => makeNewTeam(pokemon)}
       >
         <CardHeader className="pt-1 pb-0">
-          <CardTitle className="capitalize text-lg font-bold p-1 mx-auto">
+          <CardTitle className="capitalize mx-auto text-xs lg:text-lg lg:font-bold">
             {pokemon.name}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <Image
-            className="mx-auto"
+            className="mx-auto max-w-24 sm:max-w-28 md:max-w-32"
             src={frontSprite}
             alt=""
-            width="200"
-            height="200"
+            width={200}
+            height={200}
           />
           {
             /* <Collapsible

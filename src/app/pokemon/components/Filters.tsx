@@ -45,7 +45,7 @@ export default function Filters(
           <Button
             key={type}
             onClick={() => clickHandler(type)}
-            className={`capitalize col-span-2 flex text-2xl ${colors} ${
+            className={`capitalize col-span-1 flex xs:text-xs xl:text-xl ${colors} ${
               isSelected && "border-black border-4"
             } ${!isSelected && selectionExists && "opacity-50"}`}
           >

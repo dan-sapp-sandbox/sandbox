@@ -101,12 +101,12 @@ export default function Analysis(
   });
   const teamScaling = 150 * team.length || 9999;
   return (
-    <div className="gap-2 grid grid-flow-row-dense grid-cols-12">
-      <div className="p-5 col-span-4 items-center justify-center">
+    <div className="gap-2 grid grid-flow-row grid-cols-12">
+      <div className="xs:px-2 lg:px-5 col-span-4 items-center justify-center xs:w-50">
         <Radar
           data={teamStats}
-          width={500}
-          height={400}
+          width={100}
+          height={200}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
             { title: "Attack", name: "attack", max: teamScaling },
@@ -125,15 +125,15 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-8 mt-12 pl-8 ">
-        <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4 font-bold">
+      <div className="col-span-8 lg:mt-12 lg:pl-8 ">
+        <div className="flex flex-wrap my-3 grid-cols-12">
+          <div className="flex xs:text-xs xl:text-xl mt-4 font-bold col-span-12">
             Pokemon Team Types:
           </div>
           {teamTypes.map((type, index) => (
             <div
               key={index}
-              className={`flex px-5 py-3 rounded-3xl m-1 capitalize ${
+              className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
                 typeColorMap[type]
               }`}
             >
@@ -142,13 +142,13 @@ export default function Analysis(
           ))}
         </div>
         <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4 font-bold">
+          <div className="flex xs:text-xs xl:text-xl mt-4 font-bold">
             Common Vulnerablilities:
           </div>
           {Array.from(weaknessMap.entries()).map((type, index) => (
             <div
               key={index}
-              className={`flex px-5 py-3 rounded-3xl m-1 capitalize ${
+              className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl font-semibold m-1 capitalize ${
                 typeColorMap[type[0]]
               }`}
             >
@@ -156,14 +156,14 @@ export default function Analysis(
             </div>
           ))}
         </div>
-        <div className="flex flex-wrap my-3">
-          <div className="flex text-xl mt-4 font-bold">
+        <div className="flex flex-wrap my-1 grid-cols-12">
+          <div className="flex xs:text-[8px] xl:text-xl mt-4 font-bold col-span-12">
             Offensive Coverage Gaps:
           </div>
           {coverageGaps.map((type, index) => (
             <div
               key={index}
-              className={`flex px-5 py-3 rounded-3xl m-1 capitalize ${
+              className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
                 typeColorMap[type]
               }`}
             >
