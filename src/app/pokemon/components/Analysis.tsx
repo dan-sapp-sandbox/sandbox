@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Details } from "../api/types";
+import { iPokemon } from "../api/types";
 import { Radar } from "@/components/ui/radar";
 import { typeColorMap } from "./Filters";
 
@@ -42,7 +42,7 @@ type DataItem<T extends string> =
 export type Data = DataItem<Variable>;
 
 interface Props {
-  team: Details[];
+  team: iPokemon[];
 }
 export default function Analysis(
   { team }: Props,
