@@ -9,6 +9,5 @@ export async function getPokemon() {
     lte(PokemonTable.pokedexId, 151),
   )
     .execute();
-  console.log("makes call");
   return data;
 }

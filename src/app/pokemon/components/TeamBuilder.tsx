@@ -3,10 +3,10 @@ import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
 import { ReactNode, useState } from "react";
 import Team from "./Team";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
-import { getPokemon } from "../api/pokemon";
+// import { getPokemon } from "../api/pokemon";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
