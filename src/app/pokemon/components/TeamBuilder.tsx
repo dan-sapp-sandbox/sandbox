@@ -3,9 +3,10 @@ import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
 import { ReactNode, useState } from "react";
 import Team from "./Team";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
+import { getPokemon } from "../api/pokemon";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
@@ -14,10 +15,7 @@ export default function PokemonPage(
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
   // const { data, isLoading } = useQuery({
   //   queryKey: ["pokemon"], //TODO: use when you write the services
-  //   queryFn: async () => {
-  //     const list = await getList();
-  //     return await getPokemon(list.results);
-  //   },
+  //   queryFn: async () => await getPokemon(),
   //   initialData: pokemonData,
   //   staleTime: 9999999,
   // });
