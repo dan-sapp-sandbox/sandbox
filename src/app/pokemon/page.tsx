@@ -1,4 +1,3 @@
-"use server";
 import { getPokemon } from "./api/pokemon";
 import { ReactNode } from "react";
 import TeamBuilder from "./components/TeamBuilder";
