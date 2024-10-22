@@ -2,12 +2,12 @@
 
 import { ReactNode } from "react";
 import PokemonCard from "./PokemonCard";
-import { Details } from "../api/types";
+import { iPokemon } from "../api/types";
 
 // @refresh reset
 interface TeamProps {
-  teamData: Details[];
-  updateTeam: (newTeam: Details[]) => void;
+  teamData: iPokemon[];
+  updateTeam: (newTeam: iPokemon[]) => void;
 }
 export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
   let emptySlots: ReactNode[] = [];
@@ -16,7 +16,7 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
   }
   return (
     <>
-      {teamData.map((pokemon: Details) => (
+      {teamData.map((pokemon: iPokemon) => (
         <PokemonCard
           key={pokemon.name}
           pokemon={pokemon}
