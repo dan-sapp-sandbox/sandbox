@@ -2075,6 +2075,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@neondatabase/serverless@~0.10.1",
         "npm:@radix-ui/react-collapsible@^1.1.1",
         "npm:@radix-ui/react-slot@^1.1.0",
         "npm:@tanstack/react-query@^5.59.15",
@@ -2086,18 +2087,23 @@
         "npm:class-variance-authority@0.7",
         "npm:clsx@^2.1.1",
         "npm:d3@^7.9.0",
+        "npm:dotenv@^16.4.5",
+        "npm:drizzle-kit@~0.26.2",
+        "npm:drizzle-orm@~0.35.3",
         "npm:eslint-config-next@14.2.15",
         "npm:eslint@8",
         "npm:lucide-react@0.453",
         "npm:next@14.2.15",
         "npm:postcss@8",
         "npm:react-dom@18",
+        "npm:react-pdf@^9.1.1",
         "npm:react@18",
         "npm:tailwind-merge@^2.5.4",
         "npm:tailwindcss-animate@^1.0.7",
         "npm:tailwindcss@^3.4.14",
         "npm:typescript@5",
         "npm:use-local-storage@3",
+        "npm:use-server@~0.4.9",
         "npm:zod@^3.23.8",
         "npm:zustand@5"
       ]

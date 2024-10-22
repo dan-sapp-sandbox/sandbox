@@ -1,29 +1,27 @@
 "use client";
-import { Details } from "../api/types";
+import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
-import { getList, getPokemon } from "../api/pokemon";
 import { ReactNode, useState } from "react";
 import Team from "./Team";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
 
-// @refresh reset
 export default function PokemonPage(
-  { pokemonData }: { pokemonData: Details[] },
+  { pokemonData }: { pokemonData: iPokemon[] },
 ): ReactNode {
-  const [team, updateTeam] = useState([] as Details[]);
+  const [team, updateTeam] = useState([] as iPokemon[]);
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
-  const { data, isLoading } = useQuery({
-    queryKey: ["pokemon"], //use pokedex number here too
-    queryFn: async () => {
-      const list = await getList();
-      return await getPokemon(list.results);
-    },
-    initialData: pokemonData,
-    staleTime: 9999999,
-  });
-  if (isLoading) return <div>Loading</div>;
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["pokemon"], //TODO: use when you write the services
+  //   queryFn: async () => {
+  //     const list = await getList();
+  //     return await getPokemon(list.results);
+  //   },
+  //   initialData: pokemonData,
+  //   staleTime: 9999999,
+  // });
+  // if (isLoading) return <div>Loading</div>;
   return (
     <div className="mt-8">
       <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
@@ -50,11 +48,11 @@ export default function PokemonPage(
         </div>
       </div>
       <div className="gap-2 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
-        {data?.filter((x) => {
+        {pokemonData?.filter((x) => {
           if (!filterTypes.length) return true;
-          const types = x.types.map((type) => type.type.name);
+          const types = x.types.map((type) => type);
           return filterTypes.some((type) => types.includes(type));
-        }).map((entry: Details, index: number) => (
+        }).map((entry: iPokemon, index: number) => (
           <PokemonCard
             key={index}
             pokemon={entry}

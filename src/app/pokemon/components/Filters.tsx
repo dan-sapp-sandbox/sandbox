@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 
 export const typeColorMap: { [key: string]: string } = {
   normal: "bg-neutral-300 font-black text-black hover:bg-neutral-200",
-  fighting: "bg-red-300 font-black text-black hover:bg-red-200",
+  fighting: "bg-orange-600 font-black text-white hover:bg-orange-500",
   flying: "bg-blue-300 font-black text-black hover:bg-blue-200",
   poison: "bg-violet-400 font-black text-black hover:bg-violet-300",
   ground: "bg-amber-800 font-black text-white hover:bg-amber-700",
-  rock: "bg-orange-500 font-black text-white hover:bg-orange-400",
+  rock: "bg-slate-500 font-black text-white hover:bg-slate-400",
   bug: "bg-lime-400 font-black text-black hover:bg-lime-300",
   ghost: "bg-indigo-500 font-black text-white hover:bg-indigo-400",
   steel: "bg-zinc-500 font-black text-white hover:bg-zinc-400",
@@ -19,7 +19,7 @@ export const typeColorMap: { [key: string]: string } = {
   ice: "bg-cyan-300 font-black text-black hover:bg-cyan-200",
   dragon: "bg-red-300 font-black text-black hover:bg-red-200",
   dark: "bg-gray-700 font-black text-white hover:bg-gray-600",
-  fairy: "bg-pink-400 font-black hover:bg-pink-300",
+  fairy: "bg-pink-400 font-black text-white hover:bg-pink-300",
 };
 interface FiltersProps {
   filterTypes: string[];

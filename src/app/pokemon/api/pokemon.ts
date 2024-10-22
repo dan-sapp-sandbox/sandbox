@@ -1,20 +1,9 @@
-import axios from "axios";
-import { Details, Pokemon, PokemonRes } from "./types";
+import { drizzle } from "drizzle-orm/neon-http";
+import { PokemonTable } from "@/drizzle/schema";
 
-interface listProps {
-  data: PokemonRes;
-}
-interface hydratedListProps {
-  data: Details;
-}
-
-export async function getList(): Promise<PokemonRes> {
-  return axios.get("https://pokeapi.co/api/v2/pokemon?limit=151")
-    .then((res: listProps) => res.data);
-}
-export async function getPokemon(list: Pokemon[]): Promise<Details[]> {
-  return Promise.all(list.map((x: Pokemon) => (
-    axios(`https://pokeapi.co/api/v2/pokemon/${x.name}`)
-      .then((response: hydratedListProps) => response.data)
-  )));
+export async function getPokemon() {
+  "use server";
+  const db = drizzle(process.env.DATABASE_URL!);
+  const data = await db.select().from(PokemonTable);
+  return data;
 }

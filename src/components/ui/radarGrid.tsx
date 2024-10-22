@@ -19,7 +19,7 @@ export type Variable =
 //
 export const INNER_RADIUS = 40;
 const GRID_NUMBER = 5;
-const GRID_COLOR = "lightGrey";
+const GRID_COLOR = "grey";
 
 //
 // Types

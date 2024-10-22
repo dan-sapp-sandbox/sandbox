@@ -50,12 +50,12 @@ export default function Analysis(
   const teamStats = team.reduce((acc, pokemon) => {
     const scaling = 20;
     return {
-      hp: acc.hp + pokemon.stats[0].base_stat - scaling,
-      attack: acc.attack + pokemon.stats[1].base_stat - scaling,
-      defense: acc.defense + pokemon.stats[2].base_stat - scaling,
-      specialAttack: acc.specialAttack + pokemon.stats[3].base_stat - scaling,
-      specialDefense: acc.specialDefense + pokemon.stats[4].base_stat - scaling,
-      speed: acc.speed + pokemon.stats[5].base_stat - scaling,
+      hp: acc.hp + pokemon.hp - scaling,
+      attack: acc.attack + pokemon.attack - scaling,
+      defense: acc.defense + pokemon.defense - scaling,
+      specialAttack: acc.specialAttack + pokemon.specialAttack - scaling,
+      specialDefense: acc.specialDefense + pokemon.specialDefense - scaling,
+      speed: acc.speed + pokemon.speed - scaling,
     };
   }, {
     hp: 0,
@@ -67,8 +67,8 @@ export default function Analysis(
   });
   const teamTypes = team.reduce((acc, pokemon) => {
     let newAcc = acc;
-    const type1 = pokemon.types[0].type.name;
-    const type2 = pokemon.types[1]?.type.name;
+    const type1 = pokemon?.types[0];
+    const type2 = pokemon?.types[1];
     if (!newAcc.includes(type1)) {
       newAcc = [...newAcc, type1];
     }
@@ -102,10 +102,10 @@ export default function Analysis(
   const teamScaling = 150 * team.length || 9999;
   return (
     <div className="gap-2 grid grid-flow-row grid-cols-12">
-      <div className="xs:px-2 lg:px-5 col-span-4 items-center justify-center xs:w-50">
+      <div className="xs:px-2 lg:px-5 col-span-12 md:col-span-4 items-center justify-center">
         <Radar
           data={teamStats}
-          width={100}
+          width={400}
           height={200}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
@@ -125,24 +125,26 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-8 lg:mt-12 lg:pl-8 ">
+      <div className="col-span-12 md:col-span-8 md:pl-8">
         <div className="flex flex-wrap my-3 grid-cols-12">
-          <div className="flex xs:text-xs xl:text-xl mt-4 font-bold col-span-12">
+          <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12">
             Pokemon Team Types:
           </div>
-          {teamTypes.map((type, index) => (
-            <div
-              key={index}
-              className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
-                typeColorMap[type]
-              }`}
-            >
-              {type}
-            </div>
-          ))}
+          <div className="flex mt-2 font-bold col-span-12">
+            {teamTypes.map((type, index) => (
+              <div
+                key={index}
+                className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
+                  typeColorMap[type]
+                }`}
+              >
+                {type}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex flex-wrap my-3">
-          <div className="flex xs:text-xs xl:text-xl mt-4 font-bold">
+          <div className="flex xs:text-xs mt-2 xl:text-xl font-bold text-center justify-center">
             Common Vulnerablilities:
           </div>
           {Array.from(weaknessMap.entries()).map((type, index) => (
@@ -157,7 +159,7 @@ export default function Analysis(
           ))}
         </div>
         <div className="flex flex-wrap my-1 grid-cols-12">
-          <div className="flex xs:text-[8px] xl:text-xl mt-4 font-bold col-span-12">
+          <div className="flex xs:text-[8px] xl:text-xl mt-2 font-bold col-span-12">
             Offensive Coverage Gaps:
           </div>
           {coverageGaps.map((type, index) => (
