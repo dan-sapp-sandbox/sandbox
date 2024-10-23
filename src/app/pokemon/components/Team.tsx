@@ -12,7 +12,13 @@ interface TeamProps {
 export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
   let emptySlots: ReactNode[] = [];
   for (let i = 0; i < 6 - teamData.length; i++) {
-    emptySlots = emptySlots.concat(<EmptyCard key={i} />);
+    emptySlots = emptySlots.concat(
+      <PokemonCard
+        key={i}
+        team={teamData}
+        isTeam
+      />,
+    );
   }
   return (
     <>
@@ -27,15 +33,5 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
       ))}
       {emptySlots}
     </>
-  );
-}
-
-function EmptyCard(): ReactNode {
-  return (
-    <div className="col-span-1 flex bg-gray-200 xs:py-1 md:py-5 rounded-lg justify-center items-center border-indigo-500/100">
-      <p className="text-center xs:text-xs md:text-2xl xs:my-2 md:my-20 py-5">
-        Empty Slot
-      </p>
-    </div>
   );
 }

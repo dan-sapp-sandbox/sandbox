@@ -77,7 +77,6 @@ export default function Analysis(
     }
     return newAcc;
   }, [] as string[]);
-  // TODO: instead of guessing, just calculate the average and minimum stats, probably a reduce
 
   let weaknessMap = new Map<string, number>();
   teamTypes.forEach((type) => {
@@ -102,11 +101,11 @@ export default function Analysis(
   const teamScaling = 150 * team.length || 9999;
   return (
     <div className="gap-2 grid grid-flow-row grid-cols-12">
-      <div className="xs:px-2 lg:px-5 col-span-12 md:col-span-4 items-center justify-center">
+      <div className="m-auto col-span-12 md:col-span-6 items-center justify-center">
         <Radar
           data={teamStats}
-          width={400}
-          height={200}
+          width={325}
+          height={220}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
             { title: "Attack", name: "attack", max: teamScaling },
@@ -125,7 +124,7 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-12 md:col-span-8 md:pl-8">
+      <div className="col-span-12 md:col-span-6 md:pl-8">
         <div className="flex flex-wrap my-3 grid-cols-12">
           <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12">
             Pokemon Team Types:

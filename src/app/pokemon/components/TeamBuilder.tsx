@@ -34,7 +34,7 @@ export default function PokemonPage(
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <Analysis team={team} />
-      <div className="xs:text-lg lg:text-3xl xs:my-2 lg:my-6 font-bold">
+      <div className="xs:text-lg lg:text-3xl xs:my-2 lg:my-3 font-bold">
         List
       </div>
       <div className="md:mb-6">
