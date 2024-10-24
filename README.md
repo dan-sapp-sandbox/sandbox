@@ -6,5 +6,4 @@ First, run the development server:
 npm run dev
 ```
 
-
 notes: minify code for non local builds

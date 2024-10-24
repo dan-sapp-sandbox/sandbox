@@ -64,7 +64,10 @@ export default function Portfolio() {
             </CardDescription>
           </CardHeader>
           <CardContent className="pb-0">
-            <p>Technologies Used: Next.js, React Query, Tailwind, shadCN, Node.js, Drizzle, PostgreSQL</p>
+            <p>
+              Technologies Used: Next.js, React Query, Tailwind, shadCN,
+              Node.js, Drizzle, PostgreSQL
+            </p>
             <p>What&apos;s cool about it: Uses server side rendering.</p>
           </CardContent>
           <CardFooter className="flex justify-end gap-2 mt-auto">
