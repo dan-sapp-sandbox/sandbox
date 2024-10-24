@@ -7,5 +7,6 @@ export const metadata: Metadata = {
 };
 
 export default function MtgLayout({ children }: { children: ReactNode }) {
+  console.log("env", process.env.DATABASE_URL);
   return <main className="container my-6">{children}</main>;
 }
