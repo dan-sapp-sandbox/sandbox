@@ -31,6 +31,8 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
+      - name: read fake secret
+        run: echo ${{ secrets.DATABASE2_URL }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
