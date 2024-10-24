@@ -29,10 +29,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
     steps:
-      - name: read fake secret
-        run: echo ${{ secrets.DATABASE2_URL }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
@@ -80,7 +78,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -94,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

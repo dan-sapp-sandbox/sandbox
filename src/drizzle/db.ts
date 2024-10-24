@@ -4,5 +4,5 @@ import { config } from "dotenv";
 
 config({ path: ".env" });
 
-const sql = neon(process.env.DRIZZLE_DATABASE_URL!);
+const sql = neon(process.env.REACT_APP_DATABASE_URL!);
 export const db = drizzle({ client: sql });
