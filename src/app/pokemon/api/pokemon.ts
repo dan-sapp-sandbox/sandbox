@@ -7,11 +7,11 @@ import { config } from "dotenv";
 config({ path: ".env" });
 
 export async function getPokemon() {
-  if (!process.env.REACT_APP_DATABASE_URL) {
-    // throw new Error("REACT_APP_DATABASE_URL is not set");
+  if (!process.env.NEXT_PUBLIC_DATABASE_URL) {
+    // throw new Error("NEXT_PUBLIC_DATABASE_URL is not set");
     return [TestData[0]];
   }
-  const db = drizzle(process.env.REACT_APP_DATABASE_URL!);
+  const db = drizzle(process.env.NEXT_PUBLIC_DATABASE_URL!);
   // const data = await db.select().from(PokemonTable).where(
   //   lte(PokemonTable.pokedexId, 151),
   // )

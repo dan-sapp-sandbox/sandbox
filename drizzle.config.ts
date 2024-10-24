@@ -9,6 +9,6 @@ export default defineConfig({
   strict: true,
   verbose: true,
   dbCredentials: {
-    url: process.env.REACT_APP_DATABASE_URL as string,
+    url: process.env.NEXT_PUBLIC_DATABASE_URL as string,
   },
 });
