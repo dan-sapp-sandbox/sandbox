@@ -39,9 +39,6 @@ export default function Portfolio() {
           </CardContent>
           <CardFooter className="gap-2 flex grid-cols-12 justify-end">
             <Button asChild className="col-span-2">
-              <Link href={`/`}>View Resume</Link>
-            </Button>
-            <Button asChild className="col-span-2">
               <Link href={`https://github.com/dan-sapp-sandbox/sandbox`}>
                 GitHub
               </Link>
