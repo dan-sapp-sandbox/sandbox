@@ -50,7 +50,7 @@ export default function Portfolio() {
             </Button>
           </CardFooter>
         </Card>
-        <div className="mt-5 p-0 col-span-12 font-bold rounded-lg justify-center items-center text-3xl">
+        <div className="mt-5 px-8 py-2 col-span-12 font-bold rounded-lg justify-center items-center text-3xl">
           Projects
         </div>
         <Card className="col-span-12 rounded-lg justify-center items-center my-5">

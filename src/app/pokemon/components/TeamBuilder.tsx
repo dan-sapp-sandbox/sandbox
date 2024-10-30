@@ -24,7 +24,7 @@ export default function PokemonPage(
     <div className="mt-8">
       <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
         <span className="font-bold xs:text-4xl lg:text-4xl">
-          Pokemon Team Builder1
+          Pokemon Team Builder
         </span>
       </div>
       <div className="xs:text-xl lg:text-3xl xs:py-1 md:py-3 font-bold mx-auto text-center">
