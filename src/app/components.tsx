@@ -9,10 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Me from "./icons/me.png";
-import GitHubLogo from "./icons/GitHub_Logo.png";
-import GitHubIcon from "./icons/github-mark.png";
-import LinkedInIcon from "./icons/linkedin.png";
+import Me from "../../public/icons/me.png";
+import GitHubLogo from "../../public/icons/GitHub_Logo.png";
+import GitHubIcon from "../../public/icons/github-mark.png";
+import LinkedInIcon from "../../public/icons/linkedin.png";
 
 interface iStyledButton {
   children: ReactNode;
@@ -21,9 +21,9 @@ interface iStyledButton {
 export const StyledButton = ({ children, href }: iStyledButton): ReactNode => (
   <Button
     asChild
-    className="w-full sm:w-auto col-span-2 bg-slate-200 border-black-500 border-2 hover:bg-slate-300"
+    className="w-full align-bottom sm:w-auto col-span-2 bg-slate-200 border-black-500 border-2 hover:bg-slate-300"
   >
-    <Link href={href}>
+    <Link href={href} target="_blank">
       {children}
     </Link>
   </Button>
@@ -37,10 +37,10 @@ interface iStyledCard {
 export const StyledCard = (
   { children, title, description }: iStyledCard,
 ): ReactNode => (
-  <Card className="col-span-12 rounded-lg justify-center items-center my-2 gap-2 bg-slate-500 border-2 border-teal-500">
+  <Card className="col-span-12 rounded-lg align-bottom justify-center items-center my-2 gap-2 bg-slate-500 border-2 border-teal-500">
     {(title || description) &&
       (
-        <CardHeader className="gap-2 grid grid-flow-row grid-cols-12">
+        <CardHeader className="gap-3 grid grid-flow-row grid-cols-12">
           {title &&
             (
               <CardTitle className="col-span-12">
@@ -48,7 +48,7 @@ export const StyledCard = (
               </CardTitle>
             )}
           {description && (
-            <CardDescription className="col-span-12 text-zinc-200">
+            <CardDescription className="col-span-12 text-zinc-200 lg:text-xl">
               {description}
             </CardDescription>
           )}
@@ -78,9 +78,9 @@ export const ProfileCard = (): ReactNode => (
     </CardHeader>
     <CardContent className="gap-2 grid-cols-12 grid grid-flow-row">
       <div className="col-span-12 xl:col-span-8">
-        <p className="text-zinc-200">{summary}</p>
+        <p className="text-zinc-200 lg:text-xl">{summary}</p>
       </div>
-      <div className="col-span-12 xl:col-span-4 flex justify-end gap-4 py-2">
+      <div className="col-span-12 xl:col-span-4 flex items-end justify-end gap-4 py-2">
         <StyledButton
           href={`https://github.com/dan-sapp-sandbox/sandbox`}
         >
