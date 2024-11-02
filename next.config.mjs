@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC__DATABASE_URL: process.env.NEXT_PUBLIC__DATABASE_URL
+    NEXT_PUBLIC__DATABASE_URL: process.env.NEXT_PUBLIC__DATABASE_URL,
   },
   images: {
     remotePatterns: [

@@ -14,10 +14,10 @@ export default function PokemonPage(
   const [team, updateTeam] = useState([] as iPokemon[]);
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
   const { data, isLoading } = useQuery({
-    queryKey: ["pokemon"], //TODO: use when you write the services
+    queryKey: ["pokemon"],
     queryFn: async () => await getPokemon(),
     initialData: pokemonData,
-    staleTime: 9999999,
+    staleTime: 1000 * 60 * 60 * 24,
   });
   if (isLoading) return <div>Loading</div>;
 
@@ -47,7 +47,7 @@ export default function PokemonPage(
         </div>
       </div>
       <div className="gap-2 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
-        {pokemonData?.filter((x) => {
+        {data?.filter((x: iPokemon) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type);
           return filterTypes.some((type) => types.includes(type));
