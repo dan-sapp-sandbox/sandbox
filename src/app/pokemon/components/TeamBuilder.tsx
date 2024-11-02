@@ -3,23 +3,24 @@ import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
 import { ReactNode, useState } from "react";
 import Team from "./Team";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
-// import { getPokemon } from "../api/pokemon";
+import { getPokemon } from "../api/pokemon";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
 ): ReactNode {
   const [team, updateTeam] = useState([] as iPokemon[]);
   const [filterTypes, updateFilterTypes] = useState([] as string[]);
-  // const { data, isLoading } = useQuery({
-  //   queryKey: ["pokemon"], //TODO: use when you write the services
-  //   queryFn: async () => await getPokemon(),
-  //   initialData: pokemonData,
-  //   staleTime: 9999999,
-  // });
-  // if (isLoading) return <div>Loading</div>;
+  const { data, isLoading } = useQuery({
+    queryKey: ["pokemon"], //TODO: use when you write the services
+    queryFn: async () => await getPokemon(),
+    initialData: pokemonData,
+    staleTime: 9999999,
+  });
+  if (isLoading) return <div>Loading</div>;
+
   return (
     <div className="mt-8">
       <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
