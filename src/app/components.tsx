@@ -34,7 +34,7 @@ interface iStyledCard {
 export const StyledCard = (
   { children, title, description }: iStyledCard,
 ): ReactNode => (
-  <Card className="col-span-12 rounded-lg items-center align-center justify-center items-center my-2 gap-2 bg-slate-500 border-2 border-teal-500">
+  <Card className="col-span-12 rounded-lg items-center align-center justify-center my-2 gap-2 bg-slate-500 border-2 border-teal-500">
     {(title || description) &&
       (
         <CardHeader className="gap-3 grid grid-flow-row grid-cols-12">
