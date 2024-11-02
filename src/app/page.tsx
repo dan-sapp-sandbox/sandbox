@@ -1,93 +1,48 @@
-import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import GitHubIcon from "./icons/github-mark.png";
+import { ProfileCard, StyledButton, StyledCard } from "./components";
 
 export const revalidate = 0;
 
 export default function Portfolio() {
   // preview images for projects
   return (
-    <div className="max-w-8xl mx-auto mt-6">
-      <main className="gap-2 grid grid-flow-row-dense grid-cols-12">
-        <div className="col-span-12 font-semibold mx-auto text-center flex flex-col my-6">
-          <h1 className="flex text-4xl">Dan Sapp</h1>
-        </div>
-        <Card className="col-span-12 rounded-lg justify-center items-center my-6">
-          <CardHeader className="col-span-3">
-            <CardTitle>About Me</CardTitle>
-            <CardDescription>
-              Summary
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>
-              Experienced Software Engineer with 7+ years of experience in
-              designing, building, and maintaining complex web applications.
-              Expertise in React.js and modern JavaScript frameworks, proficient
-              in building scalable, high-performance applications with clean and
-              reusable code. Strong background in front-end architecture, API
-              integrations, state management, and collaboration with
-              cross-functional teams.
-            </p>
-          </CardContent>
-          <CardFooter className="gap-2 flex grid-cols-12 justify-end">
-            <Button asChild className="col-span-2">
-              <Link href={`https://github.com/dan-sapp-sandbox/sandbox`}>
-                GitHub
-              </Link>
-            </Button>
-            <Button asChild className="col-span-2">
-              <Link href={`https://www.linkedin.com/in/dan-sapp-744145B6/`}>
-                LinkedIn
-              </Link>
-            </Button>
-          </CardFooter>
-        </Card>
-        <div className="mt-5 px-8 py-2 col-span-12 font-bold rounded-lg justify-center items-center text-3xl">
+    <div className="max-w-6xl mx-auto mt-2 min-w-80">
+      <main className="gap-2 grid grid-flow-row grid-cols-12 mx-2">
+        <ProfileCard />
+        <div className="ml-2 col-span-12 font-bold text-zinc-200 text-2xl">
           Projects
         </div>
-        <Card className="col-span-12 rounded-lg justify-center items-center my-5">
-          <CardHeader>
-            <CardTitle>Pokemon Team Builder</CardTitle>
-            <CardDescription>
-              Build the best team or see how your favorites compare!
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pb-0">
-            <p>
-              Technologies Used: Next.js, React Query, Tailwind, shadCN,
-              Node.js, Drizzle, PostgreSQL
+        <StyledCard
+          title="Pokemon Team Builder"
+          description={"Build the best team or see how your favorites compare!"}
+        >
+          <div className="col-span-12 xl:col-span-7">
+            <p className="max-w-4xl text-zinc-200">
+              This is an end-to-end proof-of-concept for the portfolio. It uses
+              a postGres database to store the pokemon and an Express Node Web
+              Server to deliver them to a Next.js App which server-side renders
+              the content.
             </p>
-            <p>What&apos;s cool about it: Uses server side rendering.</p>
-          </CardContent>
-          <CardFooter className="flex justify-end gap-2 mt-auto">
-            <Button asChild>
-              <Link href={`/pokemon`}>Check it out</Link>
-            </Button>
-          </CardFooter>
-        </Card>
-        <Card className="col-span-12 rounded-lg justify-center items-center">
-          <CardHeader>
-            <CardTitle>Magic The Gathering Deck Builder</CardTitle>
-            <CardDescription>Build a Magic the Gathering deck</CardDescription>
-          </CardHeader>
-          <CardContent className="pb-0">
-            <p>Technologies Used:</p>
-            <p>What&apos;s cool about it:</p>
-          </CardContent>
-          <CardFooter className="flex justify-end gap-2 mt-auto">
-            <Button asChild>
-              <Link href={`/mtg`}>Check it out</Link>
-            </Button>
-          </CardFooter>
-        </Card>
+          </div>
+          <div className="mt-2 col-span-12 xl:col-span-5 flex sm:justify-end gap-2 justify-center grid-flow-row flex-wrap grid-cols-4 sm:grid-cols-6">
+            <StyledButton href={`/pokemon`}>
+              <p className="text-black font-bold">Check it out!</p>
+            </StyledButton>
+            <StyledButton
+              href={`https://github.com/dan-sapp-sandbox/node_server`}
+            >
+              <Image alt="github-icon" src={GitHubIcon} height={20} />
+              <p className="text-black font-bold">Node Server</p>
+            </StyledButton>
+            <StyledButton
+              href={`https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/pokemon`}
+            >
+              <Image alt="github-icon" src={GitHubIcon} height={20} />
+              <p className="text-black font-bold">Next.js App</p>
+            </StyledButton>
+          </div>
+        </StyledCard>
       </main>
     </div>
   );

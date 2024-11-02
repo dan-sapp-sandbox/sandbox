@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
 import { ReactNode, Suspense } from "react";
