@@ -1,5 +1,4 @@
 import Image from "next/image";
-import GitHubIcon from "../../public/icons/github-mark.png";
 import { ProfileCard, StyledButton, StyledCard } from "./components";
 
 export const revalidate = 0;
@@ -27,19 +26,29 @@ export default function Portfolio() {
           </div>
           <div className="mt-2 col-span-12 xl:col-span-5 flex sm:justify-end items-end gap-2 align-end justify-center grid-flow-row flex-wrap grid-cols-4 sm:grid-cols-6">
             <StyledButton href={`/pokemon`}>
-              <p className="text-black font-bold">Check it out!</p>
+              <p className="text-black font-bold text-lg">Check it out!</p>
             </StyledButton>
             <StyledButton
               href={`https://github.com/dan-sapp-sandbox/node_server`}
             >
-              <Image alt="github-icon" src={GitHubIcon} height={20} />
-              <p className="text-black font-bold">Server Code</p>
+              <Image
+                alt="github-icon"
+                src={"/static/images/github-mark.png"}
+                height={25}
+                width={25}
+              />
+              <p className="text-black font-bold text-lg">Server Code</p>
             </StyledButton>
             <StyledButton
               href={`https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/pokemon`}
             >
-              <Image alt="github-icon" src={GitHubIcon} height={20} />
-              <p className="text-black font-bold">App Code</p>
+              <Image
+                alt="github-icon"
+                src={"/static/images/github-mark.png"}
+                height={25}
+                width={25}
+              />
+              <p className="text-black font-bold text-lg">App Code</p>
             </StyledButton>
           </div>
         </StyledCard>
