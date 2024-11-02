@@ -14,16 +14,10 @@ export type Variable =
   | "specialDefense"
   | "speed";
 
-//
-// Constants
-//
-export const INNER_RADIUS = 40;
+export const INNER_RADIUS = 15;
 const GRID_NUMBER = 5;
-const GRID_COLOR = "grey";
+const GRID_COLOR = "lightgray";
 
-//
-// Types
-//
 export type AxisConfig = {
   name: Variable;
   title: string;
@@ -36,10 +30,6 @@ type RadarGridProps = {
   axisConfig: AxisConfig[];
 };
 
-/*
-  A react component that adds a grid background
-  for a radar chart in polar coordinates
-*/
 export const RadarGrid = ({
   outerRadius,
   xScale,
@@ -47,7 +37,6 @@ export const RadarGrid = ({
 }: RadarGridProps) => {
   const lineGenerator = d3.lineRadial();
 
-  // Compute Axes = from center to outer
   const allAxes = axisConfig.map((axis, i) => {
     const angle = xScale(axis.name);
 
@@ -76,7 +65,7 @@ export const RadarGrid = ({
         <text
           x={labelPosition.x}
           y={labelPosition.y}
-          fontSize={12}
+          fontSize={14}
           fill={GRID_COLOR}
           textAnchor={labelPosition.x > 0 ? "start" : "end"}
           dominantBaseline="middle"
@@ -87,7 +76,6 @@ export const RadarGrid = ({
     );
   });
 
-  // Compute grid = concentric circles
   const allCircles = [1, 2, 3, 4].map((position, i) => {
     return (
       <circle

@@ -67,7 +67,11 @@ export const ProfileCard = (): ReactNode => (
       <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
         <span className="col-span-8 text-zinc-200">About Dan Sapp</span>
         <div className="col-span-4 rounded-full flex justify-end">
-          <img className="rounded-full w-12" alt="me" src={"/static/images/me.png"}/>
+          <img
+            className="rounded-full w-12"
+            alt="me"
+            src={"/static/images/me.png"}
+          />
         </div>
       </CardTitle>
     </CardHeader>
@@ -101,7 +105,7 @@ export const ProfileCard = (): ReactNode => (
             height={20}
             width={20}
           />
-          <span className="text-black font-bold text-lg">LinkedIn</span>
+          <p className="text-black font-bold text-lg">LinkedIn</p>
         </StyledButton>
       </div>
     </CardContent>

@@ -30,9 +30,9 @@ export default function PokemonCard(
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Card
-        className={`col-span-1 bg-slate-50 rounded-lg justify-center items-center 
+        className={`col-span-1 bg-slate-200 rounded-lg justify-center items-center 
         hover:bg-sky-100 active:bg-sky-200 cursor-pointer box-content
-        ${alreadyOnTeam ? "border-blue-400 border-4 bg-slate-100" : ""}`}
+        ${alreadyOnTeam ? "border-blue-400 border-4 bg-slate-200" : ""}`}
         onClick={() => pokemon && makeNewTeam(pokemon)}
       >
         <CardHeader className="p-0 pt-1">
@@ -46,12 +46,13 @@ export default function PokemonCard(
               <Image
                 className="mx-auto max-w-24 lg:max-w-32 "
                 src={frontSprite}
-                alt=""
+                alt="pokemon"
                 width={400}
                 height={400}
+                loading="lazy"
               />
             )
-            : <div className="my-1 h-16 sm:h-28 md:h-32"></div>}
+            : <div className="bg-slate-200 my-1 h-28 sm:h-28 md:h-40"></div>}
         </CardContent>
       </Card>
     </Suspense>

@@ -2,26 +2,95 @@ import { ReactNode } from "react";
 import { iPokemon } from "../api/types";
 import { Radar } from "@/components/ui/radar";
 import { typeColorMap } from "./Filters";
+import TypeIcons from "./icons";
 
-const weaknessesMap: Record<string, string[]> = {
-  normal: ["fighting"],
-  fighting: ["flying", "psychic", "fairy"],
-  flying: ["rock", "electric", "ice"],
-  poison: ["ground", "psychic"],
-  ground: ["water", "grass", "ice"],
-  rock: ["fighting", "ground", "steel", "water", "grass"],
-  bug: ["flying", "rock", "fire"],
-  ghost: ["ghost", "dark"],
-  steel: ["fighting", "ground", "fire"],
-  fire: ["ground", "rock", "water"],
-  water: ["grass", "electric"],
-  grass: ["flying", "poison", "bug", "fire", "ice"],
-  electric: ["ground"],
-  psychic: ["bug", "ghost", "dark"],
-  ice: ["fighting", "rock", "steel", "fire"],
-  dragon: ["ice", "dragon", "fairy"],
-  dark: ["fighting", "bug", "fairy"],
-  fairy: ["poison", "steel"],
+interface iPokemonMap {
+  [key: string]: {
+    weaknesses: string[];
+    icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+  };
+}
+const pokemonMap: iPokemonMap = {
+  normal: {
+    weaknesses: ["fighting"],
+    // icon: TypeIcons.NormalIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  fighting: {
+    weaknesses: ["flying", "psychic", "fairy"],
+    // icon: TypeIcons.FightingIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  flying: {
+    weaknesses: ["rock", "electric", "ice"],
+    icon: TypeIcons.FlyingIcon,
+  },
+  poison: {
+    weaknesses: ["ground", "psychic"],
+    // icon: TypeIcons.PoisonIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  ground: {
+    weaknesses: ["water", "grass", "ice"],
+    icon: TypeIcons.GroundIcon,
+  },
+  rock: {
+    weaknesses: ["fighting", "ground", "steel", "water", "grass"],
+    icon: TypeIcons.RockIcon,
+  },
+  bug: {
+    weaknesses: ["flying", "rock", "fire"],
+    icon: TypeIcons.BugIcon,
+  },
+  ghost: {
+    weaknesses: ["ghost", "dark"],
+    // icon: TypeIcons.GhostIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  steel: {
+    weaknesses: ["fighting", "ground", "fire"],
+    // icon: TypeIcons.SteelIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  fire: {
+    weaknesses: ["ground", "rock", "water"],
+    icon: TypeIcons.FireIcon,
+  },
+  water: {
+    weaknesses: ["grass", "electric"],
+    icon: TypeIcons.GrassIcon,
+  },
+  grass: {
+    weaknesses: ["flying", "poison", "bug", "fire", "ice"],
+    icon: TypeIcons.GrassIcon,
+  },
+  electric: {
+    weaknesses: ["ground"],
+    icon: TypeIcons.ElectricIcon,
+  },
+  psychic: {
+    weaknesses: ["bug", "ghost", "dark"],
+    icon: TypeIcons.PsychicIcon,
+  },
+  ice: {
+    weaknesses: ["fighting", "rock", "steel", "fire"],
+    // icon: TypeIcons.IceIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  dragon: {
+    weaknesses: ["ice", "dragon", "fairy"],
+    // icon: TypeIcons.DragonIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
+  dark: {
+    weaknesses: ["fighting", "bug", "fairy"],
+    icon: TypeIcons.DarkIcon,
+  },
+  fairy: {
+    weaknesses: ["poison", "steel"],
+    // icon: TypeIcons.FairyIcon,
+    icon: TypeIcons.FlyingIcon,
+  },
 };
 
 export type Variable =
@@ -80,7 +149,7 @@ export default function Analysis(
 
   let weaknessMap = new Map<string, number>();
   teamTypes.forEach((type) => {
-    const typeWeaknesses = weaknessesMap[type];
+    const typeWeaknesses = pokemonMap[type].weaknesses;
     typeWeaknesses.forEach((weakness) => {
       if (weaknessMap.has(weakness)) {
         weaknessMap.set(weakness, (weaknessMap.get(weakness) || 0) + 1);
@@ -94,8 +163,8 @@ export default function Analysis(
     Array.from(weaknessMap).filter((x) => x[1] > 1).sort((a, b) => b[1] - a[1]),
   );
 
-  const coverageGaps = Object.keys(weaknessesMap).filter((type) => {
-    const typeWeaknesses = weaknessesMap[type];
+  const coverageGaps = Object.keys(pokemonMap).filter((type) => {
+    const typeWeaknesses = pokemonMap[type].weaknesses;
     return !typeWeaknesses.some((weakness) => teamTypes.includes(weakness));
   });
   const teamScaling = 150 * team.length || 9999;
@@ -104,8 +173,8 @@ export default function Analysis(
       <div className="m-auto col-span-12 md:col-span-6 items-center justify-center">
         <Radar
           data={teamStats}
-          width={325}
-          height={220}
+          width={400}
+          height={250}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
             { title: "Attack", name: "attack", max: teamScaling },
@@ -126,51 +195,60 @@ export default function Analysis(
       </div>
       <div className="col-span-12 md:col-span-6 md:pl-8">
         <div className="flex flex-wrap my-3 grid-cols-12">
-          <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12">
+          <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12 text-zinc-200">
             Pokemon Team Types:
           </div>
           <div className="flex mt-2 font-bold col-span-12">
-            {teamTypes.map((type, index) => (
-              <div
-                key={index}
-                className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
-                  typeColorMap[type]
-                }`}
-              >
-                {type}
-              </div>
-            ))}
+            {teamTypes.map((type, index) => {
+              const Icon = pokemonMap[type].icon;
+              return (
+                <div
+                  key={index}
+                  className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
+                    typeColorMap[type]
+                  }`}
+                >
+                  <Icon />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-wrap my-3">
-          <div className="flex xs:text-xs mt-2 xl:text-xl font-bold text-center justify-center">
+          <div className="flex xs:text-xs mt-2 xl:text-xl font-bold text-center justify-center text-zinc-200">
             Common Vulnerablilities:
           </div>
-          {Array.from(weaknessMap.entries()).map((type, index) => (
-            <div
-              key={index}
-              className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl font-semibold m-1 capitalize ${
-                typeColorMap[type[0]]
-              }`}
-            >
-              {type[0]}
-            </div>
-          ))}
+          {Array.from(weaknessMap.entries()).map((type, index) => {
+            const Icon = pokemonMap[type[0]].icon;
+            return (
+              <div
+                key={index}
+                className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl font-semibold m-1 capitalize ${
+                  typeColorMap[type[0]]
+                }`}
+              >
+                <Icon />
+              </div>
+            );
+          })}
         </div>
         <div className="flex flex-wrap my-1 grid-cols-12">
-          <div className="flex xs:text-[8px] xl:text-xl mt-2 font-bold col-span-12">
+          <div className="flex xs:text-[8px] xl:text-xl mt-2 font-bold col-span-12 text-zinc-200">
             Offensive Coverage Gaps:
           </div>
-          {coverageGaps.map((type, index) => (
-            <div
-              key={index}
-              className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
-                typeColorMap[type]
-              }`}
-            >
-              {type}
-            </div>
-          ))}
+          {coverageGaps.map((type, index) => {
+            const Icon = pokemonMap[type].icon;
+            return (
+              <div
+                key={index}
+                className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
+                  typeColorMap[type]
+                }`}
+              >
+                <Icon />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
