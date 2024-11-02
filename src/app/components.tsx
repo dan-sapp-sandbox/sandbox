@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Me from "../../public/static/images/me.png";
 
 interface iStyledButton {
   children: ReactNode;
@@ -66,10 +64,10 @@ const summary =
 export const ProfileCard = (): ReactNode => (
   <Card className="col-span-12 rounded-lg justify-center items-center mb-2 gap-2 bg-slate-500 border-2 border-teal-500">
     <CardHeader className="gap-2 grid grid-flow-row grid-cols-12">
-      <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12">
+      <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
         <span className="col-span-8 text-zinc-200">About Dan Sapp</span>
         <div className="col-span-4 rounded-full flex justify-end">
-          <Image className="rounded-full" alt="me" src={Me} height={60} />
+          <img className="rounded-full w-12" alt="me" src={"/static/images/me.png"}/>
         </div>
       </CardTitle>
     </CardHeader>
@@ -81,13 +79,13 @@ export const ProfileCard = (): ReactNode => (
         <StyledButton
           href={`https://github.com/dan-sapp-sandbox/sandbox`}
         >
-          <Image
+          <img
             alt="github-logo"
             src={"/static/images/github-mark.png"}
             height={20}
             width={20}
           />
-          <Image
+          <img
             alt="github-icon"
             src={"/static/images/GitHub_Logo.png"}
             height={20}
@@ -97,7 +95,7 @@ export const ProfileCard = (): ReactNode => (
         <StyledButton
           href={`https://www.linkedin.com/in/dan-sapp-744145B6/`}
         >
-          <Image
+          <img
             alt="linkedIn"
             src={"/static/images/linkedin.png"}
             height={20}
