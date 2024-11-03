@@ -10,7 +10,7 @@ export default function PokemonLayout(
   { children }: { children: ReactNode },
 ) {
   return (
-    <main className="xs:pt-4 md:pt-6 xs:px-8 xl:px-20 bg-purple-950">
+    <main className="xs:pt-4 md:pt-6 px-2 xl:px-6 bg-purple-950">
       <ReactQueryProvider>
         {children}
       </ReactQueryProvider>

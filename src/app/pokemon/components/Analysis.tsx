@@ -83,8 +83,8 @@ export default function Analysis(
       <div className="m-auto col-span-12 md:col-span-5 items-center justify-center">
         <Radar
           data={teamStats}
-          width={400}
-          height={250}
+          width={300}
+          height={150}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
             { title: "Attack", name: "attack", max: teamScaling },
@@ -146,6 +146,7 @@ export default function Analysis(
           </div>
           {coverageGaps.map((type, index) => {
             const Icon = pokemonMap[type].icon;
+            if (!team.length) return;
             return (
               <div
                 key={index}
