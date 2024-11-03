@@ -2,7 +2,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
 import { ReactNode, Suspense } from "react";
-import Image from "next/image";
 
 interface PokemonCardProps {
   pokemon?: iPokemon;
@@ -30,15 +29,15 @@ export default function PokemonCard(
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Card
-        className={`col-span-1 bg-slate-300 rounded-lg justify-center items-center 
-        hover:bg-sky-100 active:bg-sky-200 cursor-pointer box-content
-        ${alreadyOnTeam ? "shadow-lg bg-slate-400" : ""}`}
+        className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
+        hover:bg-sky-100 active:bg-sky-200 cursor-pointer
+        ${(alreadyOnTeam && !isTeam) ? "bg-indigo-200" : ""}`}
         onClick={() => pokemon && makeNewTeam(pokemon)}
       >
         <CardContent className="p-0">
           {frontSprite
             ? (
-              <Image
+              <img
                 className={isTeam
                   ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
                   : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
@@ -50,7 +49,7 @@ export default function PokemonCard(
               />
             )
             : (
-              <div className="bg-slate-300 my-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+              <div className="bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
               </div>
             )}
         </CardContent>

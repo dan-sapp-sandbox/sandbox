@@ -29,7 +29,7 @@ export default function Filters(
             <Button
               key={type}
               onClick={() => clickHandler(type)}
-              className={`col-span-1 flex ${colors} ${
+              className={`col-span-1 p-0 flex ${colors} ${
                 isSelected && "border-black border-4"
               } ${!isSelected && selectionExists && "opacity-50"}`}
             >
@@ -49,7 +49,7 @@ export default function Filters(
             <Button
               key={type}
               onClick={() => clickHandler(type)}
-              className={`col-span-1 flex ${colors} ${
+              className={`col-span-1 p-0 flex ${colors} ${
                 isSelected && "border-black border-4"
               } ${!isSelected && selectionExists && "opacity-50"}`}
             >

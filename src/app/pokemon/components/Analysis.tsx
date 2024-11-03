@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode } from "react";
 import { iPokemon } from "../api/types";
 import { Radar } from "@/components/ui/radar";
@@ -73,14 +74,14 @@ export default function Analysis(
     Array.from(weaknessMap).filter((x) => x[1] > 1).sort((a, b) => b[1] - a[1]),
   );
 
-  const coverageGaps = Object.keys(pokemonMap).filter((type) => {
-    const typeWeaknesses = pokemonMap[type].weaknesses;
-    return !typeWeaknesses.some((weakness) => teamTypes.includes(weakness));
-  });
+  const coverageGaps = Object.keys(pokemonMap).filter((type) =>
+    !teamTypes.some((x) => x === type)
+  );
+
   const teamScaling = 150 * team.length || 9999;
   return (
     <div className="mt-4 gap-2 grid grid-flow-row grid-cols-12">
-      <div className="m-auto col-span-12 md:col-span-5 items-center justify-center">
+      <div className="m-auto col-span-12 md:col-span-5 lg:col-span-3 items-center justify-center">
         <Radar
           data={teamStats}
           width={300}
@@ -103,29 +104,25 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-12 md:col-span-7 md:pl-8">
-        <div className="flex flex-wrap my-3 grid-cols-12">
-          <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12 text-zinc-200">
+      <div className="col-span-12 md:col-span-7 lg:col-span-9 md:pl-8">
+        <div className="flex flex-wrap my-3 grid-cols-12 items-center gap-1">
+          <div className="flex xs:text-xs xl:text-xl font-bold col-span-12 text-zinc-200">
             Pokemon Team Types:
           </div>
-          <div className="flex mt-2 font-bold col-span-12">
-            {teamTypes.map((type, index) => {
-              const Icon = pokemonMap[type].icon;
-              return (
-                <div
-                  key={index}
-                  className={`col-span-1 p-1 rounded-3xl mx-1 ${
-                    typeColorMap[type]
-                  }`}
-                >
-                  <Icon />
-                </div>
-              );
-            })}
-          </div>
+          {teamTypes.map((type, index) => {
+            const Icon = pokemonMap[type].icon;
+            return (
+              <div
+                key={index}
+                className={`col-span-1 p-1 rounded-lg ${typeColorMap[type]}`}
+              >
+                <Icon />
+              </div>
+            );
+          })}
         </div>
-        <div className="flex flex-wrap my-3">
-          <div className="flex xs:text-xs mt-2 xl:text-xl font-bold text-center justify-center text-zinc-200">
+        <div className="flex flex-wrap my-3 items-center gap-1">
+          <div className="flex xs:text-xs xl:text-xl font-bold text-center justify-center text-zinc-200">
             Common Vulnerablilities:
           </div>
           {Array.from(weaknessMap.entries()).map((type, index) => {
@@ -133,15 +130,15 @@ export default function Analysis(
             return (
               <div
                 key={index}
-                className={`p-1 rounded-3xl mx-1 ${typeColorMap[type[0]]}`}
+                className={`p-1 rounded-lg ${typeColorMap[type[0]]}`}
               >
                 <Icon />
               </div>
             );
           })}
         </div>
-        <div className="flex flex-wrap my-1 grid-cols-12">
-          <div className="flex xs:text-[8px] xl:text-xl mt-2 font-bold col-span-12 text-zinc-200">
+        <div className="flex flex-wrap my-1 grid-cols-12 items-center gap-1">
+          <div className="flex xs:text-[8px] xl:text-xl font-bold col-span-12 text-zinc-200">
             Offensive Coverage Gaps:
           </div>
           {coverageGaps.map((type, index) => {
@@ -150,7 +147,7 @@ export default function Analysis(
             return (
               <div
                 key={index}
-                className={`p-1 rounded-3xl mx-1 ${typeColorMap[type]}`}
+                className={`p-1 rounded-lg ${typeColorMap[type]}`}
               >
                 <Icon />
               </div>

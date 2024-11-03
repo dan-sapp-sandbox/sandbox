@@ -28,11 +28,11 @@ export default function PokemonPage(
           Pokemon Team Builder
         </span>
       </div>
-      <div className="mx-auto py-1 md:py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 md:top-0 bg-sky-800">
+      <div className="mx-auto py-1 md:py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 bg-sky-800">
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <Analysis team={team} />
-      <div className="md:my-6 py-1 sticky top-16 md:top-28 bg-sky-800">
+      <div className="md:my-6 py-1 sticky top-16 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
         <Filters
           filterTypes={filterTypes}
           updateFilterTypes={updateFilterTypes}
