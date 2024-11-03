@@ -38,7 +38,7 @@ export default function Filters(
           );
         })}
       </div>
-      <div className="col-span-2 mt-1 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
+      <div className="col-span-2 mt-1 md:mt-0 md:ml-1 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
         {Object.keys(typeColorMap).map((type, index) => {
           if (index < 9) return undefined;
           const colors = typeColorMap[type];

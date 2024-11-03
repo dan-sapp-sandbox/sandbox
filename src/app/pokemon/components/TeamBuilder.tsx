@@ -22,17 +22,17 @@ export default function PokemonPage(
   if (isLoading) return <div>Loading</div>;
 
   return (
-    <div className="relative">
+    <div className="relative min-h-full">
       <div className="flex mb-2 justify-center items-center font-bold xs:text-4xl lg:text-4xl">
-        <span className="font-bold xs:text-4xl lg:text-4xl text-zinc-200">
+        <span className="font-bold xs:text-4xl lg:text-4xl text-zinc-300">
           Pokemon Team Builder
         </span>
       </div>
-      <div className="mx-auto py-1 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 bg-purple-950">
+      <div className="mx-auto py-1 md:py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 md:top-0 bg-sky-800">
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <Analysis team={team} />
-      <div className="md:my-6 py-1 sticky top-16 bg-purple-950">
+      <div className="md:my-6 py-1 sticky top-16 md:top-28 bg-sky-800">
         <Filters
           filterTypes={filterTypes}
           updateFilterTypes={updateFilterTypes}
