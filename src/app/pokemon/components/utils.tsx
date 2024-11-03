@@ -9,13 +9,11 @@ interface iPokemonMap {
 export const pokemonMap: iPokemonMap = {
   normal: {
     weaknesses: ["fighting"],
-    // icon: TypeIcons.NormalIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.NormalIcon,
   },
   fighting: {
     weaknesses: ["flying", "psychic", "fairy"],
-    // icon: TypeIcons.FightingIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.FightingIcon,
   },
   flying: {
     weaknesses: ["rock", "electric", "ice"],
@@ -23,8 +21,7 @@ export const pokemonMap: iPokemonMap = {
   },
   poison: {
     weaknesses: ["ground", "psychic"],
-    // icon: TypeIcons.PoisonIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.PoisonIcon,
   },
   ground: {
     weaknesses: ["water", "grass", "ice"],
@@ -40,13 +37,11 @@ export const pokemonMap: iPokemonMap = {
   },
   ghost: {
     weaknesses: ["ghost", "dark"],
-    // icon: TypeIcons.GhostIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.GhostIcon,
   },
   steel: {
     weaknesses: ["fighting", "ground", "fire"],
-    // icon: TypeIcons.SteelIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.SteelIcon,
   },
   fire: {
     weaknesses: ["ground", "rock", "water"],
@@ -54,7 +49,7 @@ export const pokemonMap: iPokemonMap = {
   },
   water: {
     weaknesses: ["grass", "electric"],
-    icon: TypeIcons.GrassIcon,
+    icon: TypeIcons.WaterIcon,
   },
   grass: {
     weaknesses: ["flying", "poison", "bug", "fire", "ice"],
@@ -70,13 +65,11 @@ export const pokemonMap: iPokemonMap = {
   },
   ice: {
     weaknesses: ["fighting", "rock", "steel", "fire"],
-    // icon: TypeIcons.IceIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.IceIcon,
   },
   dragon: {
     weaknesses: ["ice", "dragon", "fairy"],
-    // icon: TypeIcons.DragonIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.DragonIcon,
   },
   dark: {
     weaknesses: ["fighting", "bug", "fairy"],
@@ -84,8 +77,7 @@ export const pokemonMap: iPokemonMap = {
   },
   fairy: {
     weaknesses: ["poison", "steel"],
-    // icon: TypeIcons.FairyIcon,
-    icon: TypeIcons.FlyingIcon,
+    icon: TypeIcons.FairyIcon,
   },
 };
 
