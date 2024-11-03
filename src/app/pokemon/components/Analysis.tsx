@@ -1,97 +1,7 @@
 import { ReactNode } from "react";
 import { iPokemon } from "../api/types";
 import { Radar } from "@/components/ui/radar";
-import { typeColorMap } from "./Filters";
-import TypeIcons from "./icons";
-
-interface iPokemonMap {
-  [key: string]: {
-    weaknesses: string[];
-    icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
-  };
-}
-const pokemonMap: iPokemonMap = {
-  normal: {
-    weaknesses: ["fighting"],
-    // icon: TypeIcons.NormalIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  fighting: {
-    weaknesses: ["flying", "psychic", "fairy"],
-    // icon: TypeIcons.FightingIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  flying: {
-    weaknesses: ["rock", "electric", "ice"],
-    icon: TypeIcons.FlyingIcon,
-  },
-  poison: {
-    weaknesses: ["ground", "psychic"],
-    // icon: TypeIcons.PoisonIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  ground: {
-    weaknesses: ["water", "grass", "ice"],
-    icon: TypeIcons.GroundIcon,
-  },
-  rock: {
-    weaknesses: ["fighting", "ground", "steel", "water", "grass"],
-    icon: TypeIcons.RockIcon,
-  },
-  bug: {
-    weaknesses: ["flying", "rock", "fire"],
-    icon: TypeIcons.BugIcon,
-  },
-  ghost: {
-    weaknesses: ["ghost", "dark"],
-    // icon: TypeIcons.GhostIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  steel: {
-    weaknesses: ["fighting", "ground", "fire"],
-    // icon: TypeIcons.SteelIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  fire: {
-    weaknesses: ["ground", "rock", "water"],
-    icon: TypeIcons.FireIcon,
-  },
-  water: {
-    weaknesses: ["grass", "electric"],
-    icon: TypeIcons.GrassIcon,
-  },
-  grass: {
-    weaknesses: ["flying", "poison", "bug", "fire", "ice"],
-    icon: TypeIcons.GrassIcon,
-  },
-  electric: {
-    weaknesses: ["ground"],
-    icon: TypeIcons.ElectricIcon,
-  },
-  psychic: {
-    weaknesses: ["bug", "ghost", "dark"],
-    icon: TypeIcons.PsychicIcon,
-  },
-  ice: {
-    weaknesses: ["fighting", "rock", "steel", "fire"],
-    // icon: TypeIcons.IceIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  dragon: {
-    weaknesses: ["ice", "dragon", "fairy"],
-    // icon: TypeIcons.DragonIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-  dark: {
-    weaknesses: ["fighting", "bug", "fairy"],
-    icon: TypeIcons.DarkIcon,
-  },
-  fairy: {
-    weaknesses: ["poison", "steel"],
-    // icon: TypeIcons.FairyIcon,
-    icon: TypeIcons.FlyingIcon,
-  },
-};
+import { pokemonMap, typeColorMap } from "./utils";
 
 export type Variable =
   | "hp"
@@ -169,8 +79,8 @@ export default function Analysis(
   });
   const teamScaling = 150 * team.length || 9999;
   return (
-    <div className="gap-2 grid grid-flow-row grid-cols-12">
-      <div className="m-auto col-span-12 md:col-span-6 items-center justify-center">
+    <div className="mt-4 gap-2 grid grid-flow-row grid-cols-12">
+      <div className="m-auto col-span-12 md:col-span-5 items-center justify-center">
         <Radar
           data={teamStats}
           width={400}
@@ -193,7 +103,7 @@ export default function Analysis(
           ]}
         />
       </div>
-      <div className="col-span-12 md:col-span-6 md:pl-8">
+      <div className="col-span-12 md:col-span-7 md:pl-8">
         <div className="flex flex-wrap my-3 grid-cols-12">
           <div className="flex xs:text-xs xl:text-xl mt-2 font-bold col-span-12 text-zinc-200">
             Pokemon Team Types:
@@ -204,7 +114,7 @@ export default function Analysis(
               return (
                 <div
                   key={index}
-                  className={`col-span-1 xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
+                  className={`col-span-1 p-1 rounded-3xl mx-1 ${
                     typeColorMap[type]
                   }`}
                 >
@@ -223,9 +133,7 @@ export default function Analysis(
             return (
               <div
                 key={index}
-                className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl font-semibold m-1 capitalize ${
-                  typeColorMap[type[0]]
-                }`}
+                className={`p-1 rounded-3xl mx-1 ${typeColorMap[type[0]]}`}
               >
                 <Icon />
               </div>
@@ -241,9 +149,7 @@ export default function Analysis(
             return (
               <div
                 key={index}
-                className={`xs:text-xs xl:text-xl px-2 py-1 rounded-3xl m-1 capitalize font-semibold ${
-                  typeColorMap[type]
-                }`}
+                className={`p-1 rounded-3xl mx-1 ${typeColorMap[type]}`}
               >
                 <Icon />
               </div>

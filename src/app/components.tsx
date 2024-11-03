@@ -67,6 +67,7 @@ export const ProfileCard = (): ReactNode => (
       <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
         <span className="col-span-8 text-zinc-200">About Dan Sapp</span>
         <div className="col-span-4 rounded-full flex justify-end">
+          {/* eslint-disable-next-line */}
           <img
             className="rounded-full w-12"
             alt="me"
@@ -83,12 +84,14 @@ export const ProfileCard = (): ReactNode => (
         <StyledButton
           href={`https://github.com/dan-sapp-sandbox/sandbox`}
         >
+          {/* eslint-disable-next-line */}
           <img
             alt="github-logo"
             src={"/static/images/github-mark.png"}
             height={20}
             width={20}
           />
+          {/* eslint-disable-next-line */}
           <img
             alt="github-icon"
             src={"/static/images/GitHub_Logo.png"}
@@ -99,6 +102,7 @@ export const ProfileCard = (): ReactNode => (
         <StyledButton
           href={`https://www.linkedin.com/in/dan-sapp-744145B6/`}
         >
+          {/* eslint-disable-next-line */}
           <img
             alt="linkedIn"
             src={"/static/images/linkedin.png"}

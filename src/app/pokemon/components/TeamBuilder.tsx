@@ -23,27 +23,23 @@ export default function PokemonPage(
 
   return (
     <div>
-      <div className="flex mb-4 justify-center items-center font-bold xs:text-4xl lg:text-4xl">
+      <div className="flex mb-2 justify-center items-center font-bold xs:text-4xl lg:text-4xl">
         <span className="font-bold xs:text-4xl lg:text-4xl text-zinc-200">
           Pokemon Team Builder
         </span>
       </div>
-      <div className="mx-3 gap-2 grid grid-flow-row grid-cols-3 md:grid-cols-6">
+      <div className="mx-auto gap-1 grid grid-flow-row grid-cols-6">
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <Analysis team={team} />
-      <div className="xs:text-lg lg:text-3xl xs:my-2 lg:my-3 font-bold">
-        List
+      <div className="md:my-6">
+        <Filters
+          filterTypes={filterTypes}
+          updateFilterTypes={updateFilterTypes}
+        />
       </div>
-      <div className="md:mb-6">
-        <div className="gap-2 grid grid-flow-row grid-cols-6">
-          <Filters
-            filterTypes={filterTypes}
-            updateFilterTypes={updateFilterTypes}
-          />
-        </div>
-      </div>
-      <div className="gap-2 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-9">
+      <div className="gap-1 mt-2 mx-1 grid grid-flow-row grid-cols-6 sm:grid-cols-7 
+        md:grid-cols-8 lg:grid-cols-9 xl:grid-cols-10 2xl:grid-cols-11 3xl:grid-cols-12">
         {data?.filter((x: iPokemon) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type);

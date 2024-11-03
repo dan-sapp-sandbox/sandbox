@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
+import { Card, CardContent } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
 import { ReactNode, Suspense } from "react";
 import Image from "next/image";
@@ -10,7 +11,7 @@ interface PokemonCardProps {
   isTeam?: boolean;
 }
 export default function PokemonCard(
-  { pokemon, updateTeam, team }: PokemonCardProps,
+  { pokemon, updateTeam, team, isTeam }: PokemonCardProps,
 ): ReactNode {
   const frontSprite = pokemon?.spriteUrl;
   const alreadyOnTeam = team?.length &&
@@ -26,25 +27,21 @@ export default function PokemonCard(
     updateTeam?.(newTeam);
   }
   // TODO: fix so that border doesnt make card bigger
-  // TODO: fix sizing on empty ones
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Card
-        className={`col-span-1 bg-slate-200 rounded-lg justify-center items-center 
+        className={`col-span-1 bg-slate-300 rounded-lg justify-center items-center 
         hover:bg-sky-100 active:bg-sky-200 cursor-pointer box-content
-        ${alreadyOnTeam ? "border-blue-400 border-4 bg-slate-200" : ""}`}
+        ${alreadyOnTeam ? "shadow-lg bg-slate-400" : ""}`}
         onClick={() => pokemon && makeNewTeam(pokemon)}
       >
-        <CardHeader className="p-0 pt-1">
-          <CardTitle className="capitalize mx-auto text-xs lg:text-lg lg:font-bold">
-            {pokemon?.name}
-          </CardTitle>
-        </CardHeader>
         <CardContent className="p-0">
           {frontSprite
             ? (
               <Image
-                className="mx-auto max-w-24 lg:max-w-32 "
+                className={isTeam
+                  ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
+                  : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
                 src={frontSprite}
                 alt="pokemon"
                 width={400}
@@ -52,7 +49,10 @@ export default function PokemonCard(
                 loading="lazy"
               />
             )
-            : <div className="bg-slate-200 my-1 h-28 sm:h-28 md:h-40"></div>}
+            : (
+              <div className="bg-slate-300 my-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+              </div>
+            )}
         </CardContent>
       </Card>
     </Suspense>

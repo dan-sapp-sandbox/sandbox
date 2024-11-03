@@ -1,26 +1,7 @@
 import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { pokemonMap, typeColorMap } from "./utils";
 
-export const typeColorMap: { [key: string]: string } = {
-  normal: "bg-neutral-300 font-black text-black hover:bg-neutral-200",
-  fighting: "bg-orange-600 font-black text-white hover:bg-orange-500",
-  flying: "bg-blue-300 font-black text-black hover:bg-blue-200",
-  poison: "bg-violet-400 font-black text-black hover:bg-violet-300",
-  ground: "bg-amber-800 font-black text-white hover:bg-amber-700",
-  rock: "bg-slate-500 font-black text-white hover:bg-slate-400",
-  bug: "bg-lime-400 font-black text-black hover:bg-lime-300",
-  ghost: "bg-indigo-500 font-black text-white hover:bg-indigo-400",
-  steel: "bg-zinc-500 font-black text-white hover:bg-zinc-400",
-  fire: "bg-red-600 font-black text-white hover:bg-red-400",
-  water: "bg-blue-600 font-black text-white hover:bg-blue-500",
-  grass: "bg-green-500 font-black text-white hover:bg-green-400",
-  electric: "bg-yellow-500 font-black text-white hover:bg-yellow-400",
-  psychic: "bg-purple-600 font-black text-white hover:bg-purple-500",
-  ice: "bg-cyan-300 font-black text-black hover:bg-cyan-200",
-  dragon: "bg-red-300 font-black text-black hover:bg-red-200",
-  dark: "bg-gray-700 font-black text-white hover:bg-gray-600",
-  fairy: "bg-pink-400 font-black text-white hover:bg-pink-300",
-};
 interface FiltersProps {
   filterTypes: string[];
   updateFilterTypes: (newFilters: string[]) => void;
@@ -36,23 +17,47 @@ export default function Filters(
     }
   }
   return (
-    <>
-      {Object.keys(typeColorMap).map((type) => {
-        const colors = typeColorMap[type];
-        const isSelected = filterTypes.includes(type);
-        const selectionExists = filterTypes.length;
-        return (
-          <Button
-            key={type}
-            onClick={() => clickHandler(type)}
-            className={`capitalize col-span-1 flex xs:text-xs xl:text-xl ${colors} ${
-              isSelected && "border-black border-4"
-            } ${!isSelected && selectionExists && "opacity-50"}`}
-          >
-            {type}
-          </Button>
-        );
-      })}
-    </>
+    <div className="my-4 grid grid-flow-row grid-cols-2">
+      <div className="col-span-2 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
+        {Object.keys(typeColorMap).map((type, index) => {
+          if (index > 8) return undefined;
+          const colors = typeColorMap[type];
+          const isSelected = filterTypes.includes(type);
+          const selectionExists = filterTypes.length;
+          const Icon = pokemonMap[type].icon;
+          return (
+            <Button
+              key={type}
+              onClick={() => clickHandler(type)}
+              className={`col-span-1 flex ${colors} ${
+                isSelected && "border-black border-4"
+              } ${!isSelected && selectionExists && "opacity-50"}`}
+            >
+              <Icon />
+            </Button>
+          );
+        })}
+      </div>
+      <div className="col-span-2 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
+        {Object.keys(typeColorMap).map((type, index) => {
+          if (index < 9) return undefined;
+          const colors = typeColorMap[type];
+          const isSelected = filterTypes.includes(type);
+          const selectionExists = filterTypes.length;
+          const Icon = pokemonMap[type].icon;
+          return (
+            <Button
+              key={type}
+              onClick={() => clickHandler(type)}
+              className={`col-span-1 flex ${colors} ${
+                isSelected && "border-black border-4"
+              } ${!isSelected && selectionExists && "opacity-50"}`}
+            >
+              <Icon />
+            </Button>
+          );
+        })}
+      </div>
+    </div>
   );
 }

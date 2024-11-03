@@ -30,6 +30,7 @@ export default function Portfolio() {
             <StyledButton
               href={`https://github.com/dan-sapp-sandbox/node_server`}
             >
+              {/* eslint-disable-next-line */}
               <img
                 alt="github-icon"
                 src={"/static/images/github-mark.png"}
@@ -41,6 +42,7 @@ export default function Portfolio() {
             <StyledButton
               href={`https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/pokemon`}
             >
+              {/* eslint-disable-next-line */}
               <img
                 alt="github-icon"
                 src={"/static/images/github-mark.png"}
