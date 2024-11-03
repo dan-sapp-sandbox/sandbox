@@ -22,9 +22,9 @@ export default function PokemonPage(
   if (isLoading) return <div>Loading</div>;
 
   return (
-    <div className="relative min-h-full">
-      <div className="flex mb-2 justify-center items-center font-bold xs:text-4xl lg:text-4xl">
-        <span className="font-bold xs:text-4xl lg:text-4xl text-zinc-300">
+    <div className="relative min-h-svh bg-sky-800">
+      <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
+        <span className="my-4 font-bold xs:text-4xl lg:text-4xl text-zinc-300">
           Pokemon Team Builder
         </span>
       </div>
@@ -32,7 +32,7 @@ export default function PokemonPage(
         <Team teamData={team} updateTeam={updateTeam} />
       </div>
       <Analysis team={team} />
-      <div className="md:my-6 py-1 sticky top-16 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
+      <div className="md:my-6 py-1 sticky top-14 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
         <Filters
           filterTypes={filterTypes}
           updateFilterTypes={updateFilterTypes}

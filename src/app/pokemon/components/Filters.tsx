@@ -30,8 +30,8 @@ export default function Filters(
               key={type}
               onClick={() => clickHandler(type)}
               className={`col-span-1 p-0 flex ${colors} ${
-                isSelected && "border-black border-4"
-              } ${!isSelected && selectionExists && "opacity-50"}`}
+                !isSelected && selectionExists && "opacity-50"
+              }`}
             >
               <Icon />
             </Button>
@@ -50,8 +50,8 @@ export default function Filters(
               key={type}
               onClick={() => clickHandler(type)}
               className={`col-span-1 p-0 flex ${colors} ${
-                isSelected && "border-black border-4"
-              } ${!isSelected && selectionExists && "opacity-50"}`}
+                !isSelected && selectionExists && "opacity-50"
+              }`}
             >
               <Icon />
             </Button>

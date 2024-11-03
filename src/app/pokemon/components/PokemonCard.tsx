@@ -30,7 +30,7 @@ export default function PokemonCard(
     <Suspense fallback={<div>Loading...</div>}>
       <Card
         className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
-        hover:bg-sky-100 active:bg-sky-200 cursor-pointer
+        active:bg-sky-200 ${(team.length < 6|| alreadyOnTeam || isTeam) && 'cursor-pointer hover:bg-sky-100'}
         ${(alreadyOnTeam && !isTeam) ? "bg-indigo-200" : ""}`}
         onClick={() => pokemon && makeNewTeam(pokemon)}
       >

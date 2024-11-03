@@ -28,6 +28,7 @@
     "react-dom": "^18",
     "react-pdf": "^9.1.1",
     "tailwind-merge": "^2.5.4",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7",
     "use-local-storage": "^3.0.0",
     "use-server": "^0.4.9",
