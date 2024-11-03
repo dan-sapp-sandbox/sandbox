@@ -49,7 +49,7 @@ export default function PokemonCard(
               />
             )
             : (
-              <div className="bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+              <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
               </div>
             )}
         </CardContent>
