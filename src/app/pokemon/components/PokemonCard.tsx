@@ -2,7 +2,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
 import { Suspense } from "react";
-import { getIds } from "./utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface PokemonCardProps {
