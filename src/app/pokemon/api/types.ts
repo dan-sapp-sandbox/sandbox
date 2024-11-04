@@ -10,4 +10,5 @@ export interface iPokemon {
   speed: number;
   types: string[];
   spriteUrl: string;
+  imageBlob: string;
 }

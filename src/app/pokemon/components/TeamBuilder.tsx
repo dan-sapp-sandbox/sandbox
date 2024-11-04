@@ -7,18 +7,30 @@ import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
 import { getPokemon } from "../api/pokemon";
+import { useSearchParams } from "next/navigation";
+import { getFilters, getIds } from "./utils";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
 ): ReactNode {
-  const [team, updateTeam] = useState([] as iPokemon[]);
-  const [filterTypes, updateFilterTypes] = useState([] as string[]);
   const { data, isLoading } = useQuery({
     queryKey: ["pokemon"],
     queryFn: async () => await getPokemon(),
     initialData: pokemonData,
     staleTime: 1000 * 60 * 60 * 24,
   });
+  const searchParams = useSearchParams();
+  const paramIds = getIds(searchParams);
+  function getPokemonFromId(id: number): iPokemon | undefined {
+    return data.find((pokemon) => id === pokemon.pokedexId);
+  }
+  const initTeam = paramIds
+    .map((id) => getPokemonFromId(id))
+    .filter((x) => x != undefined);
+  const [team, updateTeam] = useState(initTeam);
+  const [filterTypes, updateFilterTypes] = useState<string[]>(
+    getFilters(searchParams),
+  );
   if (isLoading) return <div>Loading</div>;
 
   return (
@@ -28,16 +40,12 @@ export default function PokemonPage(
           Pokemon Team Builder
         </span>
       </div>
-      <div className="mx-auto py-1 md:py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 bg-sky-800">
-        <Team teamData={team} updateTeam={updateTeam} />
-      </div>
+      <Team teamData={team} updateTeam={updateTeam} />
       <Analysis team={team} />
-      <div className="md:my-6 py-1 sticky top-14 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
-        <Filters
-          filterTypes={filterTypes}
-          updateFilterTypes={updateFilterTypes}
-        />
-      </div>
+      <Filters
+        filterTypes={filterTypes}
+        updateFilterTypes={updateFilterTypes}
+      />
       <div className="gap-1 mt-2 mx-1 grid grid-flow-row grid-cols-6 sm:grid-cols-7 
         md:grid-cols-8 lg:grid-cols-9 xl:grid-cols-10 2xl:grid-cols-11 3xl:grid-cols-12">
         {data?.filter((x: iPokemon) => {

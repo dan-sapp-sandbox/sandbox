@@ -1,7 +1,9 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
-import { ReactNode, Suspense } from "react";
+import { Suspense } from "react";
+import { getIds } from "./utils";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface PokemonCardProps {
   pokemon?: iPokemon;
@@ -9,49 +11,70 @@ interface PokemonCardProps {
   team: iPokemon[];
   isTeam?: boolean;
 }
+
 export default function PokemonCard(
   { pokemon, updateTeam, team, isTeam }: PokemonCardProps,
-): ReactNode {
-  const frontSprite = pokemon?.spriteUrl;
-  const alreadyOnTeam = team?.length &&
-    team.find((member) => member.name === pokemon?.name);
-  function makeNewTeam(pokemon: iPokemon): void {
-    if (team.length >= 6 && !alreadyOnTeam) return;
-    let newTeam: iPokemon[] = team;
+): JSX.Element {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const png = `data:image/png;base64,${pokemon?.imageBlob}`;
+  const alreadyOnTeam = team.find((member) => member.name === pokemon?.name);
+
+  function clickHandler(pokemon: iPokemon): void {
+    if (!pokemon) return;
+
+    // Update the team state
+    let newTeam: iPokemon[];
     if (alreadyOnTeam) {
-      newTeam = team.filter((member) => member.name !== pokemon.name);
+      newTeam = team.filter((member) => member.pokedexId !== pokemon.pokedexId);
     } else {
-      newTeam = [...team, pokemon];
+      newTeam = team.length < 6 ? [...team, pokemon] : team; // Limit team to 6 members
     }
+
+    // Update team state using the provided function
     updateTeam?.(newTeam);
+
+    // Update the URL query parameters based on the new team
+    const updatedIds = newTeam.map((member) => member.pokedexId);
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (updatedIds.length > 0) {
+      params.set("ids", updatedIds.join(","));
+    } else {
+      params.delete("ids");
+    }
+
+    // Update the URL with the new query parameters
+    router.push(`?${params.toString()}`);
   }
-  // TODO: fix so that border doesnt make card bigger
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Card
         className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
-        active:bg-sky-200 ${(team.length < 6|| alreadyOnTeam || isTeam) && 'cursor-pointer hover:bg-sky-100'}
-        ${(alreadyOnTeam && !isTeam) ? "bg-indigo-200" : ""}`}
-        onClick={() => pokemon && makeNewTeam(pokemon)}
+        active:bg-sky-200 ${
+          (team.length < 6 || alreadyOnTeam || isTeam) &&
+          "cursor-pointer hover:bg-sky-100"
+        }
+        ${(alreadyOnTeam && !isTeam) && "bg-indigo-200"}`}
+        onClick={() => pokemon && clickHandler(pokemon)}
       >
         <CardContent className="p-0">
-          {frontSprite
-            ? (
-              <img
-                className={isTeam
-                  ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
-                  : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
-                src={frontSprite}
-                alt="pokemon"
-                width={400}
-                height={400}
-                loading="lazy"
-              />
-            )
-            : (
-              <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
-              </div>
-            )}
+          {pokemon ? (
+            <img
+              className={isTeam
+                ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
+                : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
+              src={png}
+              alt="pokemon"
+              width={400}
+              height={400}
+              loading="lazy"
+            />
+          ) : (
+            <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48"></div>
+          )}
         </CardContent>
       </Card>
     </Suspense>

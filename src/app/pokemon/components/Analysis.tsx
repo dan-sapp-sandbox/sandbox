@@ -21,11 +21,11 @@ type DataItem<T extends string> =
   };
 export type Data = DataItem<Variable>;
 
-interface Props {
-  team: iPokemon[];
+interface iProps {
+  team: iPokemon[] | [];
 }
 export default function Analysis(
-  { team }: Props,
+  { team }: iProps,
 ): ReactNode {
   const teamStats = team.reduce((acc, pokemon) => {
     const scaling = 20;
@@ -80,7 +80,7 @@ export default function Analysis(
 
   const teamScaling = 150 * team.length || 9999;
   return (
-    <div className="mt-4 gap-2 grid grid-flow-row grid-cols-12">
+    <div className="mt-4 mx-1 gap-2 grid grid-flow-row grid-cols-12">
       <div className="m-auto col-span-12 md:col-span-5 lg:col-span-3 items-center justify-center">
         <Radar
           data={teamStats}

@@ -6,7 +6,7 @@ import { iPokemon } from "../api/types";
 
 // @refresh reset
 interface TeamProps {
-  teamData: iPokemon[];
+  teamData: iPokemon[] | [];
   updateTeam: (newTeam: iPokemon[]) => void;
 }
 export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
@@ -21,7 +21,7 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
     );
   }
   return (
-    <>
+    <div className="mx-1 py-1 md:py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 bg-sky-800">
       {teamData.map((pokemon: iPokemon) => (
         <PokemonCard
           key={pokemon.name}
@@ -32,6 +32,6 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
         />
       ))}
       {emptySlots}
-    </>
+    </div>
   );
 }

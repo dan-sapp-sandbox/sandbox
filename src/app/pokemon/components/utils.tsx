@@ -1,4 +1,5 @@
 import TypeIcons from "./icons";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 interface iPokemonMap {
   [key: string]: {
@@ -101,3 +102,24 @@ export const typeColorMap: { [key: string]: string } = {
   dark: "bg-gray-700 font-black text-white hover:bg-gray-600",
   fairy: "bg-pink-400 font-black text-white hover:bg-pink-300",
 };
+
+export function getFilters(
+  searchParams: ReadonlyURLSearchParams,
+): string[] {
+  const filtersParam = searchParams.get("filters");
+  if (filtersParam) {
+    const filtersArray = filtersParam.split(",").map(String);
+    return filtersArray;
+  }
+  return [];
+}
+export function getIds(
+  searchParams: ReadonlyURLSearchParams,
+): number[] {
+  const idsParam = searchParams.get("ids");
+  if (idsParam) {
+    const idsArray = idsParam.split(",").map(Number);
+    return idsArray;
+  }
+  return [];
+}
