@@ -1,12 +1,15 @@
 # Dan Sapp Portfolio
 
+This is an app to collect the projects that I work on.
 
-## Getting Started
 
-First, run the development server:
 
+
+## Running locally
+
+- clone the repo
 ```bash
+npm install
 npm run dev
 ```
-
-notes: minify code for non local builds
+- creates server at localhost:3000
