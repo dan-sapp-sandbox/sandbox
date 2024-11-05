@@ -82,7 +82,7 @@ export const ProfileCard = (): ReactNode => (
       </div>
       <div className="col-span-12 xl:col-span-4 flex items-end justify-end gap-4 mt-2">
         <StyledButton
-          href={`https://github.com/dan-sapp-sandbox/sandbox`}
+          href={`https://github.com/dan-sapp-sandbox`}
         >
           {/* eslint-disable-next-line */}
           <img
