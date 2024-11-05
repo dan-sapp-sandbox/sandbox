@@ -1,9 +1,18 @@
-## Getting Started
+# Dan Sapp Portfolio
 
-First, run the development server:
+This is an app to collect the projects that I work on.
 
+
+
+
+## Quick Start
+
+- clone the repo
 ```bash
+npm install
 npm run dev
 ```
+- creates server at localhost:3000
 
-notes: minify code for non local builds
+## Contributing
+
