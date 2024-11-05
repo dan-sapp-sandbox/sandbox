@@ -1,4 +1,4 @@
-import TypeIcons from "./icons";
+import TypeIcons from "./Icons";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
 interface iPokemonMap {

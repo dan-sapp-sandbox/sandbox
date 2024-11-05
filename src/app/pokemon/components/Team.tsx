@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import PokemonCard from "./PokemonCard";
 import { iPokemon } from "../api/types";
 
-// @refresh reset
 interface TeamProps {
   teamData: iPokemon[] | [];
   updateTeam: (newTeam: iPokemon[]) => void;
