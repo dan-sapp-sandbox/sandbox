@@ -23,18 +23,15 @@ export default function PokemonCard(
   function clickHandler(pokemon: iPokemon): void {
     if (!pokemon) return;
 
-    // Update the team state
     let newTeam: iPokemon[];
     if (alreadyOnTeam) {
       newTeam = team.filter((member) => member.pokedexId !== pokemon.pokedexId);
     } else {
-      newTeam = team.length < 6 ? [...team, pokemon] : team; // Limit team to 6 members
+      newTeam = team.length < 6 ? [...team, pokemon] : team;
     }
 
-    // Update team state using the provided function
     updateTeam?.(newTeam);
 
-    // Update the URL query parameters based on the new team
     const updatedIds = newTeam.map((member) => member.pokedexId);
     const params = new URLSearchParams(searchParams.toString());
 
@@ -44,8 +41,7 @@ export default function PokemonCard(
       params.delete("ids");
     }
 
-    // Update the URL with the new query parameters
-    router.push(`?${params.toString()}`);
+    router.replace(`?${params.toString()}`, undefined);
   }
 
   return (
