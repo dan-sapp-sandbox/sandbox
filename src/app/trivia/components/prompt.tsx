@@ -5,11 +5,17 @@ import { useController, useForm } from "react-hook-form";
 import { Slider } from "@/components/ui/slider";
 
 interface iPromptProps {
-  trivia: iTrivia;
+  triviaList: iTrivia[];
 }
-export default function Prompt({ trivia }: iPromptProps): JSX.Element {
+export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
+  const [index, setIndex] = useState<number>(0);
   const [score, setScore] = useState<number | undefined>(undefined);
   const [percentage, setPercentage] = useState<number | undefined>(undefined);
+  const trivia = triviaList?.[index];
+  function next() {
+    setIndex(index + 1);
+    setScore(undefined);
+  }
   const { handleSubmit, control, watch } = useForm({
     defaultValues: {
       guess: Math.floor(trivia.high / 2),
@@ -35,8 +41,8 @@ export default function Prompt({ trivia }: iPromptProps): JSX.Element {
   return (
     <div className="p-3">
       <div className="text-4xl text-center">{trivia.prompt}</div>
-      <div className="my-6">
-        <img alt="pic" className="rounded-xl" src={trivia.image} />
+      <div className="my-6 flex justify-center items-center">
+        <img alt="pic" className="rounded-xl min-h-60" src={trivia.image} />
       </div>
       <div className="text-4xl text-center">{sliderValue} {trivia.units}</div>
       {score
@@ -52,21 +58,27 @@ export default function Prompt({ trivia }: iPromptProps): JSX.Element {
             <div className="mx-auto text-3xl py-3">
               {trivia.source}
             </div>
+            <div className="flex justify-center m-3">
+              <button
+                className="mx-auto text-3xl p-3 rounded-xl bg-red-50"
+                onClick={() => next()}
+              >
+                Next
+              </button>
+            </div>
           </div>
         )
         : (
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label>Rate your experience:</label>
               <Slider
                 value={[value]}
                 onValueChange={onChange}
-                min={trivia.low}
+                min={0}
                 max={trivia.high}
                 step={1}
                 className="my-4"
               />
-              <p>Current Guess: {sliderValue}</p>
             </div>
             <div className="flex justify-center m-3">
               <button
