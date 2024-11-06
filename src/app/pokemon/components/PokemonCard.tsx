@@ -41,7 +41,7 @@ export default function PokemonCard(
       params.delete("ids");
     }
 
-    router.replace(`?${params.toString()}`, undefined);
+    // router.replace(`?${params.toString()}`, undefined);
   }
 
   return (
