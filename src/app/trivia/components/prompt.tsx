@@ -19,6 +19,7 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
       guess: 0,
     },
   });
+  const disableNextBtn = index + 1 === triviaList.length;
   function next() {
     setIndex(index + 1);
     setScore(undefined);
@@ -88,10 +89,11 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
               </div>
               <div className="flex justify-center m-2">
                 <Button
+                  disabled={disableNextBtn}
                   className="mx-auto text-lg w-full md:w-auto md:text-3xl px-3 py-3 rounded-x"
                   onClick={() => next()}
                 >
-                  Next
+                  {disableNextBtn ? "Out of Questions" : "Next"}
                 </Button>
               </div>
             </div>
@@ -106,11 +108,12 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
                     min={0}
                     max={trivia.high}
                     step={1}
-                    className="my-4"
+                    className="my-12"
                   />
                 </div>
                 <div className="flex justify-center m-3">
                   <Button
+                    disabled={!value}
                     className="mx-auto text-lg md:text-3xl px-3 py-1 rounded-xl bg-cyan-500 border-2 border-black"
                     type="submit"
                   >
