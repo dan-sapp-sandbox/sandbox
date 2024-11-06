@@ -1,7 +1,7 @@
 export interface iTrivia {
   id: string;
   prompt: string;
-  tag: string[];
+  tag: string;
   image: string;
   source: string;
   low: number;
