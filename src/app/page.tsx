@@ -12,6 +12,50 @@ export default function Portfolio() {
           Projects
         </div>
         <StyledCard
+          title="Horseshoes and Hand Grenades"
+          description={"The game where being close counts!"}
+        >
+          <div className="col-span-12 xl:col-span-6">
+            <p className="max-w-4xl text-zinc-200 lg:text-xl">
+              This is a trivia game where you try to be as close as you can to
+              the right answer.
+            </p>
+            <p className="max-w-4xl text-zinc-200 lg:text-xl">
+              This is a scaffold for me to get more experience with using
+              statistics and machine learning to generate questions for a game.
+            </p>
+          </div>
+          <div className="mt-2 col-span-12 xl:col-span-6 flex sm:justify-end items-end gap-2 align-end justify-center grid-flow-row flex-wrap grid-cols-4 sm:grid-cols-6">
+            <StyledButton href={`/trivia`}>
+              <p className="text-black font-bold text-lg">Check it out!</p>
+            </StyledButton>
+            <StyledButton
+              href={`https://github.com/dan-sapp-sandbox/node_server`}
+            >
+              {/* eslint-disable-next-line */}
+              <img
+                alt="github-icon"
+                src={"/static/images/github-mark.png"}
+                height={25}
+                width={25}
+              />
+              <p className="text-black font-bold text-lg">Server Code</p>
+            </StyledButton>
+            <StyledButton
+              href={`https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/trivia`}
+            >
+              {/* eslint-disable-next-line */}
+              <img
+                alt="github-icon"
+                src={"/static/images/github-mark.png"}
+                height={25}
+                width={25}
+              />
+              <p className="text-black font-bold text-lg">App Code</p>
+            </StyledButton>
+          </div>
+        </StyledCard>
+        <StyledCard
           title="Pokemon Team Builder"
           description={"Build the best team or see how your favorites compare!"}
         >

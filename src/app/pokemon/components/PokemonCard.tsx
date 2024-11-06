@@ -60,20 +60,23 @@ export default function PokemonCard(
         onClick={() => pokemon && clickHandler(pokemon)}
       >
         <CardContent className="p-0">
-          {pokemon ? (
-            <img
-              className={isTeam
-                ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
-                : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
-              src={png}
-              alt="pokemon"
-              width={400}
-              height={400}
-              loading="lazy"
-            />
-          ) : (
-            <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48"></div>
-          )}
+          {pokemon
+            ? (
+              <img
+                className={isTeam
+                  ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
+                  : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
+                src={png}
+                alt="pokemon"
+                width={400}
+                height={400}
+                loading="lazy"
+              />
+            )
+            : (
+              <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+              </div>
+            )}
         </CardContent>
       </Card>
     </Suspense>
