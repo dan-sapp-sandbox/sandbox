@@ -3,34 +3,42 @@ import { iTrivia } from "../api/types";
 import { useState } from "react";
 import { useController, useForm } from "react-hook-form";
 import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
 
 interface iPromptProps {
   triviaList: iTrivia[];
 }
 export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
   const [index, setIndex] = useState<number>(0);
+  const [totalScore, setTotalScore] = useState<number>(0);
   const [score, setScore] = useState<number | undefined>(undefined);
   const [percentage, setPercentage] = useState<number | undefined>(undefined);
   const trivia = triviaList?.[index];
+  const { handleSubmit, control, watch, reset } = useForm({
+    defaultValues: {
+      guess: 0,
+    },
+  });
   function next() {
     setIndex(index + 1);
     setScore(undefined);
+    reset({ guess: 0 });
   }
-  const { handleSubmit, control, watch } = useForm({
-    defaultValues: {
-      guess: Math.floor(trivia.high / 2),
-    },
-  });
-
   const onSubmit = (data: { guess: number }) => {
-    console.log("Form Data:", data);
-    const percentage = Math.round(
-      100 * Math.abs(data.guess - trivia.answer) /
-        trivia.answer,
-    );
+    const percentage = Number((100 * Math.abs(data.guess - trivia.answer) /
+      trivia.answer).toFixed(2));
     setPercentage(percentage);
-    setScore(50);
+    let promptScore = 0;
+    if (percentage < 1) promptScore = 200;
+    if (percentage < 100) {
+      promptScore = Math.floor(100 * (1 - (Math.sqrt(percentage / 100))));
+    }
+    setScore(promptScore);
+    setTotalScore(totalScore + promptScore);
   };
+  function numberWithCommas(x: number): string {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   const {
     field: { onChange, value },
   } = useController({
@@ -39,57 +47,80 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
   });
   const sliderValue = watch("guess");
   return (
-    <div className="p-3">
-      <div className="text-4xl text-center">{trivia.prompt}</div>
-      <div className="my-6 flex justify-center items-center">
-        <img alt="pic" className="rounded-xl min-h-60" src={trivia.image} />
+    <div>
+      <div className="bg-slate-300 py-1 font-bold text-2xl md:text-4xl text-center">
+        Score: {numberWithCommas(totalScore)}
       </div>
-      <div className="text-4xl text-center">{sliderValue} {trivia.units}</div>
-      {score
-        ? (
-          <div>
-            <div className="text-4xl text-center">Earned {score}pts!</div>
-            <div className="text-4xl text-center">
-              You were off by {percentage}%
-            </div>
-            <div className="mx-auto text-3xl py-3  text-center">
-              {trivia.answer} {trivia.units}
-            </div>
-            <div className="mx-auto text-3xl py-3">
-              {trivia.source}
-            </div>
-            <div className="flex justify-center m-3">
-              <button
-                className="mx-auto text-3xl p-3 rounded-xl bg-red-50"
-                onClick={() => next()}
+      <div className="container max-w-5xl mx-auto">
+        <div className="font-bold text-2xl md:text-4xl my-1 md:my-6 text-center">
+          {trivia.prompt}
+        </div>
+        <div className="mx-1 my-1 md:my-6 flex justify-center items-center md:max-h-96">
+          <img
+            alt="pic"
+            className="rounded-xl h-1/2 md:h-96"
+            src={trivia.image}
+          />
+        </div>
+        <div className="text-lg md:text-3xl text-center">
+          {numberWithCommas(sliderValue)} {trivia.units}
+        </div>
+        {score
+          ? (
+            <div className="px-1">
+              <div
+                className={`text-lg font-bold md:text-3xl text-center
+              ${percentage === 0 ? "text-green-400" : "text-red-900"}`}
               >
-                Next
-              </button>
+                {percentage === 0 ? "Bingo!" : `You were off by ${percentage}%`}
+              </div>
+              <div className="text-lg font-bold md:text-3xl text-center">
+                Earned {score}pts!
+              </div>
+              {percentage !== 0 &&
+                (
+                  <div className="mx-auto text-lg md:text-3xl py-1 text-center">
+                    {numberWithCommas(trivia.answer)} {trivia.units}
+                  </div>
+                )}
+              <div className="mx-auto text-lg md:text-3xl py-1 text-center">
+                {trivia.source}
+              </div>
+              <div className="flex justify-center m-2">
+                <Button
+                  className="mx-auto text-lg w-full md:w-auto md:text-3xl px-3 py-3 rounded-x"
+                  onClick={() => next()}
+                >
+                  Next
+                </Button>
+              </div>
             </div>
-          </div>
-        )
-        : (
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <Slider
-                value={[value]}
-                onValueChange={onChange}
-                min={0}
-                max={trivia.high}
-                step={1}
-                className="my-4"
-              />
+          )
+          : (
+            <div className="px-1">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div>
+                  <Slider
+                    value={[value]}
+                    onValueChange={onChange}
+                    min={0}
+                    max={trivia.high}
+                    step={1}
+                    className="my-4"
+                  />
+                </div>
+                <div className="flex justify-center m-3">
+                  <Button
+                    className="mx-auto text-lg md:text-3xl px-3 py-1 rounded-xl bg-cyan-500 border-2 border-black"
+                    type="submit"
+                  >
+                    Guess
+                  </Button>
+                </div>
+              </form>
             </div>
-            <div className="flex justify-center m-3">
-              <button
-                className="mx-auto text-3xl p-3 rounded-xl bg-purple-50"
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        )}
+          )}
+      </div>
     </div>
   );
 }

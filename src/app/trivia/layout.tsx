@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function TriviaLayout({ children }: { children: ReactNode }) {
-  return <main className="container my-6">{children}</main>;
+  return <main>{children}</main>;
 }
