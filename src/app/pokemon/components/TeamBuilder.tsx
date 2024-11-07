@@ -36,7 +36,7 @@ export default function PokemonPage(
   return (
     <div className="relative min-h-svh bg-sky-800">
       <div className="flex justify-center items-center font-bold xs:text-4xl lg:text-4xl">
-        <span className="my-4 font-bold xs:text-4xl lg:text-4xl text-zinc-300">
+        <span className="my-4 font-bold text-3xl lg:text-4xl text-zinc-300">
           Pokemon Team Builder
         </span>
       </div>

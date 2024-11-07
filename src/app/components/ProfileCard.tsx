@@ -1,59 +1,6 @@
-import { ReactNode } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { StyledButton } from "./components";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface iStyledButton {
-  children: ReactNode;
-  href: string;
-}
-export const StyledButton = ({ children, href }: iStyledButton): ReactNode => (
-  <Button
-    asChild
-    className="w-full align-bottom sm:w-auto col-span-2 bg-slate-200 border-black-500 border-2 hover:bg-slate-300"
-  >
-    <Link href={href} target="_blank">
-      {children}
-    </Link>
-  </Button>
-);
-
-interface iStyledCard {
-  children: ReactNode;
-  title?: string;
-  description?: string;
-}
-export const StyledCard = (
-  { children, title, description }: iStyledCard,
-): ReactNode => (
-  <Card className="col-span-12 rounded-lg items-center align-center justify-center my-2 gap-2 bg-slate-500 border-2 border-teal-500">
-    {(title || description) &&
-      (
-        <CardHeader className="gap-3 grid grid-flow-row grid-cols-12">
-          {title &&
-            (
-              <CardTitle className="col-span-12">
-                <span className="text-zinc-200">{title}</span>
-              </CardTitle>
-            )}
-          {description && (
-            <CardDescription className="col-span-12 text-zinc-200 lg:text-xl italic">
-              {description}
-            </CardDescription>
-          )}
-        </CardHeader>
-      )}
-    <CardContent className="gap-2 grid-cols-12 grid grid-flow-row">
-      {children}
-    </CardContent>
-  </Card>
-);
 const summary =
   `Experienced Software Engineer with 7+ years of experience in designing, building, 
   and maintaining complex web applications. Expertise in React.js and modern JavaScript frameworks, 
@@ -61,7 +8,7 @@ const summary =
   Strong background in front-end architecture, API integrations, state management, 
   and collaboration with cross-functional teams.`;
 
-export const ProfileCard = (): ReactNode => (
+const ProfileCard = (): JSX.Element => (
   <Card className="col-span-12 rounded-lg justify-center items-center mb-2 gap-2 bg-slate-500 border-2 border-teal-500">
     <CardHeader className="gap-2 grid grid-flow-row grid-cols-12">
       <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
@@ -115,3 +62,5 @@ export const ProfileCard = (): ReactNode => (
     </CardContent>
   </Card>
 );
+
+export default ProfileCard;
