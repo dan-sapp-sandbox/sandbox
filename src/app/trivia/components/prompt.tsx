@@ -25,14 +25,18 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
     setScore(undefined);
     reset({ guess: 0 });
   }
+  function goBack() {
+    location.reload();
+  }
   const onSubmit = (data: { guess: number }) => {
-    const percentage = Number((100 * Math.abs(data.guess - trivia.answer) /
-      trivia.answer).toFixed(2));
+    const rawPercentage = Math.abs(data.guess - trivia.answer) /
+      trivia.answer;
+    const percentage = Number((100 * rawPercentage).toFixed(2));
     setPercentage(percentage);
     let promptScore = 0;
     if (percentage < 1) promptScore = 200;
     if (percentage < 100) {
-      promptScore = Math.floor(100 * (1 - (Math.sqrt(percentage / 100))));
+      promptScore = Math.floor(100 * (1 - (Math.sqrt(rawPercentage))));
     }
     setScore(promptScore);
     setTotalScore(totalScore + promptScore);
@@ -49,45 +53,57 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
   const sliderValue = watch("guess");
   return (
     <div>
-      <div className="bg-slate-300 py-1 font-bold text-2xl md:text-4xl text-center">
-        Score: {numberWithCommas(totalScore)}
+      <div className="bg-slate-300 py-1 grid grid-flow-row grid-cols-12">
+        <div className="col-span-2">
+          {/* eslint-disable-next-line */}
+          <img
+            onClick={goBack}
+            className="ml-4 rounded-full w-8 md:w-12 hover:cursor-pointer"
+            alt="me"
+            src={"/static/images/back.png"}
+          />
+        </div>
+        <div className="col-span-8 font-bold text-2xl md:text-4xl text-center">
+          Score: {numberWithCommas(totalScore)}
+        </div>
       </div>
       <div className="container max-w-5xl mx-auto">
         <div className="font-bold text-2xl md:text-4xl my-1 md:my-6 text-center">
           {trivia.prompt}
         </div>
         <div className="mx-1 my-1 md:my-6 flex justify-center items-center md:max-h-96">
+          {/* eslint-disable-next-line */}
           <img
             alt="pic"
             className="rounded-xl h-1/2 md:h-96"
             src={trivia.image}
           />
         </div>
-        <div className="text-lg md:text-3xl text-center">
+        <div className="font-bold text-lg md:text-3xl text-center">
           {numberWithCommas(sliderValue)} {trivia.units}
         </div>
         {score
           ? (
             <div className="px-1">
-              <div
-                className={`text-lg font-bold md:text-3xl text-center
-              ${percentage === 0 ? "text-green-400" : "text-red-900"}`}
-              >
-                {percentage === 0 ? "Bingo!" : `You were off by ${percentage}%`}
-              </div>
-              <div className="text-lg font-bold md:text-3xl text-center">
-                Earned {score}pts!
-              </div>
               {percentage !== 0 &&
                 (
-                  <div className="mx-auto text-lg md:text-3xl py-1 text-center">
+                  <div className="font-bold mx-auto text-lg md:text-3xl py-1 text-center text-red-900">
                     {numberWithCommas(trivia.answer)} {trivia.units}
                   </div>
                 )}
-              <div className="mx-auto text-lg md:text-3xl py-1 text-center">
+              {percentage === 0 &&
+                (
+                  <div className="text-lg font-bold md:text-3xl text-center text-green-400">
+                    Bingo!
+                  </div>
+                )}
+              <div className="text-lg font-bold md:text-3xl text-center">
+                Earned {score}pts!
+              </div>
+              <div className="mx-auto text-md md:text-2xl py-1 text-center">
                 {trivia.source}
               </div>
-              <div className="flex justify-center m-2">
+              <div className="flex justify-center mt-4">
                 <Button
                   disabled={disableNextBtn}
                   className="mx-auto text-lg w-full md:w-auto md:text-3xl px-3 py-3 rounded-x"
