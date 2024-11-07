@@ -46,12 +46,12 @@ export const StyledCard = (
   }: iStyledCard,
 ): ReactNode => (
   <Card className="grid grid-flow-row grid-cols-12 col-span-12 rounded-lg justify-center my-2 bg-slate-500 border-2 border-teal-500">
-    <div className="col-span-12 md:col-span-10 justify-start align-top">
+    <div className="col-span-12 md:col-span-9 justify-start align-top grid grid-flow-row">
       <CardHeader className="col-span-12 justify-start align-top p-4 pb-0">
         <CardTitle>
-          <span className="text-zinc-200">{title}</span>
+          <span className="lg:text-3xl text-zinc-200">{title}</span>
         </CardTitle>
-        <CardDescription className=" text-zinc-200 text-xl italic">
+        <CardDescription className=" text-zinc-200 text-lg lg:text-xl italic">
           {description}
         </CardDescription>
       </CardHeader>
@@ -74,7 +74,7 @@ export const StyledCard = (
         />
       </CardContent>
     </div>
-    <div className="col-span-0 md:col-span-2 m-2 hidden md:block">
+    <div className="col-span-0 md:col-span-3 m-2 hidden md:block h-full">
       {/* eslint-disable-next-line */}
       <img
         className="rounded border-2 border-zinc-200"
@@ -89,7 +89,7 @@ const ButtonBar = (
   { appLink, serverLink, projectLink }: iButtonBar,
 ): JSX.Element => {
   return (
-    <div className="my-4 col-span-12 flex sm:justify-start items-start gap-2 align-end justify-center grid-flow-row flex-wrap grid-cols-4 sm:grid-cols-6">
+    <div className="my-4 lg:mt-8 col-span-12 flex sm:justify-start items-end gap-2 align-end justify-end grid-flow-row flex-wrap grid-cols-4 sm:grid-cols-6">
       <StyledButton href={projectLink}>
         <p className="text-black font-bold text-lg">Check it out!</p>
       </StyledButton>
