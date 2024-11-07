@@ -17,10 +17,10 @@ const LandingPage = (
     ? <Prompt triviaList={filteredList} />
     : (
       <div className="justify-center items-center grid grid-flow-row grid-cols-12">
-        <div className="text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
+        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
           Horseshoes and Hand Grenades
         </div>
-        <div className="text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
+        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
           Choose a category
         </div>
         <div className="col-span-12 justify-center">

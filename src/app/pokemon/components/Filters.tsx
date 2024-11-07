@@ -37,7 +37,7 @@ export default function Filters(
   }
 
   return (
-    <div className="md:my-6 mx-1 py-1 sticky top-14 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
+    <div className="my-4 md:my-6 mx-1 py-1 sticky top-14 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
       <div className="my-4 grid grid-flow-row grid-cols-2">
         <div className="col-span-2 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
           {Object.keys(typeColorMap).map((type, index) => {
