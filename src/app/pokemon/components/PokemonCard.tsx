@@ -2,7 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { iPokemon } from "../api/types";
 import { Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter, useSearchParams } from "next/navigation";
 
 interface PokemonCardProps {
   pokemon?: iPokemon;
@@ -14,8 +14,8 @@ interface PokemonCardProps {
 export default function PokemonCard(
   { pokemon, updateTeam, team, isTeam }: PokemonCardProps,
 ): JSX.Element {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  // const router = useRouter();
+  // const searchParams = useSearchParams();
 
   const png = `data:image/png;base64,${pokemon?.imageBlob}`;
   const alreadyOnTeam = team.find((member) => member.name === pokemon?.name);
@@ -32,14 +32,14 @@ export default function PokemonCard(
 
     updateTeam?.(newTeam);
 
-    const updatedIds = newTeam.map((member) => member.pokedexId);
-    const params = new URLSearchParams(searchParams.toString());
+    // const updatedIds = newTeam.map((member) => member.pokedexId);
+    // const params = new URLSearchParams(searchParams.toString());
 
-    if (updatedIds.length > 0) {
-      params.set("ids", updatedIds.join(","));
-    } else {
-      params.delete("ids");
-    }
+    // if (updatedIds.length > 0) {
+    //   params.set("ids", updatedIds.join(","));
+    // } else {
+    //   params.delete("ids");
+    // }
 
     // router.replace(`?${params.toString()}`, undefined);
   }
