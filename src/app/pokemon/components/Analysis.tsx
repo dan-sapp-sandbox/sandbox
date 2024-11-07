@@ -84,7 +84,7 @@ export default function Analysis(
       <div className="m-auto col-span-12 md:col-span-5 lg:col-span-3 items-center justify-center">
         <Radar
           data={teamStats}
-          width={300}
+          width={320}
           height={150}
           axisConfig={[
             { title: "Hp", name: "hp", max: teamScaling },
