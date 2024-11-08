@@ -2,11 +2,10 @@ import { StyledButton } from "./components";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const summary =
-  `Experienced Software Engineer with 7+ years of experience in designing, building, 
-  and maintaining complex web applications. Expertise in React.js and modern JavaScript frameworks, 
-  proficient in building scalable, high-performance applications with clean and reusable code. 
-  Strong background in front-end architecture, API integrations, state management, 
-  and collaboration with cross-functional teams.`;
+  `Software Engineer with 7+ years of experience in designing and maintaining 
+  complex web applications. Expertise in React.js, creating scalable, 
+  high-performance solutions with clean, reusable code. Strong in front-end architecture, 
+  state management, API integration, and cross-functional team collaboration.`;
 
 const ProfileCard = (): JSX.Element => (
   <Card className="col-span-12 rounded-lg justify-center items-center mb-2 gap-2 bg-slate-500 border-2 border-teal-500">
