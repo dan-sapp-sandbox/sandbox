@@ -11,7 +11,7 @@ const ProfileCard = (): JSX.Element => (
   <Card className="col-span-12 rounded-lg justify-center items-center mb-2 gap-2 bg-slate-500 border-2 border-teal-500">
     <CardHeader className="gap-2 grid grid-flow-row grid-cols-12">
       <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
-        <span className="col-span-8 text-zinc-200">About Dan Sapp</span>
+        <span className="col-span-8 text-zinc-200 text-3xl">About Dan Sapp</span>
         <div className="col-span-4 rounded-full flex justify-end">
           {/* eslint-disable-next-line */}
           <img

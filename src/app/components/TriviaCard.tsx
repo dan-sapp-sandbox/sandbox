@@ -13,8 +13,8 @@ const TriviaCard = () => {
       <div className="col-span-12 xl:col-span-12">
         <p className="max-w-4xl text-zinc-200 lg:text-xl">
           This is a trivia game where you try to be as close as you can to the
-          right answer. It's a problem designed to get me more experience 
-          using statistics and machine learning to generate questions for a game.
+          right answer. The problem was designed to get me more experience using
+          statistics and machine learning to generate questions for a game.
         </p>
       </div>
     </StyledCard>
