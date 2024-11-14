@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
 import { getPokemon } from "../api/pokemon";
-import { useSearchParams } from "next/navigation";
-import { getFilters, getIds } from "./utils";
+// import { useSearchParams } from "next/navigation";
+// import { getFilters, getIds } from "./utils";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
@@ -19,17 +19,17 @@ export default function PokemonPage(
     initialData: pokemonData,
     staleTime: 1000 * 60 * 60 * 24,
   });
-  const searchParams = useSearchParams();
-  const paramIds = getIds(searchParams);
-  function getPokemonFromId(id: number): iPokemon | undefined {
-    return data.find((pokemon) => id === pokemon.pokedexId);
-  }
-  const initTeam = paramIds
-    .map((id) => getPokemonFromId(id))
-    .filter((x) => x != undefined);
-  const [team, updateTeam] = useState(initTeam);
+  // const searchParams = useSearchParams();
+  // const paramIds = getIds(searchParams);
+  // function getPokemonFromId(id: number): iPokemon | undefined {
+  //   return data.find((pokemon) => id === pokemon.pokedexId);
+  // }
+  // const initTeam = paramIds
+  //   .map((id) => getPokemonFromId(id))
+  //   .filter((x) => x != undefined);
+  const [team, updateTeam] = useState<iPokemon[]>([]);
   const [filterTypes, updateFilterTypes] = useState<string[]>(
-    getFilters(searchParams),
+    [],
   );
   if (isLoading) return <div>Loading</div>;
 
