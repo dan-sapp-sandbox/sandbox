@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import ReactQueryProvider from "./components/QueryProvider";
 
 export const metadata: Metadata = {
@@ -11,9 +11,11 @@ export default function PokemonLayout(
 ) {
   return (
     <main>
-      <ReactQueryProvider>
-        {children}
-      </ReactQueryProvider>
+      <Suspense>
+        <ReactQueryProvider>
+          {children}
+        </ReactQueryProvider>
+      </Suspense>
     </main>
   );
 }
