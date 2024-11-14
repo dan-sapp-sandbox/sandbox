@@ -1,5 +1,3 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
 interface iImageList {
@@ -70,8 +68,8 @@ const summary =
   state management, API integration, and cross-functional team collaboration.`;
 
 const ProfileCard = (): JSX.Element => (
-  <Card className="col-span-12 rounded justify-center mb-2 gap-2 bg-slate-800 border-none shadow-none">
-    <CardContent className="grid grid-cols-12 gap-6">
+  <div className="col-span-12 rounded justify-center mb-2 gap-2 bg-slate-800 border-none shadow-none">
+    <div className="grid grid-cols-12 gap-6">
       <div className="col-span-12 md:col-span-6">
         <Typography
           className="text-zinc-200 font-bold"
@@ -96,8 +94,8 @@ const ProfileCard = (): JSX.Element => (
         </Typography>
       </div>
       <ImageList itemData={itemData} />
-    </CardContent>
-  </Card>
+    </div>
+  </div>
 );
 
 export default ProfileCard;
