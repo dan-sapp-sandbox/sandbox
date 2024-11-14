@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans } from "@/app/fonts/fontUtils";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import AppBar from "@/components/AppBar"
 
 export const metadata: Metadata = {
   title: "Dan Sapp Portfolio",
   description: "Software Engineering Portfolio",
 };
-
-export const revalidate = 0;
 
 export default async function RootLayout({
   children,
@@ -16,9 +18,8 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`bg-slate-500 ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="bg-slate-800 antialiased">
+        <AppBar/>
         {children}
       </body>
     </html>

@@ -1,5 +1,66 @@
-import { StyledButton } from "./components";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
+interface iImageList {
+  itemData: {
+    title: string;
+    imgUrl: string;
+  }[];
+}
+function ImageList({ itemData }: iImageList): JSX.Element {
+  return (
+    <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-2">
+      {itemData.map((item) => (
+        <div
+          key={item.title}
+          className="col-span-4 md:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
+        >
+          <img
+            className="flex justify-self-center h-20 w-auto"
+            alt="python"
+            src={item.imgUrl}
+            loading="lazy"
+          />
+          <Typography
+            variant="subtitle1"
+            component="div"
+            className="text-zinc-200 mt-1"
+          >
+            {item.title}
+          </Typography>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const itemData = [
+  {
+    imgUrl: "/static/images/typescript.png",
+    title: "Typescript",
+  },
+  {
+    imgUrl: "/static/images/react.png",
+    title: "React",
+  },
+  {
+    imgUrl: "/static/images/next-js.svg",
+    title: "Next.js",
+  },
+  {
+    imgUrl: "/static/images/nodejs.png",
+    title: "Node.js",
+  },
+  {
+    imgUrl: "/static/images/tailwind.png",
+    title: "Tailwind",
+  },
+  {
+    imgUrl: "/static/images/python.png",
+    title: "Python",
+  },
+];
 
 const summary =
   `Software Engineer with 7+ years of experience in designing and maintaining 
@@ -8,56 +69,32 @@ const summary =
   state management, API integration, and cross-functional team collaboration.`;
 
 const ProfileCard = (): JSX.Element => (
-  <Card className="col-span-12 rounded-lg justify-center items-center mb-2 gap-2 bg-slate-500 border-2 border-teal-500">
-    <CardHeader className="gap-2 grid grid-flow-row grid-cols-12">
-      <CardTitle className="col-span-12 grid grid-flow-row grid-cols-12 items-center">
-        <span className="col-span-8 text-zinc-200 text-3xl">About Dan Sapp</span>
-        <div className="col-span-4 rounded-full flex justify-end">
-          {/* eslint-disable-next-line */}
-          <img
-            className="rounded-full w-12"
-            alt="me"
-            src={"/static/images/me.png"}
-          />
-        </div>
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="gap-2 grid-cols-12 grid grid-flow-row">
-      <div className="col-span-12 xl:col-span-8">
-        <p className="text-zinc-200 lg:text-xl">{summary}</p>
-      </div>
-      <div className="col-span-12 xl:col-span-4 flex items-end justify-end gap-4 mt-2">
-        <StyledButton
-          href={`https://github.com/dan-sapp-sandbox`}
+  <Card className="col-span-12 rounded justify-center mb-2 gap-2 bg-slate-800 border-none shadow-none">
+    <CardContent className="grid grid-cols-12 gap-6">
+      <div className="col-span-12 md:col-span-6">
+        <Typography
+          className="text-zinc-200 font-bold"
+          variant="h2"
+          component="div"
         >
-          {/* eslint-disable-next-line */}
-          <img
-            alt="github-logo"
-            src={"/static/images/github-mark.png"}
-            height={20}
-            width={20}
-          />
-          {/* eslint-disable-next-line */}
-          <img
-            alt="github-icon"
-            src={"/static/images/GitHub_Logo.png"}
-            height={20}
-            width={70}
-          />
-        </StyledButton>
-        <StyledButton
-          href={`https://www.linkedin.com/in/dan-sapp-744145B6/`}
+          Dan Sapp
+        </Typography>
+        <Typography
+          className="text-zinc-200 my-2"
+          variant="h5"
+          component="div"
         >
-          {/* eslint-disable-next-line */}
-          <img
-            alt="linkedIn"
-            src={"/static/images/linkedin.png"}
-            height={20}
-            width={20}
-          />
-          <p className="text-black font-bold text-lg">LinkedIn</p>
-        </StyledButton>
+          Fullstack Software Engineer
+        </Typography>
+        <Typography
+          className="text-zinc-200"
+          variant="body1"
+          component="div"
+        >
+          {summary}
+        </Typography>
       </div>
+      <ImageList itemData={itemData} />
     </CardContent>
   </Card>
 );
