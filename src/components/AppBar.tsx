@@ -17,11 +17,13 @@ const pages = [
   { title: "Github", url: "https://github.com/dan-sapp-sandbox" },
   { title: "LinkedIn", url: "https://www.linkedin.com/in/dan-sapp-744145b6/" },
 ];
-
+interface iEvent {
+  currentTarget: Element;
+}
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<Element | null>(null);
 
-  const handleOpenNavMenu = (event: any) => {
+  const handleOpenNavMenu = (event: iEvent) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleCloseNavMenu = () => {

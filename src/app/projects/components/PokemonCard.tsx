@@ -27,7 +27,9 @@ const PokemonCard = () => {
           className="flex col-span-5 justify-self-end"
           href="/projects/pokemon"
         >
+          {/* eslint-disable-next-line */}
           <img
+            alt="pokemon-screen-shot"
             className="max-h-80"
             src="/static/images/pokemon-screen-shot.png"
           />

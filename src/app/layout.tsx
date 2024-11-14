@@ -4,7 +4,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import AppBar from "@/components/AppBar"
+import AppBar from "@/components/AppBar";
 
 export const metadata: Metadata = {
   title: "Dan Sapp Portfolio",
@@ -19,7 +19,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-800 antialiased">
-        <AppBar/>
+        <AppBar />
         {children}
       </body>
     </html>

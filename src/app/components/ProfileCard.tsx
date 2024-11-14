@@ -16,6 +16,7 @@ function ImageList({ itemData }: iImageList): JSX.Element {
           key={item.title}
           className="col-span-4 md:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
         >
+          {/* eslint-disable-next-line */}
           <img
             className="flex justify-self-center h-20 w-auto"
             alt="python"

@@ -27,7 +27,9 @@ const TriviaCard = () => {
           className="flex col-span-5 justify-self-end"
           href="/projects/trivia"
         >
+          {/* eslint-disable-next-line */}
           <img
+            alt="trivia-screen-shot"
             className="max-h-80"
             src="/static/images/trivia-screen-shot.png"
           />
