@@ -1,66 +1,3 @@
-import Typography from "@mui/material/Typography";
-
-interface iImageList {
-  itemData: {
-    title: string;
-    imgUrl: string;
-  }[];
-}
-function ImageList({ itemData }: iImageList): JSX.Element {
-  return (
-    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-2">
-      {itemData.map((item) => (
-        <div
-          key={item.title}
-          className="col-span-4 lg:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
-        >
-          {/* eslint-disable-next-line */}
-          <img
-            className="flex justify-self-center h-10 sm:h-20 w-auto"
-            alt="python"
-            src={item.imgUrl}
-            loading="lazy"
-          />
-          <Typography
-            variant="subtitle1"
-            component="div"
-            className="text-zinc-200 mt-1"
-          >
-            {item.title}
-          </Typography>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-const itemData = [
-  {
-    imgUrl: "/static/images/typescript.png",
-    title: "Typescript",
-  },
-  {
-    imgUrl: "/static/images/react.png",
-    title: "React",
-  },
-  {
-    imgUrl: "/static/images/next-js.svg",
-    title: "Next.js",
-  },
-  {
-    imgUrl: "/static/images/nodejs.png",
-    title: "Node.js",
-  },
-  {
-    imgUrl: "/static/images/tailwind.png",
-    title: "Tailwind",
-  },
-  {
-    imgUrl: "/static/images/python.png",
-    title: "Python",
-  },
-];
-
 const summary =
   `Software Engineer with 7+ years of experience in designing and maintaining 
   complex web applications. Expertise in React.js, creating scalable, 
@@ -68,32 +5,15 @@ const summary =
   state management, API integration, and cross-functional team collaboration.`;
 
 const ProfileCard = (): JSX.Element => (
-  <div className="col-span-12 rounded justify-center mb-2 gap-2 bg-slate-800 border-none shadow-none">
-    <div className="grid grid-cols-12 gap-6">
-      <div className="col-span-12 lg:col-span-6">
-        <Typography
-          className="text-zinc-200 font-bold"
-          variant="h2"
-          component="div"
-        >
-          Dan Sapp
-        </Typography>
-        <Typography
-          className="text-zinc-200 my-2"
-          variant="h5"
-          component="div"
-        >
-          Fullstack Software Engineer
-        </Typography>
-        <Typography
-          className="text-zinc-200"
-          variant="body1"
-          component="div"
-        >
-          {summary}
-        </Typography>
-      </div>
-      <ImageList itemData={itemData} />
+  <div className="col-span-12 lg:col-span-6">
+    <div className="text-zinc-300 font-bold text-4xl">
+      Fullstack Software Engineer
+    </div>
+    <div className="text-zinc-300 my-2 italic text-3xl">
+      Dan Sapp
+    </div>
+    <div className="text-zinc-300 text-2xl">
+      {summary}
     </div>
   </div>
 );

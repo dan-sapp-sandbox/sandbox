@@ -31,7 +31,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" className="bg-blue-900">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -70,7 +70,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page.title}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                className="my-2 mx-8 text-zinc-200 text-xl hover:text-zinc-100"
               >
                 <Link href={page.url}>{page.title}</Link>
               </Button>
