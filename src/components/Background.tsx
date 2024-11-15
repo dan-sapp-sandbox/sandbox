@@ -1,7 +1,7 @@
 export default function Background() {
-  const dotArray = Array.from(Array(60).keys()).map((dot) => {
+  const dotArray = Array.from(Array(40).keys()).map((dot) => {
     const color = setColor(dot);
-    const size = 1 + (Math.random() * 0);
+    const size = 10 + (Math.random() * 10);
     return (
       <span
         key={dot}
@@ -15,14 +15,14 @@ export default function Background() {
           animationTimingFunction: "linear",
           animationIterationCount: "infinite",
           color,
-          top: `${-50 + (Math.random() * 200)}%`,
-          left: `${-50 + (Math.random() * 200)}%`,
-          animationDuration: `${30 + (Math.random() * 200)}s`,
+          top: `${-10 + (Math.random() * 120)}%`,
+          left: `${-10 + (Math.random() * 120)}%`,
+          animationDuration: `${10 + (Math.random() * 10)}s`,
           animationDelay: `0s`,
           transformOrigin: `${15 + (Math.random() * 5)}vw ${
             15 + (Math.random() * 5)
           }vh`,
-          boxShadow: `${size + 1}vmin 0 1vmin currentColor`,
+          boxShadow: `${size * 1}vmin ${1 * 1}vmin ${size * 1}vmin ${color}`,
         }}
       >
       </span>
