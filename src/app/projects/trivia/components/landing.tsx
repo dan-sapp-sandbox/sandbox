@@ -2,7 +2,6 @@
 import Prompt from "./prompt";
 import { useState } from "react";
 import { iTrivia } from "../api/types";
-import { Button } from "@mui/material";
 
 interface iLandingPageProps {
   triviaList: iTrivia[];
@@ -24,7 +23,7 @@ const LandingPage = (
           Choose a category
         </div>
         <div className="col-span-12 justify-center">
-          <Button
+          <button
             className="text-2xl md:text-4xl p-2 md:p-4 flex mx-auto bg-zinc-300"
             onClick={async () => {
               setFilteredList(triviaList);
@@ -32,11 +31,11 @@ const LandingPage = (
             }}
           >
             Potpourri
-          </Button>
+          </button>
         </div>
         <div className="col-span-12 justify-center">
           {tags.map((tag) => (
-            <Button
+            <button
               key={tag}
               className="text-2xl md:text-4xl my-5 p-2 md:p-4 flex mx-auto bg-zinc-300"
               onClick={async () => {
@@ -45,7 +44,7 @@ const LandingPage = (
               }}
             >
               {tag}
-            </Button>
+            </button>
           ))}
         </div>
       </div>
