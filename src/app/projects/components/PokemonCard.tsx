@@ -31,13 +31,13 @@ const PokemonCard = () => {
           />
         </Link>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-12">
+      <div className="grid grid-cols-3 md:grid-cols-12 gap-2">
         <Button size="large" variant="outlined" className="col-span-3">
           <Link href="/projects/pokemon">
             Check it out!
           </Link>
         </Button>
-        <Button size="large" variant="outlined" className="my-3 md:my-0 mx-0 md:mx-3 col-span-3">
+        <Button size="large" variant="outlined" className="col-span-3">
           <Link href="https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/pokemon">
             App Code
           </Link>
