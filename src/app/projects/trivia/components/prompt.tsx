@@ -107,13 +107,13 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
                 {trivia.source}
               </div>
               <div className="flex justify-center mt-4">
-                <Button
+                <button
                   disabled={disableNextBtn}
                   className="text-black mx-auto text-lg w-full md:w-auto md:text-3xl p-4 rounded-xl bg-purple-600 hover:bg-purple-500 hover:text-black"
                   onClick={() => next()}
                 >
                   {disableNextBtn ? "Out of Questions" : "Next"}
-                </Button>
+                </button>
               </div>
             </div>
           )
@@ -132,13 +132,13 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
                   />
                 </div>
                 <div className="flex justify-center m-3">
-                  <Button
+                  <button
                     disabled={!value}
                     className="text-black mx-auto w-full md:w-auto text-2xl md:text-4xl p-4 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900"
                     type="submit"
                   >
                     Guess
-                  </Button>
+                  </button>
                 </div>
               </form>
             </div>
