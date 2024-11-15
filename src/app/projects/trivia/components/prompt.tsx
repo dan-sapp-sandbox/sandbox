@@ -2,7 +2,7 @@
 import { iTrivia } from "../api/types";
 import { useState } from "react";
 import { useController, useForm } from "react-hook-form";
-import { Button, Slider } from "@mui/material";
+import { Slider } from "@mui/material";
 
 interface iPromptProps {
   triviaList: iTrivia[];

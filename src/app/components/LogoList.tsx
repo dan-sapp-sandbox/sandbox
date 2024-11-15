@@ -51,6 +51,10 @@ const itemData: iLogo[] = [
     imgUrl: "/static/images/mongodb.svg",
     title: "MongoDB",
   },
+  {
+    imgUrl: "/static/images/git.svg",
+    title: "Git",
+  },
 ];
 export default function LogoList(): JSX.Element {
   return (
