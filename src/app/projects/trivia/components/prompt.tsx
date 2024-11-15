@@ -66,23 +66,23 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
           Score: {numberWithCommas(totalScore)}
         </div>
       </div>
-      <div className="container max-w-5xl mx-auto">
+      <div className="container max-w-5xl mx-auto px-3">
         <div className="bg-slate-200 rounded-lg items-center align-center justify-center my-4 mx-1">
           <div>
             <div className="font-bold text-lg md:text-4xl my-1 md:my-6 text-center">
               {trivia.prompt}
             </div>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center m-2 md:m-8">
             {/* eslint-disable-next-line */}
             <img
               alt="pic"
-              className="rounded-xl"
+              className="rounded-xl m-2 md:m-8"
               src={trivia.image}
             />
           </div>
         </div>
-        <div className="font-bold text-2xl md:text-4xl text-center">
+        <div className="font-bold text-2xl md:text-4xl text-center text-zinc-300">
           {numberWithCommas(sliderValue)} {trivia.units}
         </div>
         {score
@@ -90,7 +90,7 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
             <div className="px-1">
               {percentage !== 0 &&
                 (
-                  <div className="font-bold mx-auto text-2xl md:text-4xl py-1 text-center text-red-900">
+                  <div className="font-bold mx-auto text-2xl md:text-4xl py-1 text-center text-red-700">
                     {numberWithCommas(trivia.answer)} {trivia.units}
                   </div>
                 )}
@@ -100,16 +100,16 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
                     Bingo!
                   </div>
                 )}
-              <div className="text-lg font-bold md:text-3xl text-center">
+              <div className="text-lg font-bold md:text-3xl text-center text-zinc-300">
                 Earned {score}pts!
               </div>
-              <div className="mx-auto text-md md:text-2xl py-1 text-center">
+              <div className="mx-auto text-md md:text-2xl py-1 text-center text-zinc-300">
                 {trivia.source}
               </div>
               <div className="flex justify-center mt-4">
                 <Button
                   disabled={disableNextBtn}
-                  className="mx-auto text-lg w-full md:w-auto md:text-3xl p-8 rounded-x bg-purple-600 hover:bg-purple-500"
+                  className="text-black mx-auto text-lg w-full md:w-auto md:text-3xl p-4 rounded-xl bg-purple-600 hover:bg-purple-500 hover:text-black"
                   onClick={() => next()}
                 >
                   {disableNextBtn ? "Out of Questions" : "Next"}
@@ -134,7 +134,7 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
                 <div className="flex justify-center m-3">
                   <Button
                     disabled={!value}
-                    className="mx-auto w-full md:w-auto text-2xl md:text-4xl p-8 rounded-xl bg-purple-600 hover:bg-purple-500"
+                    className="text-black mx-auto w-full md:w-auto text-2xl md:text-4xl p-4 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900"
                     type="submit"
                   >
                     Guess

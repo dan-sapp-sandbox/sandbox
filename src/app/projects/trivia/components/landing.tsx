@@ -17,15 +17,15 @@ const LandingPage = (
     ? <Prompt triviaList={filteredList} />
     : (
       <div className="justify-center items-center grid grid-flow-row grid-cols-12">
-        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
+        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
           Horseshoes and Hand Grenades
         </div>
-        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center">
+        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
           Choose a category
         </div>
         <div className="col-span-12 justify-center">
           <Button
-            className="text-2xl md:text-4xl p-3 md:p-8 flex mx-auto"
+            className="text-2xl md:text-4xl p-2 md:p-4 flex mx-auto bg-zinc-300"
             onClick={async () => {
               setFilteredList(triviaList);
               setLoggedIn(true);
@@ -38,7 +38,7 @@ const LandingPage = (
           {tags.map((tag) => (
             <Button
               key={tag}
-              className="text-2xl md:text-4xl my-2 p-3 md:p-8 flex mx-auto"
+              className="text-2xl md:text-4xl my-5 p-2 md:p-4 flex mx-auto bg-zinc-300"
               onClick={async () => {
                 setFilteredList(triviaList.filter((x) => x.tag === tag));
                 setLoggedIn(true);
