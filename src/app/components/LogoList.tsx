@@ -4,11 +4,11 @@ interface iLogo {
 }
 const itemData: iLogo[] = [
   {
-    imgUrl: "/static/images/typescript.png",
+    imgUrl: "/static/images/typescript.svg",
     title: "Typescript",
   },
   {
-    imgUrl: "/static/images/react.png",
+    imgUrl: "/static/images/react.svg",
     title: "React",
   },
   {
@@ -16,7 +16,7 @@ const itemData: iLogo[] = [
     title: "Next.js",
   },
   {
-    imgUrl: "/static/images/nodejs.png",
+    imgUrl: "/static/images/nodejs.svg",
     title: "Node.js",
   },
   {
@@ -24,27 +24,35 @@ const itemData: iLogo[] = [
     title: "Tailwind",
   },
   {
-    imgUrl: "/static/images/python.png",
+    imgUrl: "/static/images/python.svg",
     title: "Python",
+  },
+  {
+    imgUrl: "/static/images/javascript.svg",
+    title: "Javascript",
+  },
+  {
+    imgUrl: "/static/images/golang.svg",
+    title: "Go",
   },
 ];
 export default function LogoList(): JSX.Element {
   return (
-    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-2">
+    <div className="col-span-12 lg:col-span-8 grid grid-cols-12 gap-6 justify-items-center">
       {itemData.map((item, index) => (
         <div
           key={item.title}
-          className={`col-span-${index > 2 && index < 6 ? '3' : '4'}`}
+          className={`${index > 1 ? "col-span-4" : "col-span-6"}`}
         >
-          <div className="rounded-xl border-2 border-zinc-500 py-2 px-4 justify-center text-center w-fit">
+          <div className="rounded-2xl border-2 border-zinc-500 content-center text-center h-24 md:h-40 w-24 md:w-40">
             {/* eslint-disable-next-line */}
             <img
-              className="flex justify-self-center h-20 w-20"
-              alt="python"
+              className="flex justify-self-center h-14 md:h-28 w-14 md:w-28"
+              alt={item.title}
               src={item.imgUrl}
               loading="lazy"
             />
-            <div className="text-zinc-200 mt-1 font-bold text-xl">
+            <div className="text-zinc-200 mt-1 font-bold text-md md:text-xl">
               {item.title}
             </div>
           </div>

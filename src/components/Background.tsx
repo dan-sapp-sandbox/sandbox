@@ -39,18 +39,26 @@ export default function Background() {
 }
 
 const setColor = (index: number) => {
-  switch (index % 6) {
+  switch (index % 10) {
     case 0:
-      return "#7a46f2";
+      return "#2b0b63";
     case 1:
-      return "#3c0cab";
+      return "#240659";
     case 2:
-      return "#761a91";
+      return "#200636";
     case 3:
-      return "#742b8a";
+      return "#450947";
     case 4:
-      return "#731239";
+      return "#2d1675";
     case 5:
-      return "#780533";
+      return "#1f0a63";
+    case 6:
+      return "#450947";
+    case 7:
+      return "#3d0613";
+    case 8:
+      return "#470b19";
+    case 9:
+      return "#36020e";
   }
 };

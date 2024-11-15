@@ -1,5 +1,5 @@
 const ProfileCard = (): JSX.Element => (
-  <div className="col-span-12 lg:col-span-6 mb-8">
+  <div className="col-span-12 lg:col-span-4 mb-8">
     <div className="text-zinc-300 font-bold text-2xl md:text-4xl">
       Software Engineer
     </div>
