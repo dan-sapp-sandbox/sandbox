@@ -59,11 +59,11 @@ export default function PokemonCard(
               <img
                 className={isTeam
                   ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
-                  : "mx-auto min-w-12 max-w-12 sm:max-w-16 md:max-w-20 2xl:max-w-24"}
+                  : "mx-auto min-w-12 max-w-24 sm:max-w-28 md:max-w-36 lg:max-w-40 xl:max-w-44 2xl:max-w-44"}
                 src={png}
                 alt="pokemon"
-                width={400}
-                height={400}
+                width={300}
+                height={300}
                 loading="lazy"
               />
             )

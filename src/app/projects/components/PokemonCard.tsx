@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 const PokemonCard = () => {
@@ -7,18 +6,18 @@ const PokemonCard = () => {
     <div className="col-span-12 rounded bg-slate-200 my-8 p-4">
       <div className="grid-cols-12 grid justify-between">
         <div className="col-span-12 md:col-span-7">
-          <Typography variant="h5" component="div" className="font-bold">
+          <div className="font-bold text-4xl mb-2">
             Pokemon Team Builder
-          </Typography>
-          <Typography variant="subtitle1" component="div" className="my-2">
+          </div>
+          <div className="text-xl mb-4 italic">
             Build the best team or see how your favorites compare!
-          </Typography>
-          <Typography variant="body1" component="div">
+          </div>
+          <div className="text-lg">
             This is an end-to-end proof-of-concept for the portfolio. It uses a
             postGres database to store the pokemon and an Express/Node Web
             Server to deliver them to a Next.js App which server-side renders
             the content.
-          </Typography>
+          </div>
         </div>
         <Link
           className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"

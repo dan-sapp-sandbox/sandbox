@@ -37,9 +37,9 @@ export default function Filters(
   }
 
   return (
-    <div className="my-4 md:my-6 mx-1 py-1 sticky top-14 sm:top-20 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
-      <div className="my-4 grid grid-flow-row grid-cols-2">
-        <div className="col-span-2 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
+    <div className="my-2 md:my-3 mx-1 py-1 sticky top-16 sm:top-24 md:top-28 lg:top-40 xl:top-40 2xl:top-52 bg-sky-800">
+      <div className="my-3 grid grid-flow-row grid-cols-2">
+        <div className="col-span-2 xl:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
           {Object.keys(typeColorMap).map((type, index) => {
             if (index > 8) return undefined;
             const colors = typeColorMap[type];
@@ -50,7 +50,7 @@ export default function Filters(
               <Button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px p-0 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >
@@ -59,7 +59,7 @@ export default function Filters(
             );
           })}
         </div>
-        <div className="col-span-2 mt-1 md:mt-0 md:ml-1 md:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
+        <div className="col-span-2 mt-1 xl:mt-0 xl:ml-1 xl:col-span-1 gap-1 grid grid-flow-row grid-cols-9">
           {Object.keys(typeColorMap).map((type, index) => {
             if (index < 9) return undefined;
             const colors = typeColorMap[type];
@@ -70,7 +70,7 @@ export default function Filters(
               <Button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px p-0 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >

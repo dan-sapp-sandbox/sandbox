@@ -20,7 +20,10 @@ export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
     );
   }
   return (
-    <div className="mx-1 py-2 gap-1 grid grid-flow-row grid-cols-6 sticky top-0 bg-sky-800">
+    <div
+      style={{ top: "-1px" }}
+      className="mx-1 py-3 gap-1 grid grid-flow-row grid-cols-6 sticky bg-sky-800"
+    >
       {teamData.map((pokemon: iPokemon) => (
         <PokemonCard
           key={pokemon.name}

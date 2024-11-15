@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 const TriviaCard = () => {
@@ -7,18 +6,16 @@ const TriviaCard = () => {
     <div className="col-span-12 rounded bg-slate-200 my-8 p-4">
       <div className="grid-cols-12 grid justify-between">
         <div className="col-span-12 md:col-span-7 items-start">
-          <Typography variant="h5" component="div" className="font-bold">
+          <div className="font-bold text-3xl mb-2">
             Horseshoes and Hand Grenades
-          </Typography>
-          <Typography variant="subtitle1" component="div" className="my-2">
-            The game where being close counts!
-          </Typography>
-          <Typography variant="body1" component="div">
+          </div>
+          <div className="text-xl italic mb-4">
+            The game where being close enough counts!
+          </div>
+          <div className="text-lg">
             This is a trivia game where you try to be as close as you can to the
-            right answer. The problem was designed to get me more experience
-            using statistics and machine learning to generate questions for a
-            game.
-          </Typography>
+            right answer.
+          </div>
         </div>
         <Link
           className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
