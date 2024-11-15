@@ -47,15 +47,15 @@ export default function Filters(
             const selectionExists = filterTypes.length;
             const Icon = pokemonMap[type].icon;
             return (
-              <Button
+              <button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 min-w-px p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px justify-center rounded p-0 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >
                 <Icon />
-              </Button>
+              </button>
             );
           })}
         </div>
@@ -67,15 +67,15 @@ export default function Filters(
             const selectionExists = filterTypes.length;
             const Icon = pokemonMap[type].icon;
             return (
-              <Button
+              <button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 min-w-px p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px justify-center rounded p-0 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >
                 <Icon />
-              </Button>
+              </button>
             );
           })}
         </div>
