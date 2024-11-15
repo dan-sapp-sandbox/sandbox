@@ -1,8 +1,8 @@
-"use client";
+// "use client";
 import { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@mui/material";
 import { pokemonMap, typeColorMap } from "./utils";
-import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter, useSearchParams } from "next/navigation";
 
 interface iProps {
   filterTypes: string[];
@@ -12,8 +12,8 @@ interface iProps {
 export default function Filters(
   { filterTypes, updateFilterTypes }: iProps,
 ): ReactNode {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  // const router = useRouter();
+  // const searchParams = useSearchParams();
   function clickHandler(type: string): void {
     let updatedFilters: string[];
 
@@ -25,15 +25,15 @@ export default function Filters(
 
     updateFilterTypes(updatedFilters);
 
-    const params = new URLSearchParams(searchParams.toString());
+    // const params = new URLSearchParams(searchParams.toString());
 
-    if (updatedFilters.length > 0) {
-      params.set("filters", updatedFilters.join(","));
-    } else {
-      params.delete("filters"); // Remove the query param if the array is empty
-    }
+    // if (updatedFilters.length > 0) {
+    //   params.set("filters", updatedFilters.join(","));
+    // } else {
+    //   params.delete("filters"); // Remove the query param if the array is empty
+    // }
 
-    router.push(`?${params.toString()}`);
+    // router.push(`?${params.toString()}`);
   }
 
   return (

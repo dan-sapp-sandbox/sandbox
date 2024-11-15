@@ -1,5 +1,4 @@
-"use client";
-import { Card, CardContent } from "@/components/ui/card";
+// "use client";
 import { iPokemon } from "../api/types";
 import { Suspense } from "react";
 // import { useRouter, useSearchParams } from "next/navigation";
@@ -44,7 +43,7 @@ export default function PokemonCard(
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Card
+      <div
         className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
         active:bg-sky-200 ${
           (team.length < 6 || alreadyOnTeam || isTeam) &&
@@ -53,7 +52,7 @@ export default function PokemonCard(
         ${(alreadyOnTeam && !isTeam) && "bg-indigo-200"}`}
         onClick={() => pokemon && clickHandler(pokemon)}
       >
-        <CardContent className="p-0">
+        <div className="p-0">
           {pokemon
             ? (
               /* eslint-disable-next-line */
@@ -72,8 +71,8 @@ export default function PokemonCard(
               <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
               </div>
             )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </Suspense>
   );
 }
