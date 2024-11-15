@@ -8,15 +8,15 @@ interface iImageList {
 }
 function ImageList({ itemData }: iImageList): JSX.Element {
   return (
-    <div className="col-span-12 md:col-span-6 grid grid-cols-12 gap-2">
+    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-2">
       {itemData.map((item) => (
         <div
           key={item.title}
-          className="col-span-4 md:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
+          className="col-span-4 lg:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
         >
           {/* eslint-disable-next-line */}
           <img
-            className="flex justify-self-center h-20 w-auto"
+            className="flex justify-self-center h-10 sm:h-20 w-auto"
             alt="python"
             src={item.imgUrl}
             loading="lazy"
@@ -70,7 +70,7 @@ const summary =
 const ProfileCard = (): JSX.Element => (
   <div className="col-span-12 rounded justify-center mb-2 gap-2 bg-slate-800 border-none shadow-none">
     <div className="grid grid-cols-12 gap-6">
-      <div className="col-span-12 md:col-span-6">
+      <div className="col-span-12 lg:col-span-6">
         <Typography
           className="text-zinc-200 font-bold"
           variant="h2"

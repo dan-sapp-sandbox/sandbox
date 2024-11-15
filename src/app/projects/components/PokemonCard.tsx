@@ -1,15 +1,12 @@
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 const PokemonCard = () => {
   return (
-    <Card className="col-span-12 rounded bg-slate-200 my-8">
-      <CardContent className="grid-cols-12 grid justify-between">
-        <div className="col-span-7">
+    <div className="col-span-12 rounded bg-slate-200 my-8 p-4">
+      <div className="grid-cols-12 grid justify-between">
+        <div className="col-span-12 md:col-span-7">
           <Typography variant="h5" component="div" className="font-bold">
             Pokemon Team Builder
           </Typography>
@@ -24,7 +21,7 @@ const PokemonCard = () => {
           </Typography>
         </div>
         <Link
-          className="flex col-span-5 justify-self-end"
+          className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
           href="/projects/pokemon"
         >
           {/* eslint-disable-next-line */}
@@ -34,8 +31,8 @@ const PokemonCard = () => {
             src="/static/images/pokemon-screen-shot.png"
           />
         </Link>
-      </CardContent>
-      <CardActions>
+      </div>
+      <div>
         <Button size="large">
           <Link href="/projects/pokemon">
             Check it out!
@@ -51,8 +48,8 @@ const PokemonCard = () => {
             Server Code
           </Link>
         </Button>
-      </CardActions>
-    </Card>
+      </div>
+    </div>
   );
 };
 
