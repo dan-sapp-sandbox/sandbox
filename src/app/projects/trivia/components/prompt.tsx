@@ -2,9 +2,7 @@
 import { iTrivia } from "../api/types";
 import { useState } from "react";
 import { useController, useForm } from "react-hook-form";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button, Slider } from "@mui/material";
 
 interface iPromptProps {
   triviaList: iTrivia[];
@@ -69,21 +67,21 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
         </div>
       </div>
       <div className="container max-w-5xl mx-auto">
-        <Card className="bg-slate-200 rounded-lg items-center align-center justify-center my-4 mx-1">
-          <CardHeader>
-            <CardTitle className="font-bold text-lg md:text-4xl my-1 md:my-6 text-center">
+        <div className="bg-slate-200 rounded-lg items-center align-center justify-center my-4 mx-1">
+          <div>
+            <div className="font-bold text-lg md:text-4xl my-1 md:my-6 text-center">
               {trivia.prompt}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex justify-center items-center">
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
             {/* eslint-disable-next-line */}
             <img
               alt="pic"
               className="rounded-xl"
               src={trivia.image}
             />
-          </CardContent>
-        </Card>
+          </div>
+        </div>
         <div className="font-bold text-2xl md:text-4xl text-center">
           {numberWithCommas(sliderValue)} {trivia.units}
         </div>
@@ -124,11 +122,12 @@ export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <Slider
+                    step={1}
                     value={[value]}
-                    onValueChange={onChange}
+                    valueLabelDisplay="auto"
                     min={0}
                     max={trivia.high}
-                    step={1}
+                    onChange={onChange}
                     className="my-12 hover:cursor-pointer"
                   />
                 </div>

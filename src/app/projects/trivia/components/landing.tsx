@@ -2,7 +2,7 @@
 import Prompt from "./prompt";
 import { useState } from "react";
 import { iTrivia } from "../api/types";
-import { Button } from "@/components/ui/button";
+import { Button } from "@mui/material";
 
 interface iLandingPageProps {
   triviaList: iTrivia[];
