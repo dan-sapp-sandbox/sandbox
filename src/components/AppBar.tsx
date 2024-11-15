@@ -2,7 +2,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
@@ -33,14 +32,12 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
+            <button
               onClick={handleOpenNavMenu}
-              color="inherit"
               className="text-zinc-300"
             >
               <MenuIcon />
-            </IconButton>
+            </button>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}

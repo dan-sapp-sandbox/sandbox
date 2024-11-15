@@ -12,7 +12,7 @@ const PokemonCard = () => {
           <div className="text-xl mb-6 italic">
             Build the best team or see how your favorites compare!
           </div>
-          <div className="text-xl">
+          <div className="text-lg">
             This is an end-to-end proof-of-concept for the portfolio. It uses a
             postGres database to store the pokemon and an Express/Node Web
             Server to deliver them to a Next.js App which server-side renders

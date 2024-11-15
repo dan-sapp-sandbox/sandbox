@@ -12,7 +12,7 @@ const TriviaCard = () => {
           <div className="text-xl mb-6 italic">
             The game where being close enough counts!
           </div>
-          <div className="text-xl">
+          <div className="text-lg">
             This is a trivia game where you try to be as close as you can to the
             right answer.
           </div>
