@@ -1,13 +1,11 @@
 "use client";
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 
@@ -31,7 +29,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky" className="bg-blue-900">
+    <div className="bg-blue-900 sticky z-10">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -39,6 +37,7 @@ function ResponsiveAppBar() {
               size="large"
               onClick={handleOpenNavMenu}
               color="inherit"
+              className="text-zinc-300"
             >
               <MenuIcon />
             </IconButton>
@@ -67,18 +66,18 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+              <button
                 key={page.title}
                 onClick={handleCloseNavMenu}
-                className="my-2 mx-8 text-zinc-200 text-xl hover:text-zinc-100"
+                className="my-2 mx-8 text-zinc-200 text-2xl hover:text-zinc-100"
               >
                 <Link href={page.url}>{page.title}</Link>
-              </Button>
+              </button>
             ))}
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </div>
   );
 }
 export default ResponsiveAppBar;
