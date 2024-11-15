@@ -20,7 +20,7 @@ const itemData: iLogo[] = [
     title: "Node.js",
   },
   {
-    imgUrl: "/static/images/tailwind.png",
+    imgUrl: "/static/images/tailwind.svg",
     title: "Tailwind",
   },
   {
@@ -31,20 +31,22 @@ const itemData: iLogo[] = [
 export default function LogoList(): JSX.Element {
   return (
     <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-2">
-      {itemData.map((item) => (
+      {itemData.map((item, index) => (
         <div
           key={item.title}
-          className="col-span-4 lg:col-span-3 rounded-xl border-2 p-2 justify-center text-center"
+          className={`col-span-${index > 2 && index < 6 ? '3' : '4'}`}
         >
-          {/* eslint-disable-next-line */}
-          <img
-            className="flex justify-self-center h-10 sm:h-20 w-auto"
-            alt="python"
-            src={item.imgUrl}
-            loading="lazy"
-          />
-          <div className="text-zinc-200 mt-1">
-            {item.title}
+          <div className="rounded-xl border-2 border-zinc-500 py-2 px-4 justify-center text-center w-fit">
+            {/* eslint-disable-next-line */}
+            <img
+              className="flex justify-self-center h-20 w-20"
+              alt="python"
+              src={item.imgUrl}
+              loading="lazy"
+            />
+            <div className="text-zinc-200 mt-1 font-bold text-xl">
+              {item.title}
+            </div>
           </div>
         </div>
       ))}
