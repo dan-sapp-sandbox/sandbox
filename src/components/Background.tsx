@@ -1,5 +1,5 @@
 export default function Background() {
-  const dotArray = Array.from(Array(50).keys()).map((dot) => {
+  const dotArray = Array.from(Array(80).keys()).map((dot) => {
     const color = setColor(dot);
     const size = 10 + (Math.random() * 10);
     return (
