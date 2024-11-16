@@ -1,6 +1,6 @@
 const ProfileCard = (): JSX.Element => (
   <div className="col-span-12 lg:col-span-6 mt-0 lg:mt-24 mb-8 grid grid-cols-12">
-    <div className="col-span-8 lg:col-span-12">
+    <div className="col-span-9 lg:col-span-12">
       <div className="text-zinc-300 font-bold text-xl md:text-4xl">
         Software Engineer
       </div>
@@ -14,10 +14,10 @@ const ProfileCard = (): JSX.Element => (
         />
       </div>
     </div>
-    <div className="col-span-4 lg:col-span-12 mt-0 lg:hidden">
+    <div className="col-span-3 lg:col-span-12 mt-0 lg:hidden">
       <img
         src="/static/images/me.png"
-        className="h-24 w-24 flex justify-self-end rounded-full"
+        className="h-16 sm:h-24 w-16 sm:w-24 flex justify-self-end rounded-full"
       />
     </div>
   </div>
