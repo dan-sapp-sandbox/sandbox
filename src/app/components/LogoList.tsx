@@ -68,7 +68,7 @@ const itemData: iLogo[][] = [
 ];
 export default function LogoList(): JSX.Element {
   return (
-    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-8 justify-items-center">
+    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-8 justify-center justify-items-center">
       <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
         {itemData[0].map((item) => (
           <div key={item.title} className="col-span-6">
