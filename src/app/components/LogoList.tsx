@@ -79,26 +79,30 @@ export default function LogoList(): JSX.Element {
       <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
         {itemData[1].map((item) => (
           <div key={item.title} className="col-span-4">
-            <LogoBlock item={item} />
+            <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
       <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
         {itemData[2].map((item) => (
           <div key={item.title} className="col-span-3">
-            <LogoBlock item={item} />
+            <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
       <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
         {itemData[3].map((item) => (
-          <div key={item.title} className="col-span-4">
-            <LogoBlock item={item} />
+          <div key={item.title} className="col-span-3">
+            <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
       <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
-        {itemData[4].map((item) => <LogoBlock item={item} />)}
+        {itemData[4].map((item) => (
+          <div key={item.title} className="col-span-4">
+            <LogoBlock key={item.title} item={item} />
+          </div>
+        ))}
       </div>
     </div>
   );

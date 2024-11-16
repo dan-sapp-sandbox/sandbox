@@ -8,14 +8,18 @@ const ProfileCard = (): JSX.Element => (
         Dan Sapp
       </div>
       <div className="col-span-12 mt-8 hidden lg:flex">
+        {/* eslint-disable-next-line */}
         <img
+          alt="self"
           src="/static/images/me.png"
           className="h-60 w-60 flex justify-self-start rounded-lg"
         />
       </div>
     </div>
     <div className="col-span-3 lg:col-span-12 mt-0 lg:hidden">
+      {/* eslint-disable-next-line */}
       <img
+        alt="self"
         src="/static/images/me.png"
         className="h-16 sm:h-24 w-16 sm:w-24 flex justify-self-end rounded-full"
       />
