@@ -12,7 +12,7 @@ const TriviaCard = () => {
           <div className="text-md md:text-xl mb-6 italic">
             The game where being close enough counts!
           </div>
-          <div className="col-span-12 grid-cols-12 hidden md:grid mt-16">
+          <div className="col-span-12 grid-cols-12 hidden md:grid mt-36">
             <Button
               size="large"
               variant="outlined"

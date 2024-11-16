@@ -12,7 +12,7 @@ const PokemonCard = () => {
           <div className="text-md md:text-xl mb-6 italic">
             Build the best team or see how your favorites compare!
           </div>
-          <div className="col-span-12 grid-cols-12 hidden md:grid mt-16">
+          <div className="col-span-12 grid-cols-12 hidden md:grid mt-36">
             <Button
               size="large"
               variant="outlined"
