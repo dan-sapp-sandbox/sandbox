@@ -6,7 +6,7 @@ export default async function ProjectsPage() {
   return (
     <>
       <Background />
-      <div className="mx-auto max-w-6xl px-3">
+      <div className="mx-auto max-w-6xl px-6">
         <TriviaCard />
         <PokemonCard />
       </div>

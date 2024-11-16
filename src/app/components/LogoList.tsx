@@ -62,9 +62,9 @@ export default function LogoList(): JSX.Element {
       {itemData.map((item, index) => (
         <div
           key={item.title}
-          className={`${index < 2 || index > 10 ? "col-span-6" : "col-span-4"}`}
+          className={`${index < 3 || index > 10 ? "col-span-4" : "col-span-3"}`}
         >
-          <div className="rounded-2xl border-2 border-zinc-500 content-center text-center h-20 sm:h-40 w-20 sm:w-40">
+          <div className="rounded-2xl content-center text-center h-20 sm:h-40 w-20 sm:w-40">
             {/* eslint-disable-next-line */}
             <img
               className="flex justify-self-center h-10 sm:h-28 w-10 sm:w-28"
@@ -72,7 +72,7 @@ export default function LogoList(): JSX.Element {
               src={item.imgUrl}
               loading="lazy"
             />
-            <div className="text-zinc-200 mt-1 font-bold text-sm md:text-xl">
+            <div className="text-zinc-200 mt-1 font-bold text-xs sm:text-xl">
               {item.title}
             </div>
           </div>
