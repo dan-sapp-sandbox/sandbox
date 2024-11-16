@@ -1,7 +1,7 @@
 export default function Background() {
-  const dotArray = Array.from(Array(25).keys()).map((dot) => {
+  const dotArray = Array.from(Array(20).keys()).map((dot) => {
     const color = setColor(dot);
-    const size = 10 + (Math.random() * 15);
+    const size = 5 + (Math.random() * 15);
     return (
       <span
         key={dot}
@@ -23,15 +23,19 @@ export default function Background() {
             -15 + (Math.random() * 10)
           }vh`,
           // boxShadow: `${size * .75}vmin ${size * .75}vmin ${size * .5}vmin ${color}`,
-          boxShadow: `${size * .75}vmin ${size * .75}vmin ${size * .75}vmin ${color}, ${size * -1}vmin ${size * -1}vmin ${size * .75}vmin ${color}`,
-          opacity: .5
+          boxShadow: `${size * .75}vmin ${size * .75}vmin ${
+            size * .75
+          }vmin ${color}, ${size * -.7}vmin ${size * -.7}vmin ${
+            size * .75
+          }vmin ${color}`,
+          opacity: .45,
         }}
       >
       </span>
     );
   });
-  const dotArray2 = Array.from(Array(20).keys()).map((dot) => {
-    const color = "black";
+  const dotArray2 = Array.from(Array(15).keys()).map((dot) => {
+    const color = "#150226";
     const size = 5 + (Math.random() * 5);
     return (
       <span
@@ -43,7 +47,7 @@ export default function Background() {
           backfaceVisibility: "hidden",
           position: "absolute",
           animation: "move",
-          animationTimingFunction: "linear",
+          animationTimingFunction: "ease-in",
           animationIterationCount: "infinite",
           color,
           bottom: `${Math.random() * 10}%`,
@@ -51,8 +55,10 @@ export default function Background() {
           animationDuration: `${10 + (Math.random() * 30)}s`,
           animationDelay: `0s`,
           transformOrigin: `${10 + (Math.random() * 20)}vw -20vh`,
-          boxShadow: `${size * .75}vmin ${size * .75}vmin ${size * .25}vmin #150226`,
-          opacity: .15
+          boxShadow: `${size * .75}vmin ${size * .75}vmin ${
+            size * .25
+          }vmin #150226`,
+          opacity: .05,
         }}
       >
       </span>

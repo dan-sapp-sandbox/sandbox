@@ -13,7 +13,6 @@ interface PokemonCardProps {
 export default function PokemonCard(
   { pokemon, updateTeam, team, isTeam }: PokemonCardProps,
 ): JSX.Element {
-
   const png = `data:image/png;base64,${pokemon?.imageBlob}`;
   const alreadyOnTeam = team.find((member) => member.name === pokemon?.name);
 
