@@ -12,7 +12,7 @@ const ProfileCard = (): JSX.Element => (
         <img
           alt="self"
           src="/static/images/me.png"
-          className="h-60 w-60 flex justify-self-start rounded-lg"
+          className="w-60 flex justify-self-start rounded-lg"
         />
       </div>
     </div>
@@ -21,7 +21,7 @@ const ProfileCard = (): JSX.Element => (
       <img
         alt="self"
         src="/static/images/me.png"
-        className="h-16 sm:h-24 w-16 sm:w-24 flex justify-self-end rounded-full"
+        className="w-16 sm:w-24 flex justify-self-end rounded-lg overflow-hidden"
       />
     </div>
   </div>

@@ -28,7 +28,7 @@ export default function Background() {
           }vmin ${color}, ${size * -.8}vmin ${size * -.8}vmin ${
             size * .5
           }vmin ${color2}`,
-          opacity: .3,
+          opacity: .5,
         }}
       >
       </span>
