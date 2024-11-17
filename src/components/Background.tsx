@@ -1,8 +1,8 @@
 export default function Background() {
-  const dotArray = Array.from(Array(25).keys()).map((dot) => {
+  const dotArray = Array.from(Array(10).keys()).map((dot) => {
     const color = setColor(dot);
     const color2 = setColor(dot + 5);
-    const size = 20 + (Math.random() * 15);
+    const size = 5 + (Math.random() * 25);
     return (
       <span
         key={dot}
