@@ -1,0 +1,124 @@
+@keyframes move {
+  100% {
+      transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.background {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0f011e;
+  overflow: hidden;
+}
+
+.background span {
+  width: 6vh;
+  height: 6vh;
+  border-radius: 6vh;
+  backface-visibility: hidden;
+  position: absolute;
+  animation: move;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: .7;
+  animation-duration: 30s;
+  animation-delay: 0s;
+  box-shadow: 6vh 6vh 6vh currentColor;
+}
+
+
+.background span:nth-child(0) {
+  color: #4341af;
+  top: 72%;
+  left: 44%;
+  transform-origin: 15vw 12vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(1) {
+  color: #cb17cf;
+  top: 98%;
+  left: 32%;
+  transform-origin: -18vw -17vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(2) {
+  color: #115049;
+  top: 5%;
+  left: 11%;
+  transform-origin: -14vw 12vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(3) {
+  color: #197525;
+  top: 37%;
+  left: 23%;
+  transform-origin: 8vw -32vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(4) {
+  color: #6f3c2f;
+  top: 28%;
+  left: 53%;
+  transform-origin: -30vw -17vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(5) {
+  color: #115049;
+  top: 92%;
+  left: 63%;
+  transform-origin: -28vw 25vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(6) {
+  color: #6f3c2f;
+  top: 63%;
+  left: 98%;
+  transform-origin: -1vw 16vh;
+  animation-duration: 10s;
+}
+.background span:nth-child(7) {
+  color: #6f3c2f;
+  top: 23%;
+  left: 58%;
+  transform-origin: 20vw -6vh;
+}
+.background span:nth-child(8) {
+  color: #870c8a;
+  top: 93%;
+  left: 68%;
+  transform-origin: -30vw 2vh;
+}
+.background span:nth-child(9) {
+  color: #6217b3;
+  top: 43%;
+  left: 18%;
+  transform-origin: 20vw 46vh;
+}
+.background span:nth-child(10) {
+  color: #982ec9;
+  top: 22%;
+  left: 22%;
+  transform-origin: 40vw -26vh;
+}
+.background span:nth-child(11) {
+  color: #447805;
+  top: 62%;
+  left: 22%;
+  transform-origin: -10vw -26vh;
+}
+.background span:nth-child(12) {
+  color: #cbd126;
+  top: 22%;
+  left: 12%;
+  transform-origin: 10vw -36vh;
+}
+.background span:nth-child(13) {
+  color: #c23b1d;
+  top: 22%;
+  left: 12%;
+  transform-origin: -37vw -36vh;
+}
