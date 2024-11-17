@@ -1,6 +1,23 @@
-@keyframes move {
+@keyframes spin {
   100% {
-      transform: translate3d(0, 0, 1px) rotate(360deg);
+    top: -10vh;
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+@keyframes dimToBright {
+  0% {
+    color: rgba(128, 0, 255, 0.3);
+    width: 10vh;
+    height: 10vh;
+    border-radius: 10vh;
+    box-shadow: 10vh 10vh 9vh currentColor, -10vh -10vh 9vh currentColor;
+  }
+  100% {
+    color: rgba(128, 0, 255, 0.5);
+    width: 7vh;
+    height: 7vh;
+    border-radius: 7vh;
+    box-shadow: 7vh 7vh 6vh currentColor, -7vh -7vh 6vh currentColor;
   }
 }
 
@@ -11,114 +28,125 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #0f011e;
+  background: #1f093d;
   overflow: hidden;
 }
 
 .background span {
-  width: 6vh;
-  height: 6vh;
-  border-radius: 6vh;
   backface-visibility: hidden;
   position: absolute;
-  animation: move;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  opacity: .7;
-  animation-duration: 30s;
-  animation-delay: 0s;
-  box-shadow: 6vh 6vh 6vh currentColor;
+  top: 110vh;
+  transform-origin: 3vw 3vh;
 }
 
 
-.background span:nth-child(0) {
-  color: #4341af;
-  top: 72%;
-  left: 44%;
-  transform-origin: 15vw 12vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 0) {
+  animation: dimToBright 8s 0s infinite ease-in, spin 8s 0s infinite ease-in;
 }
-.background span:nth-child(1) {
-  color: #cb17cf;
-  top: 98%;
-  left: 32%;
-  transform-origin: -18vw -17vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 1) {
+  animation: dimToBright 15s 1.5s infinite ease-in, spin 15s 1.5s infinite ease-in;
 }
-.background span:nth-child(2) {
-  color: #115049;
-  top: 5%;
-  left: 11%;
-  transform-origin: -14vw 12vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 2) {
+  animation: dimToBright 9s 1s infinite ease-in, spin 9s 1s infinite ease-in;
 }
-.background span:nth-child(3) {
-  color: #197525;
-  top: 37%;
-  left: 23%;
-  transform-origin: 8vw -32vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 3) {
+  animation: dimToBright 14s .5s infinite ease-in, spin 14s .5s infinite ease-in;
 }
-.background span:nth-child(4) {
-  color: #6f3c2f;
-  top: 28%;
-  left: 53%;
-  transform-origin: -30vw -17vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 4) {
+  animation: dimToBright 12s 0s infinite ease-in, spin 12s 0s infinite ease-in;
 }
-.background span:nth-child(5) {
-  color: #115049;
-  top: 92%;
-  left: 63%;
-  transform-origin: -28vw 25vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 5) {
+  animation: dimToBright 13s .5s infinite ease-in, spin 13s .5s infinite ease-in;
 }
-.background span:nth-child(6) {
-  color: #6f3c2f;
-  top: 63%;
-  left: 98%;
-  transform-origin: -1vw 16vh;
-  animation-duration: 10s;
+.background span:nth-child(15n + 6) {
+  animation: dimToBright 14s 1s infinite ease-in, spin 14s 1s infinite ease-in;
 }
-.background span:nth-child(7) {
-  color: #6f3c2f;
-  top: 23%;
-  left: 58%;
-  transform-origin: 20vw -6vh;
+.background span:nth-child(15n + 7) {
+  animation: dimToBright 12s 1.5s infinite ease-in, spin 12s 1.5s infinite ease-in;
 }
-.background span:nth-child(8) {
-  color: #870c8a;
-  top: 93%;
-  left: 68%;
-  transform-origin: -30vw 2vh;
+.background span:nth-child(15n + 8) {
+  animation: dimToBright 15s 0s infinite ease-in, spin 15s 0s infinite ease-in;
 }
-.background span:nth-child(9) {
-  color: #6217b3;
-  top: 43%;
-  left: 18%;
-  transform-origin: 20vw 46vh;
+.background span:nth-child(15n + 9) {
+  animation: dimToBright 11s 0s infinite ease-in, spin 16s 0s infinite ease-in;
 }
-.background span:nth-child(10) {
-  color: #982ec9;
-  top: 22%;
-  left: 22%;
-  transform-origin: 40vw -26vh;
+.background span:nth-child(15n + 10) {
+  animation: dimToBright 18s 0s infinite ease-in, spin 14s 0s infinite ease-in;
 }
-.background span:nth-child(11) {
-  color: #447805;
-  top: 62%;
-  left: 22%;
-  transform-origin: -10vw -26vh;
+.background span:nth-child(15n + 11) {
+  animation: dimToBright 28s 1.5s infinite ease-in, spin 28s 1.5s infinite ease-in;
 }
-.background span:nth-child(12) {
-  color: #cbd126;
-  top: 22%;
-  left: 12%;
-  transform-origin: 10vw -36vh;
+.background span:nth-child(15n + 12) {
+  animation: dimToBright 19s 2s infinite ease-in, spin 19s 2s infinite ease-in;
 }
-.background span:nth-child(13) {
-  color: #c23b1d;
-  top: 22%;
-  left: 12%;
-  transform-origin: -37vw -36vh;
+.background span:nth-child(15n + 13) {
+  animation: dimToBright 20s 0s infinite ease-in, spin 20s 0s infinite ease-in;
+}
+.background span:nth-child(15n + 14) {
+  animation: dimToBright 17s 0s infinite ease-in, spin 17s 0s infinite ease-in;
+}
+
+
+.background span:nth-child(21n) {
+  left: 0%;
+}
+.background span:nth-child(21n + 1) {
+  left: 5%;
+}
+.background span:nth-child(21n + 2) {
+  left: 10%;
+}
+.background span:nth-child(21n + 3) {
+  left: 15%;
+}
+.background span:nth-child(21n + 4) {
+  left: 20%;
+}
+.background span:nth-child(21n + 5) {
+  left: 25%;
+}
+.background span:nth-child(21n + 6) {
+  left: 30%;
+}
+.background span:nth-child(21n + 7) {
+  left: 35%;
+}
+.background span:nth-child(21n + 8) {
+  left: 40%;
+}
+.background span:nth-child(21n + 9) {
+  left: 45%;
+}
+.background span:nth-child(21n + 10) {
+  left: 50%;
+}
+.background span:nth-child(21n + 11) {
+  left: 55%;
+}
+.background span:nth-child(21n + 12) {
+  left: 60%;
+}
+.background span:nth-child(21n + 13) {
+  left: 65%;
+}
+.background span:nth-child(21n + 14) {
+  left: 70%;
+}
+.background span:nth-child(21n + 15) {
+  left: 75%;
+}
+.background span:nth-child(21n + 16) {
+  left: 80%;
+}
+.background span:nth-child(21n + 17) {
+  left: 85%;
+}
+.background span:nth-child(21n + 18) {
+  left: 90%;
+}
+.background span:nth-child(21n + 19) {
+  left: 95%;
+}
+.background span:nth-child(21n + 20) {
+  left: 100%;
 }
