@@ -68,36 +68,36 @@ const itemData: iLogo[][] = [
 ];
 export default function LogoList(): JSX.Element {
   return (
-    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-8 justify-center justify-items-center">
-      <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
+    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-4 md:gap-8 justify-center justify-items-center">
+      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[0].map((item) => (
           <div key={item.title} className="col-span-6">
             <LogoBlock item={item} />
           </div>
         ))}
       </div>
-      <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
+      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[1].map((item) => (
           <div key={item.title} className="col-span-4">
             <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
-      <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
+      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[2].map((item) => (
           <div key={item.title} className="col-span-3">
             <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
-      <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
+      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[3].map((item) => (
           <div key={item.title} className="col-span-3">
             <LogoBlock key={item.title} item={item} />
           </div>
         ))}
       </div>
-      <div className="col-span-12 flex grid-cols-12 gap-8 justify-items-center justify-around">
+      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[4].map((item) => (
           <div key={item.title} className="col-span-4">
             <LogoBlock key={item.title} item={item} />
