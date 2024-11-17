@@ -1,45 +1,40 @@
 export default function Background() {
-  const dotArray = Array.from(Array(10).keys()).map((dot) => {
-    const color = setColor(dot);
-    const color2 = setColor(dot + 5);
-    const size = 5 + (Math.random() * 25);
-    return (
-      <span
-        key={dot}
-        style={{
-          width: `${size}vmin`,
-          height: `${size}vmin`,
-          borderRadius: `${size}vmin`,
-          backfaceVisibility: "visible",
-          position: "absolute",
-          animation: dot % 2 === 0 ? "move" : "moveback",
-          animationTimingFunction: "linear",
-          animationIterationCount: "infinite",
-          color,
-          top: `${Math.random() * 100}%`,
-          left: `${Math.random() * 100}%`,
-          animationDuration: `${20 + (Math.random() * 40)}s`,
-          animationDelay: `0s`,
-          transformOrigin: `${15 + (Math.random() * 10)}vw ${
-            20 + (Math.random() * 10)
-          }vh`,
-          boxShadow: `${size * 2}vmin ${size * 2}vmin ${
-            size * .5
-          }vmin ${color}, ${size * -.8}vmin ${size * -.8}vmin ${
-            size * .5
-          }vmin ${color2}`,
-          opacity: .5,
-        }}
-      >
-      </span>
-    );
-  });
+  // const dotArray = Array.from(Array(3).keys()).map((dot) => {
+  //   const color = setColor(dot);
+  //   const size = 45;
+  //   return (
+  //     <span
+  //       key={dot}
+  //       style={{
+  //         width: `${size}vmin`,
+  //         height: `${size}vmin`,
+  //         borderRadius: `${size}vmin`,
+  //         backfaceVisibility: "visible",
+  //         position: "absolute",
+  //         animation: dot % 2 === 0 ? "move" : "moveback",
+  //         animationTimingFunction: "linear",
+  //         animationIterationCount: "infinite",
+  //         color,
+  //         top: `${Math.random() * 100}%`,
+  //         left: `${Math.random() * 100}%`,
+  //         animationDuration: `${20 + (Math.random() * 10)}s`,
+  //         animationDelay: `0s`,
+  //         transformOrigin: `${15 + (Math.random() * 10)}vw ${
+  //           20 + (Math.random() * 10)
+  //         }vh`,
+  //         boxShadow: `15vmin 15vmin 15vmin ${color}`,
+  //         opacity: .5,
+  //       }}
+  //     >
+  //     </span>
+  //   );
+  // });
   return (
     <div
       style={{ background: "#150226" }}
       className="z-0 top-0 left-0 right-0 bottom-0 fixed overflow-hidden"
     >
-      {dotArray}
+      {/* {dotArray} */}
     </div>
   );
 }
