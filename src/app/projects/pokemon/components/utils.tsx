@@ -23,7 +23,7 @@ import { SvgIconTypeMap } from "@mui/material";
 interface iPokemonMap {
   [key: string]: {
     weaknesses: string[];
-    icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string };
+    icon: OverridableComponent<SvgIconTypeMap<object, "svg">> & { muiName: string };
   };
 }
 export const pokemonMap: iPokemonMap = {

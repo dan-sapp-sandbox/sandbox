@@ -17,7 +17,7 @@ const StyledButton = (
   { text, url }: { text: string; url: string },
 ): JSX.Element => {
   return (
-    <button className="col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 px-4 py-4 rounded">
+    <button key={text} className="col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 px-4 py-4 rounded">
       <Link href={url} className="text-xl lg:text-2xl font-bold">
         {text}
       </Link>
