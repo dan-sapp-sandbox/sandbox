@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import ReactQueryProvider from "./components/QueryProvider";
 
 export const metadata: Metadata = {
