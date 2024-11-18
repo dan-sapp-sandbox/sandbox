@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { iPokemon } from "../api/types";
-import { Radar } from "@/components/Radar";
+import { Radar } from "@/components/radar";
 import { pokemonMap, typeColorMap } from "./utils";
 
 export type Variable =

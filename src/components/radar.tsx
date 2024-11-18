@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { AxisConfig, INNER_RADIUS, RadarGrid } from "./RadarGrid";
+import { AxisConfig, INNER_RADIUS, RadarGrid } from "./radarGrid";
 
 export type Variable =
   | "hp"
