@@ -8,14 +8,18 @@
   0% {
     color: rgba(128, 0, 255, 0.3);
     width: 10vw;
+    max-width: 10vh;
     height: 10vw;
+    max-height: 10vh;
     border-radius: 10vw;
     box-shadow: 10vw 10vw 9vw currentColor, -10vw -10vw 9vw currentColor;
   }
   100% {
     color: rgba(128, 0, 255, 0.5);
     width: 7vw;
+    max-width: 7vh;
     height: 7vw;
+    max-height: 7vh;
     border-radius: 7vw;
     box-shadow: 7vw 7vw 6vw currentColor, -7vw -7vw 6vw currentColor;
   }
