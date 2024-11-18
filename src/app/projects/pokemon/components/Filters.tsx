@@ -35,7 +35,7 @@ export default function Filters(
               <button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 min-w-px justify-center rounded p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px justify-center rounded px-0 py-1 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >
@@ -55,7 +55,7 @@ export default function Filters(
               <button
                 key={type}
                 onClick={() => clickHandler(type)}
-                className={`col-span-1 min-w-px justify-center rounded p-0 flex ${colors} ${
+                className={`col-span-1 min-w-px justify-center rounded px-0 py-1 flex ${colors} ${
                   !isSelected && selectionExists && "opacity-50"
                 }`}
               >

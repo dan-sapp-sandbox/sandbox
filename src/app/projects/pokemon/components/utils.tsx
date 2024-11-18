@@ -1,84 +1,103 @@
-import TypeIcons from "./Icons";
 import { ReadonlyURLSearchParams } from "next/navigation";
+import FireIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
+import WaterIcon from "@mui/icons-material/WaterDropOutlined";
+import GrassIcon from "@mui/icons-material/GrassOutlined";
+import ElectricIcon from "@mui/icons-material/BoltOutlined";
+import PsychicIcon from "@mui/icons-material/SelfImprovementOutlined";
+import FightingIcon from '@mui/icons-material/FitnessCenterOutlined';
+import NormalIcon from '@mui/icons-material/StarOutlineOutlined';
+import FlyingIcon from '@mui/icons-material/AirOutlined';
+import IceIcon from '@mui/icons-material/AcUnitOutlined';
+import PoisonIcon from '@mui/icons-material/CoronavirusOutlined';
+import GroundIcon from '@mui/icons-material/TerrainOutlined';
+import RockIcon from '@mui/icons-material/DiamondOutlined';
+import FairyIcon from '@mui/icons-material/EmojiNatureOutlined';
+import BugIcon from '@mui/icons-material/BugReportOutlined';
+import SteelIcon from '@mui/icons-material/Shield';
+import DarkIcon from '@mui/icons-material/DarkMode';
+import GhostIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
+import DragonIcon from '@mui/icons-material/PrecisionManufacturingOutlined';
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material";
 
 interface iPokemonMap {
   [key: string]: {
     weaknesses: string[];
-    icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+    icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string };
   };
 }
 export const pokemonMap: iPokemonMap = {
   normal: {
     weaknesses: ["fighting"],
-    icon: TypeIcons.NormalIcon,
+    icon: NormalIcon,
   },
   fighting: {
     weaknesses: ["flying", "psychic", "fairy"],
-    icon: TypeIcons.FightingIcon,
+    icon: FightingIcon,
   },
   flying: {
     weaknesses: ["rock", "electric", "ice"],
-    icon: TypeIcons.FlyingIcon,
+    icon: FlyingIcon,
   },
   poison: {
     weaknesses: ["ground", "psychic"],
-    icon: TypeIcons.PoisonIcon,
+    icon: PoisonIcon,
   },
   ground: {
     weaknesses: ["water", "grass", "ice"],
-    icon: TypeIcons.GroundIcon,
+    icon: GroundIcon,
   },
   rock: {
     weaknesses: ["fighting", "ground", "steel", "water", "grass"],
-    icon: TypeIcons.RockIcon,
+    icon: RockIcon,
   },
   bug: {
     weaknesses: ["flying", "rock", "fire"],
-    icon: TypeIcons.BugIcon,
+    icon: BugIcon,
   },
   ghost: {
     weaknesses: ["ghost", "dark"],
-    icon: TypeIcons.GhostIcon,
+    icon: GhostIcon,
   },
   steel: {
     weaknesses: ["fighting", "ground", "fire"],
-    icon: TypeIcons.SteelIcon,
+    icon: SteelIcon,
   },
   fire: {
     weaknesses: ["ground", "rock", "water"],
-    icon: TypeIcons.FireIcon,
+    icon: FireIcon,
   },
   water: {
     weaknesses: ["grass", "electric"],
-    icon: TypeIcons.WaterIcon,
+    icon: WaterIcon,
   },
   grass: {
     weaknesses: ["flying", "poison", "bug", "fire", "ice"],
-    icon: TypeIcons.GrassIcon,
+    icon: GrassIcon,
   },
   electric: {
     weaknesses: ["ground"],
-    icon: TypeIcons.ElectricIcon,
+    icon: ElectricIcon,
   },
   psychic: {
     weaknesses: ["bug", "ghost", "dark"],
-    icon: TypeIcons.PsychicIcon,
+    icon: PsychicIcon,
   },
   ice: {
     weaknesses: ["fighting", "rock", "steel", "fire"],
-    icon: TypeIcons.IceIcon,
+    icon: IceIcon,
   },
   dragon: {
     weaknesses: ["ice", "dragon", "fairy"],
-    icon: TypeIcons.DragonIcon,
+    icon: DragonIcon,
   },
   dark: {
     weaknesses: ["fighting", "bug", "fairy"],
-    icon: TypeIcons.DarkIcon,
+    icon: DarkIcon,
   },
   fairy: {
     weaknesses: ["poison", "steel"],
-    icon: TypeIcons.FairyIcon,
+    icon: FairyIcon,
   },
 };
 

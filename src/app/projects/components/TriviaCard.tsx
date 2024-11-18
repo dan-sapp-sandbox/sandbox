@@ -1,5 +1,17 @@
-import Button from "@mui/material/Button";
 import Link from "next/link";
+import { ButtonRow, iBtn } from "./components";
+
+const TriviaBtns: iBtn[] = [
+  {
+    text: "App Code",
+    url:
+      "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/pokemon",
+  },
+  {
+    text: "Server Code",
+    url: "https://github.com/dan-sapp-sandbox/node_server",
+  },
+];
 
 const TriviaCard = () => {
   return (
@@ -12,21 +24,8 @@ const TriviaCard = () => {
           <div className="text-md md:text-xl mb-6 italic">
             The game where being close enough counts!
           </div>
-          <div className="col-span-12 grid-cols-12 hidden md:grid mt-36">
-            <Button
-              size="large"
-              variant="outlined"
-              className="mt-0 mx-3 col-span-6"
-            >
-              <Link href="https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/trivia">
-                App Code
-              </Link>
-            </Button>
-            <Button size="large" variant="outlined" className="col-span-6">
-              <Link href="https://github.com/dan-sapp-sandbox/node_server">
-                Server Code
-              </Link>
-            </Button>
+          <div className="col-span-12 grid-cols-12 gap-2 hidden md:grid mt-36">
+            <ButtonRow btns={TriviaBtns} />
           </div>
         </div>
         <Link
@@ -36,26 +35,13 @@ const TriviaCard = () => {
           {/* eslint-disable-next-line */}
           <img
             alt="trivia-screen-shot"
-            className="max-h-80 my-2 border-black border-2 rounded-md"
+            className="max-h-80 my-2 border-black border-4 rounded-md hover:border-blue-200"
             src="/static/images/trivia-screen-shot.png"
           />
         </Link>
       </div>
       <div className="grid-cols-12 grid md:hidden gap-2">
-        <Button
-          size="large"
-          variant="outlined"
-          className="col-span-12"
-        >
-          <Link href="https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/trivia">
-            App Code
-          </Link>
-        </Button>
-        <Button size="large" variant="outlined" className="col-span-12">
-          <Link href="https://github.com/dan-sapp-sandbox/node_server">
-            Server Code
-          </Link>
-        </Button>
+        <ButtonRow btns={TriviaBtns} />
       </div>
     </div>
   );
