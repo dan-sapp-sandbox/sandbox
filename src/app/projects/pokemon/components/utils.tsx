@@ -3,26 +3,28 @@ import WaterIcon from "@mui/icons-material/WaterDropOutlined";
 import GrassIcon from "@mui/icons-material/GrassOutlined";
 import ElectricIcon from "@mui/icons-material/BoltOutlined";
 import PsychicIcon from "@mui/icons-material/SelfImprovementOutlined";
-import FightingIcon from '@mui/icons-material/FitnessCenterOutlined';
-import NormalIcon from '@mui/icons-material/StarOutlineOutlined';
-import FlyingIcon from '@mui/icons-material/AirOutlined';
-import IceIcon from '@mui/icons-material/AcUnitOutlined';
-import PoisonIcon from '@mui/icons-material/CoronavirusOutlined';
-import GroundIcon from '@mui/icons-material/TerrainOutlined';
-import RockIcon from '@mui/icons-material/DiamondOutlined';
-import FairyIcon from '@mui/icons-material/EmojiNatureOutlined';
-import BugIcon from '@mui/icons-material/BugReportOutlined';
-import SteelIcon from '@mui/icons-material/Shield';
-import DarkIcon from '@mui/icons-material/DarkMode';
-import GhostIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
-import DragonIcon from '@mui/icons-material/PrecisionManufacturingOutlined';
+import FightingIcon from "@mui/icons-material/FitnessCenterOutlined";
+import NormalIcon from "@mui/icons-material/StarOutlineOutlined";
+import FlyingIcon from "@mui/icons-material/AirOutlined";
+import IceIcon from "@mui/icons-material/AcUnitOutlined";
+import PoisonIcon from "@mui/icons-material/CoronavirusOutlined";
+import GroundIcon from "@mui/icons-material/TerrainOutlined";
+import RockIcon from "@mui/icons-material/DiamondOutlined";
+import FairyIcon from "@mui/icons-material/EmojiNatureOutlined";
+import BugIcon from "@mui/icons-material/BugReportOutlined";
+import SteelIcon from "@mui/icons-material/Shield";
+import DarkIcon from "@mui/icons-material/DarkMode";
+import GhostIcon from "@mui/icons-material/SentimentVeryDissatisfiedOutlined";
+import DragonIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { SvgIconTypeMap } from "@mui/material";
 
 interface iPokemonMap {
   [key: string]: {
     weaknesses: string[];
-    icon: OverridableComponent<SvgIconTypeMap<object, "svg">> & { muiName: string };
+    icon: OverridableComponent<SvgIconTypeMap<object, "svg">> & {
+      muiName: string;
+    };
   };
 }
 export const pokemonMap: iPokemonMap = {
@@ -120,4 +122,3 @@ export const typeColorMap: { [key: string]: string } = {
   dark: "bg-gray-700 font-black text-white hover:bg-gray-600",
   fairy: "bg-pink-400 font-black text-white hover:bg-pink-300",
 };
-

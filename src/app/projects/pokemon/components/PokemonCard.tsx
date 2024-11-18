@@ -33,7 +33,7 @@ export default function PokemonCard(
         (team.length < 6 || alreadyOnTeam || isTeam) &&
         "cursor-pointer hover:bg-sky-200"
       }
-        ${(isTeam) && "bg-indigo-300"}
+        ${isTeam && "bg-indigo-300"}
         ${(alreadyOnTeam && !isTeam) && "bg-indigo-300"}`}
       onClick={() => pokemon && clickHandler(pokemon)}
     >
