@@ -1,4 +1,3 @@
-import { ReadonlyURLSearchParams } from "next/navigation";
 import FireIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
 import WaterIcon from "@mui/icons-material/WaterDropOutlined";
 import GrassIcon from "@mui/icons-material/GrassOutlined";
@@ -122,23 +121,3 @@ export const typeColorMap: { [key: string]: string } = {
   fairy: "bg-pink-400 font-black text-white hover:bg-pink-300",
 };
 
-export function getFilters(
-  searchParams: ReadonlyURLSearchParams,
-): string[] {
-  const filtersParam = searchParams.get("filters");
-  if (filtersParam) {
-    const filtersArray = filtersParam.split(",").map(String);
-    return filtersArray;
-  }
-  return [];
-}
-export function getIds(
-  searchParams: ReadonlyURLSearchParams,
-): number[] {
-  const idsParam = searchParams.get("ids");
-  if (idsParam) {
-    const idsArray = idsParam.split(",").map(Number);
-    return idsArray;
-  }
-  return [];
-}
