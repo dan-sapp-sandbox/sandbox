@@ -11,11 +11,9 @@ export default function PokemonLayout(
 ) {
   return (
     <main>
-      <Suspense>
-        <ReactQueryProvider>
-          {children}
-        </ReactQueryProvider>
-      </Suspense>
+      <ReactQueryProvider>
+        {children}
+      </ReactQueryProvider>
     </main>
   );
 }

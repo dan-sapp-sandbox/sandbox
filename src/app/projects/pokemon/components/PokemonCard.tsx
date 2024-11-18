@@ -1,7 +1,4 @@
-// "use client";
 import { iPokemon } from "../api/types";
-import { Suspense } from "react";
-// import { useRouter, useSearchParams } from "next/navigation";
 
 interface PokemonCardProps {
   pokemon?: iPokemon;
@@ -27,51 +24,39 @@ export default function PokemonCard(
     }
 
     updateTeam?.(newTeam);
-
-    // const updatedIds = newTeam.map((member) => member.pokedexId);
-    // const params = new URLSearchParams(searchParams.toString());
-
-    // if (updatedIds.length > 0) {
-    //   params.set("ids", updatedIds.join(","));
-    // } else {
-    //   params.delete("ids");
-    // }
-
-    // router.replace(`?${params.toString()}`, undefined);
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div
-        className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
-        active:bg-sky-200 ${
-          (team.length < 6 || alreadyOnTeam || isTeam) &&
-          "cursor-pointer hover:bg-sky-100"
-        }
-        ${(alreadyOnTeam && !isTeam) && "bg-indigo-200"}`}
-        onClick={() => pokemon && clickHandler(pokemon)}
-      >
-        <div className="p-0">
-          {pokemon
-            ? (
-              /* eslint-disable-next-line */
-              <img
-                className={isTeam
-                  ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
-                  : "mx-auto min-w-12 max-w-24 sm:max-w-28 md:max-w-36 lg:max-w-40 xl:max-w-44 2xl:max-w-44"}
-                src={png}
-                alt="pokemon"
-                width={300}
-                height={300}
-                loading="lazy"
-              />
-            )
-            : (
-              <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
-              </div>
-            )}
-        </div>
+    <div
+      className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
+      ${
+        (team.length < 6 || alreadyOnTeam || isTeam) &&
+        "cursor-pointer hover:bg-sky-200"
+      }
+        ${(isTeam) && "bg-indigo-300"}
+        ${(alreadyOnTeam && !isTeam) && "bg-indigo-300"}`}
+      onClick={() => pokemon && clickHandler(pokemon)}
+    >
+      <div className="p-0">
+        {pokemon
+          ? (
+            /* eslint-disable-next-line */
+            <img
+              className={isTeam
+                ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"
+                : "mx-auto min-w-12 max-w-24 sm:max-w-28 md:max-w-36 lg:max-w-40 xl:max-w-44 2xl:max-w-44"}
+              src={png}
+              alt="pokemon"
+              width={300}
+              height={300}
+              loading="lazy"
+            />
+          )
+          : (
+            <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+            </div>
+          )}
       </div>
-    </Suspense>
+    </div>
   );
 }

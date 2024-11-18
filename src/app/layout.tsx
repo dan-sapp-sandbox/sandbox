@@ -18,7 +18,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-slate-800 antialiased">
+      <body style={{ background: "#1f093d" }}>
         <AppBar />
         {children}
       </body>

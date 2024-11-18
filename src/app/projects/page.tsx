@@ -1,15 +1,15 @@
-import Background from "@/components/Background";
+import Loading from "../loading";
 import PokemonCard from "./components/PokemonCard";
 import TriviaCard from "./components/TriviaCard";
+import { Suspense } from "react";
 
 export default async function ProjectsPage() {
   return (
-    <>
-      <Background />
-      <div className="mx-auto max-w-6xl px-6">
+    <div className="background mx-auto max-w-6xl px-6">
+      <Suspense fallback={<Loading />}>
         <TriviaCard />
         <PokemonCard />
-      </div>
-    </>
+      </Suspense>
+    </div>
   );
 }

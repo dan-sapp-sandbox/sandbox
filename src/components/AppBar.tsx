@@ -56,7 +56,9 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                  <Link href={page.url}>{page.title}</Link>
+                  <Link className="text-xl text-black" href={page.url}>
+                    {page.title}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -66,9 +68,14 @@ function ResponsiveAppBar() {
               <button
                 key={page.title}
                 onClick={handleCloseNavMenu}
-                className="my-2 mx-8 text-zinc-200 text-2xl hover:text-zinc-100"
+                className="my-2 mx-8"
               >
-                <Link href={page.url}>{page.title}</Link>
+                <Link
+                  className="text-zinc-200 text-3xl hover:text-zinc-100"
+                  href={page.url}
+                >
+                  {page.title}
+                </Link>
               </button>
             ))}
           </Box>

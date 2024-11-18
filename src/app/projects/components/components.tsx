@@ -1,23 +1,72 @@
 import Link from "next/link";
 
-export interface iBtn {
+interface iBtn {
   text: string;
   url: string;
 }
 
-export const ButtonRow = ({ btns }: { btns: iBtn[] }): JSX.Element => {
+export interface iCard {
+  btns: iBtn[];
+  title: string;
+  description: string;
+  screenshot: {
+    imageUrl: string;
+    linkUrl: string;
+  };
+}
+
+export const StyledCard = (
+  { btns, title, description, screenshot }: iCard,
+): JSX.Element => {
+  return (
+    <div className="col-span-12 rounded bg-slate-300 my-8 p-6 z-10 relative">
+      <div className="grid-cols-12 grid justify-between">
+        <div className="col-span-12 md:col-span-7">
+          <div className="font-bold text-xl sm:text-2xl lg:text-4xl mb-2">
+            {title}
+          </div>
+          <div className="text-md md:text-xl mb-6 italic">
+            {description}
+          </div>
+          <div className="grid-cols-12 hidden md:grid gap-2 mt-36">
+            <ButtonRow btns={btns} />
+          </div>
+        </div>
+        <Link
+          className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
+          href={screenshot.linkUrl}
+        >
+          {/* eslint-disable-next-line */}
+          <img
+            alt="pokemon-screen-shot"
+            className="max-w-60 mb-4 md:mb-0 border-black border-4 rounded-md hover:border-blue-400"
+            src={screenshot.imageUrl}
+          />
+        </Link>
+      </div>
+      <div className="grid-cols-12 grid md:hidden gap-2">
+        <ButtonRow btns={btns} />
+      </div>
+    </div>
+  );
+};
+
+const ButtonRow = ({ btns }: { btns: iBtn[] }): JSX.Element => {
   return (
     <>
-      {btns.map((btn) => <StyledButton text={btn.text} url={btn.url} />)}
+      {btns.map((btn) => (
+        <StyledButton key={btn.text} text={btn.text} url={btn.url} />
+      ))}
     </>
   );
 };
 
-const StyledButton = (
-  { text, url }: { text: string; url: string },
-): JSX.Element => {
+const StyledButton = ({ text, url }: iBtn): JSX.Element => {
   return (
-    <button key={text} className="col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 px-4 py-4 rounded">
+    <button
+      key={text}
+      className="col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 px-4 py-4 rounded"
+    >
       <Link href={url} className="text-xl lg:text-2xl font-bold">
         {text}
       </Link>
