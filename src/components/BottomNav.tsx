@@ -20,7 +20,7 @@ export default function SimpleBottomNavigation() {
         {pages.map((page) => (
           <BottomNavigationAction
             key={page.title}
-            className="text-zinc-200"
+            className="text-zinc-200 bg-blue-900"
             label={page.title}
             icon={page.image}
           />
