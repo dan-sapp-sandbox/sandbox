@@ -16,7 +16,7 @@ const LandingPage = (
     ? <Prompt triviaList={filteredList} />
     : (
       <div className="justify-center items-center grid grid-flow-row grid-cols-12">
-        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
+        <div className="font-sans text-2xl md:text-5xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
           Horseshoes and Hand Grenades
         </div>
         <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
@@ -24,29 +24,32 @@ const LandingPage = (
         </div>
         <div className="col-span-12 justify-center">
           <button
-            className="text-2xl md:text-4xl p-2 md:p-4 flex mx-auto bg-zinc-300"
+            className="rounded-lg flex mx-auto bg-blue-300 hover:bg-blue-200"
             onClick={async () => {
               setFilteredList(triviaList);
               setLoggedIn(true);
             }}
           >
-            Potpourri
+            <span className="text-3xl md:text-5xl p-2 md:p-4">
+              Potpourri
+            </span>
           </button>
         </div>
-        <div className="col-span-12 justify-center">
-          {tags.map((tag) => (
+        {tags.map((tag) => (
+          <div key={tag} className="col-span-12 justify-center">
             <button
-              key={tag}
-              className="text-2xl md:text-4xl my-5 p-2 md:p-4 flex mx-auto bg-zinc-300"
+              className="my-5 rounded-lg flex mx-auto bg-blue-300 hover:bg-blue-200"
               onClick={async () => {
                 setFilteredList(triviaList.filter((x) => x.tag === tag));
                 setLoggedIn(true);
               }}
             >
-              {tag}
+              <span className="text-3xl md:text-5xl p-2 md:p-4">
+                {tag}
+              </span>
             </button>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     );
 };

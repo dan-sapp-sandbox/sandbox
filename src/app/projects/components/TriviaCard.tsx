@@ -2,7 +2,7 @@ import { iCard, StyledCard } from "./components";
 
 const TriviaData: iCard = {
   title: "Horseshoes and Hand Grenades",
-  description: "Build the best team or see how your favorites compare!",
+  description: "The game where being close enough counts!",
   screenshot: {
     imageUrl: "/static/images/trivia-screen-shot.png",
     linkUrl: "/projects/trivia",
