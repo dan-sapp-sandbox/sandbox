@@ -11,7 +11,7 @@ export default function SimpleBottomNavigation() {
   return (
     <Box className="fixed md:hidden bottom-0 left-0 right-0">
       <BottomNavigation
-        className="bg-blue-900"
+        sx={{ background: "#1e3a8a" }}
         showLabels
         onChange={(_, newValue) => {
           router.replace(pages[newValue].url);
@@ -20,7 +20,10 @@ export default function SimpleBottomNavigation() {
         {pages.map((page) => (
           <BottomNavigationAction
             key={page.title}
-            className="text-zinc-200 bg-blue-900"
+            sx={{
+              background: "#1e3a8a",
+              color: "#e4e4e7",
+            }}
             label={page.title}
             icon={page.image}
           />
