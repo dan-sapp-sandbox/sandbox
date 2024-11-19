@@ -9,9 +9,9 @@ import { useRouter } from "next/navigation";
 export default function SimpleBottomNavigation() {
   const router = useRouter();
   return (
-    <Box className="fixed md:hidden bottom-0 left-0 right-0">
+    <Box className="fixed md:hidden bottom-0 left-0 right-0 z-10">
       <BottomNavigation
-        sx={{ background: "#1e3a8a" }}
+        sx={{ background: "#1e3a8a", height: "4.5rem" }}
         showLabels
         onChange={(_, newValue) => {
           router.replace(pages[newValue].url);

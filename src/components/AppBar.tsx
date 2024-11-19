@@ -11,24 +11,46 @@ export const pages = [
   {
     title: "Home",
     url: "/",
-    image: <HomeIcon className="text-zinc-200 h-8 w-8" />,
+    image: (
+      <HomeIcon
+        sx={{ height: "2.5rem", width: "2.5rem" }}
+        className="text-zinc-200"
+      />
+    ),
   },
   {
     title: "Projects",
     url: "/projects",
-    image: <ConstructionIcon className="text-zinc-200 h-8 w-8" />,
+    image: (
+      <ConstructionIcon
+        sx={{ height: "2.5rem", width: "2.5rem" }}
+        className="text-zinc-200"
+      />
+    ),
   },
   {
     title: "Github",
     url: "https://github.com/dan-sapp-sandbox",
     /* eslint-disable-next-line */
-    image: <img className="h-8 w-8" src="/static/images/github-icon-2.svg" />,
+    image: (
+      <img
+        alt="github"
+        className="h-10 w-10"
+        src="/static/images/github-icon-2.svg"
+      />
+    ),
   },
   {
     title: "LinkedIn",
     url: "https://www.linkedin.com/in/dan-sapp-744145b6/",
     /* eslint-disable-next-line */
-    image: <img className="h-8 w-8" src="/static/images/linkedin-icon-2.svg" />,
+    image: (
+      <img
+        alt="linkedin"
+        className="h-10 w-10"
+        src="/static/images/linkedin-icon-2.svg"
+      />
+    ),
   },
 ];
 
