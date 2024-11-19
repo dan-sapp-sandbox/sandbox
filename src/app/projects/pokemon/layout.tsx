@@ -10,7 +10,7 @@ export default function PokemonLayout(
   { children }: { children: ReactNode },
 ) {
   return (
-    <main style={{ height: "calc(100vh - 70px)" }} className="overflow-scroll">
+    <main style={{ height: "calc(100vh - 70px)" }}>
       <ReactQueryProvider>
         {children}
       </ReactQueryProvider>
