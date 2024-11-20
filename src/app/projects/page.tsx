@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 export default async function ProjectsPage() {
   return (
-    <div className="background mx-auto max-w-6xl px-6 pb-20 md:pb-0">
+    <div className="background mx-auto max-w-6xl px-6 pb-16 md:pb-0">
       <Suspense fallback={<Loading />}>
         <TriviaCard />
         <PokemonCard />

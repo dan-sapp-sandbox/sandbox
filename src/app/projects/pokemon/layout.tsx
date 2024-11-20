@@ -16,7 +16,7 @@ export default function PokemonLayout(
         overflowY: "scroll",
         scrollbarWidth: "none",
       }}
-      className="pb-20 md:pb-0"
+      className="pb-16 md:pb-0"
     >
       <ReactQueryProvider>
         {children}
