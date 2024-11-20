@@ -4,7 +4,7 @@ const PokemonData: iCard = {
   title: "Pokemon Team Builder",
   description: "Build the best team or see how your favorites compare.",
   screenshot: {
-    imageUrl: "/static/images/pokemon-screen-shot.png",
+    imageUrl: "/static/images/pokemon-screenshot.png",
     linkUrl: "/projects/pokemon",
   },
   logos: [

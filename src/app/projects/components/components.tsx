@@ -30,7 +30,7 @@ export const StyledCard = (
             <div className="text-md md:text-xl italic mb-2">
               {description}
             </div>
-            <div className="flex align-middle">
+            <div className="flex align-middle flex-wrap">
               {logos.map((logo) => (
                 /* eslint-disable-next-line */
                 <img
@@ -53,7 +53,7 @@ export const StyledCard = (
           {/* eslint-disable-next-line */}
           <img
             alt="pokemon-screen-shot"
-            className="max-w-60 mb-4 md:mb-0 border-black border-4 rounded-md hover:border-blue-400"
+            className="max-h-80 mb-4 md:mb-0 border-black border-2 rounded-md hover:border-blue-400"
             src={screenshot.imageUrl}
           />
         </Link>

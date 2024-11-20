@@ -4,7 +4,7 @@ const BastionData: iCard = {
   title: "Bastion",
   description: "Manage all of your home's devices in one place.",
   screenshot: {
-    imageUrl: "/static/images/pokemon-screen-shot.png",
+    imageUrl: "/static/images/bastion-screenshot.png",
     linkUrl: "https://lights-iota.vercel.app",
   },
   logos: ["/static/images/flutter.svg"],
