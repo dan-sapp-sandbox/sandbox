@@ -1,8 +1,6 @@
 "use client";
 import ProfileCard from "./components/ProfileCard";
 import LogoList from "./components/LogoList";
-import axios from "axios";
-import { useEffect } from "react";
 
 export default function Portfolio() {
   return (
