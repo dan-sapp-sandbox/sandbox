@@ -31,8 +31,8 @@ export const pages = [
   {
     title: "Github",
     url: "https://github.com/dan-sapp-sandbox",
-    /* eslint-disable-next-line */
     image: (
+      /* eslint-disable-next-line */
       <img
         alt="github"
         className="h-10 w-10"
@@ -43,8 +43,8 @@ export const pages = [
   {
     title: "LinkedIn",
     url: "https://www.linkedin.com/in/dan-sapp-744145b6/",
-    /* eslint-disable-next-line */
     image: (
+      /* eslint-disable-next-line */
       <img
         alt="linkedin"
         className="h-10 w-10"

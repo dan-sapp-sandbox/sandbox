@@ -11,7 +11,7 @@ const TriviaData: iCard = {
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/trivia",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/trivia",
     },
     {
       text: "Server Code",

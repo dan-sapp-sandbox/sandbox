@@ -65,7 +65,7 @@ const StyledButton = ({ text, url }: iBtn): JSX.Element => {
   return (
     <button
       key={text}
-      className="h-16 self-end col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 rounded"
+      className="h-12 md:h-16 self-end col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 rounded"
     >
       <Link href={url} className="text-xl lg:text-2xl font-bold">
         {text}
