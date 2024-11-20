@@ -3,13 +3,14 @@ import { iTrivia } from "../api/types";
 import { useState } from "react";
 import { useController, useForm } from "react-hook-form";
 import { Slider } from "@mui/material";
+import useLocalStorage from "use-local-storage";
 
 interface iPromptProps {
   triviaList: iTrivia[];
 }
 export default function Prompt({ triviaList }: iPromptProps): JSX.Element {
   const [index, setIndex] = useState<number>(0);
-  const [totalScore, setTotalScore] = useState<number>(0);
+  const [totalScore, setTotalScore] = useLocalStorage<number>('score', 0);
   const [score, setScore] = useState<number | undefined>(undefined);
   const [percentage, setPercentage] = useState<number | undefined>(undefined);
   const trivia = triviaList?.[index];
