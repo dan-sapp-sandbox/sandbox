@@ -7,5 +7,15 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsLayout({ children }: { children: ReactNode }) {
-  return <main>{children}</main>;
+  return (
+    <main
+      style={{
+        height: "calc(100vh - 70px)",
+        overflowY: "scroll",
+        scrollbarWidth: "none",
+      }}
+    >
+      {children}
+    </main>
+  );
 }
