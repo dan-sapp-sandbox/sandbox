@@ -16,11 +16,15 @@ const LandingPage = (
     ? <Prompt triviaList={filteredList} />
     : (
       <div className="justify-center items-center grid grid-flow-row grid-cols-12">
-        <div className="font-sans text-2xl md:text-5xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
-          Horseshoes and Hand Grenades
+        <div className="my-2 md:my-8col-span-12 justify-center text-center">
+          <span className="font-sans text-2xl md:text-5xl font-bold justify-center text-center text-zinc-300">
+            Horseshoes and Hand Grenades
+            </span>
         </div>
-        <div className="font-sans text-xl md:text-4xl my-8 font-bold col-span-12 justify-center text-center text-zinc-300">
-          Choose a category
+        <div className="my-2 md:my-8 col-span-12 justify-center text-center">
+          <span className="font-sans text-xl md:text-4xl font-bold text-center text-zinc-300">
+            Choose a category
+            </span>
         </div>
         <div className="col-span-12 justify-center">
           <button
@@ -30,7 +34,7 @@ const LandingPage = (
               setLoggedIn(true);
             }}
           >
-            <span className="text-3xl md:text-5xl p-2 md:p-4">
+            <span className="text-xl md:text-5xl p-1 md:p-4">
               Potpourri
             </span>
           </button>
@@ -44,7 +48,7 @@ const LandingPage = (
                 setLoggedIn(true);
               }}
             >
-              <span className="text-3xl md:text-5xl p-2 md:p-4">
+              <span className="text-xl md:text-5xl p-1 md:p-4">
                 {tag}
               </span>
             </button>
