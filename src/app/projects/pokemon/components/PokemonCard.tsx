@@ -28,12 +28,13 @@ export default function PokemonCard(
 
   return (
     <div
-      className={`col-span-1 bg-slate-400 rounded-lg justify-center items-center 
+      className={`col-span-1 rounded-lg justify-center items-center 
       ${
         (team.length < 6 || alreadyOnTeam || isTeam) &&
         "cursor-pointer hover:bg-sky-200"
       }
         ${isTeam && "bg-indigo-300"}
+        ${(!alreadyOnTeam && !isTeam) && "bg-slate-400"}
         ${(alreadyOnTeam && !isTeam) && "bg-indigo-300"}`}
       onClick={() => pokemon && clickHandler(pokemon)}
     >
@@ -53,7 +54,7 @@ export default function PokemonCard(
             />
           )
           : (
-            <div className="rounded-lg bg-slate-400 py-1 h-12 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
+            <div className="rounded-lg bg-slate-400 py-1 h-14 sm:h-16 md:h-24 lg:h-36 xl:h-42 2xl:h-48">
             </div>
           )}
       </div>
