@@ -14,10 +14,10 @@ const BastionData: iCard = {
       url:
         "https://github.com/dan-sapp-sandbox/Bastion",
     },
-    {
-      text: "Server Code",
-      url: "https://github.com/dan-sapp-sandbox/node_server",
-    },
+    // {
+    //   text: "Server Code",
+    //   url: "https://github.com/dan-sapp-sandbox/node_server",
+    // },
   ],
 };
 
