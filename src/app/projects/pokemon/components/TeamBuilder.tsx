@@ -1,7 +1,7 @@
 "use client";
 import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import Team from "./Team";
 import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
@@ -11,7 +11,7 @@ import Loading from "@/app/loading";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
-): ReactNode {
+): JSX.Element {
   const { data, isLoading } = useQuery({
     queryKey: ["pokemon"],
     queryFn: async () => await getPokemon(),

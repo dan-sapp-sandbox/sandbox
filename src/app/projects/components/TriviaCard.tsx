@@ -7,6 +7,7 @@ const TriviaData: iCard = {
     imageUrl: "/static/images/trivia-screen-shot.png",
     linkUrl: "/projects/trivia",
   },
+  logos: ["/static/images/react.svg", "/static/images/next-js.svg"],
   btns: [
     {
       text: "App Code",

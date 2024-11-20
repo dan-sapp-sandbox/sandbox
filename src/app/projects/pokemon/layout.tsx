@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ReactNode } from "react";
 import ReactQueryProvider from "./components/QueryProvider";
 
 export const metadata: Metadata = {
@@ -7,7 +6,7 @@ export const metadata: Metadata = {
   description: "Software Engineering Portfolio",
 };
 export default function PokemonLayout(
-  { children }: { children: ReactNode },
+  { children }: { children: JSX.Element },
 ) {
   return (
     <main

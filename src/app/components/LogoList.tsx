@@ -64,6 +64,10 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/git.svg",
       title: "Git",
     },
+    {
+      imgUrl: "/static/images/flutter.svg",
+      title: "Flutter",
+    },
   ],
 ];
 export default function LogoList(): JSX.Element {
@@ -99,7 +103,7 @@ export default function LogoList(): JSX.Element {
       </div>
       <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
         {itemData[4].map((item) => (
-          <div key={item.title} className="col-span-4">
+          <div key={item.title} className="col-span-3">
             <LogoBlock key={item.title} item={item} />
           </div>
         ))}

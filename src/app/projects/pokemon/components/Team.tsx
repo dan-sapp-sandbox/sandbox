@@ -1,6 +1,4 @@
 "use client";
-
-import { ReactNode } from "react";
 import PokemonCard from "./PokemonCard";
 import { iPokemon } from "../api/types";
 
@@ -8,8 +6,8 @@ interface TeamProps {
   teamData: iPokemon[] | [];
   updateTeam: (newTeam: iPokemon[]) => void;
 }
-export default function Team({ teamData, updateTeam }: TeamProps): ReactNode {
-  let emptySlots: ReactNode[] = [];
+export default function Team({ teamData, updateTeam }: TeamProps): JSX.Element {
+  let emptySlots: JSX.Element[] = [];
   for (let i = 0; i < 6 - teamData.length; i++) {
     emptySlots = emptySlots.concat(
       <PokemonCard

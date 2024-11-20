@@ -9,6 +9,7 @@ export interface iCard {
   btns: iBtn[];
   title: string;
   description: string;
+  logos: string[];
   screenshot: {
     imageUrl: string;
     linkUrl: string;
@@ -16,16 +17,29 @@ export interface iCard {
 }
 
 export const StyledCard = (
-  { btns, title, description, screenshot }: iCard,
+  { btns, title, description, screenshot, logos }: iCard,
 ): JSX.Element => {
   return (
     <div className="col-span-12 rounded bg-slate-300 my-8 p-6 z-10 relative">
       <div className="grid-cols-12 grid justify-between">
         <div className="col-span-12 md:col-span-7 grid grid-cols-12">
           <div className="col-span-12 mb-2">
-            <div className="font-bold text-xl sm:text-2xl lg:text-4xl">{title}</div>
-            <div className="text-md md:text-xl italic mt-2">
+            <div className="font-bold text-xl sm:text-2xl lg:text-4xl">
+              {title}
+            </div>
+            <div className="text-md md:text-xl italic my-2">
               {description}
+            </div>
+            <div className="">
+              {logos.map((logo) => (
+                /* eslint-disable-next-line */
+                <img
+                  key={logo}
+                  alt={logo}
+                  className="h-8 w-8 mr-2 inline"
+                  src={logo}
+                />
+              ))}
             </div>
           </div>
           <div className="col-span-12 grid-cols-12 hidden md:grid gap-4">

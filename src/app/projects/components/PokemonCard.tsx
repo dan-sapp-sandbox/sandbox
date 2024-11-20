@@ -7,6 +7,7 @@ const PokemonData: iCard = {
     imageUrl: "/static/images/pokemon-screen-shot.png",
     linkUrl: "/projects/pokemon",
   },
+  logos: ["/static/images/react.svg", "/static/images/next-js.svg"],
   btns: [
     {
       text: "App Code",

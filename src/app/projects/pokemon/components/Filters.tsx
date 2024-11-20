@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { pokemonMap, typeColorMap } from "./utils";
 
 interface iProps {
@@ -8,7 +7,7 @@ interface iProps {
 
 export default function Filters(
   { filterTypes, updateFilterTypes }: iProps,
-): ReactNode {
+): JSX.Element {
   function clickHandler(type: string): void {
     let updatedFilters: string[];
 

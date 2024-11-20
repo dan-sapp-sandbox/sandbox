@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { iPokemon } from "../api/types";
 import { Radar } from "@/components/radar";
 import { pokemonMap, typeColorMap } from "./utils";
@@ -23,9 +22,7 @@ export type Data = DataItem<Variable>;
 interface iProps {
   team: iPokemon[] | [];
 }
-export default function Analysis(
-  { team }: iProps,
-): ReactNode {
+export default function Analysis({ team }: iProps): JSX.Element {
   const teamStats = team.reduce((acc, pokemon) => {
     const scaling = 20;
     return {
