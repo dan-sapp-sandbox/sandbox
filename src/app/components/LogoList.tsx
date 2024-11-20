@@ -12,8 +12,6 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/javascript.svg",
       title: "Javascript",
     },
-  ],
-  [
     {
       imgUrl: "/static/images/react.svg",
       title: "React",
@@ -26,8 +24,6 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/node.svg",
       title: "Node.js",
     },
-  ],
-  [
     {
       imgUrl: "/static/images/html.svg",
       title: "HTML",
@@ -40,22 +36,10 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/tailwind.svg",
       title: "Tailwind",
     },
-  ],
-  [
-    {
-      imgUrl: "/static/images/python.svg",
-      title: "Python",
-    },
-    {
-      imgUrl: "/static/images/golang.svg",
-      title: "Go",
-    },
     {
       imgUrl: "/static/images/postgresql.svg",
       title: "PostgreSQL",
     },
-  ],
-  [
     {
       imgUrl: "/static/images/mongodb.svg",
       title: "MongoDB",
@@ -68,61 +52,47 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/flutter.svg",
       title: "Flutter",
     },
+    {
+      imgUrl: "/static/images/python.svg",
+      title: "Python",
+    },
+    {
+      imgUrl: "/static/images/pandas.svg",
+      title: "Pandas",
+    },
+    {
+      imgUrl: "/static/images/numpy.svg",
+      title: "Numpy",
+    },
+    {
+      imgUrl: "/static/images/matplotlib.svg",
+      title: "Matplotlib",
+    },
+    {
+      imgUrl: "/static/images/golang.svg",
+      title: "Go",
+    },
   ],
 ];
 export default function LogoList(): JSX.Element {
   return (
     <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-4 md:gap-8 justify-center justify-items-center">
-      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
-        {itemData[0].map((item) => (
-          <div key={item.title} className="col-span-6">
-            <LogoBlock item={item} />
-          </div>
-        ))}
-      </div>
-      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
-        {itemData[1].map((item) => (
-          <div key={item.title} className="col-span-4">
-            <LogoBlock key={item.title} item={item} />
-          </div>
-        ))}
-      </div>
-      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
-        {itemData[2].map((item) => (
-          <div key={item.title} className="col-span-3">
-            <LogoBlock key={item.title} item={item} />
-          </div>
-        ))}
-      </div>
-      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
-        {itemData[3].map((item) => (
-          <div key={item.title} className="col-span-3">
-            <LogoBlock key={item.title} item={item} />
-          </div>
-        ))}
-      </div>
-      <div className="col-span-12 flex grid-cols-12 gap-4 md:gap-8 justify-items-center justify-around">
-        {itemData[4].map((item) => (
-          <div key={item.title} className="col-span-3">
-            <LogoBlock key={item.title} item={item} />
-          </div>
-        ))}
-      </div>
+      {itemData[0].map((item) => <LogoBlock key={item.title} item={item} />)}
     </div>
   );
 }
 
 const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
   return (
-    <div className="rounded-2xl content-center text-center">
+    <div className="col-span-4 sm:col-span-3 md:col-span-2 lg:col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex justify-self-center h-12 sm:h-20 lg:h-20 w-14 sm:w-20 lg:w-20"
+        className="flex self-center h-10"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"
       />
-      <div className="text-zinc-200 mt-1 font-bold text-xs sm:text-xl">
+      <div className="text-zinc-200 mt-1 font-bold text-xs sm:text-md">
         {item.title}
       </div>
     </div>

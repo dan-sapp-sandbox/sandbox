@@ -27,7 +27,7 @@ export const StyledCard = (
             <div className="font-bold text-xl sm:text-2xl lg:text-4xl">
               {title}
             </div>
-            <div className="text-md md:text-xl italic my-2">
+            <div className="text-md md:text-xl italic mb-2">
               {description}
             </div>
             <div className="flex align-middle">
@@ -36,7 +36,7 @@ export const StyledCard = (
                 <img
                   key={logo}
                   alt={logo}
-                  className="h-6 w-6 mr-2 inline"
+                  className="h-6 w-6 my-1 mr-2 inline"
                   src={logo}
                 />
               ))}

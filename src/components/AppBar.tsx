@@ -47,7 +47,7 @@ export const pages = [
       <img
         alt="linkedin"
         className="h-10 w-10"
-        src="/static/images/linkedin-icon-2.svg"
+        src="/static/images/linkedin.svg"
       />
     ),
   },

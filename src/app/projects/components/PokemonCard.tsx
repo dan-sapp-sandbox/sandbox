@@ -2,7 +2,7 @@ import { iCard, StyledCard } from "./components";
 
 const PokemonData: iCard = {
   title: "Pokemon Team Builder",
-  description: "Build the best team or see how your favorites compare!",
+  description: "Build the best team or see how your favorites compare.",
   screenshot: {
     imageUrl: "/static/images/pokemon-screen-shot.png",
     linkUrl: "/projects/pokemon",
@@ -13,6 +13,7 @@ const PokemonData: iCard = {
     "/static/images/next.svg",
     "/static/images/tailwind.svg",
     "/static/images/node.svg",
+    "/static/images/postgresql.svg",
   ],
   btns: [
     {
