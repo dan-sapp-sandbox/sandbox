@@ -35,7 +35,7 @@ export const pages = [
       <img
         alt="github"
         className="h-10 w-10"
-        src="/static/images/github-icon-2.svg"
+        src="/static/images/github.svg"
       />
     ),
   },

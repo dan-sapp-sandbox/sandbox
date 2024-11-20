@@ -30,13 +30,13 @@ export const StyledCard = (
             <div className="text-md md:text-xl italic my-2">
               {description}
             </div>
-            <div className="">
+            <div className="flex align-middle">
               {logos.map((logo) => (
                 /* eslint-disable-next-line */
                 <img
                   key={logo}
                   alt={logo}
-                  className="h-8 w-8 mr-2 inline"
+                  className="h-6 w-6 mr-2 inline"
                   src={logo}
                 />
               ))}
@@ -79,9 +79,15 @@ const StyledButton = ({ text, url }: iBtn): JSX.Element => {
   return (
     <button
       key={text}
-      className="h-12 md:h-16 self-end col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 rounded"
+      className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 rounded"
     >
-      <Link href={url} className="text-xl lg:text-2xl font-bold">
+      {/* eslint-disable-next-line */}
+      <img
+        alt="github"
+        className="h-6 w-6 inline-block mr-2"
+        src="/static/images/github.svg"
+      />
+      <Link href={url} className="text-lg lg:text-xl font-bold">
         {text}
       </Link>
     </button>

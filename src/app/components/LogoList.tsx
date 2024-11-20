@@ -19,11 +19,11 @@ const itemData: iLogo[][] = [
       title: "React",
     },
     {
-      imgUrl: "/static/images/next-js.svg",
+      imgUrl: "/static/images/next.svg",
       title: "Next.js",
     },
     {
-      imgUrl: "/static/images/nodejs.svg",
+      imgUrl: "/static/images/node.svg",
       title: "Node.js",
     },
   ],
