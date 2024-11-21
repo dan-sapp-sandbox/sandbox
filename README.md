@@ -13,4 +13,3 @@ npm run dev
 
 - creates server at localhost:3000
 
-## Contributing
