@@ -37,20 +37,12 @@ const itemData: iLogo[][] = [
       title: "Tailwind",
     },
     {
-      imgUrl: "/static/images/postgresql.svg",
-      title: "PostgreSQL",
-    },
-    {
-      imgUrl: "/static/images/mongodb.svg",
-      title: "MongoDB",
-    },
-    {
-      imgUrl: "/static/images/git.svg",
-      title: "Git",
-    },
-    {
       imgUrl: "/static/images/flutter.svg",
       title: "Flutter",
+    },
+    {
+      imgUrl: "/static/images/golang.svg",
+      title: "Go",
     },
     {
       imgUrl: "/static/images/python.svg",
@@ -69,8 +61,20 @@ const itemData: iLogo[][] = [
       title: "Matplotlib",
     },
     {
-      imgUrl: "/static/images/golang.svg",
-      title: "Go",
+      imgUrl: "/static/images/postgresql.svg",
+      title: "PostgreSQL",
+    },
+    {
+      imgUrl: "/static/images/sqlite.svg",
+      title: "SQLite",
+    },
+    {
+      imgUrl: "/static/images/mongodb.svg",
+      title: "MongoDB",
+    },
+    {
+      imgUrl: "/static/images/git.svg",
+      title: "Git",
     },
   ],
 ];
@@ -84,10 +88,10 @@ export default function LogoList(): JSX.Element {
 
 const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
   return (
-    <div className="col-span-4 sm:col-span-3 md:col-span-2 lg:col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
+    <div className="col-span-3 sm:col-span-3 md:col-span-2 lg:col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex self-center h-10"
+        className="flex self-center h-8 md:h-14"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"

@@ -7,17 +7,20 @@ const BastionData: iCard = {
     imageUrl: "/static/images/bastion-screenshot.png",
     linkUrl: "https://lights-iota.vercel.app",
   },
-  logos: ["/static/images/flutter.svg"],
+  logos: [
+    "/static/images/flutter.svg",
+    "/static/images/golang.svg",
+    "/static/images/sqlite.svg",
+  ],
   btns: [
     {
       text: "App Code",
-      url:
-        "https://github.com/dan-sapp-sandbox/Bastion",
+      url: "https://github.com/dan-sapp-sandbox/Bastion",
     },
-    // {
-    //   text: "Server Code",
-    //   url: "https://github.com/dan-sapp-sandbox/node_server",
-    // },
+    {
+      text: "Server Code",
+      url: "https://github.com/dan-sapp-sandbox/Bastion_server",
+    },
   ],
 };
 

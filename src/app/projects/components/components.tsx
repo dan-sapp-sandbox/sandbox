@@ -30,13 +30,13 @@ export const StyledCard = (
             <div className="text-md md:text-xl italic mb-2 text-zinc-200">
               {description}
             </div>
-            <div className="flex align-middle flex-wrap">
+            <div className="flex align-middle flex-wrap gap-3 my-2">
               {logos.map((logo) => (
                 /* eslint-disable-next-line */
                 <img
                   key={logo}
                   alt={logo}
-                  className="h-6 w-6 my-1 mr-2 inline"
+                  className="h-6 inline"
                   src={logo}
                 />
               ))}
