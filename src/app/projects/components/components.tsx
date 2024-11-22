@@ -52,8 +52,8 @@ export const StyledCard = (
         >
           {/* eslint-disable-next-line */}
           <img
-            alt="pokemon-screen-shot"
-            className="max-h-80 mb-4 md:mb-0 border-zinc-300 border-2 rounded-md hover:border-blue-400"
+            alt="project-screen-shot"
+            className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
             src={screenshot.imageUrl}
           />
         </Link>
