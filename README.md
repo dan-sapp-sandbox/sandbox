@@ -14,7 +14,7 @@ npm run dev
 - creates server at localhost:3000
 
 ### Bastion
-![bastion-screenshot](https://github.com/user-attachments/assets/a513eb08-7d9e-4649-a41a-0b00517760b0)
+<img src="https://github.com/user-attachments/assets/a513eb08-7d9e-4649-a41a-0b00517760b0" alt="bastion-screenshot" height="200">
 
 ### Horseshoes and Hand Grenades
 ![trivia-screenshot](https://github.com/user-attachments/assets/fc8f6a19-23ce-4fdf-8f79-ff82737e45c0)
