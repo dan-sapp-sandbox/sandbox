@@ -17,7 +17,7 @@ npm run dev
 <img src="https://github.com/user-attachments/assets/a513eb08-7d9e-4649-a41a-0b00517760b0" alt="bastion-screenshot" height="200">
 
 ### Horseshoes and Hand Grenades
-![trivia-screenshot](https://github.com/user-attachments/assets/fc8f6a19-23ce-4fdf-8f79-ff82737e45c0)
+<img src="https://github.com/user-attachments/assets/fc8f6a19-23ce-4fdf-8f79-ff82737e45c0" alt="trivia-screenshot" height="200">
 
 ### Pokemon Team Builder
-![pokemon-screenshot](https://github.com/user-attachments/assets/d679338d-8413-4724-a66c-44d26e57e35f)
+<img src="[https://github.com/user-attachments/assets/a513eb08-7d9e-4649-a41a-0b00517760b0](https://github.com/user-attachments/assets/d679338d-8413-4724-a66c-44d26e57e35f)" alt="pokemon-screenshot" height="200">
