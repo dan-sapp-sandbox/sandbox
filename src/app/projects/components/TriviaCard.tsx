@@ -29,6 +29,10 @@ const TriviaData: iCard = {
       text: "Server Code",
       url: "https://github.com/dan-sapp-sandbox/node_server",
     },
+    // {
+    //   text: "Quirk Code",
+    //   url: "https://github.com/dan-sapp-sandbox/quirk",
+    // },
   ],
 };
 
