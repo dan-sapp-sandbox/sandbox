@@ -33,7 +33,7 @@ export default function PokemonPage(
         updateFilterTypes={updateFilterTypes}
       />
       <div className="gap-1 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-5 
-        md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-11 3xl:grid-cols-12">
+        md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-12">
         {data?.filter((x: iPokemon) => {
           if (!filterTypes.length) return true;
           const types = x.types.map((type) => type);

@@ -54,7 +54,7 @@ export default function Analysis({ team }: iProps): JSX.Element {
     return newAcc;
   }, [] as string[]);
 
-  let weaknessMap = new Map<string, number>();
+  const weaknessMap = new Map<string, number>();
   teamTypes.forEach((type) => {
     const typeWeaknesses = pokemonMap[type].weaknesses;
     typeWeaknesses.forEach((weakness) => {
@@ -66,9 +66,10 @@ export default function Analysis({ team }: iProps): JSX.Element {
     });
   });
 
-  weaknessMap = new Map(
-    Array.from(weaknessMap).filter((x) => x[1] > 1).sort((a, b) => b[1] - a[1]),
-  );
+  const weaknessArray = Array.from(weaknessMap)
+    .filter((x) => x[1] > 1)
+    .sort((a, b) => b[1] - a[1])
+    .map((x) => x[0]);
 
   const coverageGaps = Object.keys(pokemonMap).filter((type) =>
     !teamTypes.some((x) => x === type)
@@ -100,57 +101,52 @@ export default function Analysis({ team }: iProps): JSX.Element {
           ]}
         />
       </div>
-      <div className="col-span-12 md:col-span-7 lg:col-span-9 md:pl-8">
-        <div className="flex flex-wrap my-3 grid-cols-12 items-center gap-1">
-          <div className="flex xs:text-xs xl:text-xl font-bold col-span-12 text-zinc-200">
-            Pokemon Team Types:
-          </div>
-          {teamTypes.map((type, index) => {
-            const Icon = pokemonMap[type].icon;
-            return (
-              <div
-                key={index}
-                className={`col-span-1 p-1 rounded-lg ${typeColorMap[type]}`}
-              >
-                <Icon />
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex flex-wrap my-3 items-center gap-1">
-          <div className="flex xs:text-xs xl:text-xl font-bold text-center justify-center text-zinc-200">
-            Common Vulnerablilities:
-          </div>
-          {Array.from(weaknessMap.entries()).map((type, index) => {
-            const Icon = pokemonMap[type[0]].icon;
-            return (
-              <div
-                key={index}
-                className={`p-1 rounded-lg ${typeColorMap[type[0]]}`}
-              >
-                <Icon />
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex flex-wrap my-1 grid-cols-12 items-center gap-1">
-          <div className="flex xs:text-[8px] xl:text-xl font-bold col-span-12 text-zinc-200">
-            Offensive Coverage Gaps:
-          </div>
-          {coverageGaps.map((type, index) => {
-            const Icon = pokemonMap[type].icon;
-            if (!team.length) return;
-            return (
-              <div
-                key={index}
-                className={`p-1 rounded-lg ${typeColorMap[type]}`}
-              >
-                <Icon />
-              </div>
-            );
-          })}
-        </div>
+      <div className="col-span-12 md:pl-8">
+        <Section
+          title="Pokemon Team Types:"
+          types={teamTypes}
+          team={team}
+        />
+        <Section
+          title="Common Vulnerablilities:"
+          types={weaknessArray}
+          team={team}
+        />
+        <Section
+          title="Offensive Coverage Gaps:"
+          types={coverageGaps}
+          team={team}
+        />
       </div>
     </div>
   );
 }
+
+interface iSection {
+  title: string;
+  types: string[];
+  team: iPokemon[];
+}
+const Section = ({ title, types, team }: iSection): JSX.Element => {
+  return (
+    <div className="grid flex-wrap my-2 grid-cols-9 items-center gap-1">
+      <div className="flex xs:text-sm xl:text-xl font-bold col-span-9 text-zinc-200">
+        {title}
+      </div>
+      {types.map((type, index) => {
+        const Icon = pokemonMap[type].icon;
+        if (!team.length) return;
+        return (
+          <div
+            key={index}
+            className={`flex justify-center align-center col-span-1 p-1 rounded-lg ${
+              typeColorMap[type]
+            }`}
+          >
+            <Icon />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
