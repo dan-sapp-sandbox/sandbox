@@ -14,10 +14,10 @@ const TriviaData: iCard = {
     "/static/images/tailwind.svg",
     "/static/images/node.svg",
     "/static/images/postgresql.svg",
-    "/static/images/python.svg",
-    "/static/images/pandas.svg",
-    "/static/images/numpy.svg",
-    "/static/images/matplotlib.svg",
+    // "/static/images/python.svg",
+    // "/static/images/pandas.svg",
+    // "/static/images/numpy.svg",
+    // "/static/images/matplotlib.svg",
   ],
   btns: [
     {

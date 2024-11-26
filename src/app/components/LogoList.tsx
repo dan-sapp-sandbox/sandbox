@@ -48,18 +48,18 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/python.svg",
       title: "Python",
     },
-    {
-      imgUrl: "/static/images/pandas.svg",
-      title: "Pandas",
-    },
-    {
-      imgUrl: "/static/images/numpy.svg",
-      title: "Numpy",
-    },
-    {
-      imgUrl: "/static/images/matplotlib.svg",
-      title: "Matplotlib",
-    },
+    // {
+    //   imgUrl: "/static/images/pandas.svg",
+    //   title: "Pandas",
+    // },
+    // {
+    //   imgUrl: "/static/images/numpy.svg",
+    //   title: "Numpy",
+    // },
+    // {
+    //   imgUrl: "/static/images/matplotlib.svg",
+    //   title: "Matplotlib",
+    // },
     {
       imgUrl: "/static/images/postgresql.svg",
       title: "PostgreSQL",
