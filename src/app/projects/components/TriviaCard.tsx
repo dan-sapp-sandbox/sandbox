@@ -5,7 +5,7 @@ const TriviaData: iCard = {
   description: "The game where being close enough counts.",
   screenshot: {
     imageUrl: "/static/images/trivia-screenshot.png",
-    linkUrl: "/projects/trivia",
+    linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
   },
   logos: [
     "/static/images/typescript.svg",
@@ -23,7 +23,7 @@ const TriviaData: iCard = {
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/trivia",
+        "https://github.com/dan-sapp-sandbox/trivia",
     },
     {
       text: "Server Code",
