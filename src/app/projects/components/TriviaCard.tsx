@@ -8,13 +8,13 @@ const TriviaData: iCard = {
     linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
   },
   logos: [
-    "/static/images/typescript.svg",
-    "/static/images/react.svg",
-    "/static/images/next.svg",
-    "/static/images/tailwind.svg",
-    "/static/images/node.svg",
-    "/static/images/postgresql.svg",
-    // "/static/images/python.svg",
+    // "/static/images/typescript.svg",
+    // "/static/images/react.svg",
+    // "/static/images/next.svg",
+    // "/static/images/tailwind.svg",
+    // "/static/images/node.svg",
+    // "/static/images/postgresql.svg",
+    "/static/images/python.svg",
     // "/static/images/pandas.svg",
     // "/static/images/numpy.svg",
     // "/static/images/matplotlib.svg",
@@ -25,10 +25,10 @@ const TriviaData: iCard = {
       url:
         "https://github.com/dan-sapp-sandbox/trivia",
     },
-    {
-      text: "Server Code",
-      url: "https://github.com/dan-sapp-sandbox/node_server",
-    },
+    // {
+    //   text: "Server Code",
+    //   url: "https://github.com/dan-sapp-sandbox/node_server",
+    // },
     // {
     //   text: "Quirk Code",
     //   url: "https://github.com/dan-sapp-sandbox/quirk",
