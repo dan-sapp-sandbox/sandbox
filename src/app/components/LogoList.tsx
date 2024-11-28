@@ -52,10 +52,10 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/django.svg",
       title: "Django",
     },
-    // {
-    //   imgUrl: "/static/images/pandas.svg",
-    //   title: "Pandas",
-    // },
+    {
+      imgUrl: "/static/images/pandas.svg",
+      title: "Pandas",
+    },
     // {
     //   imgUrl: "/static/images/numpy.svg",
     //   title: "Numpy",

@@ -10,7 +10,7 @@ const TriviaData: iCard = {
   logos: [
     "/static/images/python.svg",
     "/static/images/django.svg",
-    // "/static/images/pandas.svg",
+    "/static/images/pandas.svg",
     // "/static/images/numpy.svg",
     // "/static/images/matplotlib.svg",
   ],
