@@ -48,6 +48,10 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/python.svg",
       title: "Python",
     },
+    {
+      imgUrl: "/static/images/django.svg",
+      title: "Django",
+    },
     // {
     //   imgUrl: "/static/images/pandas.svg",
     //   title: "Pandas",
