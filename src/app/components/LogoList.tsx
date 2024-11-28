@@ -72,10 +72,10 @@ const itemData: iLogo[][] = [
       imgUrl: "/static/images/sqlite.svg",
       title: "SQLite",
     },
-    {
-      imgUrl: "/static/images/mongodb.svg",
-      title: "MongoDB",
-    },
+    // {
+    //   imgUrl: "/static/images/mongodb.svg",
+    //   title: "MongoDB",
+    // },
     {
       imgUrl: "/static/images/git.svg",
       title: "Git",
