@@ -1,8 +1,8 @@
 import { iCard, StyledCard } from "./components";
 
 const TriviaData: iCard = {
-  title: "Horseshoes and Hand Grenades",
-  description: "The game where being close enough counts.",
+  title: "Quirk",
+  description: "Test your knowledge.",
   screenshot: {
     imageUrl: "/static/images/trivia-screenshot.png",
     linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
