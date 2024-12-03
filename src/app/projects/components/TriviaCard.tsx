@@ -11,6 +11,7 @@ const TriviaData: iCard = {
     "/static/images/python.svg",
     "/static/images/django.svg",
     "/static/images/pandas.svg",
+    "/static/images/sqlite.svg",
     // "/static/images/numpy.svg",
     // "/static/images/matplotlib.svg",
   ],
