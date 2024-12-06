@@ -2,6 +2,7 @@ import Loading from "../loading";
 import PokemonCard from "./components/PokemonCard";
 import TriviaCard from "./components/TriviaCard";
 import BastionCard from "./components/BastionCard";
+import BernoulliCard from "./components/BernoulliCard";
 import { Suspense } from "react";
 
 export default async function ProjectsPage() {
@@ -11,6 +12,7 @@ export default async function ProjectsPage() {
         <BastionCard />
         <TriviaCard />
         <PokemonCard />
+        <BernoulliCard />
       </Suspense>
     </div>
   );
