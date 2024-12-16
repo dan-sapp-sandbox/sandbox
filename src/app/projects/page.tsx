@@ -9,10 +9,10 @@ export default async function ProjectsPage() {
   return (
     <div className="background mx-auto max-w-6xl px-2 md:px-6 pb-16 md:pb-0">
       <Suspense fallback={<Loading />}>
+        <BernoulliCard />
         <BastionCard />
         <TriviaCard />
         <PokemonCard />
-        <BernoulliCard />
       </Suspense>
     </div>
   );
