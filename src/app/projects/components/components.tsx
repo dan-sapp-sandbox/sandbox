@@ -12,7 +12,7 @@ export interface iCard {
   logos: string[];
   screenshot: {
     imageUrl: string;
-    linkUrl: string;
+    linkUrl?: string;
   };
 }
 
@@ -46,17 +46,30 @@ export const StyledCard = (
             <ButtonRow btns={btns} />
           </div>
         </div>
-        <Link
-          className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
-          href={screenshot.linkUrl}
-        >
-          {/* eslint-disable-next-line */}
-          <img
-            alt="project-screen-shot"
-            className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
-            src={screenshot.imageUrl}
-          />
-        </Link>
+        {screenshot.linkUrl
+          ? (
+            <Link
+              className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
+              href={screenshot.linkUrl}
+            >
+              {/* eslint-disable-next-line */}
+              <img
+                alt="project-screen-shot"
+                className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
+                src={screenshot.imageUrl}
+              />
+            </Link>
+          )
+          : (
+            <div className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end">
+              {/* eslint-disable-next-line */}
+              <img
+                alt="project-screen-shot"
+                className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md"
+                src={screenshot.imageUrl}
+              />
+            </div>
+          )}
       </div>
       <div className="grid-cols-12 grid md:hidden gap-2">
         <ButtonRow btns={btns} />
