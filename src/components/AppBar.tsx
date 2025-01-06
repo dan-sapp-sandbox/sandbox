@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Link from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
 import ConstructionIcon from "@mui/icons-material/Construction";
+import ArticleIcon from '@mui/icons-material/Article';
 
 export const pages = [
   {
@@ -22,7 +23,7 @@ export const pages = [
     url:
       "https://docs.google.com/document/d/e/2PACX-1vTxM5BOxqBemhI7wWHlvLhdaQ13Qbuw0GONkrww9KVQ3HAsuBHEwrHJuipAKfF5Tg/pub",
     image: (
-      <ConstructionIcon
+      <ArticleIcon
         sx={{ height: "2.5rem", width: "2.5rem" }}
         className="text-zinc-200"
       />
@@ -78,7 +79,7 @@ function ResponsiveAppBar() {
                 <Link
                   className="text-zinc-200 text-3xl hover:text-zinc-100"
                   href={page.url}
-                  target="_blank"
+                  target={page.title === "Home" ? "" : "_blank"}
                 >
                   {page.title}
                 </Link>

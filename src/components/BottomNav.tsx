@@ -22,6 +22,8 @@ export default function SimpleBottomNavigation() {
             sx={{
               background: "#1e3a8a",
               color: "#e4e4e7",
+              padding: 0,
+              minWidth: "70px",
             }}
             label={page.title}
             icon={page.image}
