@@ -18,6 +18,17 @@ export const pages = [
     ),
   },
   {
+    title: "Resume",
+    url:
+      "https://docs.google.com/document/d/e/2PACX-1vTxM5BOxqBemhI7wWHlvLhdaQ13Qbuw0GONkrww9KVQ3HAsuBHEwrHJuipAKfF5Tg/pub",
+    image: (
+      <ConstructionIcon
+        sx={{ height: "2.5rem", width: "2.5rem" }}
+        className="text-zinc-200"
+      />
+    ),
+  },
+  {
     title: "Projects",
     url: "/projects",
     image: (
@@ -67,6 +78,7 @@ function ResponsiveAppBar() {
                 <Link
                   className="text-zinc-200 text-3xl hover:text-zinc-100"
                   href={page.url}
+                  target="_blank"
                 >
                   {page.title}
                 </Link>
