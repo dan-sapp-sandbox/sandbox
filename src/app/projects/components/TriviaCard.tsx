@@ -5,7 +5,7 @@ const TriviaData: iCard = {
   description: "Test your knowledge.",
   screenshot: {
     imageUrl: "/static/images/trivia-screenshot.png",
-    // linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
+    linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
   },
   logos: [
     "/static/images/python.svg",
@@ -18,8 +18,7 @@ const TriviaData: iCard = {
   btns: [
     {
       text: "App Code",
-      url:
-        "https://github.com/dan-sapp-sandbox/trivia",
+      url: "https://github.com/dan-sapp-sandbox/trivia",
     },
     // {
     //   text: "Server Code",
