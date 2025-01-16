@@ -2,100 +2,120 @@ interface iLogo {
   title: string;
   imgUrl: string;
 }
-const itemData: iLogo[][] = [
-  [
-    {
-      imgUrl: "/static/images/typescript.svg",
-      title: "Typescript",
-    },
-    {
-      imgUrl: "/static/images/javascript.svg",
-      title: "Javascript",
-    },
-    {
-      imgUrl: "/static/images/react.svg",
-      title: "React",
-    },
-    {
-      imgUrl: "/static/images/next.svg",
-      title: "Next.js",
-    },
-    {
-      imgUrl: "/static/images/node.svg",
-      title: "Node.js",
-    },
-    {
-      imgUrl: "/static/images/html.svg",
-      title: "HTML",
-    },
-    {
-      imgUrl: "/static/images/css3.svg",
-      title: "CSS",
-    },
-    {
-      imgUrl: "/static/images/tailwind.svg",
-      title: "Tailwind",
-    },
-    {
-      imgUrl: "/static/images/flutter.svg",
-      title: "Flutter",
-    },
-    {
-      imgUrl: "/static/images/golang.svg",
-      title: "Go",
-    },
-    {
-      imgUrl: "/static/images/python.svg",
-      title: "Python",
-    },
-    {
-      imgUrl: "/static/images/django.svg",
-      title: "Django",
-    },
-    {
-      imgUrl: "/static/images/pandas.svg",
-      title: "Pandas",
-    },
-    {
-      imgUrl: "/static/images/numpy.svg",
-      title: "Numpy",
-    },
-    // {
-    //   imgUrl: "/static/images/matplotlib.svg",
-    //   title: "Matplotlib",
-    // },
-    {
-      imgUrl: "/static/images/postgresql.svg",
-      title: "PostgreSQL",
-    },
-    {
-      imgUrl: "/static/images/sqlite.svg",
-      title: "SQLite",
-    },
-    // {
-    //   imgUrl: "/static/images/mongodb.svg",
-    //   title: "MongoDB",
-    // },
-    {
-      imgUrl: "/static/images/git.svg",
-      title: "Git",
-    },
-  ],
+const Row1Logos: iLogo[] = [
+  {
+    imgUrl: "/static/images/typescript.svg",
+    title: "Typescript",
+  },
+  {
+    imgUrl: "/static/images/react.svg",
+    title: "React.js",
+  },
+  {
+    imgUrl: "/static/images/next.svg",
+    title: "Next.js",
+  },
+  {
+    imgUrl: "/static/images/tailwind.svg",
+    title: "Tailwind",
+  },
+];
+const Row2Logos: iLogo[] = [
+  {
+    imgUrl: "/static/images/node.svg",
+    title: "Node.js",
+  },
+  {
+    imgUrl: "/static/images/postgresql.svg",
+    title: "PostgreSQL",
+  },
+  {
+    imgUrl: "/static/images/sqlite.svg",
+    title: "SQLite",
+  },
+  {
+    imgUrl: "/static/images/mongodb.svg",
+    title: "MongoDB",
+  },
+  {
+    imgUrl: "/static/images/git.svg",
+    title: "Git",
+  },
+];
+const Row3Logos: iLogo[] = [
+  {
+    imgUrl: "/static/images/python.svg",
+    title: "Python",
+  },
+  {
+    imgUrl: "/static/images/django.svg",
+    title: "Django",
+  },
+  {
+    imgUrl: "/static/images/pandas.svg",
+    title: "Pandas",
+  },
+  {
+    imgUrl: "/static/images/numpy.svg",
+    title: "Numpy",
+  },
+  {
+    imgUrl: "/static/images/matplotlib.svg",
+    title: "Matplotlib",
+  },
 ];
 export default function LogoList(): JSX.Element {
   return (
-    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-4 md:gap-8 justify-center justify-items-center">
-      {itemData[0].map((item) => <LogoBlock key={item.title} item={item} />)}
+    <div className="col-span-12 lg:col-span-6 mt-0 lg:mt-24 mb-16 md:mb-8">
+      <div className="text-zinc-300 italic text-xl md:text-3xl">
+        7 Years of E-commerce Experience
+      </div>
+      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+        From Startup to Enterprise
+      </div>
+      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+        Specializing in Front End React Stack
+      </div>
+      <div className="col-span-12 my-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+        {Row1Logos.map((item) => (
+          <LogoBlock
+            key={item.title}
+            item={item}
+          />
+        ))}
+      </div>
+      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+        Proficient in Full Stack Development
+      </div>
+      <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+        {Row2Logos.map((item) => (
+          <LogoBlock
+            key={item.title}
+            item={item}
+          />
+        ))}
+      </div>
+      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+        Learning data analysis
+      </div>
+      <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+        {Row3Logos.map((item) => (
+          <LogoBlock
+            key={item.title}
+            item={item}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
   return (
-    <div className="col-span-3 sm:col-span-3 md:col-span-2 lg:col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
+    <div className="col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex self-center h-8 md:h-14"
+        className="flex self-center h-10 sm:h-12"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"

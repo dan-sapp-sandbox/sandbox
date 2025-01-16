@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Link from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
 import ConstructionIcon from "@mui/icons-material/Construction";
-import ArticleIcon from '@mui/icons-material/Article';
+import ArticleIcon from "@mui/icons-material/Article";
 
 export const pages = [
   {
@@ -77,7 +77,7 @@ function ResponsiveAppBar() {
                 className="my-2 mx-8"
               >
                 <Link
-                  className="text-zinc-200 text-3xl hover:text-zinc-100"
+                  className="text-zinc-200 text-2xl lg:text-3xl hover:text-zinc-100"
                   href={page.url}
                   target={page.title === "Home" ? "" : "_blank"}
                 >
