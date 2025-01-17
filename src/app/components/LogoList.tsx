@@ -70,13 +70,13 @@ export default function LogoList(): JSX.Element {
       <div className="text-zinc-300 italic text-xl md:text-3xl">
         7 Years of E-commerce Experience
       </div>
-      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
         From Startup to Enterprise
       </div>
-      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
         Specializing in Front End React Stack
       </div>
-      <div className="col-span-12 my-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+      <div className="col-span-12 my-6 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
         {Row1Logos.map((item) => (
           <LogoBlock
             key={item.title}
@@ -84,7 +84,7 @@ export default function LogoList(): JSX.Element {
           />
         ))}
       </div>
-      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
         Proficient in Full Stack Development
       </div>
       <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
@@ -95,8 +95,8 @@ export default function LogoList(): JSX.Element {
           />
         ))}
       </div>
-      <div className="text-zinc-300 my-4 italic text-xl md:text-3xl">
-        Learning data analysis
+      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
+        Learning Data Analysis
       </div>
       <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
         {Row3Logos.map((item) => (
@@ -115,12 +115,12 @@ const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
     <div className="col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex self-center h-10 sm:h-12"
+        className="flex self-center h-8 sm:w-12"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"
       />
-      <div className="text-zinc-200 mt-1 font-bold text-xs sm:text-md">
+      <div className="text-zinc-200 mt-1 text-xs sm:text-lg">
         {item.title}
       </div>
     </div>
