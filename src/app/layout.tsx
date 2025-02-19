@@ -26,7 +26,8 @@ export default async function RootLayout({
         <div
           style={{
             height: "calc(100vh - 75px)",
-            overflow: "hidden",
+            overflowY: "scroll",
+            scrollbarWidth: "none",
           }}
         >
           {children}

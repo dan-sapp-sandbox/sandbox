@@ -66,7 +66,7 @@ const Row3Logos: iLogo[] = [
 ];
 export default function LogoList(): JSX.Element {
   return (
-    <div className="col-span-12 lg:col-span-6 mt-0 lg:mt-24 mb-16 md:mb-8">
+    <div className="col-span-12 lg:col-span-6 mt-0 lg:mt-24 mb-0">
       <div className="text-zinc-300 italic text-lg md:text-3xl">
         7 Years of E-commerce Experience
       </div>
