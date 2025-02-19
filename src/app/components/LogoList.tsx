@@ -115,7 +115,7 @@ const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
     <div className="col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex self-center h-6 sm:w-12"
+        className="flex self-center w-6 h-6 lg:w-12 lg:h-12"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"
