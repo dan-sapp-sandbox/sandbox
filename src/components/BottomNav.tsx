@@ -1,5 +1,4 @@
 "use client";
-import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { pages } from "./AppBar";
