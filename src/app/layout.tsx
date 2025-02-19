@@ -23,7 +23,12 @@ export default async function RootLayout({
         style={{ background: "#1f093d" }}
       >
         <AppBar />
-        <div style={{ height: "calc(100vh - 70px)", overflowY: 'scroll', scrollbarWidth: 'none' }}>
+        <div
+          style={{
+            height: "calc(100vh - 75px)",
+            overflow: "hidden",
+          }}
+        >
           {children}
         </div>
         <BottomNav />
