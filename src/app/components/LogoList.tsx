@@ -67,16 +67,16 @@ const Row3Logos: iLogo[] = [
 export default function LogoList(): JSX.Element {
   return (
     <div className="col-span-12 lg:col-span-6 mt-0 lg:mt-24 mb-16 md:mb-8">
-      <div className="text-zinc-300 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 italic text-lg md:text-3xl">
         7 Years of E-commerce Experience
       </div>
-      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-4 italic text-lg md:text-3xl">
         From Startup to Enterprise
       </div>
-      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-4 italic text-lg md:text-3xl">
         Specializing in Front End React Stack
       </div>
-      <div className="col-span-12 my-6 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+      <div className="col-span-12 my-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
         {Row1Logos.map((item) => (
           <LogoBlock
             key={item.title}
@@ -84,10 +84,10 @@ export default function LogoList(): JSX.Element {
           />
         ))}
       </div>
-      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-4 italic text-lg md:text-3xl">
         Proficient in Full Stack Development
       </div>
-      <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+      <div className="col-span-12 mt-2 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
         {Row2Logos.map((item) => (
           <LogoBlock
             key={item.title}
@@ -95,10 +95,10 @@ export default function LogoList(): JSX.Element {
           />
         ))}
       </div>
-      <div className="text-zinc-300 my-6 italic text-xl md:text-3xl">
+      <div className="text-zinc-300 my-4 italic text-lg md:text-3xl">
         Learning Data Analysis
       </div>
-      <div className="col-span-12 mt-4 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
+      <div className="col-span-12 mt-2 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
         {Row3Logos.map((item) => (
           <LogoBlock
             key={item.title}
@@ -115,7 +115,7 @@ const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
     <div className="col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
       {/* eslint-disable-next-line */}
       <img
-        className="flex self-center h-8 sm:w-12"
+        className="flex self-center h-6 sm:w-12"
         alt={item.title}
         src={item.imgUrl}
         loading="lazy"
