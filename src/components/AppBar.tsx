@@ -67,7 +67,7 @@ export const pages = [
 
 function ResponsiveAppBar() {
   return (
-    <div className="bg-blue-900 hidden sm:flex sticky top-0">
+    <div className="bg-blue-900 hidden md:flex sticky top-0">
       <Container>
         <Toolbar disableGutters>
           <Box className="flex justify-self-start self-center">
