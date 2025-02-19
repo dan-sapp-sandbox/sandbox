@@ -25,7 +25,7 @@ export default async function RootLayout({
         <AppBar />
         <div
           style={{
-            height: "calc(100vh - 75px)",
+            height: "calc(100vh - 85px)",
             overflowY: "scroll",
             scrollbarWidth: "none",
           }}

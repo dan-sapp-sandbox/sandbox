@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function SimpleBottomNavigation() {
   const router = useRouter();
   return (
-    <div className="fixed md:hidden bottom-0 left-0 right-0 z-10">
+    <div className="fixed sm:hidden bottom-0 left-0 right-0 z-10">
       <BottomNavigation
         sx={{ background: "#1e3a8a", height: "4.5rem" }}
         showLabels
