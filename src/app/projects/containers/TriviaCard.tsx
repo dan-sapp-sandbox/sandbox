@@ -1,4 +1,4 @@
-import { iCard, StyledCard } from "./components";
+import { iCard, StyledCard } from "../components/Card";
 
 const TriviaData: iCard = {
   title: "Quirk",
@@ -12,22 +12,17 @@ const TriviaData: iCard = {
     "/static/images/django.svg",
     "/static/images/pandas.svg",
     "/static/images/sqlite.svg",
-    // "/static/images/numpy.svg",
-    // "/static/images/matplotlib.svg",
   ],
   btns: [
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/trivia",
+      icon: "/static/images/github.svg",
     },
-    // {
-    //   text: "Server Code",
-    //   url: "https://github.com/dan-sapp-sandbox/node_server",
-    // },
-    // {
-    //   text: "Quirk Code",
-    //   url: "https://github.com/dan-sapp-sandbox/quirk",
-    // },
+    {
+      text: "Try It!",
+      url: "https://quirk-29e37e06cec9.herokuapp.com/",
+    },
   ],
 };
 

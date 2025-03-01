@@ -1,4 +1,4 @@
-import { iCard, StyledCard } from "./components";
+import { iCard, StyledCard } from "../components/Card";
 
 const BernoulliData: iCard = {
   title: "Bernoulli",
@@ -16,6 +16,11 @@ const BernoulliData: iCard = {
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/bernoulli",
+      icon: "/static/images/github.svg",
+    },
+    {
+      text: "Try It!",
+      url: "https://bernoulli-app-31816726101f.herokuapp.com/",
     },
   ],
 };

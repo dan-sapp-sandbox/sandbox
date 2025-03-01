@@ -2,7 +2,7 @@ interface iLogo {
   title: string;
   imgUrl: string;
 }
-const Row1Logos: iLogo[] = [
+const ReactStackLogos: iLogo[] = [
   {
     imgUrl: "/static/images/typescript.svg",
     title: "Typescript",
@@ -20,7 +20,7 @@ const Row1Logos: iLogo[] = [
     title: "Tailwind",
   },
 ];
-const Row2Logos: iLogo[] = [
+const FullStackLogos: iLogo[] = [
   {
     imgUrl: "/static/images/node.svg",
     title: "Node.js",
@@ -42,7 +42,7 @@ const Row2Logos: iLogo[] = [
     title: "Git",
   },
 ];
-const Row3Logos: iLogo[] = [
+const PythonLogos: iLogo[] = [
   {
     imgUrl: "/static/images/python.svg",
     title: "Python",
@@ -71,13 +71,10 @@ export default function LogoList(): JSX.Element {
         7 Years of E-commerce Experience
       </div>
       <div className="text-zinc-300 my-4 md:my-6 italic text-lg md:text-3xl">
-        From Startup to Enterprise
-      </div>
-      <div className="text-zinc-300 my-4 md:my-6 italic text-lg md:text-3xl">
         Specializing in Front End React Stack
       </div>
       <div className="col-span-12 my-4 md:my-6 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
-        {Row1Logos.map((item) => (
+        {ReactStackLogos.map((item) => (
           <LogoBlock
             key={item.title}
             item={item}
@@ -88,7 +85,7 @@ export default function LogoList(): JSX.Element {
         Proficient in Full Stack Development
       </div>
       <div className="col-span-12 mt-2 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
-        {Row2Logos.map((item) => (
+        {FullStackLogos.map((item) => (
           <LogoBlock
             key={item.title}
             item={item}
@@ -99,7 +96,7 @@ export default function LogoList(): JSX.Element {
         Learning Data Analysis
       </div>
       <div className="col-span-12 mt-2 lg:col-span-6 grid grid-cols-10 gap-4 md:gap-8 justify-center justify-items-center">
-        {Row3Logos.map((item) => (
+        {PythonLogos.map((item) => (
           <LogoBlock
             key={item.title}
             item={item}

@@ -1,4 +1,4 @@
-import { iCard, StyledCard } from "./components";
+import { iCard, StyledCard } from "../components/Card";
 
 const BastionData: iCard = {
   title: "Bastion",
@@ -16,10 +16,16 @@ const BastionData: iCard = {
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/Bastion",
+      icon: "/static/images/github.svg",
     },
     {
       text: "Server Code",
       url: "https://github.com/dan-sapp-sandbox/Bastion_server",
+      icon: "/static/images/github.svg",
+    },
+    {
+      text: "Try It!",
+      url: "https://lights-iota.vercel.app",
     },
   ],
 };

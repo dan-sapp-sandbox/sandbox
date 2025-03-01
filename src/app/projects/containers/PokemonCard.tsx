@@ -1,4 +1,4 @@
-import { iCard, StyledCard } from "./components";
+import { iCard, StyledCard } from "../components/Card";
 
 const PokemonData: iCard = {
   title: "Pokemon Team Builder",
@@ -20,10 +20,16 @@ const PokemonData: iCard = {
       text: "App Code",
       url:
         "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pokemon",
+      icon: "/static/images/github.svg",
     },
     {
       text: "Server Code",
       url: "https://github.com/dan-sapp-sandbox/node_server",
+      icon: "/static/images/github.svg",
+    },
+    {
+      text: "Try It!",
+      url: "/projects/pokemon",
     },
   ],
 };

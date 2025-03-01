@@ -3,6 +3,7 @@ import Link from "next/link";
 interface iBtn {
   text: string;
   url: string;
+  icon?: string;
 }
 
 export interface iCard {
@@ -20,7 +21,7 @@ export const StyledCard = (
   { btns, title, description, screenshot, logos }: iCard,
 ): JSX.Element => {
   return (
-    <div className="col-span-12 rounded bg-black my-8 p-6 z-10 relative">
+    <div className="col-span-12 rounded bg-black my-3 p-6 z-10 relative">
       <div className="grid-cols-12 grid justify-between">
         <div className="col-span-12 md:col-span-7 grid grid-cols-12">
           <div className="col-span-12 mb-2">
@@ -55,7 +56,7 @@ export const StyledCard = (
               {/* eslint-disable-next-line */}
               <img
                 alt="project-screen-shot"
-                className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
+                className="max-h-40 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
                 src={screenshot.imageUrl}
               />
             </Link>
@@ -65,7 +66,7 @@ export const StyledCard = (
               {/* eslint-disable-next-line */}
               <img
                 alt="project-screen-shot"
-                className="max-h-80 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md"
+                className="max-h-40 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md"
                 src={screenshot.imageUrl}
               />
             </div>
@@ -82,25 +83,32 @@ const ButtonRow = ({ btns }: { btns: iBtn[] }): JSX.Element => {
   return (
     <>
       {btns.map((btn) => (
-        <StyledButton key={btn.text} text={btn.text} url={btn.url} />
+        <StyledButton
+          key={btn.text}
+          text={btn.text}
+          url={btn.url}
+          icon={btn.icon}
+        />
       ))}
     </>
   );
 };
 
-const StyledButton = ({ text, url }: iBtn): JSX.Element => {
+const StyledButton = ({ text, url, icon }: iBtn): JSX.Element => {
   return (
     <button
       key={text}
-      className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-5 bg-blue-300 hover:bg-blue-200 rounded"
+      className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-4 bg-blue-300 hover:bg-blue-200 rounded"
     >
       {/* eslint-disable-next-line */}
-      <img
-        alt="github"
-        className="h-6 w-6 inline-block mr-2"
-        src="/static/images/github.svg"
-      />
-      <Link href={url} className="text-lg lg:text-xl font-bold">
+      {icon && (
+        <img
+          alt="github"
+          className="h-6 w-6 inline-block mr-2"
+          src={icon}
+        />
+      )}
+      <Link href={url} target="_blank" className="text-lg lg:text-xl font-bold">
         {text}
       </Link>
     </button>
