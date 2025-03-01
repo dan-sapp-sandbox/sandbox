@@ -18,10 +18,10 @@ export interface iCard {
 }
 
 export const StyledCard = (
-  { btns, title, description, screenshot, logos }: iCard,
+  { btns, title, description, screenshot }: iCard,
 ): JSX.Element => {
   return (
-    <div className="col-span-12 rounded bg-black my-3 p-6 z-10 relative">
+    <div className="col-span-12 rounded bg-black my-2 p-6 z-10 relative">
       <div className="grid-cols-12 grid justify-between">
         <div className="col-span-12 md:col-span-7 grid grid-cols-12">
           <div className="col-span-12 mb-2">
@@ -30,17 +30,6 @@ export const StyledCard = (
             </div>
             <div className="text-md md:text-xl italic mb-2 text-zinc-200">
               {description}
-            </div>
-            <div className="flex align-middle flex-wrap gap-3 my-2">
-              {logos.map((logo) => (
-                /* eslint-disable-next-line */
-                <img
-                  key={logo}
-                  alt={logo}
-                  className="h-6 inline"
-                  src={logo}
-                />
-              ))}
             </div>
           </div>
           <div className="col-span-12 grid-cols-12 hidden md:grid gap-4">
@@ -100,8 +89,8 @@ const StyledButton = ({ text, url, icon }: iBtn): JSX.Element => {
       key={text}
       className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-4 bg-blue-300 hover:bg-blue-200 rounded"
     >
-      {/* eslint-disable-next-line */}
       {icon && (
+        /* eslint-disable-next-line */
         <img
           alt="github"
           className="h-6 w-6 inline-block mr-2"
