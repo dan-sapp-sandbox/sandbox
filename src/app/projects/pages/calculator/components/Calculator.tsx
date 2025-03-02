@@ -1,46 +1,14 @@
 "use client";
-import { useState } from "react";
-import { buttonConfig, buttonConfigType, evaluate } from "../utils";
+import { buttonConfig, buttonConfigType } from "../utils";
+import { useCalculatorState } from "../hooks/useCalculatorState";
 
-function Calculator() {
-  const [total, setTotal] = useState<number>(0);
-  const [operators, setOperators] = useState<string[]>([]);
-  const [numbers, setNumbers] = useState<string[]>([]);
-  //TODO: decimal functionality
-  //TODO: undo functionality
-  //TODO: negative numbers functionality
-  //TODO: history functionality
+interface KeyPadBtnProps {
+  config: buttonConfigType;
+}
 
-  const handleClick = (config: buttonConfigType) => {
-    if (config.isClear) {
-      setTotal(0);
-      setNumbers([]);
-      setOperators([]);
-    } else if (config.isEquals) {
-      const result: number = evaluate(numbers, operators);
-      setTotal(result);
-      setNumbers([]);
-      setOperators([]);
-    } else if (config.isOperator) {
-      if (numbers.length !== operators.length) {
-        setOperators(operators.concat(config.display));
-      }
-    } else {
-      if (numbers.length === operators.length) {
-        setNumbers(numbers.concat(config.display));
-      } else {
-        const newNumbers = [...numbers];
-        const lastEntry = numbers[numbers.length - 1];
-        newNumbers[numbers.length - 1] = lastEntry + config.display;
-        setNumbers(newNumbers);
-      }
-    }
-  };
-
-  interface KeyPadBtnType {
-    config: buttonConfigType;
-  }
-  const KeyPadBtn = ({ config }: KeyPadBtnType): JSX.Element => {
+const Calculator = () => {
+  const { total, numbers, operators, handleClick } = useCalculatorState();
+  const KeyPadBtn = ({ config }: KeyPadBtnProps): JSX.Element => {
     return (
       <button
         className={`${
@@ -54,12 +22,16 @@ function Calculator() {
       </button>
     );
   };
+  //TODO: decimal functionality
+  //TODO: undo functionality
+  //TODO: negative numbers functionality
+  //TODO: history functionality
   return (
     <div className="mx-auto max-w-2xl min-w-80 mt-8 px-2 md:px-6 pb-16 md:pb-0">
       <div className="bg-blue-400 mx-auto p-3">
         <div className="bg-green-200 mx-auto p-4 h-24 flex flex-col">
           <div className="self-end">
-            {total.toFixed(2)}
+            {total}
           </div>
           <div className="self-end">
             {numbers.map((x, i) =>
@@ -69,13 +41,12 @@ function Calculator() {
         </div>
         <div className="grid grid-cols-12 mt-8">
           {buttonConfig.map((config) => (
-            <KeyPadBtn key={config.display} config={config}>
-            </KeyPadBtn>
+            <KeyPadBtn key={config.display} config={config} />
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Calculator;

@@ -25,7 +25,40 @@ export const buttonConfig: buttonConfigType[] = [
 ];
 
 export const evaluate = (numbers: string[], operators: string[]): number => {
-  console.log(numbers);
-  console.log(operators);
-  return 1;
+  //TODO: create error state for missing operand
+  if (numbers.length === operators.length) return 0;
+
+  const nums = numbers.map(Number);
+  const orderOfOperations = ["x", "/", "+", "-"];
+
+  const applyOperation = (
+    index: number,
+    operation: (a: number, b: number) => number,
+  ) => {
+    nums[index] = operation(nums[index], nums[index + 1]);
+    nums.splice(index + 1, 1);
+    operators.splice(index, 1);
+  };
+
+  for (const op of orderOfOperations) {
+    let index;
+    while ((index = operators.indexOf(op)) !== -1) {
+      switch (op) {
+        case "x":
+          applyOperation(index, (a, b) => a * b);
+          break;
+        case "/":
+          applyOperation(index, (a, b) => a / b);
+          break;
+        case "+":
+          applyOperation(index, (a, b) => a + b);
+          break;
+        case "-":
+          applyOperation(index, (a, b) => a - b);
+          break;
+      }
+    }
+  }
+
+  return nums[0];
 };

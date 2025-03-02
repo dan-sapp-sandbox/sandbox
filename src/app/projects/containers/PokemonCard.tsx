@@ -11,7 +11,7 @@ const PokemonData: iCard = {
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pokemon",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/pokemon",
       icon: "/static/images/github.svg",
     },
     {
