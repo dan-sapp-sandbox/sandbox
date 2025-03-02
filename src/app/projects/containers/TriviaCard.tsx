@@ -7,12 +7,6 @@ const TriviaData: iCard = {
     imageUrl: "/static/images/trivia-screenshot.png",
     linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
   },
-  logos: [
-    "/static/images/python.svg",
-    "/static/images/django.svg",
-    "/static/images/pandas.svg",
-    "/static/images/sqlite.svg",
-  ],
   btns: [
     {
       text: "App Code",

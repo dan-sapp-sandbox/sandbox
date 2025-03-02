@@ -7,11 +7,6 @@ const BernoulliData: iCard = {
     imageUrl: "/static/images/bernoulli-screenshot.png",
     linkUrl: "https://bernoulli-app-31816726101f.herokuapp.com/",
   },
-  logos: [
-    "/static/images/python.svg",
-    "/static/images/django.svg",
-    "/static/images/numpy.svg",
-  ],
   btns: [
     {
       text: "App Code",

@@ -110,7 +110,6 @@ export default function LogoList(): JSX.Element {
 const LogoBlock = ({ item }: { item: iLogo }): JSX.Element => {
   return (
     <div className="col-span-2 rounded-2xl content-center text-center justify-center flex flex-col max-w-fit">
-      {/* eslint-disable-next-line */}
       <img
         className="flex self-center w-6 h-6 lg:w-10 lg:h-10"
         alt={item.title}

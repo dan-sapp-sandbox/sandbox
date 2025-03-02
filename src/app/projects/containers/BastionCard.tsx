@@ -7,11 +7,6 @@ const BastionData: iCard = {
     imageUrl: "/static/images/bastion-screenshot.png",
     linkUrl: "https://lights-iota.vercel.app",
   },
-  logos: [
-    "/static/images/flutter.svg",
-    "/static/images/golang.svg",
-    "/static/images/sqlite.svg",
-  ],
   btns: [
     {
       text: "App Code",

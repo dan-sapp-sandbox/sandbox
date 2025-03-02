@@ -10,7 +10,6 @@ export interface iCard {
   btns: iBtn[];
   title: string;
   description: string;
-  logos: string[];
   screenshot: {
     imageUrl: string;
     linkUrl?: string;
@@ -23,7 +22,7 @@ export const StyledCard = (
   return (
     <div className="col-span-12 rounded bg-black my-2 p-6 z-10 relative">
       <div className="grid-cols-12 grid justify-between">
-        <div className="col-span-12 md:col-span-7 grid grid-cols-12">
+        <div className="col-span-12 md:col-span-8 grid grid-cols-12">
           <div className="col-span-12 mb-2">
             <div className="font-bold text-xl sm:text-2xl lg:text-4xl text-zinc-200">
               {title}
@@ -39,10 +38,9 @@ export const StyledCard = (
         {screenshot.linkUrl
           ? (
             <Link
-              className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end"
+              className="flex col-span-12 md:col-span-4 justify-self-center md:justify-self-end"
               href={screenshot.linkUrl}
             >
-              {/* eslint-disable-next-line */}
               <img
                 alt="project-screen-shot"
                 className="max-h-40 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md hover:border-blue-400"
@@ -51,8 +49,7 @@ export const StyledCard = (
             </Link>
           )
           : (
-            <div className="flex col-span-12 md:col-span-5 justify-self-center md:justify-self-end">
-              {/* eslint-disable-next-line */}
+            <div className="flex col-span-12 md:col-span-4 justify-self-center md:justify-self-end">
               <img
                 alt="project-screen-shot"
                 className="max-h-40 mb-4 md:mb-0 border-zinc-500 border-2 rounded-md"
@@ -90,7 +87,6 @@ const StyledButton = ({ text, url, icon }: iBtn): JSX.Element => {
       className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-4 bg-blue-300 hover:bg-blue-200 rounded"
     >
       {icon && (
-        /* eslint-disable-next-line */
         <img
           alt="github"
           className="h-6 w-6 inline-block mr-2"

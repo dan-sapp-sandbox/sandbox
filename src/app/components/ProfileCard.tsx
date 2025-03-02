@@ -8,7 +8,6 @@ const ProfileCard = (): JSX.Element => (
         Dan Sapp
       </div>
       <div className="col-span-12 mt-8 hidden lg:flex">
-        {/* eslint-disable-next-line */}
         <img
           alt="self"
           src="/static/images/me.png"
@@ -17,7 +16,6 @@ const ProfileCard = (): JSX.Element => (
       </div>
     </div>
     <div className="col-span-3 lg:col-span-12 mt-0 lg:hidden">
-      {/* eslint-disable-next-line */}
       <img
         alt="self"
         src="/static/images/me.png"

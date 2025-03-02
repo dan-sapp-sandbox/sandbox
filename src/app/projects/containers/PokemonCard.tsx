@@ -5,16 +5,8 @@ const PokemonData: iCard = {
   description: "Build the best team or see how your favorites compare.",
   screenshot: {
     imageUrl: "/static/images/pokemon-screenshot.png",
-    linkUrl: "/projects/pokemon",
+    linkUrl: "/projects/pages/pokemon",
   },
-  logos: [
-    "/static/images/typescript.svg",
-    "/static/images/react.svg",
-    "/static/images/next.svg",
-    "/static/images/tailwind.svg",
-    "/static/images/node.svg",
-    "/static/images/postgresql.svg",
-  ],
   btns: [
     {
       text: "App Code",
@@ -29,7 +21,7 @@ const PokemonData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pokemon",
+      url: "/projects/pages/pokemon",
     },
   ],
 };

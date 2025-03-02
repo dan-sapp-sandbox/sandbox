@@ -41,7 +41,6 @@ export default function PokemonCard(
       <div className="p-0">
         {pokemon
           ? (
-            /* eslint-disable-next-line */
             <img
               className={isTeam
                 ? "mx-auto min-w-12 max-w-14 sm:max-w-16 md:max-w-24 lg:max-w-36 xl:max-w-42 2xl:h-48"

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects",
-  description: "Software Engineering Portfolio",
+  title: "Calculator",
+  description: "It's a calculator",
 };
-
-export default function ProjectsLayout(
+export default function PokemonLayout(
   { children }: { children: JSX.Element },
 ) {
   return children;
