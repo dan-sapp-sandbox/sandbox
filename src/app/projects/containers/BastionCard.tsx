@@ -2,7 +2,8 @@ import { iCard, StyledCard } from "../components/Card";
 
 const BastionData: iCard = {
   title: "Bastion",
-  description: "Manage all of your home's devices in one place.",
+  description:
+    "Manage all of your home's devices in one place. Web Sockets support concurrent users.",
   screenshot: {
     imageUrl: "/static/images/bastion-screenshot.png",
     linkUrl: "https://lights-iota.vercel.app",

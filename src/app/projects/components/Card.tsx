@@ -82,20 +82,24 @@ const ButtonRow = ({ btns }: { btns: iBtn[] }): JSX.Element => {
 
 const StyledButton = ({ text, url, icon }: iBtn): JSX.Element => {
   return (
-    <button
-      key={text}
-      className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-4 bg-blue-300 hover:bg-blue-200 rounded"
+    <Link
+      href={url}
+      target="_blank"
+      className="flex items-center justify-center h-10 md:h-12 self-end col-span-12 md:col-span-4"
     >
-      {icon && (
-        <img
-          alt="github"
-          className="h-6 w-6 inline-block mr-2"
-          src={icon}
-        />
-      )}
-      <Link href={url} target="_blank" className="text-lg lg:text-xl font-bold">
+      <button
+        key={text}
+        className="bg-blue-300 hover:bg-blue-200 rounded text-lg lg:text-xl font-bold w-full h-full"
+      >
+        {icon && (
+          <img
+            alt="github"
+            className="h-6 w-6 inline-block mr-2"
+            src={icon}
+          />
+        )}
         {text}
-      </Link>
-    </button>
+      </button>
+    </Link>
   );
 };
