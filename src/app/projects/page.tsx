@@ -1,11 +1,12 @@
 import Loading from "../loading";
+import { Suspense } from "react";
 import Section from "./components/Section";
 import PokemonCard from "./containers/PokemonCard";
 import TriviaCard from "./containers/TriviaCard";
 import BastionCard from "./containers/BastionCard";
 import BernoulliCard from "./containers/BernoulliCard";
 import CalculatorCard from "./containers/CalculatorCard";
-import { Suspense } from "react";
+import DmHelperCard from "./containers/DmHelperCard";
 
 export default async function ProjectsPage() {
   return (
@@ -17,6 +18,7 @@ export default async function ProjectsPage() {
           title="React & Typescript"
         >
           <CalculatorCard />
+          <DmHelperCard />
           <PokemonCard />
         </Section>
         <Section

@@ -2,7 +2,7 @@ import { iCard, StyledCard } from "../components/Card";
 
 const TriviaData: iCard = {
   title: "Quirk",
-  description: "Test your knowledge.",
+  description: "It's a trivia game. Have some fun. Test your knowledge.",
   screenshot: {
     imageUrl: "/static/images/trivia-screenshot.png",
     linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
