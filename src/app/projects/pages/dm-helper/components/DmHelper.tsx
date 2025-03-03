@@ -8,6 +8,7 @@ const DmHelper = () => {
   // TODO: advantage
   // TODO: mobs
   // TODO: leveling up
+  // TODO: adding character
   // TODO: player accordions
 
   const [players, setPlayers] = useState<Player[]>(defaultPlayers);

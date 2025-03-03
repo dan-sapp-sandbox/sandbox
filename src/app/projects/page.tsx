@@ -6,6 +6,7 @@ import TriviaCard from "./containers/TriviaCard";
 import BastionCard from "./containers/BastionCard";
 import BernoulliCard from "./containers/BernoulliCard";
 import CalculatorCard from "./containers/CalculatorCard";
+import SimonCard from "./containers/SimonCard";
 import DmHelperCard from "./containers/DmHelperCard";
 
 export default async function ProjectsPage() {
@@ -18,6 +19,7 @@ export default async function ProjectsPage() {
           title="React & Typescript"
         >
           <CalculatorCard />
+          <SimonCard />
           <DmHelperCard />
           <PokemonCard />
         </Section>
