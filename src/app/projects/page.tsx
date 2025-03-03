@@ -8,6 +8,7 @@ import BernoulliCard from "./containers/BernoulliCard";
 import CalculatorCard from "./containers/CalculatorCard";
 import SimonCard from "./containers/SimonCard";
 import DmHelperCard from "./containers/DmHelperCard";
+import FlappyBirdCard from "./containers/FlappyBirdCard";
 
 export default async function ProjectsPage() {
   return (
@@ -18,6 +19,7 @@ export default async function ProjectsPage() {
           rightIcon="/static/images/typescript.svg"
           title="React & Typescript"
         >
+          <FlappyBirdCard />
           <CalculatorCard />
           <SimonCard />
           <DmHelperCard />

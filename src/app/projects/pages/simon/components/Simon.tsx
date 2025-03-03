@@ -7,7 +7,7 @@ const Simon = () => {
   return (
     <div className="text-white flex flex-col p-4 h-screen w-screen">
       <div className="mt-24 flex flex-row justify-center w-full h-full">
-        <div className="border-zinc-700 border-2 bg-gray-800 h-[80vmin] w-[80vmin] rounded-full grid grid-cols-2 p-12 gap-12 relative">
+        <div className="border-zinc-700 border-2 bg-gray-800 h-[80vmin] w-[80vmin] rounded-full grid grid-cols-2 p-4 md:p-12 gap-4 md:gap-12 relative">
           <button
             className={`${
               active === "green" ? "bg-green-300" : "bg-green-600"
@@ -34,7 +34,7 @@ const Simon = () => {
           />
           <button
             className="absolute flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-     bg-gray-800 hover:bg-gray-700 h-[35vmin] w-[35vmin] rounded-full text-5xl"
+     bg-gray-800 hover:bg-gray-700 h-[35vmin] w-[35vmin] rounded-full text-3xl md:text-5xl"
             onClick={() => start()}
           >
             Simon

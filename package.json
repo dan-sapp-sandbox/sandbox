@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "d3": "^7.9.0",
+    "excalibur": "^0.30.3",
     "next": "15.0.0",
     "react": "^18",
     "react-dom": "^18",
