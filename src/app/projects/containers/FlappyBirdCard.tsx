@@ -5,7 +5,7 @@ const FlappyBirdData: iCard = {
   description: "Flappy Bird written in typescript.",
   screenshot: {
     imageUrl: "/static/images/flappy-bird-screenshot.png",
-    linkUrl: "/projects/pages/flappy-bird",
+    linkUrl: "/projects/pages/calculator",
   },
   btns: [
     {
@@ -16,7 +16,7 @@ const FlappyBirdData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pages/flappy-bird",
+      url: "/projects/pages/calculator",
     },
   ],
 };
