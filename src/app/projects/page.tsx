@@ -15,9 +15,9 @@ export default async function ProjectsPage() {
     <div className="background mx-auto max-w-6xl my-4 px-2 md:px-6 pb-16 md:pb-0">
       <Suspense fallback={<Loading />}>
         <Section
-          leftIcon="/static/images/react.svg"
-          rightIcon="/static/images/typescript.svg"
-          title="React & Typescript"
+          leftIcon="/static/images/typescript.svg"
+          rightIcon="/static/images/react.svg"
+          title="Typescript & React "
         >
           <FlappyBirdCard />
           <CalculatorCard />

@@ -1,8 +1,8 @@
 import { iCard, StyledCard } from "../components/Card";
 
 const FlappyBirdData: iCard = {
-  title: "Flappy Bird",
-  description: "Flappy Bird written in typescript.",
+  title: "Whirly Bird",
+  description: "Flappy Bird written in typescript using exalibur.js.",
   screenshot: {
     imageUrl: "/static/images/flappy-bird-screenshot.png",
     linkUrl: "https://flappy-bird-five-delta.vercel.app/",
