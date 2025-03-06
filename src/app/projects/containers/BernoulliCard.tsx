@@ -2,8 +2,7 @@ import { iCard, StyledCard } from "../components/Card";
 
 const BernoulliData: iCard = {
   title: "Bernoulli",
-  description:
-    "Make sick beats with this drum machine and live audio processing app.",
+  description: "Make your own sick beats with this drum machine app.",
   screenshot: {
     imageUrl: "/static/images/bernoulli-screenshot.png",
     linkUrl: "https://bernoulli-app-31816726101f.herokuapp.com/",
