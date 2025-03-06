@@ -9,6 +9,7 @@ import CalculatorCard from "./containers/CalculatorCard";
 import SimonCard from "./containers/SimonCard";
 import DmHelperCard from "./containers/DmHelperCard";
 import FlappyBirdCard from "./containers/FlappyBirdCard";
+import TowerSurvivorCard from "./containers/TowerSurviviorCard";
 
 export default async function ProjectsPage() {
   return (
@@ -19,6 +20,7 @@ export default async function ProjectsPage() {
           rightIcon="/static/images/react.svg"
           title="Typescript & React "
         >
+          <TowerSurvivorCard />
           <FlappyBirdCard />
           <CalculatorCard />
           <SimonCard />
