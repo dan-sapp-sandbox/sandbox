@@ -4,6 +4,13 @@
 
 body {
   font-family: serif;
+  background: #1f093d;
+}
+
+#content {
+  height: calc(100vh - 85px);
+  overflowy: scroll;
+  scrollbarwidth: none;
 }
 
 @layer utilities {
