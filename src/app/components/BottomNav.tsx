@@ -1,7 +1,7 @@
 "use client";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { pages } from "./AppBar";
+import pageList from "./pageList";
 import { useRouter } from "next/navigation";
 
 export default function SimpleBottomNavigation() {
@@ -12,10 +12,10 @@ export default function SimpleBottomNavigation() {
         sx={{ background: "#1e3a8a", height: "4.5rem" }}
         showLabels
         onChange={(_, newValue) => {
-          router.replace(pages[newValue].url);
+          router.replace(pageList[newValue].url);
         }}
       >
-        {pages.map((page) => (
+        {pageList.map((page) => (
           <BottomNavigationAction
             key={page.title}
             sx={{

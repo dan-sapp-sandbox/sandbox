@@ -4,11 +4,12 @@ import Loading from './Loading'
 import LogoList from './LogoList'
 import ProfileCard from './ProfileCard'
 
-
-export default {
+const Components = {
   AppBar,
   BottomNav,
   Loading,
   LogoList,
   ProfileCard
 }
+
+export default Components

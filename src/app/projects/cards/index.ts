@@ -9,7 +9,7 @@ import SimonCard from "./SimonCard";
 import TowerSurvivorCard from "./TowerSurvivorCard";
 import TriviaCard from "./TriviaCard";
 
-export default {
+const cards = {
   BastionCard,
   BernoulliCard,
   CalculatorCard,
@@ -21,3 +21,5 @@ export default {
   TowerSurvivorCard,
   TriviaCard
 }
+
+export default cards
