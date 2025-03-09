@@ -4,8 +4,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import AppBar from "@/components/AppBar";
-import BottomNav from "@/components/BottomNav";
+import Components from "./components";
 
 export const metadata: Metadata = {
   title: "Dan Sapp Portfolio",
@@ -22,7 +21,7 @@ export default async function RootLayout({
       <body
         style={{ background: "#1f093d" }}
       >
-        <AppBar />
+        <Components.AppBar />
         <div
           style={{
             height: "calc(100vh - 85px)",
@@ -32,7 +31,7 @@ export default async function RootLayout({
         >
           {children}
         </div>
-        <BottomNav />
+        <Components.BottomNav />
       </body>
     </html>
   );

@@ -1,6 +1,5 @@
 "use client";
-import ProfileCard from "./components/ProfileCard";
-import LogoList from "./components/LogoList";
+import Components from "./components";
 
 export default function Portfolio() {
   return (
@@ -8,8 +7,8 @@ export default function Portfolio() {
       <main className="gap-2 grid grid-flow-row grid-cols-12">
         <div className="col-span-12">
           <div className="grid grid-cols-12 pb-0 p-4 md:pb-0 md:p-8">
-            <ProfileCard />
-            <LogoList />
+            <Components.ProfileCard />
+            <Components.LogoList />
           </div>
         </div>
       </main>

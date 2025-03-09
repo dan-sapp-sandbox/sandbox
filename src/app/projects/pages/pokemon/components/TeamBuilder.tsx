@@ -1,13 +1,13 @@
 "use client";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Components from "@/app/components";
+import { getPokemon } from "../api/pokemon";
 import { iPokemon } from "../api/types";
 import PokemonCard from "./PokemonCard";
-import { useState } from "react";
 import Team from "./Team";
-import { useQuery } from "@tanstack/react-query";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
-import { getPokemon } from "../api/pokemon";
-import Loading from "@/app/loading";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
@@ -21,7 +21,7 @@ export default function PokemonPage(
   const [team, updateTeam] = useState<iPokemon[]>([]);
   const [filterTypes, updateFilterTypes] = useState<string[]>([]);
   if (isLoading) {
-    return <Loading />;
+    return <Components.Loading />;
   }
 
   return (

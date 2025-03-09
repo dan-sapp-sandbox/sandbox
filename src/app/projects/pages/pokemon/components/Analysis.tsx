@@ -1,5 +1,5 @@
 import { iPokemon } from "../api/types";
-import { Radar } from "@/components/radar";
+import Radar from "./Radar";
 import { pokemonMap, typeColorMap } from "./utils";
 
 export type Variable =
