@@ -5,7 +5,7 @@ const Simon = () => {
   const { active, start, tap } = useSimonState();
 
   return (
-    <div className="text-white flex flex-col p-4 h-screen w-screen">
+    <div className="text-white flex flex-col p-4">
       <div className="mt-24 flex flex-row justify-center w-full h-full">
         <div className="border-zinc-700 border-2 bg-gray-800 h-[80vmin] w-[80vmin] rounded-full grid grid-cols-2 p-4 md:p-12 gap-4 md:gap-12 relative">
           <button

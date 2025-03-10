@@ -9,8 +9,8 @@ body {
 
 #content {
   height: calc(100vh - 85px);
-  overflowy: scroll;
-  scrollbarwidth: none;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 @layer utilities {
