@@ -2,7 +2,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ArticleIcon from "@mui/icons-material/Article";
 
-const pageList = [
+const LinkList = [
   {
     title: "Home",
     url: "/",
@@ -58,4 +58,4 @@ const pageList = [
   },
 ];
 
-export default pageList;
+export default LinkList;
