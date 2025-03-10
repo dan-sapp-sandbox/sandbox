@@ -13,11 +13,11 @@ export default async function ProjectsPage() {
           title="Typescript & React "
         >
           <Cards.TowerSurvivorCard />
-          <Cards.PlatformerCard />
           <Cards.FlappyBirdCard />
           <Cards.CalculatorCard />
           <Cards.SimonCard />
           <Cards.DmHelperCard />
+          <Cards.PlatformerCard />
           <Cards.PokemonCard />
         </Section>
         <Section

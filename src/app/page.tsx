@@ -1,4 +1,3 @@
-"use client";
 import Components from "./components";
 
 export default function Portfolio() {

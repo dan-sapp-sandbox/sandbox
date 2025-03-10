@@ -11,25 +11,25 @@ const Simon = () => {
           <button
             className={`${
               active === "green" ? "bg-green-300" : "bg-green-600"
-            } hover:bg-green-400 col-span-1 h-42 rounded-tl-full`}
+            } outline-1 outline-border hover:outline-double col-span-1 h-42 rounded-tl-full`}
             onClick={() => tap("blue")}
           />
           <button
             className={`${
               active === "red" ? "bg-red-300" : "bg-red-600"
-            } hover:bg-red-400 col-span-1 h-42 rounded-tr-full`}
+            } outline-1 outline-white hover:outline-double col-span-1 h-42 rounded-tr-full`}
             onClick={() => tap("red")}
           />
           <button
             className={`${
               active === "yellow" ? "bg-yellow-400" : "bg-yellow-500"
-            } hover:bg-yellow-400 col-span-1 h-42 rounded-bl-full`}
+            } outline-1 outline-white hover:outline-double col-span-1 h-42 rounded-bl-full`}
             onClick={() => tap("yellow")}
           />
           <button
             className={`${
               active === "blue" ? "bg-blue-300" : "bg-blue-500"
-            } hover:bg-blue-400 col-span-1 h-42 rounded-br-full`}
+            } outline-1 outline-white hover:outline-double col-span-1 h-42 rounded-br-full`}
             onClick={() => tap("blue")}
           />
           <button
