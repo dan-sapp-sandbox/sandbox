@@ -3,14 +3,15 @@ import { useState } from "react";
 
 export const useSimonState = () => {
   const [prompt, setPrompt] = useState<string[]>([]);
-  const [correctGuesses, setCorrectGuesses] = useState<number>(3);
+  const [promptLength, setPromptLength] = useState<number>(1);
+  const [correctGuesses, setCorrectGuesses] = useState<number>(0);
   const [active, setActive] = useState<string>("");
 
   const start = () => {
     const sequence = generateSequence();
     setPrompt(sequence);
     startup();
-    setTimeout(() => showSequence(sequence), 2000);
+    setTimeout(() => showSequence(sequence, promptLength), 2000);
   };
   const generateSequence = () => {
     const sequence = [];
@@ -36,24 +37,17 @@ export const useSimonState = () => {
     }
     return sequence;
   };
+
   const startup = () => {
-    setActive("red");
-    setTimeout(() => setActive("blue"), 100);
-    setTimeout(() => setActive("yellow"), 200);
-    setTimeout(() => setActive("green"), 300);
-    setTimeout(() => setActive("red"), 400);
-    setTimeout(() => setActive("blue"), 500);
-    setTimeout(() => setActive("yellow"), 600);
-    setTimeout(() => setActive("green"), 700);
-    setTimeout(() => setActive("red"), 800);
-    setTimeout(() => setActive("blue"), 900);
-    setTimeout(() => setActive("yellow"), 1000);
-    setTimeout(() => setActive("green"), 1100);
-    setTimeout(() => setActive(""), 1200);
+    const startupSequence = ["red", "blue", "yellow", "green", "red", "blue", "yellow", "green", "red", "blue", "yellow", "green", ""]
+    startupSequence.forEach((color, i) => {
+      setTimeout(() => setActive(color), i * 100);
+    })
   };
-  const showSequence = (sequence: string[]) => {
-    const test = sequence.slice(0, correctGuesses + 1);
-    test.forEach((x, i) => {
+
+  const showSequence = (sequence: string[], parts: number) => {
+    const sequencePart = sequence.slice(0, parts);
+    sequencePart.forEach((x, i) => {
       setTimeout(() => {
         setActive(x);
         playTone(matchToneToColor(x), 700, .1);
@@ -62,20 +56,24 @@ export const useSimonState = () => {
     });
   };
 
-  // TODO: handle entering a sequence bigger than 1
   const tap = (color: string) => {
     playTone(matchToneToColor(color), 700, .1);
     if (color === prompt[correctGuesses]) {
-      setCorrectGuesses(correctGuesses + 1);
-      setTimeout(() => showSequence(prompt), 1000)
+      if (correctGuesses + 1 === promptLength) {
+        setCorrectGuesses(0);
+        setPromptLength(promptLength + 1)
+        setTimeout(() => showSequence(prompt, promptLength + 1), 1000)
+      } else {
+        setCorrectGuesses(correctGuesses + 1);
+      }
     } else {
       startup();
-      showSequence(prompt);
+      showSequence(prompt, promptLength);
     }
   };
 
   const matchToneToColor = (color: string) => {
-    switch(color) {
+    switch (color) {
       case 'blue':
         return 410
       case 'red':
