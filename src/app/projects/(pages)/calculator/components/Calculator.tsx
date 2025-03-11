@@ -28,7 +28,7 @@ const Calculator = () => {
   //TODO: history functionality
   return (
     <div className="mx-auto max-w-2xl min-w-80 mt-8 px-2 md:px-6 pb-16 md:pb-0">
-      <div className="bg-blue-400 mx-auto p-3">
+      <div className="bg-blue-400 mx-auto p-3 text-2xl">
         <div className="bg-green-200 mx-auto p-4 h-24 flex flex-col">
           <div className="self-end">
             {total}

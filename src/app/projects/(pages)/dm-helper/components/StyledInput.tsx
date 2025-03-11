@@ -3,19 +3,26 @@ import { Player } from "../hooks/usePartyState";
 
 interface Props {
   title: string;
-  fieldName: 'hp' | 'strength' | 'dexterity' | 'constitution' | 'intelligence' | 'wisdom' | 'charisma';
+  fieldName:
+    | "hp"
+    | "strength"
+    | "dexterity"
+    | "constitution"
+    | "intelligence"
+    | "wisdom"
+    | "charisma";
   readOnly: boolean;
   register: UseFormRegister<Player>;
 }
 
 const StyledInput = ({ title, fieldName, readOnly, register }: Props) => {
   return (
-    <div
-      className="flex "
-    >
+    <div className="flex">
       <label className="text-2xl mr-2">{title}:</label>
       <input
-        className={`text-2xl w-16 ${readOnly ? "bg-transparent" : "bg-blue-900"}`}
+        className={`text-2xl w-16 ${
+          readOnly ? "bg-transparent" : "bg-blue-900"
+        }`}
         disabled={readOnly}
         type="number"
         {...register(fieldName)}
@@ -24,4 +31,4 @@ const StyledInput = ({ title, fieldName, readOnly, register }: Props) => {
   );
 };
 
-export default StyledInput
+export default StyledInput;
