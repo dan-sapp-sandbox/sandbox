@@ -4,14 +4,14 @@ const PlatformerData: iCard = {
   title: "Platformer",
   description: "Platforming game using exalibur.js.",
   screenshot: {
-    imageUrl: "/static/images/platformer-screenshot.png",
+    imageUrl: "/static/images/screenshots/platformer-screenshot.png",
     linkUrl: "https://platformer-omega.vercel.app/",
   },
   btns: [
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/platformer",
-      icon: "/static/images/github.svg",
+      icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",

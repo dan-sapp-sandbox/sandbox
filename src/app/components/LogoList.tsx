@@ -4,63 +4,63 @@ interface iLogo {
 }
 const ReactStackLogos: iLogo[] = [
   {
-    imgUrl: "/static/images/typescript.svg",
+    imgUrl: "/static/images/logos/typescript.svg",
     title: "Typescript",
   },
   {
-    imgUrl: "/static/images/react.svg",
+    imgUrl: "/static/images/logos/react.svg",
     title: "React.js",
   },
   {
-    imgUrl: "/static/images/next.svg",
+    imgUrl: "/static/images/logos/next.svg",
     title: "Next.js",
   },
   {
-    imgUrl: "/static/images/tailwind.svg",
+    imgUrl: "/static/images/logos/tailwind.svg",
     title: "Tailwind",
   },
 ];
 const FullStackLogos: iLogo[] = [
   {
-    imgUrl: "/static/images/node.svg",
+    imgUrl: "/static/images/logos/node.svg",
     title: "Node.js",
   },
   {
-    imgUrl: "/static/images/postgresql.svg",
+    imgUrl: "/static/images/logos/postgresql.svg",
     title: "PostgreSQL",
   },
   {
-    imgUrl: "/static/images/sqlite.svg",
+    imgUrl: "/static/images/logos/sqlite.svg",
     title: "SQLite",
   },
   {
-    imgUrl: "/static/images/mongodb.svg",
+    imgUrl: "/static/images/logos/mongodb.svg",
     title: "MongoDB",
   },
   {
-    imgUrl: "/static/images/git.svg",
+    imgUrl: "/static/images/logos/git.svg",
     title: "Git",
   },
 ];
 const PythonLogos: iLogo[] = [
   {
-    imgUrl: "/static/images/python.svg",
+    imgUrl: "/static/images/logos/python.svg",
     title: "Python",
   },
   {
-    imgUrl: "/static/images/django.svg",
+    imgUrl: "/static/images/logos/django.svg",
     title: "Django",
   },
   {
-    imgUrl: "/static/images/pandas.svg",
+    imgUrl: "/static/images/logos/pandas.svg",
     title: "Pandas",
   },
   {
-    imgUrl: "/static/images/numpy.svg",
+    imgUrl: "/static/images/logos/numpy.svg",
     title: "Numpy",
   },
   {
-    imgUrl: "/static/images/matplotlib.svg",
+    imgUrl: "/static/images/logos/matplotlib.svg",
     title: "Matplotlib",
   },
 ];

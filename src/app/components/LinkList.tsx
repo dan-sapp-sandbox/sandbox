@@ -41,7 +41,7 @@ const LinkList = [
       <img
         alt="github"
         className="h-10 w-10"
-        src="/static/images/github.svg"
+        src="/static/images/logos/github.svg"
       />
     ),
   },
@@ -52,7 +52,7 @@ const LinkList = [
       <img
         alt="linkedin"
         className="h-10 w-10"
-        src="/static/images/linkedin.svg"
+        src="/static/images/logos/linkedin.svg"
       />
     ),
   },

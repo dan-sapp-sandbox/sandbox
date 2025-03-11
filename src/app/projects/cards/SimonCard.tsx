@@ -4,7 +4,7 @@ const SimonData: iCard = {
   title: "Simon",
   description: "Simon says.",
   screenshot: {
-    imageUrl: "/static/images/simon-screenshot.png",
+    imageUrl: "/static/images/screenshots/simon-screenshot.png",
     linkUrl: "/projects/simon",
   },
   btns: [
@@ -12,7 +12,7 @@ const SimonData: iCard = {
       text: "App Code",
       url:
         "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/simon",
-      icon: "/static/images/github.svg",
+      icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",

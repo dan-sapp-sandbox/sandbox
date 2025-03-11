@@ -5,14 +5,14 @@ const TriviaData: iCard = {
   description:
     "Test your knowledge with these dynamically generated trivia questions.",
   screenshot: {
-    imageUrl: "/static/images/trivia-screenshot.png",
+    imageUrl: "/static/images/screenshots/trivia-screenshot.png",
     linkUrl: "https://quirk-29e37e06cec9.herokuapp.com/",
   },
   btns: [
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/trivia",
-      icon: "/static/images/github.svg",
+      icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",

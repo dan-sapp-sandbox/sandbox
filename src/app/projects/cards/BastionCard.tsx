@@ -5,19 +5,19 @@ const BastionData: iCard = {
   description:
     "Manage all of your home's devices in one place. Web Sockets support concurrent users.",
   screenshot: {
-    imageUrl: "/static/images/bastion-screenshot.png",
+    imageUrl: "/static/images/screenshots/bastion-screenshot.png",
     linkUrl: "https://lights-iota.vercel.app",
   },
   btns: [
     {
       text: "App Code",
       url: "https://github.com/dan-sapp-sandbox/Bastion",
-      icon: "/static/images/github.svg",
+      icon: "/static/images/logos/github.svg",
     },
     {
       text: "Server Code",
       url: "https://github.com/dan-sapp-sandbox/Bastion_server",
-      icon: "/static/images/github.svg",
+      icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",
