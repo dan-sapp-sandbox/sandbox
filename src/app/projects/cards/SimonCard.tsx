@@ -5,7 +5,7 @@ const SimonData: iCard = {
   description: "Simon says.",
   screenshot: {
     imageUrl: "/static/images/simon-screenshot.png",
-    linkUrl: "/projects/pages/simon",
+    linkUrl: "/projects/simon",
   },
   btns: [
     {
@@ -16,7 +16,7 @@ const SimonData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pages/simon",
+      url: "/projects/simon",
     },
   ],
 };

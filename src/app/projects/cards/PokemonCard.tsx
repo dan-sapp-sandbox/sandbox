@@ -5,7 +5,7 @@ const PokemonData: iCard = {
   description: "Build the best team or see how your favorites compare.",
   screenshot: {
     imageUrl: "/static/images/pokemon-screenshot.png",
-    linkUrl: "/projects/pages/pokemon",
+    linkUrl: "/projects/pokemon",
   },
   btns: [
     {
@@ -21,7 +21,7 @@ const PokemonData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pages/pokemon",
+      url: "/projects/pokemon",
     },
   ],
 };

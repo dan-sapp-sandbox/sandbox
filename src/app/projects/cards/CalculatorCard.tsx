@@ -5,7 +5,7 @@ const CalculatorData: iCard = {
   description: "It's a calculator. Supports chained operations.",
   screenshot: {
     imageUrl: "/static/images/calculator-screenshot.png",
-    linkUrl: "/projects/pages/calculator",
+    linkUrl: "/projects/calculator",
   },
   btns: [
     {
@@ -16,7 +16,7 @@ const CalculatorData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pages/calculator",
+      url: "/projects/calculator",
     },
   ],
 };

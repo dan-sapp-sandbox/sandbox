@@ -5,7 +5,7 @@ const DmHelperData: iCard = {
   description: "Helps you run your DnD games.",
   screenshot: {
     imageUrl: "/static/images/dm-helper-screenshot.png",
-    linkUrl: "/projects/pages/dm-helper",
+    linkUrl: "/projects/dm-helper",
   },
   btns: [
     {
@@ -16,7 +16,7 @@ const DmHelperData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pages/dm-helper",
+      url: "/projects/dm-helper",
     },
   ],
 };
