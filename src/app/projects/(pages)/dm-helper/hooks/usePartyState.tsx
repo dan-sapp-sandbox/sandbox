@@ -1,4 +1,15 @@
+"use client";
+import { useState } from "react";
+
+export const usePartyState = () => {
+  const [party, setParty] = useState<Player[]>(defaultPlayers);
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  return { party, setParty, expanded, setExpanded };
+};
+
 export interface Player {
+  id: string;
   name: string;
   hp: number;
   maxHp: number;
@@ -11,8 +22,10 @@ export interface Player {
   wisdom: number;
   charisma: number;
 }
-export const defaultPlayers: Player[] = [
+
+const defaultPlayers: Player[] = [
   {
+    id: "1",
     name: "Aragorn",
     hp: 120,
     maxHp: 120,
@@ -26,6 +39,7 @@ export const defaultPlayers: Player[] = [
     charisma: 5,
   },
   {
+    id: "2",
     name: "Gandalf",
     hp: 200,
     maxHp: 200,
@@ -39,6 +53,7 @@ export const defaultPlayers: Player[] = [
     charisma: 5,
   },
   {
+    id: "3",
     name: "Frodo",
     hp: 40,
     maxHp: 40,
@@ -52,6 +67,7 @@ export const defaultPlayers: Player[] = [
     charisma: 5,
   },
   {
+    id: "4",
     name: "Gimli",
     hp: 200,
     maxHp: 200,
