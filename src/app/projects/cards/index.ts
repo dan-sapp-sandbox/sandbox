@@ -1,6 +1,7 @@
 import BastionCard from "./BastionCard";
 import BernoulliCard from "./BernoulliCard";
 import CalculatorCard from "./CalculatorCard";
+import DashboardCard from "./DashboardCard";
 import DmHelperCard from "./DmHelperCard";
 import FlappyBirdCard from "./FlappyBirdCard";
 import PlatformerCard from "./PlatformerCard";
@@ -13,6 +14,7 @@ const cards = {
   BastionCard,
   BernoulliCard,
   CalculatorCard,
+  DashboardCard,
   DmHelperCard,
   FlappyBirdCard,
   PlatformerCard,

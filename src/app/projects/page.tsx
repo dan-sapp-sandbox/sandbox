@@ -12,9 +12,10 @@ export default async function ProjectsPage() {
           rightIcon="/static/images/logos/react.svg"
           title="Typescript & React "
         >
-          <Cards.TowerSurvivorCard />
-          <Cards.FlappyBirdCard />
+          <Cards.DashboardCard />
           <Cards.CalculatorCard />
+          <Cards.FlappyBirdCard />
+          <Cards.TowerSurvivorCard />
           <Cards.SimonCard />
           <Cards.DmHelperCard />
           <Cards.PlatformerCard />
