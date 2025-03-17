@@ -25,8 +25,8 @@ const LinkList = [
     ),
   },
   {
-    title: "Projects",
-    url: "/projects",
+    title: "Sandbox",
+    url: "/sandbox",
     image: (
       <ConstructionIcon
         sx={{ height: "2.5rem", width: "2.5rem" }}
