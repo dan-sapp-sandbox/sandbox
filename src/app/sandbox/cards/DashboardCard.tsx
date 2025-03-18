@@ -11,7 +11,7 @@ const DashboardData: iCard = {
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/dashboard",
+        "https://github.com/dan-sapp-sandbox/dashboard",
       icon: "/static/images/logos/github.svg",
     },
     {
