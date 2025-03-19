@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Components from "@/app/components";
 import { getPokemon } from "../api/pokemon";
@@ -25,11 +25,15 @@ export default function PokemonPage(
     return <Components.Loading />;
   }
 
-  const filteredPokemon = data?.filter((x: iPokemon) => {
-    if (!filterTypes.length) return true;
-    const types = x.types.map((type) => type);
-    return filterTypes.some((type) => types.includes(type));
-  });
+  const filterPokemon = (pokemon: iPokemon[], filters: string[]) => {
+    return pokemon?.filter((x: iPokemon) => {
+      if (!filters.length) return true;
+      const types = x.types.map((type) => type);
+      return filters.some((type) => types.includes(type));
+    });
+  };
+
+  const filteredPokemon = useMemo(() => filterPokemon(data, filterTypes), [data, filterTypes]);
   return (
     <div className="relative bg-sky-800 h-[calc(100vh-73px)] md:h-[calc(100vh-64px)]">
       <Team teamData={team} updateTeam={updateTeam} />
