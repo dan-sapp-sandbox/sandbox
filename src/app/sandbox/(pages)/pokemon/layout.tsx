@@ -9,14 +9,7 @@ export default function PokemonLayout(
   { children }: { children: JSX.Element },
 ) {
   return (
-    <main
-      style={{
-        height: "calc(100vh - 70px)",
-        overflowY: "scroll",
-        scrollbarWidth: "none",
-      }}
-      className="pb-16 md:pb-0"
-    >
+    <main className="h-[calc(100vh-73px)] md:h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide">
       <ReactQueryProvider>
         {children}
       </ReactQueryProvider>

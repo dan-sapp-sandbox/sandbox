@@ -8,6 +8,7 @@ import PokemonCard from "./PokemonCard";
 import Team from "./Team";
 import Filters from "./Filters";
 import Analysis from "./Analysis";
+import { VirtuosoGrid } from "react-virtuoso";
 
 export default function PokemonPage(
   { pokemonData }: { pokemonData: iPokemon[] },
@@ -24,29 +25,41 @@ export default function PokemonPage(
     return <Components.Loading />;
   }
 
+  const filteredPokemon = data?.filter((x: iPokemon) => {
+    if (!filterTypes.length) return true;
+    const types = x.types.map((type) => type);
+    return filterTypes.some((type) => types.includes(type));
+  });
   return (
-    <div className="relative min-h-svh bg-sky-800">
+    <div className="relative bg-sky-800 h-[calc(100vh-73px)] md:h-[calc(100vh-64px)]">
       <Team teamData={team} updateTeam={updateTeam} />
       <Analysis team={team} />
       <Filters
         filterTypes={filterTypes}
         updateFilterTypes={updateFilterTypes}
       />
-      <div className="gap-1 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-5 
-        md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-12">
-        {data?.filter((x: iPokemon) => {
-          if (!filterTypes.length) return true;
-          const types = x.types.map((type) => type);
-          return filterTypes.some((type) => types.includes(type));
-        }).map((entry: iPokemon, index: number) => (
+      <VirtuosoGrid
+        className="!h-[48rem] sm:!h-[47rem] md:!h-[45.5rem] lg:!h-[43rem] xl:!h-[44rem] 2xl:!h-[41rem]"
+        data={filteredPokemon}
+        totalCount={filteredPokemon.length}
+        components={{
+          List: (props) => (
+            <div
+              {...props}
+              className="gap-1 mt-2 mx-1 grid grid-flow-row grid-cols-3 sm:grid-cols-5 
+          md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 3xl:grid-cols-12"
+            />
+          ),
+        }}
+        itemContent={(_, pokemon) => (
           <PokemonCard
-            key={index}
-            pokemon={entry}
+            pokemon={pokemon}
             updateTeam={updateTeam}
             team={team}
+            isTeam
           />
-        ))}
-      </div>
+        )}
+      />
     </div>
   );
 }

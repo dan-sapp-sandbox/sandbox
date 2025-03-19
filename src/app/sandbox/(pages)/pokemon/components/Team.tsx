@@ -20,7 +20,7 @@ export default function Team({ teamData, updateTeam }: TeamProps): JSX.Element {
   return (
     <div
       style={{ top: "-1px" }}
-      className="mx-1 py-3 gap-1 grid grid-flow-row grid-cols-6 sticky bg-sky-800"
+      className="mx-1 py-3 gap-1 grid grid-flow-row grid-cols-6 bg-sky-800"
     >
       {teamData.map((pokemon: iPokemon) => (
         <PokemonCard
