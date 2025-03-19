@@ -21,10 +21,7 @@ export default function PokemonPage(
   });
   const [team, updateTeam] = useState<iPokemon[]>([]);
   const [filterTypes, updateFilterTypes] = useState<string[]>([]);
-  if (isLoading) {
-    return <Components.Loading />;
-  }
-
+  
   const filterPokemon = (pokemon: iPokemon[], filters: string[]) => {
     return pokemon?.filter((x: iPokemon) => {
       if (!filters.length) return true;
@@ -32,8 +29,11 @@ export default function PokemonPage(
       return filters.some((type) => types.includes(type));
     });
   };
-
   const filteredPokemon = useMemo(() => filterPokemon(data, filterTypes), [data, filterTypes]);
+  
+  if (isLoading) {
+    return <Components.Loading />;
+  }
   return (
     <div className="relative bg-sky-800 h-[calc(100vh-73px)] md:h-[calc(100vh-64px)]">
       <Team teamData={team} updateTeam={updateTeam} />
