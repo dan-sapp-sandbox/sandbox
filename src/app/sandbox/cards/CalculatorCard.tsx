@@ -5,18 +5,18 @@ const CalculatorData: iCard = {
   description: "It's a calculator. Supports chained operations.",
   screenshot: {
     imageUrl: "/static/images/screenshots/calculator-screenshot.png",
-    linkUrl: "/projects/calculator",
+    linkUrl: "/sandbox/calculator",
   },
   btns: [
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/calculator",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/sandbox/(pages)/calculator",
       icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",
-      url: "/projects/calculator",
+      url: "/sandbox/calculator",
     },
   ],
 };

@@ -5,18 +5,18 @@ const DmHelperData: iCard = {
   description: "Helps you run your DnD games.",
   screenshot: {
     imageUrl: "/static/images/screenshots/dm-helper-screenshot.png",
-    linkUrl: "/projects/dm-helper",
+    linkUrl: "/sandbox/dm-helper",
   },
   btns: [
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/dm-helper",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/sandbox/(pages)/dm-helper",
       icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",
-      url: "/projects/dm-helper",
+      url: "/sandbox/dm-helper",
     },
   ],
 };

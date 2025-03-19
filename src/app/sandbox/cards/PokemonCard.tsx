@@ -5,13 +5,13 @@ const PokemonData: iCard = {
   description: "Build the best team or see how your favorites compare.",
   screenshot: {
     imageUrl: "/static/images/screenshots/pokemon-screenshot.png",
-    linkUrl: "/projects/pokemon",
+    linkUrl: "/sandbox/pokemon",
   },
   btns: [
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/pokemon",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/sandbox/(pages)/pokemon",
       icon: "/static/images/logos/github.svg",
     },
     {
@@ -21,7 +21,7 @@ const PokemonData: iCard = {
     },
     {
       text: "Try It!",
-      url: "/projects/pokemon",
+      url: "/sandbox/pokemon",
     },
   ],
 };

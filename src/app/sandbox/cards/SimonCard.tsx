@@ -5,18 +5,18 @@ const SimonData: iCard = {
   description: "Simon says.",
   screenshot: {
     imageUrl: "/static/images/screenshots/simon-screenshot.png",
-    linkUrl: "/projects/simon",
+    linkUrl: "/sandbox/simon",
   },
   btns: [
     {
       text: "App Code",
       url:
-        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/projects/pages/simon",
+        "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/app/sandbox/(pages)/simon",
       icon: "/static/images/logos/github.svg",
     },
     {
       text: "Try It!",
-      url: "/projects/simon",
+      url: "/sandbox/simon",
     },
   ],
 };
