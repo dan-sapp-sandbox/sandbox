@@ -5,20 +5,20 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="fixed top-5 right-10 
+      className="z-999 fixed top-5 right-10 
         flex items-center gap-2
         rounded-md border
         border-[var(--border)]
         px-4 py-2 text-sm font-medium
-        bg-[var(--foreground)] text-[var(--background)]
-        dark:bg-[var(--foreground)] dark:text-[var(--background)]
+        bg-[var(--background)] text-[var(--foreground)]
+        dark:bg-[var(--background)] dark:text-[var(--foreground)]
         shadow-sm
         transition-colors duration-300
         hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)]
         dark:hover:bg-[var(--primary)] dark:hover:text-[var(--primary-foreground)]"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      {theme === "light" ? "☀️ Light" : "🌙 Dark"}
+      {theme === "light" ? "☀️ Light Mode" : "🌙 Dark Mode"}
     </button>
   );
 }

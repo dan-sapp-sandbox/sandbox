@@ -10,7 +10,7 @@ const StorybookSection = () => {
         <span>Explain features</span>
         <span>Link to code</span>
       </div>
-      <div className="bg-yellow-700 h-180 w-320 flex flex-col justify-center items-center">
+      <div className="bg-yellow-700 h-150 w-225 flex flex-col justify-center items-center">
         <span className="text-3xl">Storybook here</span>
       </div>
     </Card>

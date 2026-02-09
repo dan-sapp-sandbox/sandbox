@@ -9,7 +9,7 @@ const DndSection = () => {
         <span>Jira clone?</span>
         <span>Link to code</span>
       </div>
-      <div className="bg-amber-900 h-180 w-320 flex flex-col justify-center items-center">
+      <div className="bg-amber-900 h-150 w-225 flex flex-col justify-center items-center">
         <span className="text-3xl">Drag and Drop here</span>
       </div>
     </Card>

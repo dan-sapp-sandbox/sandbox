@@ -14,6 +14,7 @@ const mapStyleOptions = [
 ];
 
 export const useMapState = () => {
+  //TODO: setup an observer to update map size of map size change
   const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/standard");
   const [projection, setProjection] = useState<IProjection>("mercator");
   const [viewState, setViewState] = useState<ViewState>({

@@ -19,8 +19,8 @@ const App = () => {
       className="bg-background text-foreground dark:bg-background dark:text-foreground h-screen w-screen flex flex-col gap-6 overflow-y-scroll"
     >
       <ThemeToggle />
-      <div className="w-full my-16 flex flex-row justify-center">
-        <div className="w-full max-w-475 flex flex-col justify-center items-center gap-12">
+      <div className="w-full p-8 flex flex-row justify-center">
+        <div className="w-full flex flex-col justify-center items-center gap-12">
           <ProfileSection />
           <Divider />
           <MapSection />

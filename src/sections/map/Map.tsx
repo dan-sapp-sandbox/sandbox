@@ -5,7 +5,7 @@ import { useMapState } from "./useMapState";
 export const MapComponent = () => {
   const mapState = useMapState();
   return (
-    <div className="h-180 w-320">
+    <div className="h-full min-h-175 flex-1 w-full">
       <Map
         {...mapState.viewState}
         onMove={(e) => mapState.setViewState(e.viewState)}
