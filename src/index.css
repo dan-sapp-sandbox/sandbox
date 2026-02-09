@@ -33,6 +33,8 @@
     --map-toolbar-icon-hover: #2d459a;
     --map-toolbar-icon-bg: #c7d2e7;
     --map-toolbar-icon-bg-hover: #c7d2e7;
+
+    --theme-toggle-border: #000000;
   }
 
   /* Dark mode */
@@ -67,6 +69,8 @@
     --map-toolbar-icon-hover: #bfccfd;
     --map-toolbar-icon-bg: #393939;
     --map-toolbar-icon-bg-hover: #393939;
+
+    --theme-toggle-border: #ffffff;
   }
 }
 

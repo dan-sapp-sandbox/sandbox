@@ -1,4 +1,4 @@
-export const useProfileState = () => {
+const useProfileState = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const linkedInURL = "https://www.linkedin.com/in/dan-sapp-744145b6/";
   const resumeURL =
@@ -18,3 +18,5 @@ export const useProfileState = () => {
     handleOpenResume,
   };
 };
+
+export default useProfileState;

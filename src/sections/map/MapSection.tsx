@@ -1,6 +1,6 @@
-import { Card } from "@/components/Card";
 import { ExternalLink } from "lucide-react";
-import { MapComponent } from "./Map";
+import Card from "@/components/Card";
+import MapComponent from "./Map";
 
 const MapSection = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox";

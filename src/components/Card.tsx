@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-export const Card = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+const Card = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   return (
     <div
       className="w-full max-w-400 min-h-100 flex flex-row justify-between rounded-xl gap-16 p-4 border
@@ -11,3 +11,5 @@ export const Card = ({ children }: { children: JSX.Element | JSX.Element[] }) =>
     </div>
   );
 };
+
+export default Card;

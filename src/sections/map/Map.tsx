@@ -3,7 +3,7 @@ import Map from "react-map-gl/mapbox";
 import { useMapState } from "./useMapState";
 import Toolbar from "./Toolbar";
 
-export const MapComponent = () => {
+const MapComponent = () => {
   const mapState = useMapState();
   return (
     <div className="relative h-full min-h-175 flex-1 w-full">
@@ -20,3 +20,5 @@ export const MapComponent = () => {
     </div>
   );
 };
+
+export default MapComponent;

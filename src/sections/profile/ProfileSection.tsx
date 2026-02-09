@@ -1,7 +1,7 @@
 import profilePic from "/me.png";
 import { ExternalLink } from "lucide-react";
-import { Card } from "@/components/Card";
-import { useProfileState } from "./useProfileState";
+import Card from "@/components/Card";
+import useProfileState from "./useProfileState";
 
 const ProfileSection = () => {
   const profileState = useProfileState();
