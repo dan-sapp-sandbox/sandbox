@@ -1,61 +1,72 @@
 @import "tailwindcss";
 
-/* ---------- Theme variables ---------- */
 @layer base {
   /* Light mode */
   :root {
-    --background: #ffffff; /* white */
-    --foreground: #111827; /* dark text */
+    --background: #ffffff;
+    --foreground: #111827;
 
-    --primary: #2563eb; /* blue */
-    --primary-foreground: #ffffff; /* white text on blue */
+    --primary: #2563eb;
+    --primary-foreground: #ffffff;
 
-    --secondary: #64748b; /* gray */
-    --secondary-foreground: #3f4751; /* light gray/white */
+    --secondary: #64748b;
+    --secondary-foreground: #3f4751;
 
-    --accent: #facc15; /* yellow */
-    --accent-foreground: #111827; /* dark text on yellow */
+    --accent: #facc15;
+    --accent-foreground: #111827;
 
-    --border: #e5e7eb; /* light border */
-    --ring: #2563eb; /* primary blue ring */
+    --border: #e5e7eb;
+    --ring: #2563eb;
     --radius: 0.5rem;
 
-    --divider: #bdbdbd; /* light gray */
+    --divider: #bdbdbd;
 
     --link: #2563eb;
     --link-hover: #1e40af;
 
-    --card-background: #f9fafb; /* light gray card */
-    --card-foreground: #111827; /* card text color */
-    --card-border: #e5e7eb; /* light border */
+    --card-background: #f9fafb;
+    --card-foreground: #111827;
+    --card-border: #e5e7eb;
+
+    --map-toolbar: #c4cedf;
+    --map-toolbar-icon: #000000;
+    --map-toolbar-icon-hover: #2d459a;
+    --map-toolbar-icon-bg: #c7d2e7;
+    --map-toolbar-icon-bg-hover: #c7d2e7;
   }
 
   /* Dark mode */
   .dark {
-    --background: #1a1a1a; /* dark gray background */
-    --foreground: #f5f5f5; /* light text */
+    --background: #1a1a1a;
+    --foreground: #f5f5f5;
 
-    --primary: #60a5fa; /* lighter blue */
-    --primary-foreground: #1a1a1a; /* dark text */
+    --primary: #60a5fa;
+    --primary-foreground: #1a1a1a;
 
-    --secondary: #94a3b8; /* gray/blue */
-    --secondary-foreground: #f5f5f5; /* light text */
+    --secondary: #94a3b8;
+    --secondary-foreground: #f5f5f5;
 
-    --accent: #eab308; /* golden yellow */
-    --accent-foreground: #1a1a1a; /* dark text */
+    --accent: #eab308;
+    --accent-foreground: #1a1a1a;
 
-    --border: #374151; /* dark gray border */
-    --ring: #60a5fa; /* blue ring */
+    --border: #374151;
+    --ring: #60a5fa;
     --radius: 0.5rem;
 
-    --divider: #6b6b6b; /* dark gray */
+    --divider: #6b6b6b;
 
     --link: #3b82f6;
     --link-hover: #60a5fa;
 
-    --card-background: #1f2937; /* dark gray card */
-    --card-foreground: #f5f5f5; /* light card text */
-    --card-border: #374151; /* dark border */
+    --card-background: #000000b9;
+    --card-foreground: #f5f5f5;
+    --card-border: #374151;
+
+    --map-toolbar: #393939;
+    --map-toolbar-icon: #ffffff;
+    --map-toolbar-icon-hover: #bfccfd;
+    --map-toolbar-icon-bg: #393939;
+    --map-toolbar-icon-bg-hover: #393939;
   }
 }
 

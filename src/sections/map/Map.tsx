@@ -1,11 +1,13 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map from "react-map-gl/mapbox";
 import { useMapState } from "./useMapState";
+import Toolbar from "./Toolbar";
 
 export const MapComponent = () => {
   const mapState = useMapState();
   return (
-    <div className="h-full min-h-175 flex-1 w-full">
+    <div className="relative h-full min-h-175 flex-1 w-full">
+      <Toolbar />
       <Map
         {...mapState.viewState}
         onMove={(e) => mapState.setViewState(e.viewState)}

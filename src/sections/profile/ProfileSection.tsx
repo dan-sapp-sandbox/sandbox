@@ -13,11 +13,12 @@ const ProfileSection = () => {
           <span className="text-2xl font-bold text-[var(--foreground)]">Hi, I'm Dan Sapp.</span>
 
           <span className="text-2xl text-[var(--secondary-foreground)]">
-            Please enjoy this collection of features that I have made for clients in the past.
+            Please enjoy this collection of features I have made for previous clients.
           </span>
 
           <div className="flex flex-col gap-2 text-[var(--foreground)]">
             <span>I'm a software engineer with 10 years of industry experience.</span>
+            <span>I specialize in React and Typescript.</span>
             <span>I like making cool stuff that feels good to use.</span>
             <span>I have degrees in Physics/Math and Biology/Business.</span>
           </div>
