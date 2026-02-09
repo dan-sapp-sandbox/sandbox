@@ -1,0 +1,36 @@
+import { useState } from "react";
+import { type ViewState } from "react-map-gl/mapbox";
+
+type IProjection = "globe" | "mercator";
+
+const mapStyleOptions = [
+  "mapbox://styles/mapbox/standard",
+  "mapbox://styles/mapbox/streets-v12",
+  "mapbox://styles/mapbox/outdoors-v12",
+  "mapbox://styles/mapbox/light-v11",
+  "mapbox://styles/mapbox/dark-v11",
+  "mapbox://styles/mapbox/satellite-v9",
+  "mapbox://styles/mapbox/satellite-streets-v12",
+];
+
+export const useMapState = () => {
+  const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/standard");
+  const [projection, setProjection] = useState<IProjection>("mercator");
+  const [viewState, setViewState] = useState<ViewState>({
+    longitude: -98.5795,
+    latitude: 39.8283,
+    zoom: 4,
+    bearing: 0,
+    pitch: 0,
+    padding: { top: 0, left: 0, right: 0, bottom: 0 },
+  });
+  return {
+    viewState,
+    setViewState,
+    projection,
+    setProjection,
+    mapStyleOptions,
+    mapStyle,
+    setMapStyle,
+  };
+};

@@ -1,0 +1,20 @@
+import { SectionWrapper } from "./SectionWrapper";
+
+const UserMgmtSection = () => {
+  return (
+    <SectionWrapper>
+      <div className="bg-violet-900 h-180 w-320 flex flex-col justify-center items-center">
+        <span className="text-3xl">CRUD here</span>
+      </div>
+      <div className="flex flex-col items-end gap-12">
+        <span className="text-2xl font-bold">Auth and Content Management Systems</span>
+        <span>Auth0 and CMS</span>
+        <span>Data table, add/edit modal</span>
+        <span>Explain where you used this in the past</span>
+        <span>Link to code</span>
+      </div>
+    </SectionWrapper>
+  );
+};
+
+export default UserMgmtSection;
