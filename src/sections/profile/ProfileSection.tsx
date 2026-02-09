@@ -24,22 +24,21 @@ const ProfileSection = () => {
           <div className="flex flex-row items-center gap-16">
             <div
               onClick={profileState.handleOpenResume}
-              className="flex flex-row items-center gap-2 cursor-pointer 
-             text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
+              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
             >
               <span>Resume</span>
               <ExternalLink className="size-5" />
             </div>
             <div
               onClick={profileState.handleOpenLinkedInLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-blue-400 hover:text-blue-300"
+              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
             >
               <span>LinkedIn</span>
               <ExternalLink className="size-5" />
             </div>
             <div
               onClick={profileState.handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-blue-400 hover:text-blue-300"
+              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
             >
               <span>GitHub</span>
               <ExternalLink className="size-5" />
