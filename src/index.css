@@ -4,96 +4,117 @@
 @layer base {
   /* Light mode */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: #ffffff; /* white */
+    --foreground: #111827; /* dark text */
 
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    --primary: #2563eb; /* blue */
+    --primary-foreground: #ffffff; /* white text on blue */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: #64748b; /* gray */
+    --secondary-foreground: #3f4751; /* light gray/white */
 
-    --accent: 200 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: #facc15; /* yellow */
+    --accent-foreground: #111827; /* dark text on yellow */
 
-    --border: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: #e5e7eb; /* light border */
+    --ring: #2563eb; /* primary blue ring */
     --radius: 0.5rem;
+
+    --divider: #bdbdbd; /* light gray */
+
+    --link: #2563eb;
+    --link-hover: #1e40af;
+
+    --card-background: #f9fafb; /* light gray card */
+    --card-foreground: #111827; /* card text color */
+    --card-border: #e5e7eb; /* light border */
   }
 
   /* Dark mode */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: #1a1a1a; /* dark gray background */
+    --foreground: #f5f5f5; /* light text */
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: #60a5fa; /* lighter blue */
+    --primary-foreground: #1a1a1a; /* dark text */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: #94a3b8; /* gray/blue */
+    --secondary-foreground: #f5f5f5; /* light text */
 
-    --accent: 200 80% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: #eab308; /* golden yellow */
+    --accent-foreground: #1a1a1a; /* dark text */
 
-    --border: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: #374151; /* dark gray border */
+    --ring: #60a5fa; /* blue ring */
     --radius: 0.5rem;
-  }
 
-  /* Global styles using variables */
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
-    margin: 0;
-  }
+    --divider: #6b6b6b; /* dark gray */
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 600;
-    color: hsl(var(--foreground));
-  }
+    --link: #60a5fa;
+    --link-hover: #3b82f6;
 
-  a {
-    color: hsl(var(--accent));
-    font-weight: 500;
-    text-decoration: none;
+    --card-background: #1f2937; /* dark gray card */
+    --card-foreground: #f5f5f5; /* light card text */
+    --card-border: #374151; /* dark border */
   }
-  a:hover {
-    opacity: 0.85;
-  }
+}
 
-  button {
-    font-family: inherit;
-    border-radius: var(--radius);
-    border: 1px solid transparent;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    /* background-color: hsl(var(--primary)); */
-    /* color: hsl(var(--primary-foreground)); */
-  }
-  button:hover {
-    filter: brightness(0.9);
-  }
+/* Global styles using variables */
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  margin: 0;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
 
-  input,
-  textarea,
-  select {
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    padding: 0.5rem;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+a {
+  color: hsl(var(--accent));
+  font-weight: 500;
+  text-decoration: none;
+}
+a:hover {
+  opacity: 0.85;
+}
+
+button {
+  font-family: inherit;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  /* background-color: hsl(var(--primary)); */
+  /* color: hsl(var(--primary-foreground)); */
+}
+button:hover {
+  filter: brightness(0.9);
+}
+
+input,
+textarea,
+select {
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 .mapboxgl-ctrl > .mapboxgl-ctrl-logo {

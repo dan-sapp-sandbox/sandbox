@@ -1,8 +1,8 @@
-import { SectionWrapper } from "./SectionWrapper";
+import { Card } from "@/components/Card";
 
 const DndSection = () => {
   return (
-    <SectionWrapper>
+    <Card>
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Drag and Drop</span>
         <span>dnd</span>
@@ -12,7 +12,7 @@ const DndSection = () => {
       <div className="bg-amber-900 h-180 w-320 flex flex-col justify-center items-center">
         <span className="text-3xl">Drag and Drop here</span>
       </div>
-    </SectionWrapper>
+    </Card>
   );
 };
 

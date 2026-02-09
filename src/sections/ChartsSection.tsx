@@ -1,8 +1,8 @@
-import { SectionWrapper } from "./SectionWrapper";
+import { Card } from "@/components/Card";
 
 const ChartsSection = () => {
   return (
-    <SectionWrapper>
+    <Card>
       <div className="bg-emerald-900 h-180 w-320 flex flex-col justify-center items-center">
         <span className="text-3xl">Charts here</span>
       </div>
@@ -13,7 +13,7 @@ const ChartsSection = () => {
         <span>Toggle between different charts</span>
         <span>Link to code</span>
       </div>
-    </SectionWrapper>
+    </Card>
   );
 };
 

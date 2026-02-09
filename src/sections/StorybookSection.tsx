@@ -1,8 +1,8 @@
-import { SectionWrapper } from "./SectionWrapper";
+import { Card } from "@/components/Card";
 
 const StorybookSection = () => {
   return (
-    <SectionWrapper>
+    <Card>
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Component Library</span>
         <span>Storybook</span>
@@ -13,7 +13,7 @@ const StorybookSection = () => {
       <div className="bg-yellow-700 h-180 w-320 flex flex-col justify-center items-center">
         <span className="text-3xl">Storybook here</span>
       </div>
-    </SectionWrapper>
+    </Card>
   );
 };
 

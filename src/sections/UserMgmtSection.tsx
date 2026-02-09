@@ -1,8 +1,8 @@
-import { SectionWrapper } from "./SectionWrapper";
+import { Card } from "@/components/Card";
 
 const UserMgmtSection = () => {
   return (
-    <SectionWrapper>
+    <Card>
       <div className="bg-violet-900 h-180 w-320 flex flex-col justify-center items-center">
         <span className="text-3xl">CRUD here</span>
       </div>
@@ -13,7 +13,7 @@ const UserMgmtSection = () => {
         <span>Explain where you used this in the past</span>
         <span>Link to code</span>
       </div>
-    </SectionWrapper>
+    </Card>
   );
 };
 
