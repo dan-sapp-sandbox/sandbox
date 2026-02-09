@@ -1,5 +1,5 @@
 import ThemeToggle from "./ThemeToggle";
-import ProfileSection from "./sections/ProfileSection";
+import ProfileSection from "./sections/profile/ProfileSection";
 import MapSection from "./sections/map/MapSection";
 import StorybookSection from "./sections/StorybookSection";
 import UserMgmtSection from "./sections/UserMgmtSection";
