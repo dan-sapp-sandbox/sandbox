@@ -1,9 +1,9 @@
-import { SectionWrapper } from "../SectionWrapper";
+import { Card } from "@/components/Card";
 import { MapComponent } from "./Map";
 
 const MapSection = () => {
   return (
-    <SectionWrapper>
+    <Card>
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Geospatial Software</span>
         <span>Mapbox, geojson, tiles, layers, icons</span>
@@ -12,7 +12,7 @@ const MapSection = () => {
         <span>Link to code</span>
       </div>
       <MapComponent />
-    </SectionWrapper>
+    </Card>
   );
 };
 

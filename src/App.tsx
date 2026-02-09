@@ -1,10 +1,11 @@
-import ThemeToggle from "./components/themeToggle";
-import ProfileSection from "./sections/profile/ProfileSection";
-import MapSection from "./sections/map/MapSection";
-import StorybookSection from "./sections/StorybookSection";
-import UserMgmtSection from "./sections/UserMgmtSection";
-import DndSection from "./sections/DndSection";
-import ChartsSection from "./sections/ChartsSection";
+import ProfileSection from "@/sections/profile/ProfileSection";
+import MapSection from "@/sections/map/MapSection";
+import StorybookSection from "@/sections/StorybookSection";
+import UserMgmtSection from "@/sections/UserMgmtSection";
+import DndSection from "@/sections/DndSection";
+import ChartsSection from "@/sections/ChartsSection";
+
+import ThemeToggle from "@/components/themeToggle";
 import Divider from "@/components/Divider";
 
 const App = () => {
