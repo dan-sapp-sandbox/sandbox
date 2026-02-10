@@ -23,7 +23,7 @@ const DataTable = () => {
     <div className="w-full h-full overflow-y-scroll">
       <Header config={headerLabels} />
       {data.map((row) => (
-        <Row row={row} config={headerLabels} />
+        <Row key={row.id} row={row} config={headerLabels} />
       ))}
     </div>
   );
@@ -33,7 +33,9 @@ const Header = ({ config }: { config: string[] }) => {
   return (
     <div className="w-full grid grid-cols-12 capitalize">
       {config.map((name) => (
-        <Cell name={name}>{name}</Cell>
+        <Cell key={name} name={name}>
+          {name}
+        </Cell>
       ))}
     </div>
   );
@@ -42,7 +44,9 @@ const Row = ({ row, config }: { row: IUser; config: string[] }) => {
   return (
     <div className="w-full grid grid-cols-12">
       {config.map((name) => (
-        <Cell name={name}>{row[name]}</Cell>
+        <Cell key={name} name={name}>
+          {row[name]}
+        </Cell>
       ))}
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { type ViewState } from "react-map-gl/mapbox";
 
-type IProjection = "globe" | "mercator";
+export type IProjection = "globe" | "mercator";
 
 const mapStyleOptions = [
   "mapbox://styles/mapbox/standard",
