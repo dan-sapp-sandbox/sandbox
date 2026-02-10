@@ -1,13 +1,22 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map from "react-map-gl/mapbox";
-import { useMapState } from "./useMapState";
 import Toolbar from "./Toolbar";
+import LayerDrawer from "./drawers/LayerDrawer";
+import DrawDrawer from "./drawers/DrawDrawer";
+import SettingsDrawer from "./drawers/SettingsDrawer";
+import IconDrawer from "./drawers/IconDrawer";
+import WidgetDrawer from "./drawers/WidgetDrawer";
+import type { IMapState } from "./useMapState";
 
-const MapComponent = () => {
-  const mapState = useMapState();
+const MapComponent = ({ mapState }: { mapState: IMapState }) => {
   return (
-    <div className="relative h-full min-h-175 flex-1 w-full">
-      <Toolbar />
+    <div className="relative h-full min-h-175 flex-1 w-full flex flex-row">
+      <Toolbar mapState={mapState} />
+      <LayerDrawer mapState={mapState} />
+      <DrawDrawer mapState={mapState} />
+      <IconDrawer mapState={mapState} />
+      <WidgetDrawer mapState={mapState} />
+      <SettingsDrawer mapState={mapState} />
       <Map
         {...mapState.viewState}
         onMove={(e) => mapState.setViewState(e.viewState)}

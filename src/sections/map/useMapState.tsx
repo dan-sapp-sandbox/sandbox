@@ -13,8 +13,20 @@ const mapStyleOptions = [
   "mapbox://styles/mapbox/satellite-streets-v12",
 ];
 
-export const useMapState = () => {
+export interface IMapState {
+  viewState: ViewState;
+  setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
+  projection: IProjection;
+  setProjection: React.Dispatch<React.SetStateAction<IProjection>>;
+  mapStyleOptions: string[];
+  mapStyle: string;
+  setMapStyle: React.Dispatch<React.SetStateAction<string>>;
+  drawer: string | undefined;
+  setDrawer: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
+export const useMapState = (): IMapState => {
   //TODO: setup an observer to update map size of map size change
+  const [drawer, setDrawer] = useState<string | undefined>();
   const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/standard");
   const [projection, setProjection] = useState<IProjection>("mercator");
   const [viewState, setViewState] = useState<ViewState>({
@@ -33,5 +45,7 @@ export const useMapState = () => {
     mapStyleOptions,
     mapStyle,
     setMapStyle,
+    drawer,
+    setDrawer,
   };
 };

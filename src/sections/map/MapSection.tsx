@@ -1,8 +1,10 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
 import MapComponent from "./Map";
+import { useMapState } from "./useMapState";
 
 const MapSection = () => {
+  const mapState = useMapState();
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
@@ -41,7 +43,7 @@ const MapSection = () => {
           </div>
         </div>
       </div>
-      <MapComponent />
+      <MapComponent mapState={mapState} />
     </Card>
   );
 };
