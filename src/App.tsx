@@ -8,33 +8,39 @@ import ChartsSection from "@/sections/ChartsSection";
 import ThemeToggle from "@/components/themeToggle";
 import Divider from "@/components/Divider";
 
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { theme } from "./theme";
+
 const App = () => {
   return (
-    <div
-      style={{
-        backgroundImage: "url(./background.jpg)",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-      className="h-screen w-screen flex flex-col gap-6 overflow-y-scroll"
-    >
-      <ThemeToggle />
-      <div className="w-full p-8 flex flex-row justify-center">
-        <div className="w-full flex flex-col justify-center items-center gap-12">
-          <ProfileSection />
-          <Divider />
-          <MapSection />
-          <Divider />
-          <UserMgmtSection />
-          <Divider />
-          <DndSection />
-          <Divider />
-          <ChartsSection />
-          <Divider />
-          <StorybookSection />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div
+        style={{
+          backgroundImage: "url(./background.jpg)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+        className="h-screen w-screen flex flex-col gap-6 overflow-y-scroll"
+      >
+        <ThemeToggle />
+        <div className="w-full p-8 flex flex-row justify-center">
+          <div className="w-full flex flex-col justify-center items-center gap-12">
+            <ProfileSection />
+            <Divider />
+            <MapSection />
+            <Divider />
+            <UserMgmtSection />
+            <Divider />
+            <DndSection />
+            <Divider />
+            <ChartsSection />
+            <Divider />
+            <StorybookSection />
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

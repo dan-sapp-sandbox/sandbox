@@ -18,6 +18,7 @@ const MapComponent = ({ mapState }: { mapState: IMapState }) => {
       <WidgetDrawer mapState={mapState} />
       <SettingsDrawer mapState={mapState} />
       <Map
+        key={mapState.projection}
         {...mapState.viewState}
         onMove={(e) => mapState.setViewState(e.viewState)}
         style={{ width: "100%", height: "100%" }}
