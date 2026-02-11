@@ -37,17 +37,25 @@ export const useMapState = (): IMapState => {
   const [projection, setProjection] = useState<IProjection>(
     (localStorage.getItem("projection") as IProjection) || "globe",
   );
-  const [viewState, setViewState] = useState<ViewState>({
-    longitude: -98.5795,
-    latitude: 39.8283,
-    zoom: 2,
-    bearing: 0,
-    pitch: 0,
-    padding: { top: 0, left: 0, right: 0, bottom: 0 },
-  });
+  const lsViewState = localStorage.getItem("viewState");
+  const [viewState, setViewState] = useState<ViewState>(
+    lsViewState
+      ? JSON.parse(lsViewState)
+      : {
+          longitude: -98.5795,
+          latitude: 39.8283,
+          zoom: 2,
+          bearing: 0,
+          pitch: 0,
+          padding: { top: 0, left: 0, right: 0, bottom: 0 },
+        },
+  );
   useEffect(() => {
     localStorage.setItem("projection", projection);
   }, [projection]);
+  useEffect(() => {
+    localStorage.setItem("viewState", JSON.stringify(viewState));
+  }, [viewState]);
   return {
     viewState,
     setViewState,
