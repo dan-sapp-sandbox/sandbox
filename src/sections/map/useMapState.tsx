@@ -29,9 +29,12 @@ export interface IMapState {
   setMapStyle: React.Dispatch<React.SetStateAction<string>>;
   drawer: string | undefined;
   setDrawer: React.Dispatch<React.SetStateAction<string | undefined>>;
+  drawEnabled: boolean;
+  setDrawEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const useMapState = (): IMapState => {
   //TODO: setup an observer to update map size of map size change
+  const [drawEnabled, setDrawEnabled] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<string | undefined>();
   const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/satellite-streets-v12");
   const [projection, setProjection] = useState<IProjection>(
@@ -67,5 +70,7 @@ export const useMapState = (): IMapState => {
     setMapStyle,
     drawer,
     setDrawer,
+    drawEnabled,
+    setDrawEnabled,
   };
 };

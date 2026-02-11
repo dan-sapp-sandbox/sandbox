@@ -7,6 +7,7 @@ import SettingsDrawer from "./drawers/SettingsDrawer";
 import IconDrawer from "./drawers/IconDrawer";
 import WidgetDrawer from "./drawers/WidgetDrawer";
 import type { IMapState } from "./useMapState";
+import DrawLayer from "./DrawLayer";
 
 const MapComponent = ({ mapState }: { mapState: IMapState }) => {
   return (
@@ -19,6 +20,7 @@ const MapComponent = ({ mapState }: { mapState: IMapState }) => {
       <SettingsDrawer mapState={mapState} />
       <Map
         key={mapState.projection}
+        id="mainMap"
         {...mapState.viewState}
         onMove={(e) => mapState.setViewState(e.viewState)}
         style={{ width: "100%", height: "100%" }}
@@ -27,6 +29,7 @@ const MapComponent = ({ mapState }: { mapState: IMapState }) => {
         attributionControl={false}
         projection={mapState.projection}
       />
+      <DrawLayer enabled={mapState.drawEnabled} />
     </div>
   );
 };

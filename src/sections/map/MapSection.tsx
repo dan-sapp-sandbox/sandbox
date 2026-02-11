@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
+import { MapProvider } from "react-map-gl/mapbox";
 import MapComponent from "./Map";
 import { useMapState } from "./useMapState";
 
@@ -43,7 +44,9 @@ const MapSection = () => {
           </div>
         </div>
       </div>
-      <MapComponent mapState={mapState} />
+      <MapProvider>
+        <MapComponent mapState={mapState} />
+      </MapProvider>
     </Card>
   );
 };
