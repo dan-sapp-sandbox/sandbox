@@ -11,6 +11,6 @@ export const theme = createTheme({
       primary: "var(--foreground)",
       secondary: "var(--accent)",
     },
-    divider: "var(--border)",
+    divider: "rgba(255, 255, 255, 0.12)",
   },
 });

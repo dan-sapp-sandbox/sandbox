@@ -1,8 +1,10 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
-import DataTable from "@/components/dataTable";
+import DataGrid from "@/components/DataGrid";
+import useUserMgmtState from "./useUserMgmtState";
 
 const UserMgmtSection = () => {
+  const userMgmtState = useUserMgmtState();
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
@@ -10,7 +12,7 @@ const UserMgmtSection = () => {
   return (
     <Card>
       <div className="h-150 w-225 flex flex-col justify-center items-center">
-        <DataTable />
+        <DataGrid />
       </div>
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Auth and Content Management Systems</span>
