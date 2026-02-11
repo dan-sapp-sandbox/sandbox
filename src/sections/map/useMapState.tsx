@@ -31,9 +31,12 @@ export interface IMapState {
   setDrawer: React.Dispatch<React.SetStateAction<string | undefined>>;
   drawEnabled: boolean;
   setDrawEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  drawFeatures: GeoJSON.FeatureCollection | undefined;
+  setDrawFeatures: (features: GeoJSON.FeatureCollection | undefined) => void;
 }
 export const useMapState = (): IMapState => {
   //TODO: setup an observer to update map size of map size change
+  const [drawFeatures, setDrawFeatures] = useState<GeoJSON.FeatureCollection | undefined>();
   const [drawEnabled, setDrawEnabled] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<string | undefined>();
   const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/satellite-streets-v12");
@@ -72,5 +75,7 @@ export const useMapState = (): IMapState => {
     setDrawer,
     drawEnabled,
     setDrawEnabled,
+    drawFeatures,
+    setDrawFeatures,
   };
 };
