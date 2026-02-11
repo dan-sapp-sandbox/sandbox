@@ -29,7 +29,7 @@ const MapComponent = ({ mapState }: { mapState: IMapState }) => {
         attributionControl={false}
         projection={mapState.projection}
       />
-      <DrawLayer key={`drawlayer-${mapState.projection} `} mapState={mapState} enabled={mapState.drawEnabled} />
+      {/* <DrawLayer key={`drawlayer-${mapState.projection} `} mapState={mapState} enabled={mapState.drawEnabled} /> */}
     </div>
   );
 };
