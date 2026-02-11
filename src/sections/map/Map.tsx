@@ -7,7 +7,7 @@ import SettingsDrawer from "./drawers/SettingsDrawer";
 import IconDrawer from "./drawers/IconDrawer";
 import WidgetDrawer from "./drawers/WidgetDrawer";
 import type { IMapState } from "./useMapState";
-import DrawLayer from "./DrawLayer";
+// import DrawLayer from "./DrawLayer";
 
 const MapComponent = ({ mapState }: { mapState: IMapState }) => {
   return (
