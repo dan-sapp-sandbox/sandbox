@@ -7,7 +7,7 @@ interface IUser {
   role: string;
 }
 
-export const data: IUser[] = [
+const data: IUser[] = [
   { id: "1", name: "Alice Johnson", email: "alice.johnson@example.com", role: "Admin" },
   { id: "2", name: "Bob Smith", email: "bob.smith@example.com", role: "User" },
   { id: "3", name: "Charlie Davis", email: "charlie.davis@example.com", role: "User" },

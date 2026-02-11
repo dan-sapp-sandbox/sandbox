@@ -11,7 +11,7 @@ declare module "@mapbox/mapbox-gl-draw" {
       combine_features?: boolean;
       uncombine_features?: boolean;
     };
-    styles?: any[];
+    styles?: string[];
   }
 
   export default class MapboxDraw implements IControl {
@@ -25,6 +25,6 @@ declare module "@mapbox/mapbox-gl-draw" {
     add(feature: GeoJSON.Feature | GeoJSON.FeatureCollection): string[];
     delete(ids: string | string[]): void;
     deleteAll(): void;
-    changeMode(mode: string, options?: any): void;
+    changeMode(mode: string, options?: string[]): void;
   }
 }

@@ -48,14 +48,16 @@ const DrawLayer = ({ mapState, enabled }: DrawLayerProps) => {
           if (mbMap.hasControl(drawRef.current)) {
             mbMap.removeControl(drawRef.current);
           }
-        } catch {}
+        } catch (e) {
+          console.error(e);
+        }
         drawRef.current = null;
       }
       mbMap.off("draw.create", updateFeatures);
       mbMap.off("draw.update", updateFeatures);
       mbMap.off("draw.delete", updateFeatures);
     };
-  }, [mainMap, enabled]);
+  }, [mainMap, enabled, mapState]);
 
   return null;
 };
