@@ -19,19 +19,51 @@ const MapSection = () => {
   return (
     <Card>
       <div className="flex flex-col gap-12">
-        <span className="text-2xl font-bold">Geospatial Software</span>
+        <div className="flex flex-col gap-1">
+          <span className="text-2xl font-bold mb-4">Geospatial Software</span>
+          <span className="">This is a map made with Mapbox/Deck.gl.</span>
+          <span>Layer 1 contains most major airports.</span>
+          <span>Layer 2 connects each airport to the north pole with an arc.</span>
+        </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Features:</span>
-          <span className="ml-6">- Mapbox</span>
-          <span className="ml-6">- GeoJSON</span>
-          <span className="ml-6">- Tiles</span>
-          <span className="ml-6">- Layers</span>
-          <span className="ml-6">- Icons</span>
+          <div className="ml-6">
+            <span className="font-bold">Layers: </span>
+            <span className="">Can be toggled on/off</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">GeoJSON: </span>
+            <span className="">Can be uploaded/downloaded</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Draw: </span>
+            <span className="">Draw points, lines, and polygons on map</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Icons: </span>
+            <span className="">Place icons on map</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Widgets: </span>
+            <span className="">Compass, PIP Map, Overview Map</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Settings: </span>
+            <span className="">Change basemap/projection</span>
+          </div>
+          {/* <span className="ml-6">- Tiles</span>
+          <span className="ml-6">- Icons</span> */}
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Used in previous projects:</span>
-          <span className="ml-6">- Search and Rescue App for the Dept of Defense</span>
-          <span className="ml-6">- Military Geospatial Intelligence App for the Dept of Defense</span>
+          <div className="ml-6">
+            <span className="font-bold">Dept of Defense: </span>
+            <span className="">Search and Rescue App</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Dept of Defense: </span>
+            <span className="">Military Geospatial Intelligence App</span>
+          </div>
         </div>
         <div className="flex flex-row items-center gap-16">
           <div
@@ -58,7 +90,13 @@ const MapSection = () => {
         <WidgetDrawer mapState={mapState} />
         <SettingsDrawer mapState={mapState} />
         <MapProvider>
-          <MapComponent projection={mapState.projection} mapStyle={mapState.mapStyle} viewState={mapState.viewState} />
+          <MapComponent
+            showLayer1={mapState.showLayer1}
+            showLayer2={mapState.showLayer2}
+            projection={mapState.projection}
+            mapStyle={mapState.mapStyle}
+            viewState={mapState.viewState}
+          />
         </MapProvider>
       </div>
     </Card>

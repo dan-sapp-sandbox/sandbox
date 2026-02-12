@@ -11,37 +11,53 @@ function DeckGLOverlay(props: any) {
   return null;
 }
 
-const MapComponent = ({ projection, mapStyle, viewState }: { projection: any; mapStyle: any; viewState: any }) => {
+const MapComponent = ({
+  showLayer1,
+  showLayer2,
+  projection,
+  mapStyle,
+  viewState,
+}: {
+  showLayer1: boolean;
+  showLayer2: boolean;
+  projection: any;
+  mapStyle: any;
+  viewState: any;
+}) => {
   const [selected, setSelected] = useState<any>(null);
   const AIR_PORTS = "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson";
   const layers = useMemo(() => {
-    const geoJsonLayer = new GeoJsonLayer({
-      id: "airports",
-      data: AIR_PORTS,
-      filled: true,
-      pointRadiusMinPixels: 2,
-      pointRadiusScale: 2000,
-      getPointRadius: (f) => 11 - f.properties.scalerank,
-      getFillColor: [200, 0, 80, 180],
-      pickable: true,
-      autoHighlight: true,
-      onClick: (info) => setSelected(info.object),
-      coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
-    });
+    const geoJsonLayer =
+      showLayer1 &&
+      new GeoJsonLayer({
+        id: "airports",
+        data: AIR_PORTS,
+        filled: true,
+        pointRadiusMinPixels: 2,
+        pointRadiusScale: 2000,
+        getPointRadius: (f) => 11 - f.properties.scalerank,
+        getFillColor: [200, 0, 80, 180],
+        pickable: true,
+        autoHighlight: true,
+        onClick: (info) => setSelected(info.object),
+        coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
+      });
 
-    const arcLayer = new ArcLayer({
-      id: "arcs",
-      data: AIR_PORTS,
-      dataTransform: (data: any) => (data?.features || []).filter((f: any) => f.properties?.scalerank < 4),
-      getSourcePosition: () => [0, 89],
-      getTargetPosition: (f) => f.geometry.coordinates,
-      getSourceColor: [0, 128, 200],
-      getTargetColor: [200, 0, 80],
-      getWidth: 1,
-    });
+    const arcLayer =
+      showLayer2 &&
+      new ArcLayer({
+        id: "arcs",
+        data: AIR_PORTS,
+        dataTransform: (data: any) => data.features || [],
+        getSourcePosition: () => [0, 89],
+        getTargetPosition: (f) => f.geometry.coordinates,
+        getSourceColor: [0, 128, 200],
+        getTargetColor: [200, 0, 80],
+        getWidth: 1,
+      });
 
     return [geoJsonLayer, arcLayer];
-  }, [AIR_PORTS, projection]);
+  }, [AIR_PORTS, projection, showLayer1, showLayer2]);
 
   return (
     <Map

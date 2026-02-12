@@ -37,10 +37,20 @@ export interface IMapState {
   drawMode: DrawMode;
   setDrawMode: React.Dispatch<React.SetStateAction<DrawMode>>;
   clearDraw: () => void;
+  showLayer1: boolean;
+  setShowLayer1: React.Dispatch<React.SetStateAction<boolean>>;
+  showLayer2: boolean;
+  setShowLayer2: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const useMapState = (): IMapState => {
   //TODO: setup an observer to update map size of map size change
 
+  const [showLayer1, setShowLayer1] = useState<boolean>(
+    localStorage.getItem("showLayer1") ? localStorage.getItem("showLayer1") === "true" : true,
+  );
+  const [showLayer2, setShowLayer2] = useState<boolean>(
+    localStorage.getItem("showLayer2") ? localStorage.getItem("showLayer2") === "true" : true,
+  );
   const [drawMode, setDrawMode] = useState<DrawMode>("simple_select");
   const [drawFeatures, setDrawFeatures] = useState<GeoJSON.FeatureCollection | undefined>();
   const [drawEnabled, setDrawEnabled] = useState<boolean>(true);
@@ -56,7 +66,7 @@ export const useMapState = (): IMapState => {
       : {
           longitude: -98.5795,
           latitude: 39.8283,
-          zoom: 2,
+          zoom: 1,
           bearing: 0,
           pitch: 0,
           padding: { top: 0, left: 0, right: 0, bottom: 0 },
@@ -73,6 +83,12 @@ export const useMapState = (): IMapState => {
   useEffect(() => {
     localStorage.setItem("viewState", JSON.stringify(viewState));
   }, [viewState]);
+  useEffect(() => {
+    localStorage.setItem("showLayer1", JSON.stringify(showLayer1));
+  }, [showLayer1]);
+  useEffect(() => {
+    localStorage.setItem("showLayer2", JSON.stringify(showLayer2));
+  }, [showLayer2]);
   return {
     viewState,
     setViewState,
@@ -91,5 +107,9 @@ export const useMapState = (): IMapState => {
     drawMode,
     setDrawMode,
     clearDraw,
+    showLayer1,
+    setShowLayer1,
+    showLayer2,
+    setShowLayer2,
   };
 };
