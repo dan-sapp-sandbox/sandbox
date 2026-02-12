@@ -12,7 +12,6 @@ function DeckGLOverlay(props: any) {
 }
 
 const MapComponent = ({ projection, mapStyle, viewState }: { projection: any; mapStyle: any; viewState: any }) => {
-  console.log("rerender");
   const [selected, setSelected] = useState<any>(null);
   const AIR_PORTS = "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson";
   const layers = useMemo(() => {
