@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { type ViewState } from "react-map-gl/mapbox";
+import type { MapViewState } from "deck.gl";
 
 export type IProjection = "globe" | "mercator";
+export type DrawMode = "simple_select" | "draw_point" | "draw_line_string" | "draw_polygon";
 
 const mapStyleOptions = [
   { id: "mapbox://styles/mapbox/standard", name: "Standard" },
@@ -19,8 +20,8 @@ const projectionOptions = [
 ];
 
 export interface IMapState {
-  viewState: ViewState;
-  setViewState: React.Dispatch<React.SetStateAction<ViewState>>;
+  viewState: MapViewState;
+  setViewState: React.Dispatch<React.SetStateAction<MapViewState>>;
   projection: IProjection;
   setProjection: React.Dispatch<React.SetStateAction<IProjection>>;
   projectionOptions: { id: string; name: string }[];
@@ -33,9 +34,14 @@ export interface IMapState {
   setDrawEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   drawFeatures: GeoJSON.FeatureCollection | undefined;
   setDrawFeatures: (features: GeoJSON.FeatureCollection | undefined) => void;
+  drawMode: DrawMode;
+  setDrawMode: React.Dispatch<React.SetStateAction<DrawMode>>;
+  clearDraw: () => void;
 }
 export const useMapState = (): IMapState => {
   //TODO: setup an observer to update map size of map size change
+
+  const [drawMode, setDrawMode] = useState<DrawMode>("simple_select");
   const [drawFeatures, setDrawFeatures] = useState<GeoJSON.FeatureCollection | undefined>();
   const [drawEnabled, setDrawEnabled] = useState<boolean>(true);
   const [drawer, setDrawer] = useState<string | undefined>();
@@ -44,7 +50,7 @@ export const useMapState = (): IMapState => {
     (localStorage.getItem("projection") as IProjection) || "globe",
   );
   const lsViewState = localStorage.getItem("viewState");
-  const [viewState, setViewState] = useState<ViewState>(
+  const [viewState, setViewState] = useState<MapViewState>(
     lsViewState
       ? JSON.parse(lsViewState)
       : {
@@ -56,6 +62,11 @@ export const useMapState = (): IMapState => {
           padding: { top: 0, left: 0, right: 0, bottom: 0 },
         },
   );
+
+  const clearDraw = () => {
+    setDrawFeatures({ type: "FeatureCollection", features: [] });
+  };
+
   useEffect(() => {
     localStorage.setItem("projection", projection);
   }, [projection]);
@@ -77,5 +88,8 @@ export const useMapState = (): IMapState => {
     setDrawEnabled,
     drawFeatures,
     setDrawFeatures,
+    drawMode,
+    setDrawMode,
+    clearDraw,
   };
 };

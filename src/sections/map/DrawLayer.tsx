@@ -2,64 +2,58 @@ import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 import { useEffect, useRef } from "react";
 import { useMap } from "react-map-gl/mapbox";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
-import type { IMapState } from "./useMapState";
+import type { FeatureCollection } from "geojson";
+import type { DrawMode } from "./useMapState";
 
-type DrawLayerProps = { mapState: IMapState; enabled: boolean };
+type DrawLayerProps = {
+  enabled: boolean;
+  mode: DrawMode;
+  value: FeatureCollection;
+  onChange: (fc: FeatureCollection) => void;
+};
 
-const DrawLayer = ({ mapState, enabled }: DrawLayerProps) => {
+export const DrawLayer = ({ enabled, mode, value, onChange }: DrawLayerProps) => {
   const { mainMap } = useMap();
   const drawRef = useRef<MapboxDraw | null>(null);
 
   useEffect(() => {
     if (!mainMap) return;
-    const mbMap = mainMap.getMap();
-    if (!mbMap) return;
+    const map = mainMap.getMap();
+    if (!map) return;
 
-    drawRef.current = new MapboxDraw({
-      displayControlsDefault: false,
-      controls: { point: true, line_string: true, polygon: true, trash: true },
-    });
-
-    if (enabled) mbMap.addControl(drawRef.current, "top-right");
-
-    // Re-add existing features after map remount
-    if (mapState.drawFeatures?.features.length) {
-      // Remove existing features first
-      const currentFeatures = drawRef.current.getAll();
-      if (currentFeatures.features.length) {
-        drawRef.current.delete(currentFeatures.features.map((f) => f.id as string));
-      }
-
-      // Add saved features
-      drawRef.current.add(mapState.drawFeatures);
+    if (!drawRef.current) {
+      drawRef.current = new MapboxDraw({
+        displayControlsDefault: false,
+      });
     }
 
-    const updateFeatures = () => {
-      mapState.setDrawFeatures(drawRef.current!.getAll());
-    };
+    if (enabled && !map.hasControl(drawRef.current)) {
+      map.addControl(drawRef.current);
+    }
 
-    mbMap.on("draw.create", updateFeatures);
-    mbMap.on("draw.update", updateFeatures);
-    mbMap.on("draw.delete", updateFeatures);
+    if (!enabled && map.hasControl(drawRef.current)) {
+      map.removeControl(drawRef.current);
+    }
+
+    drawRef.current.changeMode(mode);
+
+    drawRef.current.deleteAll();
+    if (value.features.length) {
+      drawRef.current.add(value);
+    }
+
+    const sync = () => onChange(drawRef.current!.getAll());
+
+    map.on("draw.create", sync);
+    map.on("draw.update", sync);
+    map.on("draw.delete", sync);
 
     return () => {
-      if (drawRef.current) {
-        try {
-          if (mbMap.hasControl(drawRef.current)) {
-            mbMap.removeControl(drawRef.current);
-          }
-        } catch (e) {
-          console.error(e);
-        }
-        drawRef.current = null;
-      }
-      mbMap.off("draw.create", updateFeatures);
-      mbMap.off("draw.update", updateFeatures);
-      mbMap.off("draw.delete", updateFeatures);
+      map.off("draw.create", sync);
+      map.off("draw.update", sync);
+      map.off("draw.delete", sync);
     };
-  }, [mainMap, enabled, mapState]);
+  }, [mainMap, enabled, mode, value, onChange]);
 
   return null;
 };
-
-export default DrawLayer;

@@ -3,6 +3,12 @@ import Card from "@/components/Card";
 import { MapProvider } from "react-map-gl/mapbox";
 import MapComponent from "./Map";
 import { useMapState } from "./useMapState";
+import Toolbar from "./Toolbar";
+import LayerDrawer from "./drawers/LayerDrawer";
+import DrawDrawer from "./drawers/draw/DrawDrawer";
+import SettingsDrawer from "./drawers/SettingsDrawer";
+import IconDrawer from "./drawers/IconDrawer";
+import WidgetDrawer from "./drawers/WidgetDrawer";
 
 const MapSection = () => {
   const mapState = useMapState();
@@ -44,9 +50,17 @@ const MapSection = () => {
           </div>
         </div>
       </div>
-      <MapProvider>
-        <MapComponent mapState={mapState} />
-      </MapProvider>
+      <div className="relative h-full min-h-175 flex-1 w-full min-w-100 flex flex-row">
+        <Toolbar mapState={mapState} />
+        <LayerDrawer mapState={mapState} />
+        <DrawDrawer mapState={mapState} />
+        <IconDrawer mapState={mapState} />
+        <WidgetDrawer mapState={mapState} />
+        <SettingsDrawer mapState={mapState} />
+        <MapProvider>
+          <MapComponent projection={mapState.projection} mapStyle={mapState.mapStyle} viewState={mapState.viewState} />
+        </MapProvider>
+      </div>
     </Card>
   );
 };
