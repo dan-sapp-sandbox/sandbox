@@ -43,36 +43,7 @@ const MapComponent = ({ projection, mapStyle, viewState }: { projection: any; ma
 
     return [geoJsonLayer, arcLayer];
   }, [AIR_PORTS, projection]);
-  // const geoJsonLayer = new GeoJsonLayer({
-  //   id: "airports",
-  //   data: AIR_PORTS,
-  //   // Styles
-  //   filled: true,
-  //   pointRadiusMinPixels: 2,
-  //   pointRadiusScale: 2000,
-  //   getPointRadius: (f) => 11 - f.properties.scalerank,
-  //   getFillColor: [200, 0, 80, 180],
-  //   // Interactive props
-  //   pickable: true,
-  //   autoHighlight: true,
-  //   onClick: (info) => setSelected(info.object),
-  //   coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
-  //   // beforeId: 'waterway-label' // In interleaved mode render the layer under map labels
-  // });
-  // const arcLayer = new ArcLayer({
-  //   id: "arcs",
-  //   data: AIR_PORTS,
-  //   dataTransform: (data: any) => data.features.filter((feature: any) => feature.properties?.scalerank < 4),
-  //   // Styles
-  //   getSourcePosition: () => [0, 89],
-  //   getTargetPosition: (f) => f.geometry.coordinates,
-  //   getSourceColor: [0, 128, 200],
-  //   getTargetColor: [200, 0, 80],
-  //   getWidth: 1,
-  // });
-  // const layers = [geoJsonLayer, arcLayer];
-  const MAPBOX_TOKEN =
-    "pk.eyJ1Ijoia2luZ2lubWVsbG93IiwiYSI6ImNtbGZlMWxhMzAwdzMzam9qd3dra2JkZ2UifQ.Rl-zH4YnA0F1-GRyafTb9w";
+
   return (
     <Map
       key={projection}
@@ -82,7 +53,7 @@ const MapComponent = ({ projection, mapStyle, viewState }: { projection: any; ma
       mapStyle={mapStyle}
       projection={projection === "globe" ? undefined : projection}
       attributionControl={false}
-      mapboxAccessToken={MAPBOX_TOKEN}
+      mapboxAccessToken="pk.eyJ1Ijoia2luZ2lubWVsbG93IiwiYSI6ImNtbGZlMWxhMzAwdzMzam9qd3dra2JkZ2UifQ.Rl-zH4YnA0F1-GRyafTb9w"
     >
       {selected && (
         <Popup
