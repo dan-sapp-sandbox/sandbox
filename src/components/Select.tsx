@@ -15,7 +15,7 @@ const SelectComponent = ({
   const theme = useTheme();
 
   return (
-    <FormControl fullWidth>
+    <FormControl sx={{ width: "180px", borderRadius: "3px", border: `1px solid ${theme.palette.text.primary}` }}>
       <InputLabel
         sx={{
           color: theme.palette.text.primary,
