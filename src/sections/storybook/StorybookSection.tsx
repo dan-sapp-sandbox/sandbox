@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
+import StorybookPage from "./StorybookPage";
 
 const StorybookSection = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox";
@@ -12,11 +13,16 @@ const StorybookSection = () => {
         <span className="text-2xl font-bold">Component Library</span>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Features:</span>
-          <span className="ml-6">- Storybook</span>
+          {/* <div className="ml-6">
+            <span className="font-bold">Theme Visibility: </span>
+            <span className="">Can be toggled on/off</span>
+          </div> */}
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Used in previous projects:</span>
-          <span className="ml-6">- most places</span>
+          <div className="ml-6">
+            <span className="font-bold">Used Most Places </span>
+          </div>
         </div>
         <div className="flex flex-row items-center gap-16">
           <div
@@ -36,7 +42,7 @@ const StorybookSection = () => {
         </div>
       </div>
       <div className="bg-yellow-700 h-150 w-225 flex flex-col justify-center items-center">
-        <span className="text-3xl">Storybook here</span>
+        <StorybookPage />
       </div>
     </Card>
   );
