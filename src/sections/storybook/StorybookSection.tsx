@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
-import StorybookPage from "./StorybookPage";
+import Viewer from "./Viewer";
 
 const StorybookSection = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox";
@@ -41,9 +41,7 @@ const StorybookSection = () => {
           </div>
         </div>
       </div>
-      <div className="bg-yellow-700 h-150 w-225 flex flex-col justify-center items-center">
-        <StorybookPage />
-      </div>
+      <Viewer />
     </Card>
   );
 };
