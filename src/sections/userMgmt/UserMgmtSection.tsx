@@ -17,14 +17,28 @@ const UserMgmtSection = () => {
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Auth and Content Management Systems</span>
         <div className="flex flex-col gap-2">
-          <span className="text-lg font-bold">Features:</span>
-          <span className="ml-6">- Auth0</span>
-          <span className="ml-6">- Data table</span>
-          <span className="ml-6">- form modal</span>
+          <span className="text-lg font-bold">Auth Features:</span>
+          <div className="ml-6">
+            <span className="font-bold">Auth0: </span>
+            <span className="">WIP</span>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <span className="text-lg font-bold">Data Table Features:</span>
+          <div className="ml-6">
+            <span className="font-bold">Sticky Header: </span>
+            <span className="">Scroll while keeping header visible</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Form Modal: </span>
+            <span className="">WIP</span>
+          </div>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Used in previous projects:</span>
-          <span className="ml-6">- User Management for the pretty much everywhere</span>
+          <div className="ml-6">
+            <span className="font-bold">Used Most Places </span>
+          </div>
         </div>
         <div className="flex flex-row items-center gap-16">
           <div

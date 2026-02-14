@@ -14,15 +14,24 @@ const ChartsSection = () => {
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Charts</span>
         <div className="flex flex-col gap-2">
-          <span className="text-lg font-bold">Features:</span>
-          <span className="ml-6">- Allow import/export json, csv</span>
-          <span className="ml-6">- chart.js plotly.js</span>
-          <span className="ml-6">- Toggle between different charts</span>
+          <span className="text-lg font-bold">Chart Features:</span>
+          <div className="ml-6">
+            <span className="font-bold">Different Chart Types: </span>
+            <span className="">WIP</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">Allow import/export json, csv: </span>
+            <span className="">WIP</span>
+          </div>
+          <div className="ml-6">
+            <span className="font-bold">chart.js plotly.js: </span>
+            <span className="">WIP</span>
+          </div>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg font-bold">Used in previous projects:</span>
-          <span className="ml-6">- features at EDF</span>
-          <span className="ml-6">- map feature at stellar</span>
+          <span className="ml-6">- ooni chart at EDF</span>
+          <span className="ml-6">- sales data at various</span>
         </div>
         <div className="flex flex-row items-center gap-16">
           <div

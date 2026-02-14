@@ -25,7 +25,7 @@ const App = () => {
       >
         <ThemeToggle />
         <div className="w-full p-8 flex flex-row justify-center">
-          <div className="w-full flex flex-col justify-center items-center gap-12">
+          <div className="w-full flex flex-col justify-center items-center gap-6">
             <ProfileSection />
             <Divider />
             <MapSection />
