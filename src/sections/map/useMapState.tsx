@@ -57,7 +57,7 @@ export const useMapState = (): IMapState => {
   const [drawer, setDrawer] = useState<string | undefined>();
   const [mapStyle, setMapStyle] = useState<string>("mapbox://styles/mapbox/satellite-streets-v12");
   const [projection, setProjection] = useState<IProjection>(
-    (localStorage.getItem("projection") as IProjection) || "globe",
+    (localStorage.getItem("projection") as IProjection) || "mercator",
   );
   const lsViewState = localStorage.getItem("viewState");
   const [viewState, setViewState] = useState<MapViewState>(

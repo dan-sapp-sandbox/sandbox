@@ -14,12 +14,12 @@ const SettingsDrawer = ({ mapState }: { mapState: IMapState }) => {
           value={mapState.mapStyle}
           onChange={(value) => mapState.setMapStyle(value as string)}
         />
-        <Select
+        {/* <Select
           label="Projection"
           options={mapState.projectionOptions}
           value={mapState.projection}
           onChange={(value) => mapState.setProjection(value as IProjection)}
-        />
+        /> */}
       </div>
     </div>
   );
