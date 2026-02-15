@@ -3,7 +3,7 @@ import MapSection from "@/sections/map/MapSection";
 import StorybookSection from "@/sections/storybook/StorybookSection";
 import UserMgmtSection from "@/sections/userMgmt/UserMgmtSection";
 import DndSection from "@/sections/DndSection";
-import ChartsSection from "@/sections/ChartsSection";
+import ChartsSection from "@/sections/charts/ChartsSection";
 
 import ThemeToggle from "@/components/themeToggle";
 import Divider from "@/components/Divider";

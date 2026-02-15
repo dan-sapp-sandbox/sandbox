@@ -1,15 +1,33 @@
 import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
+import useChartState from "./useChartState";
+import LineChart from "./LineChart";
+import BarChart from "./BarChart";
+import PieChart from "./PieChart";
+import DoughnutChart from "./DoughnutChart";
+import Select from "@/components/Select";
 
 const ChartsSection = () => {
+  const chartState = useChartState();
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
   return (
     <Card>
-      <div className="bg-emerald-900 h-150 w-225 flex flex-col justify-center items-center">
-        <span className="text-3xl">Charts here</span>
+      <div className="relative h-150 w-225 flex flex-col justify-center items-center">
+        <div className="absolute top-0 right-0">
+          <Select
+            label="Chart Options"
+            options={chartState.chartOptions}
+            value={chartState.activeChart}
+            onChange={(value) => chartState.setActiveChart(value)}
+          />
+        </div>
+        {chartState.activeChart === "bar" && <BarChart />}
+        {chartState.activeChart === "line" && <LineChart />}
+        {chartState.activeChart === "pie" && <PieChart />}
+        {chartState.activeChart === "doughnut" && <DoughnutChart />}
       </div>
       <div className="flex flex-col gap-12">
         <span className="text-2xl font-bold">Charts</span>
@@ -17,14 +35,17 @@ const ChartsSection = () => {
           <span className="text-lg font-bold">Chart Features:</span>
           <div className="ml-6">
             <span className="font-bold">Different Chart Types: </span>
-            <span className="">WIP</span>
+            <div className="ml-6">
+              <div className="">Bar</div>
+              <div className="">Line</div>
+            </div>
           </div>
           <div className="ml-6">
             <span className="font-bold">Allow import/export json, csv: </span>
             <span className="">WIP</span>
           </div>
           <div className="ml-6">
-            <span className="font-bold">chart.js plotly.js: </span>
+            <span className="font-bold">chart.js: </span>
             <span className="">WIP</span>
           </div>
         </div>
