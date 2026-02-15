@@ -9,7 +9,7 @@ const data: ChartData<"doughnut"> = {
       label: "Traffic Sources",
       data: [55, 35, 10],
       backgroundColor: ["#3b82f6", "#10b981", "#f59e0b"],
-      cutout: "60%", // donut thickness
+      // cutout: "60%", // donut thickness
     },
   ],
 };
