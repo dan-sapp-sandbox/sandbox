@@ -1,7 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import DataGrid from "@/components/DataGrid";
-import { cn } from "@/lib/utils";
 // import useUserMgmtState from "./useUserMgmtState";
 
 const UserMgmtSection = () => {
@@ -10,7 +9,8 @@ const UserMgmtSection = () => {
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
-  console.log(cn("bg-red-500", "p-4"));
+  const linkStyles =
+    "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card
       className="w-full max-w-400 min-h-100 flex flex-row justify-between rounded-xl border
@@ -47,16 +47,13 @@ const UserMgmtSection = () => {
             </div>
           </div>
           <div className="flex flex-row items-center gap-16">
-            <div
-              onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-            >
+            <div onClick={handleOpenGithubLink} className={linkStyles}>
               <span>Code</span>
               <ExternalLink className="size-5" />
             </div>
             <div
               // onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
+              className={linkStyles}
             >
               <span>Open app in new tab</span>
               <ExternalLink className="size-5" />

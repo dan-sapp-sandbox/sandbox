@@ -5,6 +5,8 @@ import useProfileState from "./useProfileState";
 
 const ProfileSection = () => {
   const profileState = useProfileState();
+  const linkStyles =
+    "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card className="w-full max-w-400 min-h-100 flex flex-row justify-between p-8 border">
       <CardContent className="h-full w-full p-0">
@@ -24,24 +26,15 @@ const ProfileSection = () => {
               <span>I have degrees in Physics/Math and Biology/Business.</span>
             </div>
             <div className="flex flex-row items-center gap-16">
-              <div
-                onClick={profileState.handleOpenResume}
-                className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-              >
+              <div onClick={profileState.handleOpenResume} className={linkStyles}>
                 <span>Resume</span>
                 <ExternalLink className="size-5" />
               </div>
-              <div
-                onClick={profileState.handleOpenLinkedInLink}
-                className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-              >
+              <div onClick={profileState.handleOpenLinkedInLink} className={linkStyles}>
                 <span>LinkedIn</span>
                 <ExternalLink className="size-5" />
               </div>
-              <div
-                onClick={profileState.handleOpenGithubLink}
-                className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-              >
+              <div onClick={profileState.handleOpenGithubLink} className={linkStyles}>
                 <span>GitHub</span>
                 <ExternalLink className="size-5" />
               </div>

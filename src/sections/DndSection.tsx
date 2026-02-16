@@ -6,6 +6,8 @@ const DndSection = () => {
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
+  const linkStyles =
+    "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card className="w-full max-w-400 min-h-100 border transition-colors duration-300">
       <CardContent className="h-full w-full p-0 flex flex-row justify-between">
@@ -21,16 +23,13 @@ const DndSection = () => {
             <span className="ml-6">- map feature at stellar</span>
           </div>
           <div className="flex flex-row items-center gap-16">
-            <div
-              onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-            >
+            <div onClick={handleOpenGithubLink} className={linkStyles}>
               <span>Code</span>
               <ExternalLink className="size-5" />
             </div>
             <div
               // onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
+              className={linkStyles}
             >
               <span>Open app in new tab</span>
               <ExternalLink className="size-5" />

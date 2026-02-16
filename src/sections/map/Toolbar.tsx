@@ -7,10 +7,10 @@ const ToolbarButton = ({ children, onClick }: { children: JSX.Element | JSX.Elem
     <div
       onClick={onClick}
       className="flex flex-col gap-1 justify-center items-center cursor-pointer
-          text-[var(--map-toolbar-icon)] hover:text-[var(--map-toolbar-icon-hover)]
-          bg-[var(--map-toolbar-icon-bg)] hover:bg-[var(--map-toolbar-icon-bg-hover)]
-          dark:text-[var(--map-toolbar-icon)] dark:hover:text-[var(--map-toolbar-icon-hover)]
-          dark:bg-[var(--map-toolbar-icon-bg)] dark:hover:bg-[var(--map-toolbar-icon-bg-hover)]
+          text(--map-toolbar-icon) hover:text(--map-toolbar-icon-hover)
+          bg(--map-toolbar-icon-bg) hover:bg(--map-toolbar-icon-bg-hover)
+          dark:text(--map-toolbar-icon) dark:hover:text(--map-toolbar-icon-hover)
+          dark:bg(--map-toolbar-icon-bg) dark:hover:bg(--map-toolbar-icon-bg-hover)
           "
     >
       {children}
@@ -20,11 +20,7 @@ const ToolbarButton = ({ children, onClick }: { children: JSX.Element | JSX.Elem
 
 const Toolbar = ({ mapState }: { mapState: IMapState }) => {
   return (
-    <div
-      className="z-1 left-0 top-0 bottom-0 w-14 
-      bg-[var(--map-toolbar)] dark:bg-[var(--map-toolbar)]
-      flex flex-col items-center gap-6 p-4"
-    >
+    <div className="z-1 left-0 top-0 bottom-0 w-14 bg-(--map-toolbar) dark:bg-(--map-toolbar) flex flex-col items-center gap-6 p-4">
       <ToolbarButton onClick={() => mapState.setDrawer(mapState.drawer === "layer" ? undefined : "layer")}>
         <LayersPlus />
         <span className="text-xs text-center">Layers</span>

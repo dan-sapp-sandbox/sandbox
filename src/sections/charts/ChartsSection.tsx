@@ -13,13 +13,15 @@ const ChartsSection = () => {
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
+  const linkStyles =
+    "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card className="w-full max-w-400 min-h-100 transition-colors duration-300">
       <CardContent className="h-full w-full p-0 flex flex-row justify-between">
         <div className="relative h-150 w-225 flex flex-col justify-center items-center p-4">
           <div className="absolute top-4 right-4">
             <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
-              <SelectTrigger className="w-[200px]">
+              <SelectTrigger className="w-50">
                 <SelectValue placeholder="Chart Options" />
               </SelectTrigger>
               <SelectContent>
@@ -62,16 +64,13 @@ const ChartsSection = () => {
             <span className="ml-6">- sales data at various</span>
           </div>
           <div className="flex flex-row items-center gap-16">
-            <div
-              onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
-            >
+            <div onClick={handleOpenGithubLink} className={linkStyles}>
               <span>Code</span>
               <ExternalLink className="size-5" />
             </div>
             <div
               // onClick={handleOpenGithubLink}
-              className="flex flex-row items-center gap-2 cursor-pointer text-[var(--link)] hover:text-[var(--link-hover)] transition-colors duration-200"
+              className={linkStyles}
             >
               <span>Open app in new tab</span>
               <ExternalLink className="size-5" />

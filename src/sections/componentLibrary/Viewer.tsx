@@ -1,8 +1,8 @@
 const Viewer = () => {
   return (
     <div
-      className="h-150 w-225 flex flex-row justify-center items-center bg-[var(--background)] text-[var(--foreground)]
-        dark:bg-[var(--background)] dark:text-[var(--foreground)]"
+      className="h-150 w-225 flex flex-row justify-center items-center bg-(--background) text-(--foreground)
+        dark:bg-(--background) dark:text-(--foreground)"
     >
       <div className="h-full w-50 flex flex-col gap-2 border-r">
         <span className="text-lg font-bold">Components</span>
