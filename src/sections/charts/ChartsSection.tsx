@@ -9,7 +9,7 @@ import Select from "@/components/Select";
 
 const ChartsSection = () => {
   const chartState = useChartState();
-  const githubURL = "https://github.com/dan-sapp-sandbox";
+  const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };

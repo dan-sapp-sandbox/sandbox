@@ -1,6 +1,6 @@
 import ProfileSection from "@/sections/profile/ProfileSection";
 import MapSection from "@/sections/map/MapSection";
-import StorybookSection from "@/sections/storybook/StorybookSection";
+import StorybookSection from "@/sections/componentLibrary/ComponentLibrarySection";
 import UserMgmtSection from "@/sections/userMgmt/UserMgmtSection";
 import DndSection from "@/sections/DndSection";
 import ChartsSection from "@/sections/charts/ChartsSection";

@@ -5,7 +5,7 @@ import DataGrid from "@/components/DataGrid";
 
 const UserMgmtSection = () => {
   // const userMgmtState = useUserMgmtState();
-  const githubURL = "https://github.com/dan-sapp-sandbox";
+  const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/userMgmt";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };

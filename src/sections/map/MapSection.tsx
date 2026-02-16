@@ -12,7 +12,7 @@ import WidgetDrawer from "./drawers/WidgetDrawer";
 
 const MapSection = () => {
   const mapState = useMapState();
-  const githubURL = "https://github.com/dan-sapp-sandbox";
+  const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/map";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };

@@ -2,8 +2,8 @@ import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
 import Viewer from "./Viewer";
 
-const StorybookSection = () => {
-  const githubURL = "https://github.com/dan-sapp-sandbox";
+const ComponentLibrarySection = () => {
+  const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/storybook";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
@@ -46,4 +46,4 @@ const StorybookSection = () => {
   );
 };
 
-export default StorybookSection;
+export default ComponentLibrarySection;

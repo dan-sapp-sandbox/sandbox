@@ -2,7 +2,7 @@ import { ExternalLink } from "lucide-react";
 import Card from "@/components/Card";
 
 const DndSection = () => {
-  const githubURL = "https://github.com/dan-sapp-sandbox";
+  const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/blob/main/src/sections/DndSection.tsx";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
