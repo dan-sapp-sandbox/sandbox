@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import { Button } from "@/components/ui/button";
 import type { DrawMode } from "../../useMapState";
 
 type DrawControlsProps = {
@@ -8,18 +8,18 @@ type DrawControlsProps = {
 };
 const DrawControls = ({ mode, setMode, clear }: DrawControlsProps) => {
   const btn = (m: DrawMode, label: string) => (
-    <Button onClick={() => setMode(m)} className={mode === m ? "bg-blue-500" : "bg-gray-700"}>
+    <Button variant="default" onClick={() => setMode(m)} className={mode === m ? "border-blue-400 text-blue-400" : ""}>
       {label}
     </Button>
   );
 
   return (
-    <div className="flex flex-col gap-2 p-2 bg-black/70 rounded">
+    <div className="flex flex-col gap-2 p-2 rounded">
       {btn("simple_select", "Select")}
       {btn("draw_point", "Point")}
       {btn("draw_line_string", "Line")}
       {btn("draw_polygon", "Polygon")}
-      <button onClick={clear}>Clear</button>
+      <Button onClick={clear}>Clear</Button>
     </div>
   );
 };

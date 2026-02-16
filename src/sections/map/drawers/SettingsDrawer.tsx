@@ -1,25 +1,37 @@
 import type { IMapState, IProjection } from "../useMapState";
-import Select from "@/components/Select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const SettingsDrawer = ({ mapState }: { mapState: IMapState }) => {
   if (mapState.drawer !== "settings") return null;
 
   return (
-    <div className="z-999 absolute bg-[var(--background)] top-0 bottom-0 left-14 w-55 p-4">
+    <div className="z-9 absolute bg-[var(--background)] top-0 bottom-0 left-14 w-55 p-4">
       <div className="flex flex-col gap-6">
         <span className="text-[var(--foreground)]">Settings</span>
-        <Select
-          label="Base Map"
-          options={mapState.mapStyleOptions}
-          value={mapState.mapStyle}
-          onChange={(value) => mapState.setMapStyle(value as string)}
-        />
-        <Select
-          label="Projection"
-          options={mapState.projectionOptions}
-          value={mapState.projection}
-          onChange={(value) => mapState.setProjection(value as IProjection)}
-        />
+        <Select value={mapState.mapStyle} onValueChange={(value) => mapState.setMapStyle(value as string)}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="Projection" />
+          </SelectTrigger>
+          <SelectContent>
+            {mapState.mapStyleOptions.map((option) => (
+              <SelectItem key={option.id} value={option.id}>
+                {option.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={mapState.projection} onValueChange={(value) => mapState.setProjection(value as IProjection)}>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="Projection" />
+          </SelectTrigger>
+          <SelectContent>
+            {mapState.projectionOptions.map((option) => (
+              <SelectItem key={option.id} value={option.id}>
+                {option.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );

@@ -45,13 +45,16 @@ const DataGrid = () => {
   });
 
   return (
-    <div className="h-full w-full overflow-y-auto border rounded border-gray-300 dark:border-gray-700">
+    <div className="h-full w-full overflow-y-auto border rounded">
       <table className="w-full border-collapse">
-        <thead className="bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
+        <thead className="bg-[var(--background)] sticky top-0 z-10">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="border-b px-4 py-2 text-left border-gray-300 dark:border-gray-600">
+                <th
+                  key={header.id}
+                  className="text-[var(--card-foreground)] border-b px-4 py-2 text-left border-border"
+                >
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
@@ -60,9 +63,9 @@ const DataGrid = () => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <tr key={row.id} className="hover:bg-[var(--table-row-hover)] transition-colors">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="border-b px-4 py-2 border-gray-300 dark:border-gray-600">
+                <td key={cell.id} className="cursor-pointer border-b px-4 py-2">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

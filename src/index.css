@@ -4,19 +4,30 @@
   /* Light mode */
   :root {
     --background: #ffffff;
-    --foreground: #111827;
+    --foreground: #0f172a;
+
+    --card: #f9fafb;
+    --card-foreground: #0f172a;
+
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
 
     --primary: #2563eb;
     --primary-foreground: #ffffff;
 
     --secondary: #64748b;
-    --secondary-foreground: #3f4751;
+    --secondary-foreground: #ffffff;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
 
     --accent: #facc15;
-    --accent-foreground: #111827;
+    --accent-foreground: #0f172a;
 
     --border: #e5e7eb;
+    --input: #e5e7eb;
     --ring: #2563eb;
+
     --radius: 0.5rem;
 
     --divider: #bdbdbd;
@@ -35,24 +46,36 @@
     --map-toolbar-icon-bg-hover: #c7d2e7;
 
     --theme-toggle-border: #000000;
+
+    --table-row-hover: #c2d5e7;
   }
 
-  /* Dark mode (activated via .dark on <html>) */
   .dark {
-    --background: #1a1a1a;
-    --foreground: #f5f5f5;
+    --background: #000000;
+    --foreground: #f8fafc;
+
+    --card: #111827;
+    --card-foreground: #f8fafc;
+
+    --popover: #111827;
+    --popover-foreground: #f8fafc;
 
     --primary: #60a5fa;
-    --primary-foreground: #1a1a1a;
+    --primary-foreground: #0b0f19;
 
-    --secondary: #94a3b8;
-    --secondary-foreground: #f5f5f5;
+    --secondary: #1f2937;
+    --secondary-foreground: #f8fafc;
+
+    --muted: #1f2937;
+    --muted-foreground: #94a3b8;
 
     --accent: #eab308;
-    --accent-foreground: #1a1a1a;
+    --accent-foreground: #0b0f19;
 
-    --border: #374151;
+    --border: #1f2937;
+    --input: #1f2937;
     --ring: #60a5fa;
+
     --radius: 0.5rem;
 
     --divider: #6b6b6b;
@@ -71,15 +94,14 @@
     --map-toolbar-icon-bg-hover: #393939;
 
     --theme-toggle-border: #ffffff;
+
+    --table-row-hover: #3f454b;
   }
 
-  /* =========================
-     GLOBAL ELEMENT STYLES
-     ========================= */
   html,
   body {
-    background-color: var(--background); /* FIXED: removed hsl() */
-    color: var(--foreground); /* FIXED: removed hsl() */
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
