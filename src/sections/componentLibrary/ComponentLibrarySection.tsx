@@ -16,15 +16,14 @@ const ComponentLibrarySection = () => {
           <span className="text-2xl font-bold">Component Library</span>
           <div className="flex flex-col gap-2">
             <span className="text-lg font-bold">Features:</span>
-            {/* <div className="ml-6">
-            <span className="font-bold">Theme Visibility: </span>
-            <span className="">Can be toggled on/off</span>
-          </div> */}
+            <div className="ml-6">
+              <span className="">Ensure components look good in all themes</span>
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-lg font-bold">Used in previous projects:</span>
             <div className="ml-6">
-              <span className="font-bold">Used Most Places </span>
+              <span className="font-bold">Used Most Places</span>
             </div>
           </div>
           <div className="flex flex-row items-center gap-16">

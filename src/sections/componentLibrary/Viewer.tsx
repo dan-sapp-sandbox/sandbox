@@ -1,16 +1,29 @@
+import ComponentRow from "./ComponentRow";
+import useComponentLibraryState from "./useComponentLibraryState";
+
 const Viewer = () => {
+  const { componentList, displayComponent, selected, setSelected } = useComponentLibraryState();
   return (
-    <div
-      className="h-150 w-225 flex flex-row justify-center items-center bg-(--background) text-(--foreground)
-        dark:bg-(--background) dark:text-(--foreground)"
-    >
-      <div className="h-full w-50 flex flex-col gap-2 border-r">
+    <div className="h-150 w-225 flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
+      <div className="h-full w-50 flex flex-col gap-1 border-r">
         <span className="text-lg font-bold">Components</span>
-        <span className="rounded-sm border border-zinc-200 p-2">Button</span>
-        <span className="rounded-sm border border-zinc-200 p-2">Card</span>
-        <span className="rounded-sm border border-zinc-200 p-2">Select</span>
+        <div className="overflow-y-scroll scrollbar-hide">
+          <div className="flex flex-col gap-1">
+            {componentList.map((component, index) => (
+              <ComponentRow
+                key={component}
+                name={component}
+                onClick={setSelected}
+                selected={selected}
+                isLast={componentList.length - 1 === index}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="h-full flex-1">Viewport</div>
+      <div className="h-full flex-1 flex flex-row justify-center items-center text-(--card-foreground)">
+        {displayComponent}
+      </div>
     </div>
   );
 };
