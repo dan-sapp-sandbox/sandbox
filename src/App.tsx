@@ -20,7 +20,7 @@ const App = () => {
     >
       <ThemeToggle />
       <div className="w-full p-8 flex flex-row justify-center">
-        <div className="w-full flex flex-col justify-center items-center gap-6">
+        <div className="w-full max-w-400 flex flex-col justify-center items-center gap-6">
           <ProfileSection />
           <Separator />
           <MapSection />
