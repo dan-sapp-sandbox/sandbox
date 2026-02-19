@@ -1,5 +1,4 @@
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
-import { Table } from "./ui/table";
 
 interface IUser {
   id: string;
