@@ -63,11 +63,11 @@ const MapSection = () => {
           <div className="flex flex-col gap-2">
             <span className="text-lg font-bold">Used in previous projects:</span>
             <div className="ml-6">
-              <span className="font-bold">Dept of Defense: </span>
+              <span className="font-bold">EarthDaily Federal: </span>
               <span className="">Search and Rescue App</span>
             </div>
             <div className="ml-6">
-              <span className="font-bold">Dept of Defense: </span>
+              <span className="font-bold">EarthDaily Federal: </span>
               <span className="">Military Geospatial Intelligence App</span>
             </div>
           </div>

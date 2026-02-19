@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import TaskBoard from "./TaskBoard";
 
 const DndSection = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/blob/main/src/sections/DndSection.tsx";
@@ -15,12 +16,27 @@ const DndSection = () => {
           <span className="text-2xl font-bold">Drag and Drop</span>
           <div className="flex flex-col gap-2">
             <span className="text-lg font-bold">Features:</span>
-            <span className="ml-6">- dnd</span>
+            <span className="ml-6">Reorder Cards Within Column</span>
+            <span className="ml-6">Move Card Between Columns</span>
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-lg font-bold">Used in previous projects:</span>
-            <span className="ml-6">- features at EDF</span>
-            <span className="ml-6">- map feature at stellar</span>
+            <div className="ml-6">
+              <span className="font-bold">EarthDaily Federal: </span>
+              <span className="">Report Builder</span>
+            </div>
+            <div className="ml-6">
+              <span className="font-bold">EarthDaily Federal: </span>
+              <span className="">Image Analysis App</span>
+            </div>
+            <div className="ml-6">
+              <span className="font-bold">Stellar: </span>
+              <span className="">Scheduling Feature</span>
+            </div>
+            <div className="ml-6">
+              <span className="font-bold">Stellar: </span>
+              <span className="">Marina Map</span>
+            </div>
           </div>
           <div className="flex flex-row items-center gap-16">
             <div onClick={handleOpenGithubLink} className={linkStyles}>
@@ -37,7 +53,7 @@ const DndSection = () => {
           </div>
         </div>
         <div className="h-150 w-225 flex flex-col justify-center items-center">
-          <span className="bg-amber-900 text-3xl p-12">Drag and Drop WIP</span>
+          <TaskBoard />
         </div>
       </CardContent>
     </Card>
