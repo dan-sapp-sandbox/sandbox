@@ -10,11 +10,8 @@ export default function ThemeToggle() {
         rounded-xl border cursor-pointer
         border-(--theme-toggle-border)
         px-4 py-2 text-sm font-medium
-        bg-(--background)] text-(--foreground)
-        dark:bg-(--background) dark:text-(--foreground)
-        shadow-sm p-1 transition-colors duration-300
-        hover:bg-(--primary) hover:text-(--primary-foreground)
-        dark:hover:bg-(--primary) dark:hover:text-(--primary-foreground)"
+        bg-(--background) hover:bg-(--primary) text-(--card-foreground)
+        shadow-sm p-1 transition-colors duration-300"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       {theme === "light" ? "☀️ Light Mode" : "🌙 Dark Mode"}

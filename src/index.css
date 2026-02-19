@@ -4,10 +4,10 @@
   /* Light mode */
   :root {
     --background: #ffffff;
-    --foreground: #0f172a;
+    --foreground: #acacac;
 
     --card: #f9fafb;
-    --card-foreground: #0f172a;
+    --card-foreground: #000000;
 
     --popover: #ffffff;
     --popover-foreground: #0f172a;

@@ -20,7 +20,9 @@ const Column = ({ title, tasks, id }: { title: string; tasks: Task[]; id: Column
           ))}
 
           {tasks.length === 0 && (
-            <div className="text-sm text-gray-400 border-2 border-dashed rounded-xl p-4 text-center">Drop here</div>
+            <div className="text-sm text-(--card-foreground) border-2 border-dashed rounded-xl p-4 text-center">
+              Drop here
+            </div>
           )}
         </div>
       </SortableContext>
