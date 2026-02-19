@@ -16,7 +16,7 @@ const App = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="h-screen w-screen flex flex-col gap-6 overflow-y-scroll"
+      className="h-screen w-screen flex flex-col gap-6 overflow-y-scroll scrollbar-hide"
     >
       <ThemeToggle />
       <div className="w-full p-8 flex flex-row justify-center">

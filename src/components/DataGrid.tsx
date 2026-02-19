@@ -1,4 +1,5 @@
 import { createColumnHelper, useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
+import { Table } from "./ui/table";
 
 interface IUser {
   id: string;
@@ -45,7 +46,7 @@ const DataGrid = () => {
   });
 
   return (
-    <div className="h-full w-full overflow-y-auto border rounded">
+    <div className="h-full w-full overflow-y-scroll scrollbar-hide border rounded">
       <table className="w-full border-collapse">
         <thead className="bg-(--background) sticky top-0 z-10">
           {table.getHeaderGroups().map((headerGroup) => (
