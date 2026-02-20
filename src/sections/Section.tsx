@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 interface ISectionProps {
   title: string;
-  Demo: () => JSX.Element;
+  children: JSX.Element | JSX.Element[];
   features: string[];
   githubUrl: string;
   usedPreviously: {
@@ -13,11 +13,10 @@ interface ISectionProps {
   reversed?: boolean;
 }
 
-const Section = ({ title, Demo, features, githubUrl, usedPreviously, reversed }: ISectionProps) => {
+const Section = ({ title, features, githubUrl, usedPreviously, reversed, children }: ISectionProps) => {
   const handleOpenGithubLink = () => {
     window.open(githubUrl, "_blank", "noopener,noreferrer");
   };
-  console.log("reversed", reversed);
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
@@ -58,9 +57,7 @@ const Section = ({ title, Demo, features, githubUrl, usedPreviously, reversed }:
             </div>
           </div>
         </div>
-        <div className="h-full w-full md:min-w-200 flex flex-col justify-center items-center">
-          <Demo />
-        </div>
+        <div className="h-full w-full md:min-w-200 flex flex-col justify-center items-center">{children}</div>
       </CardContent>
     </Card>
   );

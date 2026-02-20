@@ -13,7 +13,9 @@ const DndSection = () => {
   ];
 
   return (
-    <Section title={title} Demo={TaskBoard} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} />
+    <Section title={title} features={features} usedPreviously={usedPreviously} githubUrl={githubURL}>
+      <TaskBoard />
+    </Section>
   );
 };
 

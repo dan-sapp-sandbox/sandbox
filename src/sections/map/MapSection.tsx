@@ -47,7 +47,25 @@ const MapSection = () => {
   );
 
   return (
-    <Section title={title} Demo={Demo} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} />
+    <Section title={title} Demo={Demo} features={features} usedPreviously={usedPreviously} githubUrl={githubURL}>
+      <div className="relative h-full flex-1 w-full flex flex-row">
+        <Toolbar mapState={mapState} />
+        <LayerDrawer mapState={mapState} />
+        <DrawDrawer mapState={mapState} />
+        <IconDrawer mapState={mapState} />
+        <WidgetDrawer mapState={mapState} />
+        <SettingsDrawer mapState={mapState} />
+        <MapProvider>
+          <MapComponent
+            showLayer1={mapState.showLayer1}
+            showLayer2={mapState.showLayer2}
+            projection={mapState.projection}
+            mapStyle={mapState.mapStyle}
+            viewState={mapState.viewState}
+          />
+        </MapProvider>
+      </div>
+    </Section>
   );
 };
 

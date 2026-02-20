@@ -9,20 +9,12 @@ const UserMgmtSection = () => {
   const features = ["Auth0: WIP", "Sticky Header: Scroll while keeping header visible", "Form Modal: WIP"];
   const usedPreviously = [{ where: "Various", what: "Design" }];
 
-  const Demo = () => (
-    <div className="h-100 md:h-125 w-full flex flex-col justify-center items-center p-px md:p-2">
-      <DataGrid />
-    </div>
-  );
   return (
-    <Section
-      title={title}
-      Demo={Demo}
-      features={features}
-      usedPreviously={usedPreviously}
-      githubUrl={githubURL}
-      reversed={true}
-    />
+    <Section title={title} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} reversed={true}>
+      <div className="h-100 md:h-125 w-full flex flex-col justify-center items-center p-px md:p-2">
+        <DataGrid />
+      </div>
+    </Section>
   );
 };
 

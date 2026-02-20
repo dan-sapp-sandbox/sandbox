@@ -7,9 +7,10 @@ const ComponentLibrarySection = () => {
   const features = ["Ensure components look good in all themes"];
   const usedPreviously = [{ where: "Various", what: "Design" }];
 
-  const Demo = () => <Viewer />;
   return (
-    <Section title={title} Demo={Demo} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} />
+    <Section title={title} features={features} usedPreviously={usedPreviously} githubUrl={githubURL}>
+      <Viewer />
+    </Section>
   );
 };
 

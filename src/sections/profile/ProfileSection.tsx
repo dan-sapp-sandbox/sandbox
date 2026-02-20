@@ -15,21 +15,17 @@ const ProfileSection = () => {
           <div className="h-full flex flex-col justify-between overflow-hidden">
             <span className="text-lg md:text-2xl font-bold text-foreground">Hi, I'm Dan Sapp.</span>
 
-            <span className="text-sm md:text-xl text-secondary-foreground">
-              Please enjoy this collection of features I've made for previous clients.
-            </span>
-
             <div className="flex flex-col gap-2 text-foreground">
-              <span className="text-sm md:text-xl text-secondary-foreground">
+              <span className="text-sm md:text-lg text-secondary-foreground">
                 I'm a software engineer with 10 years of industry experience.
               </span>
-              <span className="text-sm md:text-xl text-secondary-foreground">
+              <span className="text-sm md:text-lg text-secondary-foreground">
                 I specialize in React and Typescript.
               </span>
-              <span className="text-sm md:text-xl text-secondary-foreground">
+              <span className="text-sm md:text-lg text-secondary-foreground">
                 I like making cool stuff that feels good to use.
               </span>
-              <span className="text-sm md:text-xl text-secondary-foreground">I have a degree in Physics and Math.</span>
+              <span className="text-sm md:text-lg text-secondary-foreground">I have a degree in Physics and Math.</span>
             </div>
             <div className="flex flex-row items-center gap-16">
               <div onClick={profileState.handleOpenResume} className={linkStyles}>
