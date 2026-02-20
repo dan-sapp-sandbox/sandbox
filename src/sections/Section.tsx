@@ -52,12 +52,12 @@ const Section = ({ title, features, githubUrl, usedPreviously, reversed, childre
               // onClick={handleOpenGithubLink}
               className={linkStyles}
             >
-              <span className="text-xs md:text-sm">Open app in new tab</span>
+              <span className="text-xs md:text-sm">Open in new tab</span>
               <ExternalLink className="size-3 md:size-5" />
             </div>
           </div>
         </div>
-        <div className="h-full w-full md:min-w-200 flex flex-col justify-center items-center">{children}</div>
+        <div className="h-full w-full flex flex-col justify-center items-center">{children}</div>
       </CardContent>
     </Card>
   );

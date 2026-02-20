@@ -18,7 +18,7 @@ const ChartsSection = () => {
 
   return (
     <Section title={title} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} reversed={true}>
-      <div className="relative h-65 md:h-150 w-full md:w-225 flex flex-col justify-center items-center p-2 md:p-4">
+      <div className="relative h-full w-full xs:w-80 sm:w-140 md:w-140 lg:w-200 xl:w-250 flex flex-col justify-center items-center p-2 md:p-4">
         <div className="absolute top-4 right-4">
           <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
             <SelectTrigger className="w-25 md:w-50">
