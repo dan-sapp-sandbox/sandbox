@@ -40,7 +40,14 @@ const ChartsSection = () => {
   );
 
   return (
-    <Section title={title} Demo={Demo} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} />
+    <Section
+      title={title}
+      Demo={Demo}
+      features={features}
+      usedPreviously={usedPreviously}
+      githubUrl={githubURL}
+      reversed={true}
+    />
   );
 };
 

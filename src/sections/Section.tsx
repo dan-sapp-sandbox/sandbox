@@ -17,25 +17,28 @@ const Section = ({ title, Demo, features, githubUrl, usedPreviously, reversed }:
   const handleOpenGithubLink = () => {
     window.open(githubUrl, "_blank", "noopener,noreferrer");
   };
+  console.log("reversed", reversed);
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card className="w-full max-w-400 min-h-100 border transition-colors duration-300">
       <CardContent
-        className={`h-full w-full p-0 flex ${reversed ? "flex-col-reverse" : "flex-col"} md:flex-row justify-between`}
+        className={`h-full w-full p-0 flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
       >
         <div className="flex flex-col gap-2 md:gap-12 p-4 md:p-8">
           <span className="text-lg md:text-2xl font-bold md-2 md:mb-4">{title}</span>
           <div className="flex flex-col md:gap-2">
             <span className="text-sm md:text-sm font-bold">Features:</span>
-            {features.map((feature) => (
-              <span className="ml-2 md:ml-6 text-xs md:text-sm">{feature}</span>
+            {features.map((feature, index) => (
+              <span key={index} className="ml-2 md:ml-6 text-xs md:text-sm">
+                {feature}
+              </span>
             ))}
           </div>
           <div className="flex flex-col md:gap-2">
             <span className="text-sm md:text-sm font-bold">Used in previous projects:</span>
-            {usedPreviously.map((use) => (
-              <div className="ml-2 md:ml-6">
+            {usedPreviously.map((use, index) => (
+              <div key={index} className="ml-2 md:ml-6">
                 <span className="text-sm md:text-sm font-bold">{use.where}: </span>
                 <span className="text-xs md:text-sm">{use.what}</span>
               </div>
