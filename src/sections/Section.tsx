@@ -24,7 +24,7 @@ const Section = ({ title, features, githubUrl, usedPreviously, reversed, childre
       <CardContent
         className={`h-full w-full p-0 flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
       >
-        <div className="flex flex-col gap-2 md:gap-12 p-4 md:p-8">
+        <div className="min-w-80 flex flex-col gap-2 md:gap-12 p-4 md:p-8">
           <span className="text-lg md:text-2xl font-bold md-2 md:mb-4">{title}</span>
           <div className="flex flex-col md:gap-2">
             <span className="text-sm md:text-sm font-bold">Features:</span>
