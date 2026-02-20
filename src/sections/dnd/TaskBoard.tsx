@@ -7,14 +7,14 @@ const TaskBoard = () => {
   const taskBoardState = useTaskBoardState();
 
   return (
-    <div className="h-full w-full p-6 bg-(--background)">
+    <div className="h-full w-full p-2 md:p-6 bg-(--background)">
       <DndContext
         collisionDetection={closestCorners}
         onDragStart={taskBoardState.handleDragStart}
         onDragEnd={taskBoardState.handleDragEnd}
         onDragCancel={taskBoardState.handleDragCancel}
       >
-        <div className="grid grid-cols-3 gap-6 h-full w-full">
+        <div className="grid grid-cols-3 gap-1 md:gap-6 h-full w-full">
           <Column title="Todo" id="todo" tasks={taskBoardState.board.todo} />
           <Column title="In Progress" id="inProgress" tasks={taskBoardState.board.inProgress} />
           <Column title="Done" id="done" tasks={taskBoardState.board.done} />

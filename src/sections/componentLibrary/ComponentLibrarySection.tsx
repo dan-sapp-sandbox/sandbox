@@ -11,36 +11,36 @@ const ComponentLibrarySection = () => {
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
     <Card className="w-full max-w-400 min-h-100 transition-colors duration-300">
-      <CardContent className="h-full w-full p-0 flex flex-row justify-between">
-        <div className="flex flex-col gap-12 p-8">
-          <span className="text-2xl font-bold">Component Library</span>
+      <CardContent className="h-full w-full p-0 flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col gap-3 md:gap-12 p-3 md:p-8">
+          <span className="text-lg md:text-2xl font-bold md-2 md:mb-4">Component Library</span>
           <div className="flex flex-col gap-2">
-            <span className="text-lg font-bold">Features:</span>
-            <div className="ml-6">
-              <span className="">Ensure components look good in all themes</span>
+            <span className="text-base md:text-lg font-bold">Features:</span>
+            <div className="ml-2 md:ml-6">
+              <span className="text-sm md:text-base">Ensure components look good in all themes</span>
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-lg font-bold">Used in previous projects:</span>
-            <div className="ml-6">
-              <span className="font-bold">Used Most Places</span>
+            <span className="text-base md:text-lg font-bold">Used in previous projects:</span>
+            <div className="ml-2 md:ml-6">
+              <span className="text-sm md:text-base">Used Most Places</span>
             </div>
           </div>
-          <div className="flex flex-row items-center gap-16">
+          <div className="flex flex-row items-center gap-8 md:gap-16">
             <div onClick={handleOpenGithubLink} className={linkStyles}>
-              <span>Code</span>
-              <ExternalLink className="size-5" />
+              <span className="text-xs md:text-sm">Code</span>
+              <ExternalLink className="size-3 md:size-5" />
             </div>
             <div
               // onClick={handleOpenGithubLink}
               className={linkStyles}
             >
-              <span>Open app in new tab</span>
-              <ExternalLink className="size-5" />
+              <span className="text-xs md:text-sm">Open app in new tab</span>
+              <ExternalLink className="size-3 md:size-5" />
             </div>
           </div>
         </div>
-        <div className="p-4">
+        <div className="p-2 md:p-4 overflow-hidden">
           <Viewer />
         </div>
       </CardContent>

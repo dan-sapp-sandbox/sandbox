@@ -19,7 +19,7 @@ const ComponentRow = ({
     <div>
       <div
         onClick={handleOnClick}
-        className={`capitalize cursor-pointer px-1 py-2 hover:bg-(--foreground) ${isSelected ? "text-(--primary)" : ""}`}
+        className={`text-xs md:text-base capitalize cursor-pointer px-1 py-2 hover:bg-(--foreground) ${isSelected ? "text-(--primary)" : ""}`}
       >
         {name}
       </div>

@@ -3,13 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardFooter, CardTitle }
 const CardPreview = () => {
   return (
     <div className="flex justify-center items-center">
-      <Card className="w-100">
+      <Card className="w-full md:w-100">
         <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>Card Description</CardDescription>
+          <CardTitle className="text-base md:text-lg">Card Title</CardTitle>
+          <CardDescription className="text-sm md:text-base">Card Description</CardDescription>
         </CardHeader>
-        <CardContent>Card Content</CardContent>
-        <CardFooter>Card Footer</CardFooter>
+        <CardContent className="text-sm md:text-base">Card Content</CardContent>
+        <CardFooter className="text-sm md:text-base">Card Footer</CardFooter>
       </Card>
     </div>
   );

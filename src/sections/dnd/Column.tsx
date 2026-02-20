@@ -8,19 +8,21 @@ const Column = ({ title, tasks, id }: { title: string; tasks: Task[]; id: Column
   return (
     <div
       ref={setNodeRef}
-      className={`bg-(--foreground) rounded-2xl shadow p-4 h-full transition-colors
+      className={`bg-(--foreground) rounded md:rounded-2xl shadow p-1 md:p-4 h-full transition-colors
       ${isOver ? "bg-(--background)/80" : ""}`}
     >
-      <h2 className="text-(--card-foreground) font-semibold text-lg mb-4">{title}</h2>
+      <h2 className="text-(--card-foreground) font-semibold text-sm md:text-lg mb-1 md:mb-4 w-full text-center">
+        {title}
+      </h2>
 
       <SortableContext items={tasks.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-        <div className="space-y-3 h-full">
+        <div className="space-y-2 md:space-y-3 h-full">
           {tasks.map((task) => (
             <TaskCard key={task.id} id={task.id} content={task.content} />
           ))}
 
           {tasks.length === 0 && (
-            <div className="text-sm text-(--card-foreground) border-2 border-dashed rounded-xl p-4 text-center">
+            <div className="text-xs md:text-sm text-(--card-foreground) border-2 border-dashed rounded-xl p-4 text-center">
               Drop here
             </div>
           )}

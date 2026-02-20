@@ -4,9 +4,9 @@ import useComponentLibraryState from "./useComponentLibraryState";
 const Viewer = () => {
   const { componentList, displayComponent, selected, setSelected } = useComponentLibraryState();
   return (
-    <div className="h-150 w-225 flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
-      <div className="h-full w-50 flex flex-col gap-1 border-r">
-        <span className="text-lg font-bold">Components</span>
+    <div className="h-100 md:h-150 w-full md:w-225 flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
+      <div className="h-full w-25 md:w-50 flex flex-col gap-1 border-r">
+        <span className="text-sm md:text-lg font-bold">Components</span>
         <div className="overflow-y-scroll scrollbar-hide">
           <div className="flex flex-col gap-1">
             {componentList.map((component, index) => (
@@ -21,7 +21,7 @@ const Viewer = () => {
           </div>
         </div>
       </div>
-      <div className="h-full flex-1 flex flex-row justify-center items-center text-(--card-foreground)">
+      <div className="h-full flex-1 flex flex-col md:flex-row justify-center items-center text-(--card-foreground)">
         {displayComponent}
       </div>
     </div>

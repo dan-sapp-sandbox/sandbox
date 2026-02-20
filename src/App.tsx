@@ -1,12 +1,5 @@
-import ProfileSection from "@/sections/profile/ProfileSection";
-import MapSection from "@/sections/map/MapSection";
-import StorybookSection from "@/sections/componentLibrary/ComponentLibrarySection";
-import UserMgmtSection from "@/sections/userMgmt/UserMgmtSection";
-import DndSection from "@/sections/dnd/DndSection";
-import ChartsSection from "@/sections/charts/ChartsSection";
-
 import ThemeToggle from "@/components/themeToggle";
-import { Separator } from "@/components/ui/separator";
+import Sections from "./sections";
 
 const App = () => {
   return (
@@ -16,22 +9,17 @@ const App = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="h-screen w-screen flex flex-col gap-6 overflow-y-scroll scrollbar-hide"
+      className="h-screen w-screen flex flex-col gap-4 md:gap-6 overflow-y-scroll scrollbar-hide"
     >
       <ThemeToggle />
-      <div className="w-full p-8 flex flex-row justify-center">
-        <div className="w-full max-w-400 flex flex-col justify-center items-center gap-6">
-          <ProfileSection />
-          <Separator />
-          <MapSection />
-          <Separator />
-          <UserMgmtSection />
-          <Separator />
-          <DndSection />
-          <Separator />
-          <ChartsSection />
-          <Separator />
-          <StorybookSection />
+      <div className="w-full p-4 md:p-8 flex flex-row justify-center">
+        <div className="w-full max-w-400 flex flex-col justify-center items-center gap-4 md:gap-8">
+          <Sections.Profile />
+          <Sections.Map />
+          <Sections.UserMgmt />
+          <Sections.Dnd />
+          <Sections.Charts />
+          <Sections.ComponentLibrary />
         </div>
       </div>
     </div>

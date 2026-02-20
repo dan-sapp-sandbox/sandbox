@@ -51,7 +51,10 @@ const DataGrid = () => {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="text-(--card-foreground) border-b px-4 py-2 text-left border-border">
+                <th
+                  key={header.id}
+                  className="text-(--card-foreground) border-b px-4 py-2 text-left border-border text-xs md:text-base"
+                >
                   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </th>
               ))}
@@ -62,7 +65,7 @@ const DataGrid = () => {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} className="hover:bg-(--table-row-hover) transition-colors">
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="cursor-pointer border-b px-4 py-2">
+                <td key={cell.id} className="cursor-pointer border-b p-px md:px-4 md:py-2 text-xs md:text-base">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
