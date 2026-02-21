@@ -1,9 +1,8 @@
 import type { JSX } from "react";
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-interface ISectionProps {
+interface ISectionConfig {
   title: string;
-  children: JSX.Element | JSX.Element[];
   features: string[];
   githubURL: string;
   demoURL: string;
@@ -11,10 +10,11 @@ interface ISectionProps {
     where: string;
     what: string;
   }[];
-  reversed?: boolean;
+  isReversed?: boolean;
 }
 
-const Section = ({ title, features, githubURL, usedPreviously, reversed, children, demoURL }: ISectionProps) => {
+const Section = ({ config, children }: { config: ISectionConfig; children: JSX.Element | JSX.Element[] }) => {
+  const { title, features, githubURL, usedPreviously, isReversed, demoURL } = config;
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
@@ -27,7 +27,7 @@ const Section = ({ title, features, githubURL, usedPreviously, reversed, childre
   return (
     <Card className="w-full max-w-400 min-h-100 border transition-colors duration-300">
       <CardContent
-        className={`h-full w-full p-0 flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
+        className={`h-full w-full p-0 flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
       >
         <div className="min-w-80 flex flex-col gap-2 md:gap-12 p-4 md:p-8">
           <span className="text-lg md:text-2xl font-bold md-2 md:mb-4">{title}</span>

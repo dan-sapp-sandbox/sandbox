@@ -2,7 +2,7 @@ import { createRouter, createRootRoute, createRoute, Outlet } from "@tanstack/re
 import ThemeToggle from "@/components/themeToggle";
 import App from "./App.tsx";
 import MapApp from "./sections/map/MapApp.tsx";
-import DataGrid from "./components/DataGrid.tsx";
+import DataGrid from "./sections/userMgmt/dataGrid/DataGrid.tsx";
 import TaskBoard from "./sections/dnd/TaskBoard.tsx";
 import DataVisualizations from "./sections/charts/DataVisualizations.tsx";
 import Viewer from "./sections/componentLibrary/Viewer.tsx";

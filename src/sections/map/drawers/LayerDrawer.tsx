@@ -5,7 +5,7 @@ const LayerDrawer = ({ mapState }: { mapState: IMapState }) => {
   if (mapState.drawer !== "layer") return null;
 
   return (
-    <div className="z-999 absolute bg-(--background) top-0 bottom-0 left-14 w-55">
+    <div className="z-999 absolute bg-(--background) top-0 bottom-0 left-14 w-60">
       <div className="flex flex-col gap-8 p-4">
         <span className="text-(--text)">Layers</span>
         <div className="flex flex-row justify-between">
