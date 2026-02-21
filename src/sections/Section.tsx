@@ -5,7 +5,8 @@ interface ISectionProps {
   title: string;
   children: JSX.Element | JSX.Element[];
   features: string[];
-  githubUrl: string;
+  githubURL: string;
+  demoURL: string;
   usedPreviously: {
     where: string;
     what: string;
@@ -13,9 +14,13 @@ interface ISectionProps {
   reversed?: boolean;
 }
 
-const Section = ({ title, features, githubUrl, usedPreviously, reversed, children }: ISectionProps) => {
+const Section = ({ title, features, githubURL, usedPreviously, reversed, children, demoURL }: ISectionProps) => {
   const handleOpenGithubLink = () => {
-    window.open(githubUrl, "_blank", "noopener,noreferrer");
+    window.open(githubURL, "_blank", "noopener,noreferrer");
+  };
+  const handleOpenDemoLink = () => {
+    const url = new URL(demoURL, window.location.origin);
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
   };
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
@@ -48,10 +53,7 @@ const Section = ({ title, features, githubUrl, usedPreviously, reversed, childre
               <span className="text-xs md:text-sm">Code</span>
               <ExternalLink className="size-3 md:size-5" />
             </div>
-            <div
-              // onClick={handleOpenGithubLink}
-              className={linkStyles}
-            >
+            <div onClick={handleOpenDemoLink} className={linkStyles}>
               <span className="text-xs md:text-sm">Open in new tab</span>
               <ExternalLink className="size-3 md:size-5" />
             </div>

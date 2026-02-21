@@ -1,14 +1,9 @@
-import useChartState from "./useChartState";
-import LineChart from "./LineChart";
-import BarChart from "./BarChart";
-import PieChart from "./PieChart";
-import DoughnutChart from "./DoughnutChart";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Section from "../Section";
+import DataVisualizations from "./DataVisualizations";
 
 const ChartsSection = () => {
-  const chartState = useChartState();
   const githubURL = "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts";
+  const demoURL = "/data-visualization";
   const title = "Data Visualization";
   const features = ["Different Chart Types: Line, etc", "Allow import/export JSON, CSV: WIP"];
   const usedPreviously = [
@@ -17,26 +12,16 @@ const ChartsSection = () => {
   ];
 
   return (
-    <Section title={title} features={features} usedPreviously={usedPreviously} githubUrl={githubURL} reversed={true}>
+    <Section
+      title={title}
+      features={features}
+      usedPreviously={usedPreviously}
+      githubURL={githubURL}
+      demoURL={demoURL}
+      reversed={true}
+    >
       <div className="relative h-full w-full xs:w-80 sm:w-140 md:w-140 lg:w-200 xl:w-250 flex flex-col justify-center items-center p-2 md:p-4">
-        <div className="absolute top-4 right-4">
-          <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
-            <SelectTrigger className="w-25 md:w-50">
-              <SelectValue placeholder="Chart Options" />
-            </SelectTrigger>
-            <SelectContent>
-              {chartState.chartOptions.map((option) => (
-                <SelectItem key={option.id} value={option.id}>
-                  {option.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        {chartState.activeChart === "bar" && <BarChart />}
-        {chartState.activeChart === "line" && <LineChart />}
-        {chartState.activeChart === "pie" && <PieChart />}
-        {chartState.activeChart === "doughnut" && <DoughnutChart />}
+        <DataVisualizations />
       </div>
     </Section>
   );
