@@ -1,12 +1,15 @@
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  isAlt?: boolean;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, isAlt, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
-      "rounded-xl border bg-(--background)/90 border-(--border) text-(--card-foreground) shadow",
+      `rounded-xl shadow ${isAlt ? "border bg-(--alt-card-bg) border-(--alt-card-border) text-(--alt-card-text)" : "border bg-(--card-bg) border-(--card-border) text-(--card-text)"}`,
       className,
     )}
     {...props}

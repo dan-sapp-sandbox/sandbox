@@ -36,11 +36,17 @@
     --link: #2563eb;
     --link-hover: #1e40af;
 
-    --card-background: #f5f5f5;
-    --card-foreground: #000000;
+    --card-bg: #ffffff;
+    --card-border: #303030;
+    --card-text: #000000;
 
-    --card-background-border: #d9d9da;
-    --card-foreground-border: #374151;
+    --alt-card-bg: #e3e3e3;
+    --alt-card-border: #e3e3e3;
+    --alt-card-text: #000000;
+
+    --text: #000000;
+    --text-disabled: #646464;
+    --text-hover: #2e2e2e;
 
     --map-toolbar: #c4cedf;
     --map-toolbar-icon: #000000;
@@ -51,6 +57,28 @@
     --theme-toggle-border: #000000;
 
     --table-row-hover: #c2d5e7;
+
+    --button-default-bg: #9dd1ff;
+    --button-default-bg-hover: #abd8ff;
+    --button-default-text: #000000;
+
+    --button-secondary-bg: #646464;
+    --button-secondary-bg-hover: #898989;
+    --button-secondary-text: #ffffff;
+
+    --button-link: #027ac5;
+    --button-link-hover: #51a3d6;
+
+    --button-destructive-bg: #a10000;
+    --button-destructive-bg-hover: #c90909;
+    --button-destructive-text: #ffffff;
+
+    --button-outline: #000000;
+
+    --select-text: #000000;
+    --select-bg: #ffffff;
+    --select-bg-hover: #e8fdfd;
+    --select-separator: #000000;
   }
 
   .dark {
@@ -87,13 +115,17 @@
     --link: #3b82f6;
     --link-hover: #60a5fa;
 
-    --card-background: #000000;
-    --card-foreground: #f5f5f5;
+    --card-bg: #000000;
+    --card-border: #626262;
+    --card-text: #ffffff;
 
-    --card-background-border: #374151;
-    --card-foreground-border: #d9d9da;
+    --alt-card-bg: #444444;
+    --alt-card-border: #444444;
+    --alt-card-text: #ffffff;
 
-    --text: #ffffff;
+    --text: #ededed;
+    --text-disabled: #b5b5b5;
+    --text-hover: #ffffff;
 
     --map-toolbar: #393939;
     --map-toolbar-icon: #ffffff;
@@ -104,6 +136,28 @@
     --theme-toggle-border: #ffffff;
 
     --table-row-hover: #3f454b;
+
+    --button-default-bg: #373737;
+    --button-default-bg-hover: #2a3743;
+    --button-default-text: #ffffff;
+
+    --button-secondary-bg: #e4e4e4;
+    --button-secondary-bg-hover: #a0a0a0;
+    --button-secondary-text: #000000;
+
+    --button-link: #d6edfb;
+    --button-link-hover: #a0daff;
+
+    --button-destructive-bg: #a10000;
+    --button-destructive-bg-hover: #c90909;
+    --button-destructive-text: #ffffff;
+
+    --button-outline: #ffffff;
+
+    --select-text: #ffffff;
+    --select-bg: #000000;
+    --select-bg-hover: #42525c;
+    --select-separator: #7e7e7e;
   }
 
   html,
