@@ -4,7 +4,7 @@ const App = () => {
   return (
     <div
       style={{
-        backgroundImage: "url(./background.jpg)",
+        backgroundImage: "url(/background.jpg)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

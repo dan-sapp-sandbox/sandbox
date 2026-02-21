@@ -1,4 +1,3 @@
-import profilePic from "/me.png";
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import useProfileState from "./useProfileState";
@@ -11,7 +10,7 @@ const ProfileSection = () => {
     <Card className="w-full md:max-w-400 h-fit flex flex-row justify-between p-3 md:p-8">
       <CardContent className="h-full w-full p-0">
         <div className="h-full w-full flex flex-row gap-4 md:gap-24">
-          <img src={profilePic} className="h-30 md:h-60" alt="profile pic" />
+          <img src="/me.png" className="h-30 md:h-60" alt="profile pic" />
           <div className="h-full flex flex-col justify-between overflow-hidden gap-4">
             <div className="flex flex-col gap-2 md:gap-6">
               <span className="text-lg md:text-2xl font-bold text-foreground">Hi, I'm Dan Sapp.</span>
