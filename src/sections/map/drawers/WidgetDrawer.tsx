@@ -5,7 +5,7 @@ const WidgetDrawer = ({ mapState }: { mapState: IMapState }) => {
 
   return (
     <div className="z-999 absolute bg-(--background) top-0 bottom-0 left-14 w-55">
-      <span className="text-(--foreground)">Widgets</span>
+      <span className="text-(--text)">Widgets</span>
     </div>
   );
 };

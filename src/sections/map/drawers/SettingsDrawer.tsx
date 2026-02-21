@@ -7,7 +7,7 @@ const SettingsDrawer = ({ mapState }: { mapState: IMapState }) => {
   return (
     <div className="z-9 absolute bg-(--background) top-0 bottom-0 left-14 w-55 p-4">
       <div className="flex flex-col gap-6">
-        <span className="text-(--foreground)">Settings</span>
+        <span className="text-(--text)">Settings</span>
         <Select value={mapState.mapStyle} onValueChange={(value) => mapState.setMapStyle(value as string)}>
           <SelectTrigger className="w-50">
             <SelectValue placeholder="Projection" />

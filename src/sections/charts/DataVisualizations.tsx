@@ -10,7 +10,7 @@ const DataVisualizations = () => {
 
   return (
     <>
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 left-4">
         <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
           <SelectTrigger className="w-25 md:w-50">
             <SelectValue placeholder="Chart Options" />

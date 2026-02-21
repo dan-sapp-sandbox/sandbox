@@ -13,7 +13,7 @@ const useComponentLibraryState = () => {
     form: <Previews.Card />,
     input: <Previews.Card />,
     select: <Previews.Card />,
-    switch: <Previews.Card />,
+    switch: <Previews.Switch />,
     table: <Previews.Card />,
   };
 

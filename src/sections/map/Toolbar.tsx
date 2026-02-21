@@ -7,11 +7,9 @@ const ToolbarButton = ({ children, onClick }: { children: JSX.Element | JSX.Elem
     <div
       onClick={onClick}
       className="flex flex-col gap-1 justify-center items-center cursor-pointer
-          text(--map-toolbar-icon) hover:text(--map-toolbar-icon-hover)
-          bg(--map-toolbar-icon-bg) hover:bg(--map-toolbar-icon-bg-hover)
-          dark:text(--map-toolbar-icon) dark:hover:text(--map-toolbar-icon-hover)
-          dark:bg(--map-toolbar-icon-bg) dark:hover:bg(--map-toolbar-icon-bg-hover)
-          "
+        text-(--map-toolbar-icon) hover:text-(--map-toolbar-icon-hover)
+        bg(--map-toolbar-icon-bg) hover:bg(--map-toolbar-icon-bg-hover)
+      "
     >
       {children}
     </div>
