@@ -2,8 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardFooter, CardTitle }
 
 const CardPreview = () => {
   return (
-    <div className="flex justify-center items-center gap-4">
-      <Card className="w-full md:w-100">
+    <div className="flex flex-col xl:flex-row justify-center items-center gap-4">
+      <Card className="w-full md:w-80">
         <CardHeader>
           <CardTitle className="text-base md:text-lg">Card Title</CardTitle>
           <CardDescription className="text-sm md:text-base">Card Description</CardDescription>
@@ -11,7 +11,7 @@ const CardPreview = () => {
         <CardContent className="text-sm md:text-base">Card Content</CardContent>
         <CardFooter className="text-sm md:text-base">Card Footer</CardFooter>
       </Card>
-      <Card isAlt={true} className="w-full md:w-100">
+      <Card isAlt={true} className="w-full md:w-80">
         <CardHeader>
           <CardTitle className="text-base md:text-lg">Card Title</CardTitle>
           <CardDescription className="text-sm md:text-base">Card Description</CardDescription>
