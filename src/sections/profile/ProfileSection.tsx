@@ -14,7 +14,7 @@ const ProfileSection = () => {
           <div className="h-full flex flex-col justify-between overflow-hidden gap-4">
             <div className="flex flex-col gap-2 md:gap-6">
               <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
-              <span className="md:text-lg text-(--text)">Please enjoy this collection(WIP) of demos.</span>
+              <span className="md:text-lg text-(--text)">Please enjoy this collection of demos (WIP).</span>
               <div className="flex flex-col md:gap-1 text-(--text)">
                 <span className="text-sm md:text-lg text-(--text)">
                   I'm a software engineer with 10 years of industry experience.
