@@ -6,7 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 const DataGrid = () => {
   const dataGridState = useDataGridState();
   const numberOfUsers = dataGridState.data.length;
-  const numberOfAdmins = dataGridState.data.filter((user) => user.role === "admin").length;
+  const numberOfAdmins = dataGridState.data.filter((user) => user.role === "Admin").length;
+  //TODO: add column sorting/filtering
 
   return (
     <div className="h-full w-full rounded flex flex-col">
