@@ -11,6 +11,17 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
+            urlPattern: ({ request }) => request.destination === "image",
+            handler: "CacheFirst",
+            options: {
+              cacheName: "images",
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+            },
+          },
+          {
             urlPattern: /^https:\/\/api\./i,
             handler: "NetworkFirst",
             options: {
