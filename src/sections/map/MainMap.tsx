@@ -35,6 +35,18 @@ const CameraPublisher = () => {
   return null;
 };
 
+const RegisterViewer = () => {
+  const { viewer } = useCesium();
+  const { setMainViewer } = useContext(CameraContext);
+
+  useEffect(() => {
+    if (!viewer) return;
+    setMainViewer(viewer);
+  }, [viewer, setMainViewer]);
+
+  return null;
+};
+
 const Map = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   const { viewer } = useCesium();
   useEffect(() => {
@@ -50,6 +62,11 @@ const Map = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
         position: "absolute",
         inset: 0,
       }}
+      contextOptions={{
+        webgl: {
+          alpha: true,
+        },
+      }}
       baseLayerPicker={false}
       timeline={false}
       geocoder={false}
@@ -60,6 +77,7 @@ const Map = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
       navigationHelpButton={false}
     >
       {children}
+      <RegisterViewer />
       <CameraPublisher />
     </Viewer>
   );

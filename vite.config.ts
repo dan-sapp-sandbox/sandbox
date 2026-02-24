@@ -9,6 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        globIgnores: ["**/cesium/**"],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === "image",
