@@ -64,6 +64,9 @@ export default defineConfig({
       },
     }),
   ],
+  define: {
+    CESIUM_BASE_URL: JSON.stringify("./cesium"),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

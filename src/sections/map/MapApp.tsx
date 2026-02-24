@@ -1,29 +1,44 @@
-import { MapProvider } from "react-map-gl/mapbox";
-import MapComponent from "./Map";
-import { useMapState } from "./useMapState";
-import Toolbar from "./Toolbar";
-import Drawers from "./drawers";
+import { useState, createContext } from "react";
+import MainMap from "./MainMap";
+import LayerSwitcher from "./LayerSwitcher";
+import OverviewMapSwitch from "./OverviewMapSwitch";
+import CameraControls from "./CameraControls";
+import SettingsContainer from "./SettingsContainer";
+import type { ILayer } from "./types";
+import OverviewMap from "./OverviewMap";
+import type { Cartographic } from "cesium";
+import Layers from "./Layers";
+
+export const CameraContext = createContext<{
+  center: Cartographic | null;
+  setCenter: (c: Cartographic) => void;
+}>({
+  center: null,
+  setCenter: () => {},
+});
 
 const MapApp = () => {
-  const mapState = useMapState();
+  const [center, setCenter] = useState<Cartographic | null>(null);
+  const [layer, setLayer] = useState<ILayer>("satellite");
+  const [showOverviewMap, setShowOverviewMap] = useState(true);
 
   return (
-    <div className="relative h-full flex-1 w-full flex flex-row">
-      <Toolbar mapState={mapState} />
-      <Drawers.Layer mapState={mapState} />
-      <Drawers.Draw mapState={mapState} />
-      <Drawers.Icon mapState={mapState} />
-      <Drawers.Widget mapState={mapState} />
-      <Drawers.Settings mapState={mapState} />
-      <MapProvider>
-        <MapComponent
-          showLayer1={mapState.showLayer1}
-          showLayer2={mapState.showLayer2}
-          projection={mapState.projection}
-          mapStyle={mapState.mapStyle}
-          viewState={mapState.viewState}
-        />
-      </MapProvider>
+    <div className="relative h-full w-full overflow-hidden">
+      <CameraContext.Provider value={{ center, setCenter }}>
+        <MainMap>
+          <Layers layer={layer} />
+          <CameraControls />
+        </MainMap>
+        {showOverviewMap && (
+          <OverviewMap>
+            <Layers layer={layer} />
+          </OverviewMap>
+        )}
+        <SettingsContainer>
+          <LayerSwitcher layer={layer} setLayer={setLayer} />
+          <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
+        </SettingsContainer>
+      </CameraContext.Provider>
     </div>
   );
 };

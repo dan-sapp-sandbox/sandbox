@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
 import { router } from "./router";
 import "./index.css";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 import { registerSW } from "virtual:pwa-register";
 
 const updateSW = registerSW({

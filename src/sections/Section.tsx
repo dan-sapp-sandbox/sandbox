@@ -59,7 +59,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: JSX.E
             </div>
           </div>
         </div>
-        <div className="h-full w-full flex flex-col justify-center items-center">{children}</div>
+        <div className="h-full w-full p-0 flex flex-col md:flex-row justify-between">{children}</div>
       </CardContent>
     </Card>
   );

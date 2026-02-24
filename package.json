@@ -28,6 +28,7 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@tanstack/react-router": "^1.161.3",
     "@tanstack/react-table": "^8.21.3",
+    "cesium": "^1.138.0",
     "chart.js": "^4.5.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -39,6 +40,7 @@
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.1",
     "react-map-gl": "^8.1.0",
+    "resium": "^1.19.4",
     "tailwind-merge": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6"
@@ -46,6 +48,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tailwindcss/postcss": "^4.1.18",
+    "@types/cesium": "^1.70.4",
     "@types/node": "^24.10.12",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
