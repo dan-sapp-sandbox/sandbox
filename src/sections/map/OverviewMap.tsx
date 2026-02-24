@@ -147,7 +147,7 @@ const ViewExtentOverlay = () => {
 
 const OverviewMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   return (
-    <div className="absolute top-3 right-3 rounded h-[20vh] w-[20vh] border border-(--text) overflow-hidden">
+    <div className="absolute top-3 right-3 rounded h-[15vh] w-[15vh] border border-(--text) overflow-hidden">
       <Viewer
         contextOptions={{ webgl: { alpha: true } }}
         style={{
