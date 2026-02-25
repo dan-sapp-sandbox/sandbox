@@ -6,12 +6,12 @@ import { Plus, Minus } from "lucide-react";
 const CameraControls = () => {
   const { viewer } = useCesium();
 
-  const zoomIn = () => viewer?.camera?.zoomIn(1000000);
-  const zoomOut = () => viewer?.camera?.zoomOut(1000000);
+  const zoomIn = () => viewer?.camera?.zoomIn(150000);
+  const zoomOut = () => viewer?.camera?.zoomOut(150000);
 
   const reset = () => {
     viewer?.camera?.flyTo({
-      destination: Cartesian3.fromDegrees(0, 0, 50000),
+      destination: Cartesian3.fromDegrees(-93.265, 44.9778, 1_200_000),
     });
   };
 

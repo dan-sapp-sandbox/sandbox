@@ -45,8 +45,7 @@ const MapApp = () => {
         const mainCam = main.camera;
 
         const carto = Cartographic.fromCartesian(mainCam.position);
-
-        const boostedHeight = carto.height * 2.5;
+        const boostedHeight = carto.height * 3.2 < 5000000 ? carto.height * 3.2 : 5000000;
 
         const boostedPosition = Cartesian3.fromRadians(carto.longitude, carto.latitude, boostedHeight);
 
