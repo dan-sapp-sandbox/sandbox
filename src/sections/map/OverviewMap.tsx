@@ -1,159 +1,51 @@
-import { useContext, useEffect, useRef, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import type { JSX } from "react";
-import { Viewer, useCesium, Entity } from "resium";
+import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./MapApp";
-import { Color, CallbackProperty, Rectangle, Cartographic, Cartesian2, Cartesian3 } from "cesium";
+import { Cartesian3 } from "cesium";
 
-const OverviewController = () => {
+const OverviewInitializer = () => {
   const { viewer } = useCesium();
-  const { center, mainViewer } = useContext(CameraContext);
-  const initialized = useRef(false);
+  const { overviewViewerRef } = useContext(CameraContext);
 
-  // Initial setup (run once)
+  // Register viewer once
   useEffect(() => {
-    if (!viewer || initialized.current) return;
+    if (!viewer) return;
+    overviewViewerRef.current = viewer;
+  }, [viewer, overviewViewerRef]);
 
-    // Default zoom (global overview)
+  // Configure overview camera + controls
+  useEffect(() => {
+    if (!viewer) return;
+
+    // Set a default zoomed-out view (so globe is visible immediately)
     viewer.camera.setView({
-      destination: Cartesian3.fromDegrees(0, 0, 4_000_000),
+      destination: Cartesian3.fromDegrees(0, 0, 20_000_000),
     });
 
-    viewer.scene.requestRenderMode = false;
-
+    // Disable all user interaction (minimap behavior)
     const controller = viewer.scene.screenSpaceCameraController;
-
     controller.enableRotate = false;
     controller.enableZoom = false;
     controller.enableTilt = false;
     controller.enableTranslate = false;
     controller.enableLook = false;
 
-    controller.inertiaSpin = 0;
-    controller.inertiaTranslate = 0;
-    controller.inertiaZoom = 0;
-
-    // viewer.scene.morphTo2D(0);
-
-    initialized.current = true;
-  }, [viewer]);
-
-  useEffect(() => {
-    if (!viewer || !mainViewer) return;
-
-    const tick = viewer.scene.postRender.addEventListener(() => {
-      if (!viewer.isDestroyed()) {
-        viewer.scene.requestRender();
-      }
-    });
-
-    return () => {
-      if (tick) tick();
-    };
-  }, [viewer, mainViewer]);
-
-  // Sync center when main map moves
-  useEffect(() => {
-    if (!viewer || !center) return;
-
-    viewer.camera.setView({
-      destination: Cartesian3.fromRadians(center.longitude, center.latitude, 4_000_000),
-    });
-
-    viewer.scene?.requestRender();
-  }, [viewer, center]);
-
-  // Force overview render when main camera moves
-  useEffect(() => {
-    console.log("mainViewer", mainViewer);
-    console.log("viewer", viewer);
-    if (!viewer || !mainViewer) return;
-
-    const remove = mainViewer.camera.changed.addEventListener(() => {
-      if (!viewer.isDestroyed()) {
-        viewer.scene?.requestRender();
-      }
-    });
-
-    return () => remove();
-  }, [viewer, mainViewer]);
-
-  useEffect(() => {
-    if (!viewer) return;
+    // Ensure continuous rendering so sync looks smooth
     viewer.useDefaultRenderLoop = true;
+    viewer.scene.requestRenderMode = false;
   }, [viewer]);
 
   return null;
-};
-
-const ViewExtentOverlay = () => {
-  const { mainViewer } = useContext(CameraContext);
-
-  const rectangle = useMemo(() => {
-    if (!mainViewer) return undefined;
-
-    const ellipsoid = mainViewer.scene.globe.ellipsoid;
-
-    return new CallbackProperty(() => {
-      if (!mainViewer || mainViewer.isDestroyed()) return undefined;
-
-      const canvas = mainViewer.scene.canvas;
-
-      const corners = [
-        new Cartesian2(0, 0),
-        new Cartesian2(canvas.clientWidth, 0),
-        new Cartesian2(canvas.clientWidth, canvas.clientHeight),
-        new Cartesian2(0, canvas.clientHeight),
-      ];
-
-      const cartographics = corners
-        .map((corner) => {
-          const cartesian = mainViewer.camera.pickEllipsoid(corner, ellipsoid);
-          return cartesian ? Cartographic.fromCartesian(cartesian, ellipsoid) : null;
-        })
-        .filter(Boolean) as Cartographic[];
-
-      if (cartographics.length < 2) return undefined;
-
-      let west = Infinity,
-        east = -Infinity,
-        south = Infinity,
-        north = -Infinity;
-
-      for (const c of cartographics) {
-        west = Math.min(west, c.longitude);
-        east = Math.max(east, c.longitude);
-        south = Math.min(south, c.latitude);
-        north = Math.max(north, c.latitude);
-      }
-
-      return Rectangle.fromRadians(west, south, east, north);
-    }, false);
-  }, [mainViewer]);
-
-  if (!rectangle) return null;
-
-  return (
-    <Entity
-      rectangle={{
-        coordinates: rectangle,
-        material: Color.RED.withAlpha(0.25),
-        outline: true,
-        outlineColor: Color.YELLOW,
-        height: 0, // IMPORTANT: keep this 0 in 2D overview
-      }}
-    />
-  );
 };
 
 const OverviewMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   return (
     <div className="absolute top-3 right-3 rounded h-[15vh] w-[15vh] border border-(--text) overflow-hidden">
       <Viewer
-        contextOptions={{ webgl: { alpha: true } }}
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "transparent",
+        full
+        contextOptions={{
+          webgl: { alpha: true },
         }}
         baseLayerPicker={false}
         timeline={false}
@@ -163,9 +55,10 @@ const OverviewMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) =
         animation={false}
         fullscreenButton={false}
         navigationHelpButton={false}
+        selectionIndicator={false}
+        infoBox={false}
       >
-        <OverviewController />
-        <ViewExtentOverlay />
+        <OverviewInitializer />
         {children}
       </Viewer>
     </div>

@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";
@@ -6,30 +7,66 @@ import CameraControls from "./CameraControls";
 import SettingsContainer from "./SettingsContainer";
 import type { ILayer } from "./types";
 import OverviewMap from "./OverviewMap";
-import type { Cartographic } from "cesium";
 import Layers from "./Layers";
+import { Viewer } from "cesium";
 
-export const CameraContext = createContext<{
-  center: Cartographic | null;
-  setCenter: (c: Cartographic) => void;
-  mainViewer: any;
-  setMainViewer: (v: any) => void;
-}>({
-  center: null,
-  setCenter: () => {},
-  mainViewer: null,
-  setMainViewer: () => {},
+type CameraContextType = {
+  mainViewerRef: RefObject<Viewer | null>;
+  overviewViewerRef: RefObject<Viewer | null>;
+};
+
+export const CameraContext = createContext<CameraContextType>({
+  mainViewerRef: { current: null },
+  overviewViewerRef: { current: null },
 });
 
 const MapApp = () => {
-  const [center, setCenter] = useState<Cartographic | null>(null);
+  const mainViewerRef = useRef<Viewer | null>(null);
+  const overviewViewerRef = useRef<Viewer | null>(null);
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
-  const [mainViewer, setMainViewer] = useState<any>(null);
+
+  useEffect(() => {
+    let cleanup: (() => void) | undefined;
+
+    const tryAttach = () => {
+      const main = mainViewerRef.current;
+      const overview = overviewViewerRef.current;
+
+      if (!main || !overview) {
+        requestAnimationFrame(tryAttach);
+        return;
+      }
+
+      const sync = () => {
+        overview.camera.setView({
+          destination: main.camera.position,
+          orientation: {
+            heading: main.camera.heading,
+            pitch: main.camera.pitch,
+            roll: main.camera.roll,
+          },
+        });
+      };
+
+      main.camera.changed.addEventListener(sync);
+      sync(); // initial sync
+
+      cleanup = () => {
+        main.camera.changed.removeEventListener(sync);
+      };
+    };
+
+    tryAttach();
+
+    return () => {
+      cleanup?.();
+    };
+  }, []);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <CameraContext.Provider value={{ center, setCenter, mainViewer, setMainViewer }}>
+      <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef }}>
         <MainMap>
           <Layers layer={layer} />
           <CameraControls />

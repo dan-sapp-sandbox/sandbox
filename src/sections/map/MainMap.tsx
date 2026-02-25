@@ -2,70 +2,33 @@ import { useContext, useEffect } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./MapApp";
+import { Viewer as CesiumViewer } from "cesium";
 
-const CameraPublisher = () => {
+const RegisterMainViewer = () => {
   const { viewer } = useCesium();
-  const { setCenter } = useContext(CameraContext);
+  const { mainViewerRef } = useContext(CameraContext);
 
   useEffect(() => {
     if (!viewer) return;
-
-    const removeListener = viewer.camera.changed.addEventListener(() => {
-      const carto = viewer.camera.positionCartographic;
-      setCenter(carto);
-    });
-
-    return () => {
-      removeListener();
-    };
-  }, [viewer, setCenter]);
-
-  useEffect(() => {
-    if (!viewer) return;
-
-    const resizeObserver = new ResizeObserver(() => {
-      viewer.resize();
-    });
-
-    resizeObserver.observe(viewer.container);
-
-    return () => resizeObserver.disconnect();
-  }, [viewer]);
+    mainViewerRef.current = viewer as CesiumViewer;
+  }, [viewer, mainViewerRef]);
 
   return null;
 };
 
-const RegisterViewer = () => {
+const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   const { viewer } = useCesium();
-  const { setMainViewer } = useContext(CameraContext);
 
   useEffect(() => {
     if (!viewer) return;
-    setMainViewer(viewer);
-  }, [viewer, setMainViewer]);
-
-  return null;
-};
-
-const Map = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
-  const { viewer } = useCesium();
-  useEffect(() => {
-    if (!viewer) return;
-
-    setTimeout(() => {
-      viewer.resize();
-    }, 0);
+    setTimeout(() => viewer.resize(), 0);
   }, [viewer]);
+
   return (
     <Viewer
-      style={{
-        position: "absolute",
-        inset: 0,
-      }}
+      full
       contextOptions={{
-        webgl: {
-          alpha: true,
-        },
+        webgl: { alpha: true },
       }}
       baseLayerPicker={false}
       timeline={false}
@@ -77,10 +40,9 @@ const Map = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
       navigationHelpButton={false}
     >
       {children}
-      <RegisterViewer />
-      <CameraPublisher />
+      <RegisterMainViewer />
     </Viewer>
   );
 };
 
-export default Map;
+export default MainMap;

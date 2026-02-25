@@ -43,6 +43,7 @@
     "resium": "^1.19.4",
     "tailwind-merge": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-cesium": "^1.2.23",
     "zod": "^4.3.6"
   },
   "devDependencies": {
