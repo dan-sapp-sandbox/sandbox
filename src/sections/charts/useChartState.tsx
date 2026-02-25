@@ -8,7 +8,7 @@ const useChartState = () => {
     { id: "pie", name: "Pie" },
     { id: "doughnut", name: "Doughnut" },
   ];
-  const [activeChart, setActiveChart] = useState("line");
+  const [activeChart, setActiveChart] = useState("bar");
   return { activeChart, setActiveChart, chartOptions };
 };
 

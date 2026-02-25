@@ -76,7 +76,7 @@ const MapApp = () => {
   }, []);
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div className="relative h-full min-h-100 w-full overflow-hidden">
       <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef }}>
         <MainMap>
           <Layers layer={layer} />

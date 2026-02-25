@@ -9,7 +9,7 @@ const DataVisualizations = () => {
   const chartState = useChartState();
 
   return (
-    <>
+    <div className="h-full min-h-100 w-full">
       <div className="absolute top-4 left-4">
         <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
           <SelectTrigger className="w-25 md:w-50">
@@ -28,7 +28,7 @@ const DataVisualizations = () => {
       {chartState.activeChart === "line" && <LineChart />}
       {chartState.activeChart === "pie" && <PieChart />}
       {chartState.activeChart === "doughnut" && <DoughnutChart />}
-    </>
+    </div>
   );
 };
 

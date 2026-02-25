@@ -4,7 +4,7 @@ import useComponentLibraryState from "./useComponentLibraryState";
 const Viewer = () => {
   const { componentList, displayComponent, selected, setSelected } = useComponentLibraryState();
   return (
-    <div className="p-2 h-full w-full flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
+    <div className="p-2 h-full min-h-100 w-full flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
       <div className="h-full w-30 2xl:w-50 flex flex-col gap-1 border-r">
         <span className="text-sm xl:text-lg font-bold">Components</span>
         <div className="overflow-y-scroll scrollbar-hide">

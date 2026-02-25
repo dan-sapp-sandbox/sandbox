@@ -22,13 +22,8 @@ const InitialCamera = () => {
   useEffect(() => {
     if (!viewer) return;
 
-    // Example: Minneapolis area (change to whatever you want)
     viewer.camera.setView({
-      destination: Cartesian3.fromDegrees(
-        -93.265, // longitude
-        44.9778, // latitude
-        2_000_000, // height (zoom level)
-      ),
+      destination: Cartesian3.fromDegrees(-93.265, 44.9778, 1_200_000),
     });
   }, [viewer]);
 
