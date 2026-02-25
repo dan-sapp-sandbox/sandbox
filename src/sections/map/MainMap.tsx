@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./MapApp";
-import { Viewer as CesiumViewer } from "cesium";
+import { Viewer as CesiumViewer, Cartesian3 } from "cesium";
 
 const RegisterMainViewer = () => {
   const { viewer } = useCesium();
@@ -12,6 +12,25 @@ const RegisterMainViewer = () => {
     if (!viewer) return;
     mainViewerRef.current = viewer as CesiumViewer;
   }, [viewer, mainViewerRef]);
+
+  return null;
+};
+
+const InitialCamera = () => {
+  const { viewer } = useCesium();
+
+  useEffect(() => {
+    if (!viewer) return;
+
+    // Example: Minneapolis area (change to whatever you want)
+    viewer.camera.setView({
+      destination: Cartesian3.fromDegrees(
+        -93.265, // longitude
+        44.9778, // latitude
+        2_000_000, // height (zoom level)
+      ),
+    });
+  }, [viewer]);
 
   return null;
 };
@@ -39,8 +58,9 @@ const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
       fullscreenButton={false}
       navigationHelpButton={false}
     >
-      {children}
+      <InitialCamera />
       <RegisterMainViewer />
+      {children}
     </Viewer>
   );
 };

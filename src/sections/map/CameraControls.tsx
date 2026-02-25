@@ -11,12 +11,12 @@ const CameraControls = () => {
 
   const reset = () => {
     viewer?.camera?.flyTo({
-      destination: Cartesian3.fromDegrees(-95, 40, 25000000),
+      destination: Cartesian3.fromDegrees(0, 0, 50000),
     });
   };
 
   return (
-    <div className="absolute bottom-0 right-0 z-99 p-3 rounded bg-(--foreground)/30 flex flex-row gap-2">
+    <div className="absolute bottom-1 right-1 z-99 flex flex-row gap-2">
       <Button size="icon" onClick={zoomIn}>
         <Plus />
       </Button>

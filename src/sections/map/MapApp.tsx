@@ -1,5 +1,4 @@
-import { useState, createContext, useEffect, useRef } from "react";
-import type { RefObject } from "react";
+import { useState, createContext, useEffect, useRef, type RefObject } from "react";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";
@@ -8,7 +7,7 @@ import SettingsContainer from "./SettingsContainer";
 import type { ILayer } from "./types";
 import OverviewMap from "./OverviewMap";
 import Layers from "./Layers";
-import { Viewer } from "cesium";
+import { Cartesian3, Cartographic, Viewer } from "cesium";
 
 type CameraContextType = {
   mainViewerRef: RefObject<Viewer | null>;
@@ -39,18 +38,30 @@ const MapApp = () => {
       }
 
       const sync = () => {
+        const main = mainViewerRef.current;
+        const overview = overviewViewerRef.current;
+        if (!main || !overview) return;
+
+        const mainCam = main.camera;
+
+        const carto = Cartographic.fromCartesian(mainCam.position);
+
+        const boostedHeight = carto.height * 2.5;
+
+        const boostedPosition = Cartesian3.fromRadians(carto.longitude, carto.latitude, boostedHeight);
+
         overview.camera.setView({
-          destination: main.camera.position,
+          destination: boostedPosition,
           orientation: {
-            heading: main.camera.heading,
-            pitch: main.camera.pitch,
-            roll: main.camera.roll,
+            heading: 0,
+            pitch: -Math.PI / 2,
+            roll: 0,
           },
         });
       };
 
       main.camera.changed.addEventListener(sync);
-      sync(); // initial sync
+      sync();
 
       cleanup = () => {
         main.camera.changed.removeEventListener(sync);
