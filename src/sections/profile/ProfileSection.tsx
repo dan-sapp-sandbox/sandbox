@@ -7,7 +7,7 @@ const ProfileSection = () => {
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
-    <Card className="w-full md:max-w-400 h-fit flex flex-row justify-between p-3 md:p-8">
+    <Card className="w-full md:max-w-400 h-fit border-none flex flex-row justify-between p-3 md:p-8">
       <CardContent className="h-full w-full p-0">
         <div className="h-full w-full flex flex-row gap-4 md:gap-24">
           <img src="/me.png" className="h-30 md:h-60" alt="profile pic" />

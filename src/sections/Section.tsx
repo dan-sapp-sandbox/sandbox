@@ -28,7 +28,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: JSX.E
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
-    <Card className="w-full max-w-400 min-h-100 border transition-colors duration-300">
+    <Card className="w-full max-w-400 min-h-100 md:h-[50vh] border-none transition-colors duration-300 overflow-hidden">
       <CardContent
         className={`h-full w-full p-0 flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
       >
