@@ -48,11 +48,7 @@
     --text-disabled: #646464;
     --text-hover: #2e2e2e;
 
-    --map-toolbar: #c4cedf;
-    --map-toolbar-icon: #000000;
-    --map-toolbar-icon-hover: #2d459a;
-    --map-toolbar-icon-bg: #c7d2e7;
-    --map-toolbar-icon-bg-hover: #c7d2e7;
+    --pip-border: #ff8143;
 
     --theme-toggle-border: #000000;
 
@@ -127,11 +123,7 @@
     --text-disabled: #b5b5b5;
     --text-hover: #ffffff;
 
-    --map-toolbar: #393939;
-    --map-toolbar-icon: #ffffff;
-    --map-toolbar-icon-hover: #bfccfd;
-    --map-toolbar-icon-bg: #393939;
-    --map-toolbar-icon-bg-hover: #393939;
+    --pip-border: #ff8143;
 
     --theme-toggle-border: #ffffff;
 

@@ -23,7 +23,7 @@ const InitialCamera = () => {
     if (!viewer) return;
 
     viewer.camera.setView({
-      destination: Cartesian3.fromDegrees(-93.265, 44.9778, 1_200_000),
+      destination: Cartesian3.fromDegrees(0, 45, 2_000_000),
     });
   }, [viewer]);
 

@@ -6,22 +6,27 @@ import CameraControls from "./CameraControls";
 import SettingsContainer from "./SettingsContainer";
 import type { ILayer } from "./types";
 import OverviewMap from "./OverviewMap";
+import PipViewRectangle from "./PipViewRectangle";
+import PipMap from "./PipMap";
 import Layers from "./Layers";
 import { Cartesian3, Cartographic, Viewer } from "cesium";
 
 type CameraContextType = {
   mainViewerRef: RefObject<Viewer | null>;
   overviewViewerRef: RefObject<Viewer | null>;
+  pipViewerRef: RefObject<Viewer | null>;
 };
 
 export const CameraContext = createContext<CameraContextType>({
   mainViewerRef: { current: null },
   overviewViewerRef: { current: null },
+  pipViewerRef: { current: null },
 });
 
 const MapApp = () => {
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
+  const pipViewerRef = useRef<Viewer | null>(null);
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
 
@@ -45,7 +50,7 @@ const MapApp = () => {
         const mainCam = main.camera;
 
         const carto = Cartographic.fromCartesian(mainCam.position);
-        const boostedHeight = carto.height * 3.2 < 5000000 ? carto.height * 3.2 : 5000000;
+        const boostedHeight = carto.height * 3 < 4500000 ? carto.height * 3 : 3800000;
 
         const boostedPosition = Cartesian3.fromRadians(carto.longitude, carto.latitude, boostedHeight);
 
@@ -76,8 +81,9 @@ const MapApp = () => {
 
   return (
     <div className="relative h-full min-h-100 w-full overflow-hidden">
-      <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef }}>
+      <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
         <MainMap>
+          <PipViewRectangle />
           <Layers layer={layer} />
           <CameraControls />
         </MainMap>
@@ -86,6 +92,9 @@ const MapApp = () => {
             <Layers layer={layer} />
           </OverviewMap>
         )}
+        <PipMap>
+          <Layers layer={layer} />
+        </PipMap>
         <SettingsContainer>
           <LayerSwitcher layer={layer} setLayer={setLayer} />
           <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
