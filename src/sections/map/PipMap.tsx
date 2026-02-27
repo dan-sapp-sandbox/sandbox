@@ -44,10 +44,10 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
       className="group absolute rounded border border-(--pip-border) overflow-hidden"
       ref={setNodeRef}
     >
-      <div className="z-999 w-full h-full relative">
+      <div className="z-999 w-full h-full relative pointer-events-none">
         <div className="absolute top-0 w-full flex flex-row justify-center">
           <div
-            className="cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition rounded bg-black/70 p-1"
+            className="pointer-events-auto cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition rounded bg-black/70 p-1"
             {...listeners}
             {...attributes}
           >
@@ -55,7 +55,7 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
           </div>
         </div>
       </div>
-      <div className="absolute top-0 left-0 h-full w-full">
+      <div className="absolute top-0 left-0 h-full w-full pointer-events-auto">
         <Viewer
           full
           contextOptions={contextOptions}

@@ -7,8 +7,8 @@ const MapSection = () => {
     demoURL: "/map",
     title: "Geospatial Software",
     features: [
-      "Overview Map: Move-able, main map overlay",
-      "Picture-in-Picture Map: Move-able, bounds shown on main map",
+      "Overview Map: Draggable, main map overlay",
+      "Picture-in-Picture Map: Draggable, bounds shown on main map",
       "Base Layer: Selectable in settings",
       "GeoJSON: Can be uploaded/downloaded (WIP)",
       "Draw: Draw points, lines, and polygons on map (WIP)",
