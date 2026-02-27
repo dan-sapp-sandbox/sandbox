@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
-import { CameraContext } from "./MapApp";
+import { CameraContext } from "./types";
 import { Cartesian3 } from "cesium";
 
 const PipInitializer = () => {

@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import { Entity } from "resium";
-import { CameraContext } from "./MapApp";
+import { CameraContext } from "./types";
 import { CallbackProperty, Color, Rectangle } from "cesium";
 
 const MainViewRectangle = () => {
