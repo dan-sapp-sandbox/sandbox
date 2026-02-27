@@ -1,3 +1,4 @@
+import { DndContext, DragOverlay, closestCorners } from "@dnd-kit/core";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";
@@ -23,28 +24,36 @@ const MapApp = () => {
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
+    widgetState,
   } = mapState;
   return (
-    <div className="relative h-full min-h-100 w-full overflow-hidden">
-      <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
-        <MainMap>
-          <PipViewRectangle />
-          <Layers layer={layer} />
-          <CameraControls />
-        </MainMap>
-        {showOverviewMap && (
-          <OverviewMap>
+    <div className="relative h-full w-full overflow-hidden">
+      <DndContext
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
+      >
+        <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
+          <MainMap>
+            <PipViewRectangle />
             <Layers layer={layer} />
-          </OverviewMap>
-        )}
-        <PipMap>
-          <Layers layer={layer} />
-        </PipMap>
-        <SettingsContainer>
-          <LayerSwitcher layer={layer} setLayer={setLayer} />
-          <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
-        </SettingsContainer>
-      </CameraContext.Provider>
+            <CameraControls />
+          </MainMap>
+          {showOverviewMap && (
+            <OverviewMap overviewState={widgetState.overview}>
+              <Layers layer={layer} />
+            </OverviewMap>
+          )}
+          <PipMap pipState={widgetState.pip}>
+            <Layers layer={layer} />
+          </PipMap>
+          <SettingsContainer>
+            <LayerSwitcher layer={layer} setLayer={setLayer} />
+            <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
+          </SettingsContainer>
+        </CameraContext.Provider>
+      </DndContext>
     </div>
   );
 };

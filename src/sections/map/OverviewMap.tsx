@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
-import { CameraContext } from "./types";
+import { CameraContext, type IWidget } from "./types";
 import { Cartesian3 } from "cesium";
 import MainViewRectangle from "./MainViewRectangle";
 
@@ -35,9 +35,23 @@ const OverviewInitializer = () => {
   return null;
 };
 
-const OverviewMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
+const OverviewMap = ({
+  children,
+  overviewState,
+}: {
+  children?: JSX.Element | JSX.Element[];
+  overviewState: IWidget;
+}) => {
   return (
-    <div className="absolute top-3 right-3 rounded h-1/5 aspect-square border border-(--text) overflow-hidden">
+    <div
+      style={{
+        top: `${overviewState.top}%`,
+        left: `${overviewState.left}%`,
+        width: `${overviewState.width}%`,
+        aspectRatio: overviewState.aspect,
+      }}
+      className="absolute rounded border border-(--text) overflow-hidden"
+    >
       <Viewer
         full
         contextOptions={{ webgl: { alpha: true } }}

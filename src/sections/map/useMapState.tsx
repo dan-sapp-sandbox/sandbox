@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { Dispatch, SetStateAction, RefObject } from "react";
 import type { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
 import { Cartesian3, Cartographic, Viewer } from "cesium";
-import type { ILayer } from "./types";
+import type { ILayer, IWidgetState } from "./types";
 
 export interface IMapState {
   mainViewerRef: RefObject<Viewer | null>;
@@ -15,7 +15,23 @@ export interface IMapState {
   setLayer: Dispatch<SetStateAction<ILayer>>;
   showOverviewMap: boolean;
   setShowOverviewMap: Dispatch<SetStateAction<boolean>>;
+  widgetState: IWidgetState;
 }
+
+const initWidgetState: IWidgetState = {
+  overview: {
+    top: 2,
+    left: 83,
+    width: 15,
+    aspect: 1,
+  },
+  pip: {
+    top: 50,
+    left: 10,
+    width: 25,
+    aspect: 1,
+  },
+};
 
 const useMapState = (): IMapState => {
   const mainViewerRef = useRef<Viewer | null>(null);
@@ -23,6 +39,7 @@ const useMapState = (): IMapState => {
   const pipViewerRef = useRef<Viewer | null>(null);
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
+  const [widgetState, setWidgetState] = useState<IWidgetState>(initWidgetState);
   const handleDragStart = (event: DragStartEvent) => {};
   const handleDragEnd = (event: DragEndEvent) => {};
   const handleDragCancel = () => {};
@@ -86,6 +103,7 @@ const useMapState = (): IMapState => {
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
+    widgetState,
   };
 };
 

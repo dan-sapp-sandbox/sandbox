@@ -14,3 +14,14 @@ export const CameraContext = createContext<CameraContextType>({
   overviewViewerRef: { current: null },
   pipViewerRef: { current: null },
 });
+
+export interface IWidget {
+  top: number;
+  left: number;
+  aspect: number;
+  width: number;
+}
+export interface IWidgetState {
+  overview: IWidget;
+  pip: IWidget;
+}

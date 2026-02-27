@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
-import { CameraContext } from "./types";
+import { CameraContext, type IWidget } from "./types";
 import { Cartesian3 } from "cesium";
 
 const PipInitializer = () => {
@@ -24,9 +24,17 @@ const PipInitializer = () => {
   return null;
 };
 
-const PipMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
+const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]; pipState: IWidget }) => {
   return (
-    <div className="absolute bottom-1/6 left-1/5 rounded h-1/3 aspect-square border border-(--pip-border) overflow-hidden">
+    <div
+      style={{
+        top: `${pipState.top}%`,
+        left: `${pipState.left}%`,
+        width: `${pipState.width}%`,
+        aspectRatio: pipState.aspect,
+      }}
+      className="absolute rounded border border-(--pip-border) overflow-hidden"
+    >
       <Viewer
         full
         contextOptions={{ webgl: { alpha: true } }}
