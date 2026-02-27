@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext, type IWidget } from "./types";
@@ -25,6 +25,7 @@ const PipInitializer = () => {
 };
 
 const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]; pipState: IWidget }) => {
+  const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
   return (
     <div
       style={{
@@ -37,7 +38,7 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
     >
       <Viewer
         full
-        contextOptions={{ webgl: { alpha: true } }}
+        contextOptions={contextOptions}
         baseLayerPicker={false}
         timeline={false}
         geocoder={false}

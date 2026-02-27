@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./types";
@@ -32,6 +32,7 @@ const InitialCamera = () => {
 
 const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   const { viewer } = useCesium();
+  const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
 
   useEffect(() => {
     if (!viewer) return;
@@ -41,9 +42,7 @@ const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   return (
     <Viewer
       full
-      contextOptions={{
-        webgl: { alpha: true },
-      }}
+      contextOptions={contextOptions}
       baseLayerPicker={false}
       timeline={false}
       geocoder={false}

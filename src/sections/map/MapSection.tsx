@@ -7,12 +7,12 @@ const MapSection = () => {
     demoURL: "/map",
     title: "Geospatial Software",
     features: [
-      "Layers: Can be toggled on/off",
-      "GeoJSON: Can be uploaded/downloaded",
-      "Draw: Draw points, lines, and polygons on map",
-      "Icons: Place icons on map",
-      "Widgets: Compass, PIP Map, Overview Map",
-      "Settings: Change basemap/projection",
+      "Overview Map: Move-able, main map overlay",
+      "Picture-in-Picture Map: Move-able, bounds shown on main map",
+      "Base Layer: Selectable in settings",
+      "GeoJSON: Can be uploaded/downloaded (WIP)",
+      "Draw: Draw points, lines, and polygons on map (WIP)",
+      "Icons: Place icons on map (WIP)",
     ],
     usedPreviously: [
       { where: "EarthDaily Federal", what: "Search and Rescue App" },

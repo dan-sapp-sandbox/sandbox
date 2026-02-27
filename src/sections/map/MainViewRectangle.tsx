@@ -1,31 +1,23 @@
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { Entity } from "resium";
 import { CameraContext } from "./types";
 import { CallbackProperty, Color, Rectangle } from "cesium";
 
+const EMPTY_RECT = Rectangle.fromDegrees(0, 0, 0, 0);
+
 const MainViewRectangle = () => {
   const { mainViewerRef } = useContext(CameraContext);
 
-  const rectangle = useMemo(() => {
-    return new CallbackProperty(() => {
-      const main = mainViewerRef.current;
+  const rectangle = new CallbackProperty(() => {
+    const main = mainViewerRef.current;
+    if (!main || main.isDestroyed()) return EMPTY_RECT;
 
-      if (!main || main.isDestroyed()) return undefined;
+    const rect = main.camera.computeViewRectangle();
+    if (!rect) return EMPTY_RECT;
 
-      const rect = main.camera.computeViewRectangle();
-
-      if (!rect) return undefined;
-
-      const padding = 0.0;
-
-      return Rectangle.fromRadians(
-        rect.west - padding,
-        rect.south - padding,
-        rect.east + padding,
-        rect.north + padding,
-      );
-    }, false);
-  }, [mainViewerRef]);
+    const padding = 0.0;
+    return Rectangle.fromRadians(rect.west - padding, rect.south - padding, rect.east + padding, rect.north + padding);
+  }, false);
 
   return (
     <Entity

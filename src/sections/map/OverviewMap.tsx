@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import type { JSX } from "react";
 import { Grip } from "lucide-react";
 import { Viewer, useCesium } from "resium";
@@ -50,6 +50,7 @@ const OverviewMap = ({
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "overview",
   });
+  const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
   return (
     <div
       style={{
@@ -76,7 +77,7 @@ const OverviewMap = ({
       <div className="absolute top-0 left-0 h-full w-full pointer-events-none">
         <Viewer
           full
-          contextOptions={{ webgl: { alpha: true } }}
+          contextOptions={contextOptions}
           baseLayerPicker={false}
           timeline={false}
           geocoder={false}
