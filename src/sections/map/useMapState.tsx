@@ -5,12 +5,12 @@ import { Cartesian3, Cartographic, Viewer } from "cesium";
 import type { ILayer, IWidgetState } from "./types";
 
 export interface IMapState {
+  containerRef: RefObject<HTMLDivElement | null>;
   mainViewerRef: RefObject<Viewer | null>;
   overviewViewerRef: RefObject<Viewer | null>;
   pipViewerRef: RefObject<Viewer | null>;
   handleDragStart: (event: DragStartEvent) => void;
   handleDragEnd: (event: DragEndEvent) => void;
-  handleDragCancel: () => void;
   layer: ILayer;
   setLayer: Dispatch<SetStateAction<ILayer>>;
   showOverviewMap: boolean;
@@ -32,17 +32,70 @@ const initWidgetState: IWidgetState = {
     aspect: 1,
   },
 };
+type Position = {
+  x: number;
+  y: number;
+};
 
 const useMapState = (): IMapState => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
   const pipViewerRef = useRef<Viewer | null>(null);
+  const startPositionRef = useRef<Position>({ x: 0, y: 0 });
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
-  const [widgetState, _setWidgetState] = useState<IWidgetState>(initWidgetState);
-  const handleDragStart = (_event: DragStartEvent) => {};
-  const handleDragEnd = (_event: DragEndEvent) => {};
-  const handleDragCancel = () => {};
+  const [widgetState, setWidgetState] = useState<IWidgetState>(initWidgetState);
+  const handleDragStart = (event: DragStartEvent) => {
+    const { id } = event.active;
+
+    if (id === "overview") {
+      startPositionRef.current = {
+        x: widgetState.overview.left,
+        y: widgetState.overview.top,
+      };
+    }
+
+    if (id === "pip") {
+      startPositionRef.current = {
+        x: widgetState.pip.left,
+        y: widgetState.pip.top,
+      };
+    }
+  };
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { delta } = event;
+    if (!containerRef.current) return;
+    const { id } = event.active;
+    const containerRect = containerRef.current.getBoundingClientRect();
+
+    let xDiff = (100 * delta.x) / containerRect.width;
+    let yDiff = (100 * delta.y) / containerRect.height;
+    let newX = startPositionRef.current.x + xDiff;
+    let newY = startPositionRef.current.y + yDiff;
+
+    if (id === "overview") {
+      setWidgetState({
+        ...widgetState,
+        overview: {
+          ...widgetState.overview,
+          left: newX,
+          top: newY,
+        },
+      });
+    }
+
+    if (id === "pip") {
+      setWidgetState({
+        ...widgetState,
+        pip: {
+          ...widgetState.pip,
+          left: newX,
+          top: newY,
+        },
+      });
+    }
+  };
   useEffect(() => {
     let cleanup: (() => void) | undefined;
 
@@ -98,12 +151,12 @@ const useMapState = (): IMapState => {
     pipViewerRef,
     handleDragStart,
     handleDragEnd,
-    handleDragCancel,
     layer,
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
     widgetState,
+    containerRef,
   };
 };
 

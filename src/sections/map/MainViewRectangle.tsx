@@ -16,8 +16,7 @@ const MainViewRectangle = () => {
 
       if (!rect) return undefined;
 
-      // Optional: expand slightly so it’s easier to see
-      const padding = 0.0; // try 0.05 for larger box
+      const padding = 0.0;
 
       return Rectangle.fromRadians(
         rect.west - padding,

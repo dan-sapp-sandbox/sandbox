@@ -1,4 +1,5 @@
-import { DndContext, closestCorners } from "@dnd-kit/core";
+import { DndContext } from "@dnd-kit/core";
+import { restrictToParentElement } from "@dnd-kit/modifiers";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";
@@ -19,21 +20,16 @@ const MapApp = () => {
     pipViewerRef,
     handleDragStart,
     handleDragEnd,
-    handleDragCancel,
     layer,
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
     widgetState,
+    containerRef,
   } = mapState;
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      <DndContext
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragCancel={handleDragCancel}
-      >
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden cursor-pointer">
+      <DndContext modifiers={[restrictToParentElement]} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
           <MainMap>
             <PipViewRectangle />
