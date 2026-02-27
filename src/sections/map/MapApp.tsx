@@ -1,4 +1,4 @@
-import { DndContext, DragOverlay, closestCorners } from "@dnd-kit/core";
+import { DndContext, closestCorners } from "@dnd-kit/core";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";

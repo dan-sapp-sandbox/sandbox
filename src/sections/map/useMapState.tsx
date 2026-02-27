@@ -39,9 +39,9 @@ const useMapState = (): IMapState => {
   const pipViewerRef = useRef<Viewer | null>(null);
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
-  const [widgetState, setWidgetState] = useState<IWidgetState>(initWidgetState);
-  const handleDragStart = (event: DragStartEvent) => {};
-  const handleDragEnd = (event: DragEndEvent) => {};
+  const [widgetState, _setWidgetState] = useState<IWidgetState>(initWidgetState);
+  const handleDragStart = (_event: DragStartEvent) => {};
+  const handleDragEnd = (_event: DragEndEvent) => {};
   const handleDragCancel = () => {};
   useEffect(() => {
     let cleanup: (() => void) | undefined;
