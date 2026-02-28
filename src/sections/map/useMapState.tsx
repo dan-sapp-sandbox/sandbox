@@ -59,7 +59,7 @@ const useMapState = (): IMapState => {
       };
     }
 
-    if (id === "pip") {
+    if (id === "pip" || id === "pip-target") {
       startPositionRef.current = {
         x: widgetState.pip.left,
         y: widgetState.pip.top,
@@ -89,6 +89,17 @@ const useMapState = (): IMapState => {
     }
 
     if (id === "pip") {
+      setWidgetState({
+        ...widgetState,
+        pip: {
+          ...widgetState.pip,
+          left: newX,
+          top: newY,
+        },
+      });
+    }
+
+    if (id === "pip-target") {
       setWidgetState({
         ...widgetState,
         pip: {

@@ -1,124 +1,119 @@
-import { useContext, useMemo } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { Entity } from "resium";
 import { CameraContext } from "./types";
-import { CallbackProperty, Color, Rectangle, Cartesian3, Cartesian2, SceneTransforms } from "cesium";
+import { Cartesian2, Cartesian3, SceneTransforms, CallbackProperty, Color } from "cesium";
 
-type Props = {
-  pipDomRef: React.RefObject<HTMLDivElement | null>;
-};
+const PipViewRectangle = () => {
+  const { mainViewerRef, pipViewerRef } = useContext(CameraContext);
+  const rectRef = useRef<HTMLDivElement>(null);
 
-const PipViewRectangle = ({ pipDomRef }: Props) => {
-  if (!pipDomRef) return null;
-  const { pipViewerRef, mainViewerRef } = useContext(CameraContext);
+  // Diagonal lines
+  const diagonalLines = useRef<CallbackProperty | null>(null);
+  if (!diagonalLines.current) {
+    diagonalLines.current = new CallbackProperty(() => {
+      const mainViewer = mainViewerRef.current;
+      const pipViewer = pipViewerRef.current;
+      const rectEl = rectRef.current;
+      if (!mainViewer || !pipViewer || !rectEl) return undefined;
 
-  const rectangle = useMemo(() => {
-    return new CallbackProperty(() => {
-      const pip = pipViewerRef.current;
-      if (!pip || pip.isDestroyed()) return undefined;
+      const scene = mainViewer.scene;
+      const container = mainViewer.container as HTMLDivElement;
+      const rectBounds = rectEl.getBoundingClientRect();
+      const pipBounds = pipViewer.container.getBoundingClientRect();
 
-      const rect = pip.camera.computeViewRectangle();
-      if (!rect) return undefined;
+      const toCanvas = (x: number, y: number) =>
+        new Cartesian2(x - container.getBoundingClientRect().left, y - container.getBoundingClientRect().top);
 
-      return Rectangle.fromRadians(rect.west, rect.south, rect.east, rect.north);
-    }, false);
-  }, [pipViewerRef]);
-
-  const cornerLines = useMemo(() => {
-    return new CallbackProperty(() => {
-      const pip = pipViewerRef.current;
-      const main = mainViewerRef.current;
-      const pipEl = pipDomRef.current;
-
-      if (!pip || !main || !pipEl) return undefined;
-
-      const rect = pip.camera.computeViewRectangle();
-      if (!rect) return undefined;
-
-      const scene = main.scene;
-
-      // === Rectangle world corners
-      const nw = Cartesian3.fromRadians(rect.west, rect.north);
-      const ne = Cartesian3.fromRadians(rect.east, rect.north);
-      const sw = Cartesian3.fromRadians(rect.west, rect.south);
-      const se = Cartesian3.fromRadians(rect.east, rect.south);
-
-      // === Rectangle center (world → screen)
-      const centerWorld = Cartesian3.fromRadians((rect.west + rect.east) / 2, (rect.north + rect.south) / 2);
-
-      const centerScreen = SceneTransforms.worldToWindowCoordinates(scene, centerWorld);
-
-      if (!centerScreen) return undefined;
-
-      // === PiP center (screen)
-      const bounds = pipEl.getBoundingClientRect();
-      const canvasBounds = main.canvas.getBoundingClientRect();
-
-      const pipCenterX = bounds.left + bounds.width / 2 - canvasBounds.left;
-      const pipCenterY = bounds.top + bounds.height / 2 - canvasBounds.top;
-
-      const isRight = centerScreen.x > pipCenterX;
-      const isAbove = centerScreen.y < pipCenterY;
-      // NOTE: screen Y is inverted (top = smaller value)
-
-      // === PiP corners (screen → globe)
-      const toCanvasCoords = (x: number, y: number) => new Cartesian2(x - canvasBounds.left, y - canvasBounds.top);
-
-      const pickGlobe = (windowPos: Cartesian2) => {
-        const ray = main.camera.getPickRay(windowPos);
-        if (!ray) return undefined;
-        return scene.globe.pick(ray, scene);
+      const pickGlobe = (pos: Cartesian2) => {
+        const ray = mainViewer.camera.getPickRay(pos);
+        return ray ? scene.globe.pick(ray, scene) : undefined;
       };
 
-      const pipNW = pickGlobe(toCanvasCoords(bounds.left, bounds.top));
-      const pipNE = pickGlobe(toCanvasCoords(bounds.right, bounds.top));
-      const pipSW = pickGlobe(toCanvasCoords(bounds.left, bounds.bottom));
-      const pipSE = pickGlobe(toCanvasCoords(bounds.right, bounds.bottom));
+      const rectNW = pickGlobe(toCanvas(rectBounds.left, rectBounds.top));
+      const rectSE = pickGlobe(toCanvas(rectBounds.right, rectBounds.bottom));
+      const rectNE = pickGlobe(toCanvas(rectBounds.right, rectBounds.top));
+      const rectSW = pickGlobe(toCanvas(rectBounds.left, rectBounds.bottom));
 
-      if (!pipNW || !pipNE || !pipSW || !pipSE) return undefined;
+      const pipNW = pickGlobe(toCanvas(pipBounds.left, pipBounds.top));
+      const pipSE = pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom));
+      const pipNE = pickGlobe(toCanvas(pipBounds.right, pipBounds.top));
+      const pipSW = pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom));
 
-      // === Choose diagonal
-      if ((isRight && isAbove) || (!isRight && !isAbove)) {
-        // Top-right OR Bottom-left → TL + BR
-        return {
-          a: [nw, pipNW],
-          b: [se, pipSE],
-        };
-      } else {
-        // Top-left OR Bottom-right → TR + BL
-        return {
-          a: [ne, pipNE],
-          b: [sw, pipSW],
-        };
-      }
+      if (!rectNW || !rectSE || !rectNE || !rectSW || !pipNW || !pipSE || !pipNE || !pipSW) return undefined;
+
+      const rectCenterX = (rectBounds.left + rectBounds.right) / 2;
+      const rectCenterY = (rectBounds.top + rectBounds.bottom) / 2;
+      const pipCenterX = pipBounds.left + pipBounds.width / 2;
+      const pipCenterY = pipBounds.top + pipBounds.height / 2;
+
+      const isRight = rectCenterX > pipCenterX;
+      const isAbove = rectCenterY < pipCenterY;
+
+      return (isRight && isAbove) || (!isRight && !isAbove)
+        ? [rectNW, pipNW, rectSE, pipSE]
+        : [rectNE, pipNE, rectSW, pipSW];
     }, false);
-  }, [pipViewerRef, mainViewerRef, pipDomRef]);
+  }
+
+  // Animate rectangle each frame
+  useEffect(() => {
+    let frameId: number;
+
+    const updateRect = () => {
+      const mainViewer = mainViewerRef.current;
+      const pipViewer = pipViewerRef.current;
+      const rectEl = rectRef.current;
+      if (!mainViewer || !pipViewer || !rectEl) {
+        frameId = requestAnimationFrame(updateRect);
+        return;
+      }
+
+      const rect = pipViewer.camera.computeViewRectangle();
+      if (!rect) {
+        frameId = requestAnimationFrame(updateRect);
+        return;
+      }
+
+      const nwWorld = Cartesian3.fromRadians(rect.west, rect.north, pipViewer.camera.positionCartographic.height);
+      const seWorld = Cartesian3.fromRadians(rect.east, rect.south, pipViewer.camera.positionCartographic.height);
+
+      const nwScreen = SceneTransforms.worldToWindowCoordinates(mainViewer.scene, nwWorld);
+      const seScreen = SceneTransforms.worldToWindowCoordinates(mainViewer.scene, seWorld);
+
+      if (!nwScreen || !seScreen) {
+        frameId = requestAnimationFrame(updateRect);
+        return;
+      }
+
+      const container = mainViewer.container as HTMLDivElement;
+
+      // Update DOM directly
+      Object.assign(rectEl.style, {
+        position: "absolute",
+        left: `${(nwScreen.x / container.clientWidth) * 100}%`,
+        top: `${(nwScreen.y / container.clientHeight) * 100}%`,
+        width: `${((seScreen.x - nwScreen.x) / container.clientWidth) * 100}%`,
+        height: `${((seScreen.y - nwScreen.y) / container.clientHeight) * 100}%`,
+        border: "1px solid orange",
+        backgroundColor: "rgba(173, 255, 47, 0.25)",
+        zIndex: "20",
+      });
+
+      frameId = requestAnimationFrame(updateRect);
+    };
+
+    updateRect();
+    return () => cancelAnimationFrame(frameId);
+  }, [mainViewerRef, pipViewerRef]);
 
   return (
     <>
-      <Entity
-        rectangle={{
-          coordinates: rectangle,
-          material: Color.YELLOWGREEN.withAlpha(0.25),
-          outline: true,
-          outlineColor: Color.fromCssColorString("#ff8143"),
-          height: 0,
-        }}
-      />
-
+      <div ref={rectRef} />
       <Entity
         polyline={{
-          positions: new CallbackProperty(() => cornerLines.getValue()?.a, false),
+          positions: diagonalLines.current!,
           width: 1,
-          material: Color.fromCssColorString("#ff8143"),
-          arcType: 0,
-        }}
-      />
-
-      <Entity
-        polyline={{
-          positions: new CallbackProperty(() => cornerLines.getValue()?.b, false),
-          width: 1,
-          material: Color.fromCssColorString("#ff8143"),
+          material: Color.ORANGE,
           arcType: 0,
         }}
       />
