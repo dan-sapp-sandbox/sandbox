@@ -3,7 +3,7 @@ import { Entity } from "resium";
 import { CameraContext } from "./types";
 import { Cartesian2, Cartesian3, SceneTransforms, CallbackProperty, Color } from "cesium";
 
-const PipViewRectangle = () => {
+const PipViewRectangle = ({ show }: { show: boolean }) => {
   const { mainViewerRef, pipViewerRef } = useContext(CameraContext);
   const rectRef = useRef<HTMLDivElement>(null);
 
@@ -108,6 +108,7 @@ const PipViewRectangle = () => {
   const diagonal1 = useMemo(() => createDiagonal([1, 1], [0, 0]), [mainViewerRef, pipViewerRef]);
   const diagonal2 = useMemo(() => createDiagonal([2, 2], [3, 3]), [mainViewerRef, pipViewerRef]);
 
+  if (!show) return null;
   return (
     <>
       <div ref={rectRef} />

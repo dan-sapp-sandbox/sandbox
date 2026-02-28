@@ -3,6 +3,7 @@ import { restrictToParentElement } from "@dnd-kit/modifiers";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
 import OverviewMapSwitch from "./OverviewMapSwitch";
+import PipMapSwitch from "./PipMapSwitch";
 import CameraControls from "./CameraControls";
 import SettingsContainer from "./SettingsContainer";
 import OverviewMap from "./OverviewMap";
@@ -24,6 +25,8 @@ const MapApp = () => {
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
+    showPipMap,
+    setShowPipMap,
     widgetState,
     containerRef,
   } = mapState;
@@ -32,7 +35,7 @@ const MapApp = () => {
       <DndContext modifiers={[restrictToParentElement]} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
           <MainMap>
-            <PipViewRectangle pipDomRef={widgetState.pip.ref} />
+            <PipViewRectangle show={showPipMap} />
             <Layers layer={layer} />
             <CameraControls />
           </MainMap>
@@ -41,12 +44,15 @@ const MapApp = () => {
               <Layers layer={layer} />
             </OverviewMap>
           )}
-          <PipMap pipState={widgetState.pip}>
-            <Layers layer={layer} />
-          </PipMap>
+          {showPipMap && (
+            <PipMap pipState={widgetState.pip}>
+              <Layers layer={layer} />
+            </PipMap>
+          )}
           <SettingsContainer>
             <LayerSwitcher layer={layer} setLayer={setLayer} />
             <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
+            <PipMapSwitch showPipMap={showPipMap} setShowPipMap={setShowPipMap} />
           </SettingsContainer>
         </CameraContext.Provider>
       </DndContext>

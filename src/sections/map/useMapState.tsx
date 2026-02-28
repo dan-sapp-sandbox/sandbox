@@ -15,6 +15,8 @@ export interface IMapState {
   setLayer: Dispatch<SetStateAction<ILayer>>;
   showOverviewMap: boolean;
   setShowOverviewMap: Dispatch<SetStateAction<boolean>>;
+  showPipMap: boolean;
+  setShowPipMap: Dispatch<SetStateAction<boolean>>;
   widgetState: IWidgetState;
 }
 
@@ -28,6 +30,7 @@ const useMapState = (): IMapState => {
   const startPositionRef = useRef<Position>({ x: 0, y: 0 });
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
+  const [showPipMap, setShowPipMap] = useState(true);
   const initWidgetState: IWidgetState = {
     overview: {
       ref: overviewDomRef,
@@ -169,6 +172,8 @@ const useMapState = (): IMapState => {
     setLayer,
     showOverviewMap,
     setShowOverviewMap,
+    showPipMap,
+    setShowPipMap,
     widgetState,
     containerRef,
   };
