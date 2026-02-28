@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useMemo } from "react";
 import { Entity } from "resium";
 import { CameraContext } from "./types";
 import { Cartesian2, Cartesian3, SceneTransforms, CallbackProperty, Color } from "cesium";
@@ -7,55 +7,6 @@ const PipViewRectangle = () => {
   const { mainViewerRef, pipViewerRef } = useContext(CameraContext);
   const rectRef = useRef<HTMLDivElement>(null);
 
-  // Diagonal lines
-  const diagonalLines = useRef<CallbackProperty | null>(null);
-  if (!diagonalLines.current) {
-    diagonalLines.current = new CallbackProperty(() => {
-      const mainViewer = mainViewerRef.current;
-      const pipViewer = pipViewerRef.current;
-      const rectEl = rectRef.current;
-      if (!mainViewer || !pipViewer || !rectEl) return undefined;
-
-      const scene = mainViewer.scene;
-      const container = mainViewer.container as HTMLDivElement;
-      const rectBounds = rectEl.getBoundingClientRect();
-      const pipBounds = pipViewer.container.getBoundingClientRect();
-
-      const toCanvas = (x: number, y: number) =>
-        new Cartesian2(x - container.getBoundingClientRect().left, y - container.getBoundingClientRect().top);
-
-      const pickGlobe = (pos: Cartesian2) => {
-        const ray = mainViewer.camera.getPickRay(pos);
-        return ray ? scene.globe.pick(ray, scene) : undefined;
-      };
-
-      const rectNW = pickGlobe(toCanvas(rectBounds.left, rectBounds.top));
-      const rectSE = pickGlobe(toCanvas(rectBounds.right, rectBounds.bottom));
-      const rectNE = pickGlobe(toCanvas(rectBounds.right, rectBounds.top));
-      const rectSW = pickGlobe(toCanvas(rectBounds.left, rectBounds.bottom));
-
-      const pipNW = pickGlobe(toCanvas(pipBounds.left, pipBounds.top));
-      const pipSE = pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom));
-      const pipNE = pickGlobe(toCanvas(pipBounds.right, pipBounds.top));
-      const pipSW = pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom));
-
-      if (!rectNW || !rectSE || !rectNE || !rectSW || !pipNW || !pipSE || !pipNE || !pipSW) return undefined;
-
-      const rectCenterX = (rectBounds.left + rectBounds.right) / 2;
-      const rectCenterY = (rectBounds.top + rectBounds.bottom) / 2;
-      const pipCenterX = pipBounds.left + pipBounds.width / 2;
-      const pipCenterY = pipBounds.top + pipBounds.height / 2;
-
-      const isRight = rectCenterX > pipCenterX;
-      const isAbove = rectCenterY < pipCenterY;
-
-      return (isRight && isAbove) || (!isRight && !isAbove)
-        ? [rectNW, pipNW, rectSE, pipSE]
-        : [rectNE, pipNE, rectSW, pipSW];
-    }, false);
-  }
-
-  // Animate rectangle each frame
   useEffect(() => {
     let frameId: number;
 
@@ -63,6 +14,7 @@ const PipViewRectangle = () => {
       const mainViewer = mainViewerRef.current;
       const pipViewer = pipViewerRef.current;
       const rectEl = rectRef.current;
+
       if (!mainViewer || !pipViewer || !rectEl) {
         frameId = requestAnimationFrame(updateRect);
         return;
@@ -87,7 +39,6 @@ const PipViewRectangle = () => {
 
       const container = mainViewer.container as HTMLDivElement;
 
-      // Update DOM directly
       Object.assign(rectEl.style, {
         position: "absolute",
         left: `${(nwScreen.x / container.clientWidth) * 100}%`,
@@ -106,17 +57,62 @@ const PipViewRectangle = () => {
     return () => cancelAnimationFrame(frameId);
   }, [mainViewerRef, pipViewerRef]);
 
+  const createDiagonal = (rectCornerIndexA: number[], rectCornerIndexB: number[]) =>
+    new CallbackProperty(() => {
+      const mainViewer = mainViewerRef.current;
+      const pipViewer = pipViewerRef.current;
+      const rectEl = rectRef.current;
+      if (!mainViewer || !pipViewer || !rectEl) return undefined;
+
+      const { scene, container } = mainViewer;
+      const rectBounds = rectEl.getBoundingClientRect();
+      const pipBounds = pipViewer.container.getBoundingClientRect();
+
+      const toCanvas = (x: number, y: number) =>
+        new Cartesian2(x - container.getBoundingClientRect().left, y - container.getBoundingClientRect().top);
+
+      const pickGlobe = (pos: Cartesian2) => {
+        const ray = mainViewer.camera.getPickRay(pos);
+        return ray ? scene.globe.pick(ray, scene) : undefined;
+      };
+
+      const rectCorners = [
+        pickGlobe(toCanvas(rectBounds.left, rectBounds.top)),
+        pickGlobe(toCanvas(rectBounds.right, rectBounds.top)),
+        pickGlobe(toCanvas(rectBounds.left, rectBounds.bottom)),
+        pickGlobe(toCanvas(rectBounds.right, rectBounds.bottom)),
+      ];
+
+      const pipCorners = [
+        pickGlobe(toCanvas(pipBounds.left, pipBounds.top)),
+        pickGlobe(toCanvas(pipBounds.right, pipBounds.top)),
+        pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom)),
+        pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom)),
+      ];
+
+      if (rectCorners.includes(undefined) || pipCorners.includes(undefined)) return undefined;
+
+      const rectCenterX = (rectBounds.left + rectBounds.right) / 2;
+      const rectCenterY = (rectBounds.top + rectBounds.bottom) / 2;
+      const pipCenterX = pipBounds.left + pipBounds.width / 2;
+      const pipCenterY = pipBounds.top + pipBounds.height / 2;
+      const isEvenQuadrant =
+        (rectCenterX > pipCenterX && rectCenterY > pipCenterY) ||
+        (rectCenterX < pipCenterX && rectCenterY < pipCenterY);
+
+      const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexA : rectCornerIndexB;
+
+      return [rectCorners[rectIndex], pipCorners[pipIndex]];
+    }, false);
+
+  const diagonal1 = useMemo(() => createDiagonal([1, 1], [0, 0]), [mainViewerRef, pipViewerRef]);
+  const diagonal2 = useMemo(() => createDiagonal([2, 2], [3, 3]), [mainViewerRef, pipViewerRef]);
+
   return (
     <>
       <div ref={rectRef} />
-      <Entity
-        polyline={{
-          positions: diagonalLines.current!,
-          width: 1,
-          material: Color.ORANGE,
-          arcType: 0,
-        }}
-      />
+      <Entity polyline={{ positions: diagonal1, width: 1, material: Color.ORANGE, arcType: 0 }} />
+      <Entity polyline={{ positions: diagonal2, width: 1, material: Color.ORANGE, arcType: 0 }} />
     </>
   );
 };
