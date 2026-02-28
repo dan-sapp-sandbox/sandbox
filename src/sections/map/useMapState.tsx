@@ -18,33 +18,36 @@ export interface IMapState {
   widgetState: IWidgetState;
 }
 
-const initWidgetState: IWidgetState = {
-  overview: {
-    top: 2,
-    left: 83,
-    width: 15,
-    aspect: 1,
-  },
-  pip: {
-    top: 50,
-    left: 10,
-    width: 25,
-    aspect: 1,
-  },
-};
-type Position = {
-  x: number;
-  y: number;
-};
-
 const useMapState = (): IMapState => {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const overviewDomRef = useRef<HTMLDivElement | null>(null);
+  const pipDomRef = useRef<HTMLDivElement | null>(null);
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
   const pipViewerRef = useRef<Viewer | null>(null);
   const startPositionRef = useRef<Position>({ x: 0, y: 0 });
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
+  const initWidgetState: IWidgetState = {
+    overview: {
+      ref: overviewDomRef,
+      top: 2,
+      left: 83,
+      width: 15,
+      aspect: 1,
+    },
+    pip: {
+      ref: pipDomRef,
+      top: 50,
+      left: 10,
+      width: 25,
+      aspect: 1,
+    },
+  };
+  type Position = {
+    x: number;
+    y: number;
+  };
   const [widgetState, setWidgetState] = useState<IWidgetState>(initWidgetState);
   const handleDragStart = (event: DragStartEvent) => {
     const { id } = event.active;

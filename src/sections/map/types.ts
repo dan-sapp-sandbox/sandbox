@@ -20,6 +20,7 @@ export interface IWidget {
   left: number;
   aspect: number;
   width: number;
+  ref: RefObject<HTMLDivElement | null>;
 }
 export interface IWidgetState {
   overview: IWidget;

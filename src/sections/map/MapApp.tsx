@@ -32,7 +32,7 @@ const MapApp = () => {
       <DndContext modifiers={[restrictToParentElement]} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
           <MainMap>
-            <PipViewRectangle />
+            <PipViewRectangle pipDomRef={widgetState.pip.ref} />
             <Layers layer={layer} />
             <CameraControls />
           </MainMap>
