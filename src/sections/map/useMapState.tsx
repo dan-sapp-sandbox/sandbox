@@ -21,6 +21,7 @@ export interface IMapState {
 }
 
 const useMapState = (): IMapState => {
+  // TODO: put some of this in local storage
   const containerRef = useRef<HTMLDivElement | null>(null);
   const overviewDomRef = useRef<HTMLDivElement | null>(null);
   const pipDomRef = useRef<HTMLDivElement | null>(null);
@@ -44,7 +45,7 @@ const useMapState = (): IMapState => {
       top: 50,
       left: 10,
       width: 25,
-      aspect: 1,
+      aspect: 16 / 9,
     },
   };
   type Position = {
