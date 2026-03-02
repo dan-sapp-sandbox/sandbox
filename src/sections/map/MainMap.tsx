@@ -2,7 +2,8 @@ import { useContext, useEffect, useMemo } from "react";
 import type { JSX } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./types";
-import { Viewer as CesiumViewer, Cartesian3 } from "cesium";
+import { Viewer as CesiumViewer, Cartesian3, createWorldTerrainAsync } from "cesium";
+import useLocalStorage from "use-local-storage";
 
 const RegisterMainViewer = () => {
   const { viewer } = useCesium();
@@ -17,13 +18,26 @@ const RegisterMainViewer = () => {
 };
 
 const InitialCamera = () => {
+  const [init] = useLocalStorage("main-cam-init", {
+    lat: 42,
+    lon: 0,
+    height: 2_000_000,
+    heading: 0,
+    pitch: -Math.PI / 2,
+    roll: 0,
+  });
   const { viewer } = useCesium();
 
   useEffect(() => {
     if (!viewer) return;
 
     viewer.camera.setView({
-      destination: Cartesian3.fromDegrees(0, 45, 2_000_000),
+      destination: Cartesian3.fromDegrees(init.lon, init.lat, init.height),
+      orientation: {
+        heading: init.heading,
+        pitch: init.pitch,
+        roll: init.roll,
+      },
     });
   }, [viewer]);
 
@@ -33,6 +47,7 @@ const InitialCamera = () => {
 const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   const { viewer } = useCesium();
   const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
+  const terrainProvider = createWorldTerrainAsync();
 
   useEffect(() => {
     if (!viewer) return;
@@ -42,6 +57,7 @@ const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
   return (
     <Viewer
       full
+      terrainProvider={terrainProvider}
       contextOptions={contextOptions}
       baseLayerPicker={false}
       timeline={false}

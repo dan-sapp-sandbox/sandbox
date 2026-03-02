@@ -1,11 +1,20 @@
 import { useContext, useMemo } from "react";
 import { Entity } from "resium";
 import { CameraContext } from "./types";
-import { Cartesian2, Cartesian3, CallbackProperty, Color, PolygonHierarchy } from "cesium";
+import { Cartographic, Cartesian2, Cartesian3, CallbackProperty, Color, Math, PolygonHierarchy } from "cesium";
+import useLocalStorage from "use-local-storage";
 
 const PipViewRectangle = ({ show }: { show: boolean }) => {
   // TODO: fix so rotating doesn't twist lines
   const { mainViewerRef, pipViewerRef } = useContext(CameraContext);
+  const [_init, setInitCameraView] = useLocalStorage("pip-cam-init", {
+    lat: 42,
+    lon: 0,
+    height: 100_000,
+    heading: 0,
+    pitch: -Math.PI / 2,
+    roll: 0,
+  });
 
   const frustum = useMemo(
     () =>
@@ -111,6 +120,16 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
         (rectCenterX < pipCenterX && rectCenterY < pipCenterY);
 
       const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexA : rectCornerIndexB;
+
+      const carto = Cartographic.fromCartesian(pipCamera.position);
+      setInitCameraView({
+        lon: Math.toDegrees(carto.longitude),
+        lat: Math.toDegrees(carto.latitude),
+        height: carto.height,
+        heading: pipCamera.heading,
+        pitch: pipCamera.pitch,
+        roll: pipCamera.roll,
+      });
 
       return [rectCorners[rectIndex] as Cartesian3, pipCorners[pipIndex] as Cartesian3];
     }, false);

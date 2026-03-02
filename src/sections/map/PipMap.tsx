@@ -3,13 +3,22 @@ import type { JSX } from "react";
 import { Grip } from "lucide-react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext, type IWidget } from "./types";
-import { Cartesian3 } from "cesium";
+import { Cartesian3, createWorldTerrainAsync } from "cesium";
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+import useLocalStorage from "use-local-storage";
 
 const PipInitializer = () => {
   const { viewer } = useCesium();
   const { pipViewerRef } = useContext(CameraContext);
+  const [init] = useLocalStorage("pip-cam-init", {
+    lat: 42,
+    lon: 0,
+    height: 100_000,
+    heading: 0,
+    pitch: -Math.PI / 2,
+    roll: 0,
+  });
 
   useEffect(() => {
     if (!viewer) return;
@@ -20,7 +29,12 @@ const PipInitializer = () => {
     if (!viewer) return;
 
     viewer.camera.setView({
-      destination: Cartesian3.fromDegrees(0, 45, 100_000),
+      destination: Cartesian3.fromDegrees(init.lon, init.lat, init.height),
+      orientation: {
+        heading: init.heading,
+        pitch: init.pitch,
+        roll: init.roll,
+      },
     });
   }, [viewer]);
 
@@ -32,6 +46,7 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
     id: "pip",
   });
   const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
+  const terrainProvider = createWorldTerrainAsync();
   return (
     <div
       style={{
@@ -58,6 +73,7 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
       <div ref={pipState.ref} className="absolute top-0 left-0 h-full w-full pointer-events-auto">
         <Viewer
           full
+          terrainProvider={terrainProvider}
           contextOptions={contextOptions}
           baseLayerPicker={false}
           timeline={false}

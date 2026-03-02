@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import type { Dispatch, SetStateAction, RefObject } from "react";
 import type { DragStartEvent, DragEndEvent } from "@dnd-kit/core";
-import { Cartesian3, Cartographic, Viewer } from "cesium";
+import { Cartesian3, Cartographic, Math, Viewer } from "cesium";
 import type { ILayer, IWidgetState } from "./types";
+import useLocalStorage from "use-local-storage";
 
 export interface IMapState {
   containerRef: RefObject<HTMLDivElement | null>;
@@ -32,6 +33,14 @@ const useMapState = (): IMapState => {
   const [layer, setLayer] = useState<ILayer>("satellite");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
   const [showPipMap, setShowPipMap] = useState(true);
+  const [_init, setInitCameraView] = useLocalStorage("main-cam-init", {
+    lat: 42,
+    lon: 0,
+    height: 2_000_000,
+    heading: 0,
+    pitch: -Math.PI / 2,
+    roll: 0,
+  });
   const initWidgetState: IWidgetState = {
     overview: {
       ref: overviewDomRef,
@@ -138,6 +147,14 @@ const useMapState = (): IMapState => {
 
         const boostedPosition = Cartesian3.fromRadians(carto.longitude, carto.latitude, boostedHeight);
 
+        setInitCameraView({
+          lon: Math.toDegrees(carto.longitude),
+          lat: Math.toDegrees(carto.latitude),
+          height: carto.height,
+          heading: mainCam.heading,
+          pitch: mainCam.pitch,
+          roll: mainCam.roll,
+        });
         overview.camera.setView({
           destination: boostedPosition,
           orientation: {
