@@ -110,10 +110,10 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
 
       if (rectCorners.includes(undefined) || pipCorners.includes(undefined)) return [];
 
-      const rectCenterX = (pipBounds.left + pipBounds.right) / 2;
-      const rectCenterY = (pipBounds.top + pipBounds.bottom) / 2;
-      const pipCenterX = pipBounds.left + pipBounds.width / 2;
-      const pipCenterY = pipBounds.top + pipBounds.height / 2;
+      const rectCenterX = rectCorners.reduce((acc, corner) => acc + (corner ? corner.x / 4 : 0), 0);
+      const rectCenterY = rectCorners.reduce((acc, corner) => acc + (corner ? corner.y / 4 : 0), 0);
+      const pipCenterX = pipCorners.reduce((acc, corner) => acc + (corner ? corner.x / 4 : 0), 0);
+      const pipCenterY = pipCorners.reduce((acc, corner) => acc + (corner ? corner.y / 4 : 0), 0);
 
       const isEvenQuadrant =
         (rectCenterX > pipCenterX && rectCenterY > pipCenterY) ||
