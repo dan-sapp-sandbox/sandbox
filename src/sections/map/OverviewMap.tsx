@@ -60,7 +60,7 @@ const OverviewMap = ({
         aspectRatio: overviewState.aspect,
         transform: CSS.Translate.toString(transform),
       }}
-      className="group absolute border border-(--text)"
+      className="group absolute border border-(--text) overflow-hidden"
       ref={setNodeRef}
     >
       <div className="z-999 w-full h-full relative">

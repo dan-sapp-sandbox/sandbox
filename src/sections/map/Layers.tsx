@@ -4,37 +4,52 @@ import { ImageryLayer } from "resium";
 import { OpenStreetMapImageryProvider, IonImageryProvider, UrlTemplateImageryProvider } from "cesium";
 
 const Layers = ({ layer }: { layer: ILayer }) => {
-  const osmProvider = useMemo(
+  const osmProvider = useMemo(() => new OpenStreetMapImageryProvider({ url: "https://tile.openstreetmap.org/" }), []);
+  const esriSat = useMemo(
     () =>
-      new OpenStreetMapImageryProvider({
-        url: "https://tile.openstreetmap.org/",
+      new UrlTemplateImageryProvider({
+        url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       }),
     [],
   );
-  const esriSat = new UrlTemplateImageryProvider({
-    url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  });
-  const cartoLight = new UrlTemplateImageryProvider({
-    url: "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-  });
-  const cartoDark = new UrlTemplateImageryProvider({
-    url: "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-  });
-  const cartoVoyager = new UrlTemplateImageryProvider({
-    url: "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-  });
+  const cartoLight = useMemo(
+    () => new UrlTemplateImageryProvider({ url: "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" }),
+    [],
+  );
+  const cartoDark = useMemo(
+    () => new UrlTemplateImageryProvider({ url: "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" }),
+    [],
+  );
+  const cartoVoyager = useMemo(
+    () =>
+      new UrlTemplateImageryProvider({ url: "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png" }),
+    [],
+  );
 
   const satProvider = useMemo(() => IonImageryProvider.fromAssetId(2), []);
-  return (
-    <>
-      {layer === "esriSat" && <ImageryLayer imageryProvider={esriSat} />}
-      {layer === "osm" && <ImageryLayer imageryProvider={osmProvider} />}
-      {layer === "satellite" && <ImageryLayer imageryProvider={satProvider} />}
-      {layer === "carto-light" && <ImageryLayer imageryProvider={cartoLight} />}
-      {layer === "carto-dark" && <ImageryLayer imageryProvider={cartoDark} />}
-      {layer === "carto-voyager" && <ImageryLayer imageryProvider={cartoVoyager} />}
-    </>
-  );
+
+  const provider = useMemo(() => {
+    switch (layer) {
+      case "esriSat":
+        return esriSat;
+      case "osm":
+        return osmProvider;
+      case "satellite":
+        return satProvider;
+      case "carto-light":
+        return cartoLight;
+      case "carto-dark":
+        return cartoDark;
+      case "carto-voyager":
+        return cartoVoyager;
+      default:
+        return osmProvider;
+    }
+  }, [layer, esriSat, osmProvider, satProvider, cartoLight, cartoDark, cartoVoyager]);
+
+  if (!provider) return null;
+
+  return <ImageryLayer imageryProvider={provider} />;
 };
 
 export default Layers;

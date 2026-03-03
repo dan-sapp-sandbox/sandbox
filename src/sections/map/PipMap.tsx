@@ -70,7 +70,7 @@ const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]
           </div>
         </div>
       </div>
-      <div ref={pipState.ref} className="absolute top-0 left-0 h-full w-full pointer-events-auto">
+      <div className="absolute top-0 left-0 h-full w-full pointer-events-auto">
         <Viewer
           full
           terrainProvider={terrainProvider}

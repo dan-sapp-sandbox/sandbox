@@ -22,10 +22,7 @@ export interface IMapState {
 }
 
 const useMapState = (): IMapState => {
-  // TODO: put some of this in local storage
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const overviewDomRef = useRef<HTMLDivElement | null>(null);
-  const pipDomRef = useRef<HTMLDivElement | null>(null);
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
   const pipViewerRef = useRef<Viewer | null>(null);
@@ -43,14 +40,12 @@ const useMapState = (): IMapState => {
   });
   const initWidgetState: IWidgetState = {
     overview: {
-      ref: overviewDomRef,
-      top: 2,
+      top: 60,
       left: 83,
       width: 15,
       aspect: 1,
     },
     pip: {
-      ref: pipDomRef,
       top: 50,
       left: 10,
       width: 25,
@@ -61,7 +56,7 @@ const useMapState = (): IMapState => {
     x: number;
     y: number;
   };
-  const [widgetState, setWidgetState] = useState<IWidgetState>(initWidgetState);
+  const [widgetState, setWidgetState] = useLocalStorage<IWidgetState>("widget-state", initWidgetState);
   const handleDragStart = (event: DragStartEvent) => {
     const { id } = event.active;
 
