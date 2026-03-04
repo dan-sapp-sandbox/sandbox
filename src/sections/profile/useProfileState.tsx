@@ -1,21 +1,24 @@
 const useProfileState = () => {
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const linkedInURL = "https://www.linkedin.com/in/dan-sapp-744145b6/";
-  const resumeURL =
-    "https://docs.google.com/document/d/e/2PACX-1vTxM5BOxqBemhI7wWHlvLhdaQ13Qbuw0GONkrww9KVQ3HAsuBHEwrHJuipAKfF5Tg/pub";
   const handleOpenGithubLink = () => {
     window.open(githubURL, "_blank", "noopener,noreferrer");
   };
   const handleOpenLinkedInLink = () => {
     window.open(linkedInURL, "_blank", "noopener,noreferrer");
   };
-  const handleOpenResume = () => {
-    window.open(resumeURL, "_blank", "noopener,noreferrer");
+  const handleDownloadResume = () => {
+    const link = document.createElement("a");
+    link.href = `/Dan Sapp Resume.pdf`;
+    link.download = "Dan Sapp Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   return {
     handleOpenGithubLink,
     handleOpenLinkedInLink,
-    handleOpenResume,
+    handleDownloadResume,
   };
 };
 

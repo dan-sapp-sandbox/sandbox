@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Download } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import useProfileState from "./useProfileState";
 
@@ -27,9 +27,9 @@ const ProfileSection = () => {
               </div>
             </div>
             <div className="flex flex-row items-center gap-12">
-              <div onClick={profileState.handleOpenResume} className={linkStyles}>
+              <div onClick={profileState.handleDownloadResume} className={linkStyles}>
                 <span className="text-xs md:text-sm">Resume</span>
-                <ExternalLink className="size-3 md:size-5" />
+                <Download className="size-3 md:size-5" />
               </div>
               <div onClick={profileState.handleOpenLinkedInLink} className={linkStyles}>
                 <span className="text-xs md:text-sm">LinkedIn</span>
