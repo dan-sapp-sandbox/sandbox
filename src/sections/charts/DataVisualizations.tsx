@@ -9,7 +9,7 @@ const DataVisualizations = () => {
   const chartState = useChartState();
 
   return (
-    <div className="h-full min-h-100 w-full">
+    <div className="h-full min-h-100 md:h-[50vh] w-full flex justify-center items-center">
       <div className="absolute top-4 left-4">
         <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
           <SelectTrigger className="w-25 md:w-50">
