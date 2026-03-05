@@ -20,10 +20,7 @@ const ProfileSection = () => {
                   I'm a software engineer with 10 years of industry experience.
                 </span>
                 <span className="text-sm md:text-lg text-(--text)">I specialize in React and Typescript.</span>
-                <span className="text-sm md:text-lg text-(--text)">
-                  I like making cool stuff that feels good to use.
-                </span>
-                <span className="text-sm md:text-lg text-(--text)">I have a degree in Physics and Math.</span>
+                <span className="text-sm md:text-lg text-(--text)">I have a degree in Physics.</span>
               </div>
             </div>
             <div className="flex flex-row items-center gap-12">
