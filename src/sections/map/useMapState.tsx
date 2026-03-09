@@ -27,7 +27,7 @@ const useMapState = (): IMapState => {
   const overviewViewerRef = useRef<Viewer | null>(null);
   const pipViewerRef = useRef<Viewer | null>(null);
   const startPositionRef = useRef<Position>({ x: 0, y: 0 });
-  const [layer, setLayer] = useState<ILayer>("satellite");
+  const [layer, setLayer] = useState<ILayer>("esriSat");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
   const [showPipMap, setShowPipMap] = useState(true);
   const [_init, setInitCameraView] = useLocalStorage("main-cam-init", {
