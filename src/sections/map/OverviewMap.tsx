@@ -1,5 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
-import type { JSX } from "react";
+import { useContext, useEffect, useMemo, type ReactNode } from "react";
 import { Grip } from "lucide-react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext, type IWidget } from "./types";
@@ -40,13 +39,7 @@ const OverviewInitializer = () => {
   return null;
 };
 
-const OverviewMap = ({
-  children,
-  overviewState,
-}: {
-  children?: JSX.Element | JSX.Element[];
-  overviewState: IWidget;
-}) => {
+const OverviewMap = ({ children, overviewState }: { children?: ReactNode | ReactNode[]; overviewState: IWidget }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "overview",
   });

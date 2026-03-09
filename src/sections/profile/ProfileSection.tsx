@@ -14,13 +14,18 @@ const ProfileSection = () => {
           <div className="h-full flex flex-col justify-between overflow-hidden gap-4">
             <div className="flex flex-col gap-2 md:gap-6">
               <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
-              <span className="md:text-lg text-(--text)">Please enjoy this collection of demos (WIP).</span>
               <div className="flex flex-col md:gap-1 text-(--text)">
-                <span className="text-sm md:text-lg text-(--text)">
-                  I'm a software engineer with 10 years of industry experience.
+                <span className="md:text-lg text-(--text)">
+                  I'm an Application and Visualization Engineer with 10 years of experience building interactive web
+                  applications and data visualization systems.
                 </span>
-                <span className="text-sm md:text-lg text-(--text)">I specialize in React and Typescript.</span>
-                <span className="text-sm md:text-lg text-(--text)">I have a degree in Physics.</span>
+                <span className="text-sm md:text-lg text-(--text)">
+                  My work focuses on React, TypeScript, and geospatial visualization.
+                </span>
+                <span className="text-sm md:text-lg text-(--text)">
+                  Below are interactive examples of application architecture, UI systems, and visualization tools I've
+                  built.
+                </span>
               </div>
             </div>
             <div className="flex flex-row items-center gap-12">

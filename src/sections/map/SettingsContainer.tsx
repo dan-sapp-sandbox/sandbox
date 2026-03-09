@@ -1,8 +1,7 @@
-import { useState } from "react";
-import type { JSX } from "react";
+import { useState, type ReactNode } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-const SettingsContainer = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
+const SettingsContainer = ({ children }: { children?: ReactNode | ReactNode[] }) => {
   const [expanded, setExpanded] = useState(false);
   return (
     <div className="absolute top-0 left-0 z-2 p-3">

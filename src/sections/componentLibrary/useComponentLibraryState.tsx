@@ -1,12 +1,11 @@
-import { useState } from "react";
-import type { JSX } from "react";
+import { useState, type ReactNode } from "react";
 import Previews from "./previews";
 
 const componentList = ["button", "card", "dialog", "form", "input", "label", "select", "separator", "switch", "table"];
 
 const useComponentLibraryState = () => {
   const [selected, setSelected] = useState<string>("button");
-  const componentMap: { [key: string]: JSX.Element } = {
+  const componentMap: { [key: string]: ReactNode } = {
     button: <Previews.Button />,
     card: <Previews.Card />,
     dialog: <Previews.Card />,

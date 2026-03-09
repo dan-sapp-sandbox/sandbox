@@ -1,5 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
-import type { JSX } from "react";
+import { useContext, useEffect, useMemo, type ReactNode } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./types";
 import { Viewer as CesiumViewer, Cartesian3, createWorldTerrainAsync } from "cesium";
@@ -44,7 +43,7 @@ const InitialCamera = () => {
   return null;
 };
 
-const MainMap = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
+const MainMap = ({ children }: { children?: ReactNode | ReactNode[] }) => {
   const { viewer } = useCesium();
   const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
   const terrainProvider = createWorldTerrainAsync();

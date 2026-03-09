@@ -1,5 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
-import type { JSX } from "react";
+import { useContext, useEffect, useMemo, type ReactNode } from "react";
 import { Grip } from "lucide-react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext, type IWidget } from "./types";
@@ -41,7 +40,7 @@ const PipInitializer = () => {
   return null;
 };
 
-const PipMap = ({ children, pipState }: { children?: JSX.Element | JSX.Element[]; pipState: IWidget }) => {
+const PipMap = ({ children, pipState }: { children?: ReactNode | ReactNode[]; pipState: IWidget }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "pip",
   });
