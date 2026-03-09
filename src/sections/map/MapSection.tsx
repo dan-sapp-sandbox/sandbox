@@ -20,7 +20,7 @@ const MapSection = () => {
     usedPreviously: [
       {
         where: "EarthDaily Federal",
-        what: "Search and Rescue geospatial visualization system",
+        what: "Search and Rescue mission management system",
       },
       {
         where: "EarthDaily Federal",
