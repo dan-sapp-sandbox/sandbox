@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useMediaQuery } from "@/useMediaQuery";
 interface ISectionConfig {
   title: string;
-  description: string;
+  description?: string;
   features: string[];
   githubURL: string;
   demoURL: string;
@@ -43,8 +43,8 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
               <ChevronDown className="h-4 w-4 flex md:hidden" />
             )}
           </div>
-          <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
           <div className={`${expanded || isMd ? "flex flex-col gap-2 md:gap-4" : "hidden"}`}>
+            <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
             <div className="flex flex-col md:gap-2">
               <span className="text-sm md:text-sm font-bold">Features:</span>
               <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
