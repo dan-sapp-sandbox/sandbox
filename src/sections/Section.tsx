@@ -37,13 +37,13 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
             className="mb-2 md:mb-4 flex flex-row items-center gap-2 cursor-pointer md:cursor-default"
           >
             <span className="text-lg md:text-2xl font-bold">{title}</span>
-            <p className="text-xs md:text-sm text-muted-foreground">{description}</p>
             {expanded ? (
               <ChevronUp className="h-4 w-4 flex md:hidden" />
             ) : (
               <ChevronDown className="h-4 w-4 flex md:hidden" />
             )}
           </div>
+          <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
           <div className={`${expanded || isMd ? "flex flex-col gap-2 md:gap-4" : "hidden"}`}>
             <div className="flex flex-col md:gap-2">
               <span className="text-sm md:text-sm font-bold">Features:</span>
