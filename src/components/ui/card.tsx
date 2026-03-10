@@ -9,7 +9,12 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, isAlt, ..
   <div
     ref={ref}
     className={cn(
-      `rounded-xl backdrop-blur-sm shadow ${isAlt ? "border bg-(--alt-card-bg) border-(--alt-card-border) text-(--alt-card-text)" : "border bg-(--card-bg) border-(--card-border) text-(--card-text)"}`,
+      `rounded-2xl backdrop-blur border border-slate-800 p-6`,
+      `${
+        isAlt
+          ? "bg-(--alt-card-bg) border-(--alt-card-border) text-(--alt-card-text)"
+          : "bg-(--card-bg) text-(--card-text)"
+      }`,
       className,
     )}
     {...props}

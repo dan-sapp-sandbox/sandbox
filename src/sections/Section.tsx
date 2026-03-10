@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useMediaQuery } from "@/useMediaQuery";
+import { cn } from "@/lib/utils";
 interface ISectionConfig {
   title: string;
   description?: string;
@@ -27,11 +28,14 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
   };
 
   return (
-    <Card className="w-full max-w-400 min-h-100 md:h-[50vh] border-none transition-colors duration-300 overflow-hidden">
+    <Card className="w-full max-w-400 min-h-100 md:h-[50vh] transition-colors duration-300 overflow-hidden">
       <CardContent
-        className={`h-full w-full p-0 flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
+        className={cn(
+          `h-full w-full p-0 flex flex-col justify-between gap-6`,
+          `${isReversed ? "md:flex-row-reverse" : "md:flex-row"}`,
+        )}
       >
-        <div className="md:w-125 shrink-0 flex flex-col gap-2 p-2 md:p-12">
+        <div className="md:w-125 shrink-0 flex flex-col gap-2 p-2 md:p-8 bg-zinc-500/30 rounded-2xl">
           <div
             onClick={() => !isMd && setExpanded(!expanded)}
             className="mb-2 md:mb-4 flex flex-row items-center gap-2 cursor-pointer md:cursor-default"
@@ -43,29 +47,31 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
               <ChevronDown className="h-4 w-4 flex md:hidden" />
             )}
           </div>
-          <div className={`${expanded || isMd ? "flex flex-col gap-2 md:gap-4" : "hidden"}`}>
-            <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
-            <div className="flex flex-col md:gap-2">
-              <span className="text-sm md:text-sm font-bold">Features:</span>
-              <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
-                {features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            {usedPreviously?.length && (
+          <div className={`${expanded || isMd ? "flex flex-col justify-between gap-2 md:gap-4 h-full" : "hidden"}`}>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
               <div className="flex flex-col md:gap-2">
-                <span className="text-sm md:text-sm font-bold">Production Experience:</span>
+                <span className="text-sm md:text-sm font-bold">Features:</span>
                 <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
-                  {usedPreviously.map((use) => (
-                    <li key={use.where}>
-                      <span className="text-sm md:text-sm font-bold">{use.where}: </span>
-                      <span className="text-xs md:text-sm">{use.what}</span>
-                    </li>
+                  {features.map((feature) => (
+                    <li key={feature}>{feature}</li>
                   ))}
                 </ul>
               </div>
-            )}
+              {usedPreviously?.length && (
+                <div className="flex flex-col md:gap-2">
+                  <span className="text-sm md:text-sm font-bold">Production Experience:</span>
+                  <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
+                    {usedPreviously.map((use) => (
+                      <li key={use.where}>
+                        <span className="text-sm md:text-sm font-bold">{use.where}: </span>
+                        <span className="text-xs md:text-sm">{use.what}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
             <div className="border-t border-(--text)/50 pt-3 mt-2 flex flex-row gap-10">
               <LinkButton label="Code" onClick={handleOpenGithubLink} />
               <LinkButton label="Live Demo" onClick={handleOpenDemoLink} />

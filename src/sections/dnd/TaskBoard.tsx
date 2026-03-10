@@ -7,7 +7,7 @@ const TaskBoard = () => {
   const taskBoardState = useTaskBoardState();
 
   return (
-    <div className="h-full min-h-100 w-full p-2 md:p-6 bg-(--background)">
+    <div className="h-full min-h-100 w-full bg-(--alt-card-bg) p-4">
       <DndContext
         collisionDetection={closestCorners}
         onDragStart={taskBoardState.handleDragStart}
