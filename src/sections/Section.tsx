@@ -31,7 +31,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
       <CardContent
         className={`h-full w-full p-0 flex flex-col ${isReversed ? "md:flex-row-reverse" : "md:flex-row"}  justify-between`}
       >
-        <div className="md:w-105 shrink-0 flex flex-col gap-2 p-2 md:p-8">
+        <div className="md:w-125 shrink-0 flex flex-col gap-2 p-2 md:p-12">
           <div
             onClick={() => !isMd && setExpanded(!expanded)}
             className="mb-2 md:mb-4 flex flex-row items-center gap-2 cursor-pointer md:cursor-default"
