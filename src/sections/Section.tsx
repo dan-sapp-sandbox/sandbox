@@ -53,8 +53,8 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
               <div className="flex flex-col md:gap-2">
                 <span className="text-sm md:text-sm font-bold">Features:</span>
                 <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
-                  {features.map((feature) => (
-                    <li key={feature}>{feature}</li>
+                  {features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
                   ))}
                 </ul>
               </div>
@@ -62,8 +62,8 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
                 <div className="flex flex-col md:gap-2">
                   <span className="text-sm md:text-sm font-bold">Production Experience:</span>
                   <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
-                    {usedPreviously.map((use) => (
-                      <li key={use.where}>
+                    {usedPreviously.map((use, i) => (
+                      <li key={i}>
                         <span className="text-sm md:text-sm font-bold">{use.where}: </span>
                         <span className="text-xs md:text-sm">{use.what}</span>
                       </li>

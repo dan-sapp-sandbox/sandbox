@@ -2,15 +2,17 @@ import { flexRender } from "@tanstack/react-table";
 import FormPanel from "./FormPanel";
 import useDataGridState from "./useDataGridState";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 const DataGrid = () => {
   const dataGridState = useDataGridState();
+
   const numberOfUsers = dataGridState.data.length;
   const numberOfAdmins = dataGridState.data.filter((user) => user.role === "Admin").length;
   //TODO: add column sorting/filtering
 
   return (
-    <div className="h-full w-full rounded flex flex-col">
+    <div className="h-full w-full rounded flex flex-col gap-4">
       <div className="w-full h-30 rounded flex flex-row justify-between px-2 py-4">
         <Card isAlt>
           <CardContent className="h-full w-40 flex justify-center items-center">Users: {numberOfUsers}</CardContent>
@@ -22,6 +24,13 @@ const DataGrid = () => {
           <CardContent className="h-full w-40 flex justify-center items-center">Admins: {numberOfAdmins}</CardContent>
         </Card>
       </div>
+      <div className="w-50">
+        <Input
+          value={dataGridState.globalFilter}
+          onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
+          placeholder="Search users..."
+        />
+      </div>
       <div className="flex-1 min-h-0 w-full border rounded flex flex-row">
         <FormPanel dataGridState={dataGridState} />
         <div className="h-full flex-1 overflow-auto scrollbar-hide border rounded">
@@ -30,11 +39,25 @@ const DataGrid = () => {
               {dataGridState.tableState.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
+                    // <th
+                    //   key={header.id}
+                    //   className="text-(--text) border-b px-4 py-2 text-left border-border text-xs md:text-base"
+                    // >
+                    //   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    // </th>
+                    // <th key={header.id} className="cursor-pointer" onClick={header.column.getToggleSortingHandler()}>
+                    //   {flexRender(header.column.columnDef.header, header.getContext())}
+                    //   {header.column.getIsSorted() ? (header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽") : null}
+                    // </th>
                     <th
                       key={header.id}
-                      className="text-(--text) border-b px-4 py-2 text-left border-border text-xs md:text-base"
+                      onClick={header.column.getToggleSortingHandler()}
+                      className={`cursor-pointer px-4 py-2 border-b ${
+                        header.column.getIsSorted() ? "bg-(--alt-card-bg)" : ""
+                      }`}
                     >
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                      {header.column.getIsSorted() ? (header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽") : null}
                     </th>
                   ))}
                 </tr>
@@ -45,13 +68,10 @@ const DataGrid = () => {
                 <tr
                   key={row.id}
                   onClick={() => dataGridState.handleSelect(index)}
-                  className="hover:bg-(--table-row-hover) transition-colors"
+                  className="hover:bg-(--table-row-hover) transition-colors cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className="text-(--text) cursor-pointer border-b p-px md:px-4 md:py-2 text-xs md:text-base"
-                    >
+                    <td key={cell.id} className="text-(--text) border-b p-px md:px-4 md:py-2 text-xs md:text-base">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}

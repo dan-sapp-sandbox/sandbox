@@ -2,7 +2,13 @@ import { useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import mockUsers from "./mockUsers";
 import type { Table } from "@tanstack/react-table";
-import { createColumnHelper, useReactTable, getCoreRowModel } from "@tanstack/react-table";
+import {
+  createColumnHelper,
+  useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+} from "@tanstack/react-table";
 
 const roleOptions = [
   { id: "User", name: "User" },
@@ -34,16 +40,28 @@ const useDataGridState = () => {
   const [data, setData] = useState<IUser[]>(mockUsers);
   const [selected, setSelected] = useState<IUser>();
   const [tempUser, setTempUser] = useState<IUser>();
+  const [sorting, setSorting] = useState([]);
+  const [globalFilter, setGlobalFilter] = useState("");
   const columnHelper = createColumnHelper<IUser>();
   const columns = [
     columnHelper.accessor("name", { header: "Name" }),
     columnHelper.accessor("email", { header: "Email" }),
     columnHelper.accessor("role", { header: "Role" }),
   ];
+  console.log("sorting", sorting);
   const tableState = useReactTable({
     data,
     columns,
+    state: { sorting, globalFilter },
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: (row, columnId, filterValue) => {
+      const cellValue = row.getValue(columnId);
+      return cellValue?.toString().toLowerCase().includes(filterValue.toLowerCase());
+    },
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
   });
 
   const handleSelect = (index: number) => {
@@ -77,6 +95,8 @@ const useDataGridState = () => {
     handleSelect,
     handleSave,
     handleDelete,
+    globalFilter,
+    setGlobalFilter,
   };
 };
 

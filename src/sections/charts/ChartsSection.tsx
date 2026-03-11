@@ -5,11 +5,17 @@ const ChartsSection = () => {
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts",
     demoURL: "/data-visualization",
-    title: "Data Visualization",
-    features: ["Different Chart Types: Line, etc", "Allow import/export JSON, CSV: WIP"],
+    title: "Interactive Data Visualization",
+    description:
+      "Client-side data visualization system for exploring datasets through multiple chart types and dynamic data import.",
+    features: [
+      "Multiple Chart Types: Line, bar, and other common visualizations",
+      "Reusable Chart Components",
+      "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
+    ],
     usedPreviously: [
-      { where: "EarthDaily Federal", what: "OONI Chart" },
-      { where: "Various", what: "Sales Data" },
+      { where: "EarthDaily Federal", what: "Network measurement analytics charts" },
+      { where: "Enterprise Applications", what: "Sales and operational dashboards" },
     ],
     isReversed: true,
   };

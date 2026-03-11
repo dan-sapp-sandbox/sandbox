@@ -6,8 +6,18 @@ const UserMgmtSection = () => {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/userMgmt",
     demoURL: "/user-management",
     title: "Auth and Content Management Systems",
-    features: ["Auth0: WIP", "Sticky Header: Scroll while keeping header visible", "Form Panel: Edit/Delete Users"],
-    usedPreviously: [{ where: "Various", what: "Users, Inventory, etc." }],
+    description:
+      "Administrative interface for managing application users, including authentication, profile editing, and account lifecycle management.",
+    features: [
+      "User Table: Searchable list of application users",
+      "Detail Panel: Edit user profiles and manage account status",
+      "Authentication: Auth0 integration (WIP)",
+      "Sticky Table Header: Maintain column context while scrolling",
+    ],
+    usedPreviously: [
+      { where: "Enterprise Applications", what: "User administration dashboards" },
+      { where: "Internal Tools", what: "Inventory and resource management systems" },
+    ],
     isReversed: true,
   };
 
