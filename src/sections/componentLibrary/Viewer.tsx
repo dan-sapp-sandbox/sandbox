@@ -7,7 +7,7 @@ const Viewer = () => {
   return (
     <div
       className={cn(
-        "p-2 h-full min-h-100 w-full flex flex-row justify-center items-center",
+        "p-3 h-full min-h-100 w-full flex flex-row justify-center items-center",
         "bg-(--alt-card-bg) rounded-2xl text-(--card-foreground)",
       )}
     >

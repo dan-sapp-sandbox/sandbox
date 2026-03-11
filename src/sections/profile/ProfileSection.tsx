@@ -16,8 +16,8 @@ const ProfileSection = () => {
               <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
               <div className="flex flex-col md:gap-1 text-(--text)">
                 <span className="text-sm md:text-base text-(--text)">
-                  I'm an Application and Visualization Engineer with 10 years of experience building interactive web
-                  applications and data visualization systems.
+                  I'm Software Engineer with 10 years of experience building interactive web applications and data
+                  visualization systems.
                 </span>
                 <span className="text-sm md:text-base text-(--text)">
                   My work focuses on React, TypeScript, and geospatial visualization.
