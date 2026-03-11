@@ -12,24 +12,29 @@ const DataGrid = () => {
   //TODO: add column sorting/filtering
 
   return (
-    <div className="h-full w-full rounded flex flex-col gap-4">
+    <div className="h-full w-full rounded flex flex-col gap-4 bg-(--alt-card-bg) p-4">
       <div className="w-full h-30 rounded flex flex-row justify-between px-2 py-4">
-        <Card isAlt>
+        <Card>
           <CardContent className="h-full w-40 flex justify-center items-center">Users: {numberOfUsers}</CardContent>
         </Card>
-        <Card isAlt>
+        <Card>
           <CardContent className="h-full w-40 flex justify-center items-center">Pending: 0</CardContent>
         </Card>
-        <Card isAlt>
+        <Card>
           <CardContent className="h-full w-40 flex justify-center items-center">Admins: {numberOfAdmins}</CardContent>
         </Card>
       </div>
-      <div className="w-50">
-        <Input
-          value={dataGridState.globalFilter}
-          onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
-          placeholder="Search users..."
-        />
+      <div className="w-full">
+        <Card>
+          <CardContent className="flex flex-row justify-between items-center">
+            <Input
+              className="w-60"
+              value={dataGridState.globalFilter}
+              onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
+              placeholder="Search users..."
+            />
+          </CardContent>
+        </Card>
       </div>
       <div className="flex-1 min-h-0 w-full border rounded flex flex-row">
         <FormPanel dataGridState={dataGridState} />
