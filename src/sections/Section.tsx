@@ -26,7 +26,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
   const handleOpenDemoLink = () => {
     window.open(demoURL, "_blank", "noopener,noreferrer");
   };
-  console.log("isLg", isLg);
+
   return (
     <Card className="w-full max-w-400 min-h-150 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
       <CardContent
@@ -35,7 +35,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
           `${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`,
         )}
       >
-        <div className="lg:w-125 shrink-0 flex flex-col gap-2 p-2 lg:p-8 bg-zinc-500/30 rounded-2xl">
+        <div className="lg:w-125 shrink-0 flex flex-col gap-2 p-4 lg:p-8 bg-zinc-500/30 rounded-2xl">
           <div
             onClick={() => !isLg && setExpanded(!expanded)}
             className="mb-2 lg:mb-4 flex flex-row items-center gap-2 cursor-pointer lg:cursor-default"

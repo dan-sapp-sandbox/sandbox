@@ -7,11 +7,11 @@ const ProfileSection = () => {
   const linkStyles =
     "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
-    <Card className="w-full md:max-w-400 h-fit flex flex-row justify-between p-3 md:p-8">
+    <Card className="w-full md:max-w-400 h-fit flex flex-row justify-between">
       <CardContent className="h-full w-full p-0">
-        <div className="h-full w-full flex flex-row gap-4 md:gap-24">
-          <img src="/me.png" className="h-30 md:h-60" alt="profile pic" />
-          <div className="h-full flex flex-col justify-between overflow-hidden gap-4">
+        <div className="h-full w-full flex flex-row gap-6">
+          <img src="/me.png" className="h-30 md:h-60 rounded-2xl" alt="profile pic" />
+          <div className="h-full flex-1 flex flex-col justify-between overflow-hidden gap-4 p-2 lg:p-8 bg-zinc-500/30 rounded-2xl">
             <div className="flex flex-col gap-2 md:gap-6">
               <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
               <div className="flex flex-col md:gap-1 text-(--text)">
@@ -28,7 +28,7 @@ const ProfileSection = () => {
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-12">
+            <div className="flex flex-row items-center gap-10">
               <div onClick={profileState.handleDownloadResume} className={linkStyles}>
                 <span className="text-xs md:text-sm">Resume</span>
                 <Download className="size-3 md:size-5" />
