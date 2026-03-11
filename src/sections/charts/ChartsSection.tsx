@@ -22,9 +22,7 @@ const ChartsSection = () => {
 
   return (
     <Section config={config}>
-      <div className="relative h-full w-full xs:w-80 sm:w-140 md:w-140 lg:w-200 xl:w-250 flex flex-col justify-center items-center p-2 md:p-4">
-        <DataVisualizations />
-      </div>
+      <DataVisualizations />
     </Section>
   );
 };

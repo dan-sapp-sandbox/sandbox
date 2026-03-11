@@ -9,18 +9,18 @@ import {
   SelectLabel,
   SelectGroup,
 } from "@/components/ui/select";
-import { ArrowRight, Compass, Ghost, Lamp, Pen, Trash } from "lucide-react";
+import { ArrowRight, Compass, Lamp, Pen, Trash } from "lucide-react";
 
 const ButtonPreview = () => {
   const sizes = ["icon", "sm", "default", "lg"] as const;
-  const variants = ["default", "secondary", "destructive", "ghost", "link", "outline"] as const;
+  const variants = ["default", "secondary", "destructive", "link", "outline"] as const;
   type Size = (typeof sizes)[number];
   type Variant = (typeof variants)[number];
   const [size, setSize] = useState<Size>("default");
   const [variant, setVariant] = useState<Variant>("default");
   return (
-    <div className="w-full h-full flex justify-center items-center p-8">
-      <div className="w-full flex flex-col justify-center items-center gap-4 xl:hidden">
+    <div className="w-full h-full flex justify-center items-center p-3 2xl-p-8">
+      <div className="w-full flex flex-col xl:flex-row justify-center items-center xl:items-end gap-4 2xl:hidden">
         <SelectGroup>
           <SelectLabel>Button Size</SelectLabel>
           <Select value={size} onValueChange={(val) => setSize(val as Size)}>
@@ -55,12 +55,12 @@ const ButtonPreview = () => {
           {size === "icon" ? <Compass /> : <span className="capitalize">{variant}</span>}
         </Button>
       </div>
-      <div className="hidden xl:flex flex-row gap-2">
+      <div className="hidden 2xl:flex flex-row gap-2">
         <div className="hidden 2xl:flex flex-col justify-between h-55">
-          <span className="text-xl w-22 mr-12">size="icon"</span>
-          <span className="text-xl w-22 mr-12">size="sm"</span>
-          <span className="text-xl w-22 mr-12">size="default"</span>
-          <span className="text-xl w-22 mr-12">size="lg"</span>
+          <span className="text-base w-22 mr-12">icon</span>
+          <span className="text-base w-22 mr-12">sm</span>
+          <span className="text-base w-22 mr-12">default</span>
+          <span className="text-base w-22 mr-12">lg</span>
         </div>
         <div className="flex flex-col justify-between h-55">
           <Button size="icon" variant="default">
@@ -104,7 +104,7 @@ const ButtonPreview = () => {
             Destructive
           </Button>
         </div>
-        <div className="flex flex-col justify-between h-55">
+        {/* <div className="flex flex-col justify-between h-55">
           <Button size="icon" variant="ghost">
             <Ghost />
           </Button>
@@ -117,7 +117,7 @@ const ButtonPreview = () => {
           <Button size="lg" variant="ghost">
             Ghost
           </Button>
-        </div>
+        </div> */}
         <div className="flex flex-col justify-between h-55">
           <Button size="icon" variant="link">
             <ArrowRight />

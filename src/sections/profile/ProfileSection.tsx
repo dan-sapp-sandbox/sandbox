@@ -11,7 +11,7 @@ const ProfileSection = () => {
       <CardContent className="h-full w-full p-0">
         <div className="h-full w-full flex flex-row gap-6">
           <img src="/me.png" className="h-30 md:h-60 rounded-2xl" alt="profile pic" />
-          <div className="h-full flex-1 flex flex-col justify-between overflow-hidden gap-4 p-2 lg:p-8 bg-zinc-500/30 rounded-2xl">
+          <div className="h-full flex-1 flex flex-col justify-between overflow-hidden gap-4 p-2 lg:p-8 bg-(--card-section-text-bg) rounded-2xl">
             <div className="flex flex-col gap-2 md:gap-6">
               <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
               <div className="flex flex-col md:gap-1 text-(--text)">

@@ -35,7 +35,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
           `${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`,
         )}
       >
-        <div className="lg:w-125 shrink-0 flex flex-col gap-2 p-4 lg:p-8 bg-zinc-500/30 rounded-2xl">
+        <div className="lg:max-w-100 xl:max-w-110 shrink-0 flex flex-col gap-2 p-4 lg:p-8 bg-(--card-section-text-bg) rounded-2xl">
           <div
             onClick={() => !isLg && setExpanded(!expanded)}
             className="mb-2 lg:mb-4 flex flex-row items-center gap-2 cursor-pointer lg:cursor-default"
@@ -78,7 +78,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
             </div>
           </div>
         </div>
-        <div className="h-full w-full p-0 flex flex-col lg:flex-row justify-between">{children}</div>
+        <div className="h-full flex-1 p-0 flex flex-col lg:flex-row justify-between">{children}</div>
       </CardContent>
     </Card>
   );

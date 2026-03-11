@@ -1,5 +1,4 @@
-import { useState } from "react";
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import mockUsers from "./mockUsers";
 import type { Table, SortingState } from "@tanstack/react-table";
 import {
@@ -34,6 +33,8 @@ export interface IDataGridState {
   setTempUser: Dispatch<SetStateAction<IUser | undefined>>;
   handleSave: () => void;
   handleDelete: () => void;
+  newUserEmail: any;
+  setNewUserEmail: any;
 }
 
 const useDataGridState = () => {
@@ -41,14 +42,15 @@ const useDataGridState = () => {
   const [selected, setSelected] = useState<IUser>();
   const [tempUser, setTempUser] = useState<IUser>();
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [globalFilter, setGlobalFilter] = useState("");
+  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const [newUserEmail, setNewUserEmail] = useState<string>("");
   const columnHelper = createColumnHelper<IUser>();
   const columns = [
     columnHelper.accessor("name", { header: "Name" }),
     columnHelper.accessor("email", { header: "Email" }),
     columnHelper.accessor("role", { header: "Role" }),
   ];
-  console.log("sorting", sorting);
+
   const tableState = useReactTable({
     data,
     columns,
@@ -84,6 +86,9 @@ const useDataGridState = () => {
     setTempUser(undefined);
     setSelected(undefined);
   };
+  const sendNewUserInviteEmail = () => {
+    setNewUserEmail("");
+  };
   return {
     roleOptions,
     data,
@@ -98,6 +103,9 @@ const useDataGridState = () => {
     handleDelete,
     globalFilter,
     setGlobalFilter,
+    newUserEmail,
+    setNewUserEmail,
+    sendNewUserInviteEmail,
   };
 };
 

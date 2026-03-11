@@ -1,10 +1,16 @@
 import ComponentRow from "./ComponentRow";
 import useComponentLibraryState from "./useComponentLibraryState";
+import { cn } from "@/lib/utils";
 
 const Viewer = () => {
   const { componentList, displayComponent, selected, setSelected } = useComponentLibraryState();
   return (
-    <div className="p-2 h-full min-h-100 w-full flex flex-row justify-center items-center bg-(--background-alt) text-(--card-foreground)">
+    <div
+      className={cn(
+        "p-2 h-full min-h-100 w-full flex flex-row justify-center items-center",
+        "bg-(--alt-card-bg) rounded-2xl text-(--card-foreground)",
+      )}
+    >
       <div className="h-full w-30 2xl:w-50 flex flex-col gap-1 border-r">
         <span className="text-sm xl:text-lg font-bold">Components</span>
         <div className="overflow-y-scroll scrollbar-hide">
@@ -21,7 +27,12 @@ const Viewer = () => {
           </div>
         </div>
       </div>
-      <div className="h-full flex-1 flex flex-col md:flex-row justify-center items-center text-(--card-foreground)">
+      <div
+        className={cn(
+          "h-full flex-1 flex flex-col md:flex-row justify-center items-center",
+          "text-(--card-foreground)",
+        )}
+      >
         {displayComponent}
       </div>
     </div>

@@ -1,38 +1,63 @@
 import { flexRender } from "@tanstack/react-table";
+import { ArrowDown, ArrowUp } from "lucide-react";
 import FormPanel from "./FormPanel";
 import useDataGridState from "./useDataGridState";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const DataGrid = () => {
   const dataGridState = useDataGridState();
 
   const numberOfUsers = dataGridState.data.length;
   const numberOfAdmins = dataGridState.data.filter((user) => user.role === "Admin").length;
-  //TODO: add column sorting/filtering
 
   return (
-    <div className="h-full w-full rounded flex flex-col gap-4 bg-(--alt-card-bg) p-4">
-      <div className="w-full h-30 rounded flex flex-row justify-between px-2 py-4">
-        <Card>
-          <CardContent className="h-full w-40 flex justify-center items-center">Users: {numberOfUsers}</CardContent>
+    <div className="h-full w-full flex flex-col gap-4 bg-(--alt-card-bg) rounded-2xl p-4">
+      <div className="w-full h-15 rounded flex flex-row justify-between">
+        <Card className="p-0">
+          <CardContent className="p-0 h-full w-40 flex justify-center items-center">
+            <span>Users: {numberOfUsers}</span>
+          </CardContent>
         </Card>
-        <Card>
-          <CardContent className="h-full w-40 flex justify-center items-center">Pending: 0</CardContent>
+        <Card className="p-0">
+          <CardContent className="p-0 h-full w-40 flex justify-center items-center">
+            <span>Pending: 0</span>
+          </CardContent>
         </Card>
-        <Card>
-          <CardContent className="h-full w-40 flex justify-center items-center">Admins: {numberOfAdmins}</CardContent>
+        <Card className="p-0">
+          <CardContent className="p-0 h-full w-40 flex justify-center items-center">
+            <span>Admins: {numberOfAdmins}</span>
+          </CardContent>
         </Card>
       </div>
       <div className="w-full">
-        <Card>
-          <CardContent className="flex flex-row justify-between items-center">
-            <Input
-              className="w-60"
-              value={dataGridState.globalFilter}
-              onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
-              placeholder="Search users..."
-            />
+        <Card className="p-2">
+          <CardContent className="flex flex-row justify-between items-center p-0">
+            <div>
+              <span className="text-sm text-(--text)">Email:</span>
+              <Input
+                className="w-60"
+                value={dataGridState.globalFilter}
+                onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
+                placeholder="Search users..."
+              />
+            </div>
+            <div className="flex flex-row justify-between items-end gap-4">
+              <div className="flex flex-col">
+                <span className="text-sm text-(--text)">Invite New User By Email:</span>
+                <Input
+                  className="w-60"
+                  value={dataGridState.newUserEmail}
+                  onChange={(e) => dataGridState.setNewUserEmail(e.target.value)}
+                  placeholder="newUser@email.com"
+                />
+              </div>
+              <Button variant="secondary" onClick={dataGridState.sendNewUserInviteEmail}>
+                Send
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -47,12 +72,21 @@ const DataGrid = () => {
                     <th
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
-                      className={`cursor-pointer px-4 py-2 border-b ${
-                        header.column.getIsSorted() ? "bg-(--alt-card-bg)" : ""
-                      }`}
+                      className={cn(
+                        "cursor-pointer px-4 py-2 border-b",
+                        header.column.getIsSorted() ? "bg-(--alt-card-bg)" : "",
+                      )}
                     >
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {header.column.getIsSorted() ? (header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽") : null}
+                      <div className="flex flex-row gap-4 items-center">
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {header.column.getIsSorted() ? (
+                          header.column.getIsSorted() === "asc" ? (
+                            <ArrowUp />
+                          ) : (
+                            <ArrowDown />
+                          )
+                        ) : null}
+                      </div>
                     </th>
                   ))}
                 </tr>

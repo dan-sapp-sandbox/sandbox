@@ -36,7 +36,7 @@
     --link: #2563eb;
     --link-hover: #1e40af;
 
-    --card-bg: #ffffff;
+    --card-bg: #ffffff8c;
     --card-border: #303030;
     --card-text: #000000;
 
@@ -75,6 +75,8 @@
     --select-bg: #ffffff;
     --select-bg-hover: #e8fdfd;
     --select-separator: #000000;
+
+    --card-section-text-bg: #e8e8e8;
   }
 
   .dark {
@@ -150,6 +152,8 @@
     --select-bg: #000000;
     --select-bg-hover: #42525c;
     --select-separator: #7e7e7e;
+
+    --card-section-text-bg: #3c3c3c;
   }
 
   html,
