@@ -17,7 +17,7 @@ interface ISectionConfig {
 }
 
 const Section = ({ config, children }: { config: ISectionConfig; children: ReactNode | ReactNode[] }) => {
-  const isMd = useMediaQuery("(min-width: 768px)");
+  const isLg = useMediaQuery("(min-width: 1024px)");
   const { title, description, features, githubURL, usedPreviously, isReversed, demoURL } = config;
   const [expanded, setExpanded] = useState(false);
   const handleOpenGithubLink = () => {
@@ -26,46 +26,46 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
   const handleOpenDemoLink = () => {
     window.open(demoURL, "_blank", "noopener,noreferrer");
   };
-
+  console.log("isLg", isLg);
   return (
-    <Card className="w-full max-w-400 min-h-100 md:h-[50vh] transition-colors duration-300 overflow-hidden">
+    <Card className="w-full max-w-400 min-h-150 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
       <CardContent
         className={cn(
           `h-full w-full p-0 flex flex-col justify-between gap-6`,
-          `${isReversed ? "md:flex-row-reverse" : "md:flex-row"}`,
+          `${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`,
         )}
       >
-        <div className="md:w-125 shrink-0 flex flex-col gap-2 p-2 md:p-8 bg-zinc-500/30 rounded-2xl">
+        <div className="lg:w-125 shrink-0 flex flex-col gap-2 p-2 lg:p-8 bg-zinc-500/30 rounded-2xl">
           <div
-            onClick={() => !isMd && setExpanded(!expanded)}
-            className="mb-2 md:mb-4 flex flex-row items-center gap-2 cursor-pointer md:cursor-default"
+            onClick={() => !isLg && setExpanded(!expanded)}
+            className="mb-2 lg:mb-4 flex flex-row items-center gap-2 cursor-pointer lg:cursor-default"
           >
-            <span className="text-lg md:text-2xl font-bold">{title}</span>
+            <span className="text-lg lg:text-2xl font-bold">{title}</span>
             {expanded ? (
-              <ChevronUp className="h-4 w-4 flex md:hidden" />
+              <ChevronUp className="h-4 w-4 flex lg:hidden" />
             ) : (
-              <ChevronDown className="h-4 w-4 flex md:hidden" />
+              <ChevronDown className="h-4 w-4 flex lg:hidden" />
             )}
           </div>
-          <div className={`${expanded || isMd ? "flex flex-col justify-between gap-2 md:gap-4 h-full" : "hidden"}`}>
+          <div className={`${expanded || isLg ? "flex flex-col justify-between gap-2 lg:gap-4 h-full" : "hidden"}`}>
             <div className="flex flex-col gap-2">
-              <span className="text-xs md:text-sm text-muted-foreground">{description}</span>
-              <div className="flex flex-col md:gap-2">
-                <span className="text-sm md:text-sm font-bold">Features:</span>
-                <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
+              <span className="text-xs lg:text-sm text-muted-foreground">{description}</span>
+              <div className="flex flex-col lg:gap-2">
+                <span className="text-sm lg:text-sm font-bold">Features:</span>
+                <ul className="ml-4 lg:ml-6 list-disc text-xs lg:text-sm">
                   {features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
                 </ul>
               </div>
               {usedPreviously?.length && (
-                <div className="flex flex-col md:gap-2">
-                  <span className="text-sm md:text-sm font-bold">Production Experience:</span>
-                  <ul className="ml-4 md:ml-6 list-disc text-xs md:text-sm">
+                <div className="flex flex-col lg:gap-2">
+                  <span className="text-sm lg:text-sm font-bold">Production Experience:</span>
+                  <ul className="ml-4 lg:ml-6 list-disc text-xs lg:text-sm">
                     {usedPreviously.map((use, i) => (
                       <li key={i}>
-                        <span className="text-sm md:text-sm font-bold">{use.where}: </span>
-                        <span className="text-xs md:text-sm">{use.what}</span>
+                        <span className="text-sm lg:text-sm font-bold">{use.where}: </span>
+                        <span className="text-xs lg:text-sm">{use.what}</span>
                       </li>
                     ))}
                   </ul>
@@ -78,7 +78,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
             </div>
           </div>
         </div>
-        <div className="h-full w-full p-0 flex flex-col md:flex-row justify-between">{children}</div>
+        <div className="h-full w-full p-0 flex flex-col lg:flex-row justify-between">{children}</div>
       </CardContent>
     </Card>
   );
@@ -89,8 +89,8 @@ const LinkButton = ({ label, onClick }: { label: string; onClick: () => void }) 
     onClick={onClick}
     className="flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200"
   >
-    <span className="text-xs md:text-sm">{label}</span>
-    <ExternalLink className="size-3 md:size-5" />
+    <span className="text-xs lg:text-sm">{label}</span>
+    <ExternalLink className="size-3 lg:size-5" />
   </button>
 );
 

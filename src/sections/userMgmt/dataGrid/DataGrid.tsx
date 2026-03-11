@@ -39,16 +39,6 @@ const DataGrid = () => {
               {dataGridState.tableState.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    // <th
-                    //   key={header.id}
-                    //   className="text-(--text) border-b px-4 py-2 text-left border-border text-xs md:text-base"
-                    // >
-                    //   {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    // </th>
-                    // <th key={header.id} className="cursor-pointer" onClick={header.column.getToggleSortingHandler()}>
-                    //   {flexRender(header.column.columnDef.header, header.getContext())}
-                    //   {header.column.getIsSorted() ? (header.column.getIsSorted() === "asc" ? " 🔼" : " 🔽") : null}
-                    // </th>
                     <th
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
