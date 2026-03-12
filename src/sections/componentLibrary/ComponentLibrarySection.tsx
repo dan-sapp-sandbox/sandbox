@@ -1,7 +1,9 @@
 import Viewer from "./Viewer";
 import Section from "../Section";
+import { useResizeObserver } from "@/components/useResizeObserver";
 
 const ComponentLibrarySection = () => {
+  const { ref, size } = useResizeObserver();
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/storybook",
     demoURL: "/component-library",
@@ -20,8 +22,8 @@ const ComponentLibrarySection = () => {
   };
 
   return (
-    <Section config={config}>
-      <Viewer />
+    <Section resizeRef={ref} config={config}>
+      <Viewer key={`${size.width}-${size.height}`} />
     </Section>
   );
 };

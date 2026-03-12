@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const DataVisualizations = () => {
   const chartState = useChartState();
-  //TODO: observer resize
+
   return (
     <div
       className={cn(

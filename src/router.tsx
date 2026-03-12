@@ -3,7 +3,7 @@ import ThemeToggle from "@/components/themeToggle";
 import App from "./App.tsx";
 import MapApp from "./sections/map/MapApp.tsx";
 import DataGrid from "./sections/userMgmt/dataGrid/DataGrid.tsx";
-import TaskBoard from "./sections/dnd/TaskBoard.tsx";
+import ReportBuilder from "./sections/reportBuilder/ReportBuilder.tsx";
 import DataVisualizations from "./sections/charts/DataVisualizations.tsx";
 import Viewer from "./sections/componentLibrary/Viewer.tsx";
 
@@ -40,10 +40,10 @@ const userMgmtRoute = createRoute({
     </div>
   ),
 });
-const dndRoute = createRoute({
+const reportBuilderRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/drag-and-drop",
-  component: () => <TaskBoard />,
+  path: "/report-builder",
+  component: () => <ReportBuilder />,
 });
 const chartsRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -63,8 +63,8 @@ const componentLibraryRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   mapRoute,
+  reportBuilderRoute,
   userMgmtRoute,
-  dndRoute,
   chartsRoute,
   componentLibraryRoute,
 ]);

@@ -14,7 +14,7 @@ const data: ChartData<"bar"> = {
 };
 
 export const BarChart: React.FC = () => {
-  return <Bar data={data} />;
+  return <Bar data={data} options={{ responsive: true, maintainAspectRatio: false }} />;
 };
 
 export default BarChart;

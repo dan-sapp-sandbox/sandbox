@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, type ReactNode, useRef, useEffect, Suspense, type RefObject } from "react";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useMediaQuery } from "@/useMediaQuery";
@@ -16,7 +16,31 @@ interface ISectionConfig {
   isReversed?: boolean;
 }
 
-const Section = ({ config, children }: { config: ISectionConfig; children: ReactNode | ReactNode[] }) => {
+const Section = ({
+  resizeRef,
+  config,
+  children,
+}: {
+  resizeRef?: RefObject<HTMLDivElement | null>;
+  config: ISectionConfig;
+  children: ReactNode | ReactNode[];
+}) => {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        obs.disconnect();
+      }
+    });
+
+    if (ref.current) obs.observe(ref.current);
+
+    return () => obs.disconnect();
+  }, []);
+
   const isLg = useMediaQuery("(min-width: 1024px)");
   const { title, description, features, githubURL, usedPreviously, isReversed, demoURL } = config;
   const [expanded, setExpanded] = useState(false);
@@ -28,7 +52,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
   };
 
   return (
-    <Card className="w-full max-w-400 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
+    <Card ref={resizeRef} className="w-full max-w-400 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
       <CardContent
         className={cn(
           `h-full w-full p-0 flex flex-col justify-between gap-6`,
@@ -78,7 +102,9 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
             </div>
           </div>
         </div>
-        <div className="h-full flex-1 p-0 flex flex-col lg:flex-row justify-between">{children}</div>
+        <div ref={ref} className="h-full flex-1 p-0 flex flex-col lg:flex-row justify-between">
+          {visible && <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>}
+        </div>
       </CardContent>
     </Card>
   );

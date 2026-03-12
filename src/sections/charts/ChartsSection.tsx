@@ -1,7 +1,9 @@
 import Section from "../Section";
 import DataVisualizations from "./DataVisualizations";
+import { useResizeObserver } from "@/components/useResizeObserver";
 
 const ChartsSection = () => {
+  const { ref, size } = useResizeObserver();
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts",
     demoURL: "/data-visualization",
@@ -21,8 +23,8 @@ const ChartsSection = () => {
   };
 
   return (
-    <Section config={config}>
-      <DataVisualizations />
+    <Section resizeRef={ref} config={config}>
+      <DataVisualizations key={`${size.width}-${size.height}`} />
     </Section>
   );
 };

@@ -7,8 +7,8 @@ const App = () => {
         <div className="w-full max-w-400 flex flex-col justify-center items-center gap-4 md:gap-8 overflow-hidden">
           <Sections.Profile />
           <Sections.Map />
+          <Sections.ReportBuilder />
           <Sections.UserMgmt />
-          <Sections.Dnd />
           <Sections.Charts />
           <Sections.ComponentLibrary />
         </div>
