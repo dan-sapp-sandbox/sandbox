@@ -8,13 +8,12 @@ import { cn } from "@/lib/utils";
 
 const DataVisualizations = () => {
   const chartState = useChartState();
-
+  //TODO: observer resize
   return (
     <div
       className={cn(
         "rounded-2xl bg-(--alt-card-bg) relative h-full w-full",
         "flex flex-col justify-center items-center p-2 md:p-4",
-        "max-w-full lg:max-w-130 xl:max-w-180 2xl:max-w-275",
       )}
     >
       <div className="absolute top-4 right-4">

@@ -33,8 +33,8 @@ const DataGrid = () => {
         </Card>
       </div>
       <div className="w-full">
-        <Card className="p-2">
-          <CardContent className="flex flex-row justify-between items-center p-0">
+        <Card className="p-3 pt-1 ">
+          <CardContent className="flex flex-row justify-between items-end p-0">
             <div>
               <span className="text-sm text-(--text)">Email:</span>
               <Input
