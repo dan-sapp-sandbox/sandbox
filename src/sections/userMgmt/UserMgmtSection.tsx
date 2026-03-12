@@ -5,19 +5,23 @@ const UserMgmtSection = () => {
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/userMgmt",
     demoURL: "/user-management",
-    title: "Auth and Content Management Systems",
+    title: "User Management Dashboard",
     description:
-      "Administrative interface for managing application users, including authentication, profile editing, and account lifecycle management.",
+      "Administrative interface for managing application users, featuring sortable and filterable data tables, profile editing, and account lifecycle management.",
+
     features: [
-      "User Table: Searchable list of application users",
-      "Detail Panel: Edit user profiles and manage account status",
-      "Authentication: Auth0 integration (WIP)",
-      "Sticky Table Header: Maintain column context while scrolling",
+      "Interactive Data Table: Client-side sorting and global filtering using TanStack Table",
+      "User Dashboard: Summary cards showing total users and role distribution",
+      "Detail Panel: Edit user profiles and manage account information",
+      "Sticky Table Header: Maintain column context while scrolling large datasets",
+      "Responsive Layout: Table and dashboard adapt to mobile and desktop screens",
     ],
+
     usedPreviously: [
-      { where: "Enterprise Applications", what: "User administration dashboards" },
-      { where: "Internal Tools", what: "Inventory and resource management systems" },
+      { where: "Enterprise Applications", what: "User administration and role management dashboards" },
+      { where: "Internal Tools", what: "Data-heavy CRUD interfaces and operational management systems" },
     ],
+
     isReversed: true,
   };
 
