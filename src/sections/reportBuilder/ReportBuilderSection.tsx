@@ -17,6 +17,7 @@ const ReportBuilderSection = () => {
       { where: "EarthDaily Federal", what: "Map Widgets" },
       { where: "Stellar", what: "Scheduling workflow management" },
     ],
+    isReversed: true,
   };
 
   return (

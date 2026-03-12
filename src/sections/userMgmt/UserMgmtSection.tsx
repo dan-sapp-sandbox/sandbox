@@ -21,8 +21,6 @@ const UserMgmtSection = () => {
       { where: "Enterprise Applications", what: "User administration and role management dashboards" },
       { where: "Internal Tools", what: "Data-heavy CRUD interfaces and operational management systems" },
     ],
-
-    isReversed: true,
   };
 
   return (
