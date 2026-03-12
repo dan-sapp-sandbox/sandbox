@@ -28,7 +28,7 @@ const Section = ({ config, children }: { config: ISectionConfig; children: React
   };
 
   return (
-    <Card className="w-full max-w-400 min-h-150 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
+    <Card className="w-full max-w-400 lg:h-[50vh] transition-colors duration-300 overflow-hidden">
       <CardContent
         className={cn(
           `h-full w-full p-0 flex flex-col justify-between gap-6`,
