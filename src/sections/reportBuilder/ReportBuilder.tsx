@@ -1,12 +1,11 @@
-import { lazy } from "react";
 import { DndContext, closestCorners, TouchSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import Column from "./Column";
-import useTaskBoardState from "./useReportBuilderState";
+import useReportBuilderState from "./useReportBuilderState";
 import { PDFViewer } from "@react-pdf/renderer";
-const PdfPreview = lazy(() => import("./PdfPreview"));
+import PdfPreview from "./PdfPreview";
 
 const ReportBuilder = () => {
-  const taskBoardState = useTaskBoardState();
+  const taskBoardState = useReportBuilderState();
 
   const sensors = useSensors(
     useSensor(PointerSensor),

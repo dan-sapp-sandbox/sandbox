@@ -6,15 +6,30 @@ import { arrayMove } from "@dnd-kit/sortable";
 export interface ReportSection {
   id: string;
   type: string;
+  styles?: {
+    [key: string]: string | number;
+  };
   content?: string;
   imageUrl?: string;
 }
 
 const initialReportState: ReportSection[] = [
   {
-    id: "1",
+    id: "title",
     type: "text",
-    content: "Report Title",
+    styles: {
+      fontSize: 22,
+      fontWeight: "bold",
+    },
+    content: "Weekly Report on Area of Interest",
+  },
+  {
+    id: "date",
+    styles: {
+      fontSize: 14,
+    },
+    type: "text",
+    content: "March 11, 2026",
   },
   {
     id: "2",

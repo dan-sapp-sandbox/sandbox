@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 10,
-    fontSize: 12,
+    fontSize: 11,
   },
   image: {
     margin: "0 auto",
@@ -22,7 +22,7 @@ const PdfPreview = ({ reportState }: { reportState: ReportSection[] }) => {
     switch (section.type) {
       case "text":
         return (
-          <View key={section.id} style={styles.section}>
+          <View key={section.id} style={{ ...styles.section, ...section.styles }}>
             <Text>{section.content}</Text>
           </View>
         );
@@ -33,9 +33,11 @@ const PdfPreview = ({ reportState }: { reportState: ReportSection[] }) => {
           </View>
         );
       default:
-        <View key={section.id} style={styles.section}>
-          <Text>Oops</Text>
-        </View>;
+        return (
+          <View key={section.id} style={styles.section}>
+            <Text>Oops</Text>
+          </View>
+        );
     }
   };
   const document = useMemo(
