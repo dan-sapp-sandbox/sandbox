@@ -1,4 +1,4 @@
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, TouchSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { restrictToParentElement } from "@dnd-kit/modifiers";
 import MainMap from "./MainMap";
 import LayerSwitcher from "./LayerSwitcher";
@@ -30,9 +30,23 @@ const MapApp = () => {
     widgetState,
     containerRef,
   } = mapState;
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 150,
+        tolerance: 5,
+      },
+    }),
+  );
   return (
     <div ref={containerRef} className="relative h-[50vh] lg:h-full w-full overflow-hidden cursor-pointer">
-      <DndContext modifiers={[restrictToParentElement]} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <DndContext
+        sensors={sensors}
+        modifiers={[restrictToParentElement]}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
         <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
           <MainMap>
             <PipViewRectangle show={showPipMap} />

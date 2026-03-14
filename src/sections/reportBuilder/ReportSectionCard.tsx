@@ -57,7 +57,6 @@ const ReportSectionCard = ({ section }: { section: ReportSection }) => {
         "p-2 md:py-4 md:px-2 rounded-xl border shadow-sm w-full gap-2 flex flex-row justify-between",
         "bg-(--background) border-(--border-alt) text-(--card-foreground) overflow-hidden w-full",
         isDragging ? "opacity-80" : "",
-        isExpanded ? "h-100" : "",
       )}
     >
       <div {...listeners} className="cursor-grab active:cursor-grabbing flex justify-center items-center">
