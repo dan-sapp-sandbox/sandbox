@@ -14,14 +14,8 @@ const Column = ({ title, reportState }: { title?: string; reportState: ReportSec
       <SortableContext items={reportState.map((t) => t.id)} strategy={verticalListSortingStrategy}>
         <div className="space-y-2 md:space-y-3 h-full">
           {reportState.map((section) => (
-            <ReportSectionCard key={section.id} id={section.id} content={section.content} />
+            <ReportSectionCard key={section.id} section={section} />
           ))}
-
-          {reportState.length === 0 && (
-            <div className="text-xs md:text-sm text-(--card-foreground) border-2 border-dashed rounded-xl p-4 text-center">
-              Drop here
-            </div>
-          )}
         </div>
       </SortableContext>
     </div>

@@ -5,6 +5,23 @@ import { Cartesian3, Cartographic, Math, Viewer } from "cesium";
 import type { ILayer, IWidgetState } from "./types";
 import useLocalStorage from "use-local-storage";
 
+export const defaultMainView = {
+  height: 1955010.9095104833,
+  lat: 24.57610852927548,
+  lon: 56.96229163370479,
+  heading: 6.283185307179583,
+  pitch: -1.5682332501783933,
+  roll: 0,
+};
+export const defaultPipView = {
+  height: 322477.84575201414,
+  lat: 26.481439911520596,
+  lon: 56.217442851296504,
+  heading: 6.283185307179581,
+  pitch: -1.5684928999831915,
+  roll: 0,
+};
+
 export interface IMapState {
   containerRef: RefObject<HTMLDivElement | null>;
   mainViewerRef: RefObject<Viewer | null>;
@@ -30,14 +47,7 @@ const useMapState = (): IMapState => {
   const [layer, setLayer] = useState<ILayer>("esriSat");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
   const [showPipMap, setShowPipMap] = useState(true);
-  const [_init, setInitCameraView] = useLocalStorage("main-cam-init", {
-    lat: 42,
-    lon: 0,
-    height: 2_000_000,
-    heading: 0,
-    pitch: -Math.PI / 2,
-    roll: 0,
-  });
+  const [_init, setInitCameraView] = useLocalStorage("main-cam-init", defaultMainView);
   const initWidgetState: IWidgetState = {
     overview: {
       top: 60,

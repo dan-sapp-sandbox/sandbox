@@ -6,18 +6,12 @@ import { Cartesian3, createWorldTerrainAsync } from "cesium";
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import useLocalStorage from "use-local-storage";
+import { defaultPipView } from "./useMapState";
 
 const PipInitializer = () => {
   const { viewer } = useCesium();
   const { pipViewerRef } = useContext(CameraContext);
-  const [init] = useLocalStorage("pip-cam-init", {
-    lat: 42,
-    lon: 0,
-    height: 100_000,
-    heading: 0,
-    pitch: -Math.PI / 2,
-    roll: 0,
-  });
+  const [init] = useLocalStorage("pip-cam-init", defaultPipView);
 
   useEffect(() => {
     if (!viewer) return;

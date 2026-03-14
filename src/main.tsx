@@ -5,6 +5,7 @@ import { router } from "./router";
 import "./index.css";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { registerSW } from "virtual:pwa-register";
+import "./polyfills";
 
 const updateSW = registerSW({
   onNeedRefresh() {

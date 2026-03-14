@@ -5,24 +5,9 @@ import { Plus, Minus } from "lucide-react";
 import useLocalStorage from "use-local-storage";
 import { useContext } from "react";
 import { CameraContext } from "./types";
+import { defaultMainView, defaultPipView } from "./useMapState";
 
 const CameraControls = () => {
-  const defaultMainView = {
-    lat: 42,
-    lon: 0,
-    height: 2_000_000,
-    heading: 0,
-    pitch: -Math.PI / 2,
-    roll: 0,
-  };
-  const defaultPipView = {
-    lat: 42,
-    lon: 0,
-    height: 100_000,
-    heading: 0,
-    pitch: -Math.PI / 2,
-    roll: 0,
-  };
   const [_initMainView, setInitMainView] = useLocalStorage("main-cam-init", defaultMainView);
   const [_initPipView, setInitPipView] = useLocalStorage("pip-cam-init", defaultPipView);
   const { viewer } = useCesium();

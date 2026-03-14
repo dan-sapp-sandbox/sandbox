@@ -27,6 +27,7 @@
     "@react-pdf/renderer": "^4.3.2",
     "@tanstack/react-router": "^1.161.3",
     "@tanstack/react-table": "^8.21.3",
+    "buffer": "^6.0.3",
     "cesium": "^1.138.0",
     "chart.js": "^4.5.1",
     "class-variance-authority": "^0.7.1",
