@@ -18,7 +18,7 @@ const ReportBuilder = () => {
   );
 
   return (
-    <div className="relative h-full min-h-100 w-full rounded-2xl p-4 flex flex-row justify-between gap-8">
+    <div className="relative p-4 h-full min-h-100 w-full flex flex-row justify-between gap-8">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
@@ -26,7 +26,7 @@ const ReportBuilder = () => {
         onDragEnd={taskBoardState.handleDragEnd}
         onDragCancel={taskBoardState.handleDragCancel}
       >
-        <div className="w-1/3 max-w-100 h-full overflow-y-auto scrollbar-hide bg-(--alt-card-bg)">
+        <div className="w-1/3 max-w-100 h-full overflow-y-auto scrollbar-hide">
           <Column reportState={taskBoardState.reportState} />
         </div>
       </DndContext>

@@ -28,7 +28,7 @@ const ReportSectionCard = ({ section }: { section: ReportSection }) => {
   const getPreview = (section: ReportSection) => {
     switch (section.type) {
       case "text":
-        return <span className="max-w-25 text-xs md:text-sm truncate">{section.content}</span>;
+        return <span className="text-xs truncate block w-full">{section.content}</span>;
       case "image":
         return <img className="h-20" src={section.imageUrl} />;
       default:
@@ -38,7 +38,7 @@ const ReportSectionCard = ({ section }: { section: ReportSection }) => {
   const getEditor = (section: ReportSection) => {
     switch (section.type) {
       case "text":
-        return <span className="max-w-100 text-xs md:text-sm truncate">{section.content}</span>;
+        return <span className="max-w-100 text-xs">{section.content}</span>;
       case "image":
         return <img className="w-full" src={section.imageUrl} />;
       default:
@@ -54,16 +54,16 @@ const ReportSectionCard = ({ section }: { section: ReportSection }) => {
       style={style}
       {...attributes}
       className={cn(
-        "p-2 md:py-4 md:px-2 rounded-xl border shadow-sm w-full gap-2 flex flex-row justify-between",
-        "bg-(--background) border-(--border-alt) text-(--card-foreground) overflow-hidden w-full",
+        "p-2 md:py-4 md:px-2 rounded-xl border shadow-sm gap-2 flex flex-row justify-between",
+        "bg-(--background) border-(--border-alt) text-(--text) overflow-hidden w-full",
         isDragging ? "opacity-80" : "",
       )}
     >
       <div {...listeners} className="cursor-grab active:cursor-grabbing flex justify-center items-center">
         <Grip className="h-4 w-4" />
       </div>
-      <div className="flex-1 flex flex-row justify-between cursor-pointer" onClick={handleSectionClick}>
-        {sectionDisplay}
+      <div className="min-w-0 flex-1 flex flex-row justify-between cursor-pointer" onClick={handleSectionClick}>
+        <div className="min-w-0 flex-1 flex">{sectionDisplay}</div>
         {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
       </div>
     </div>

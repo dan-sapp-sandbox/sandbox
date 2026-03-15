@@ -77,6 +77,8 @@
     --select-separator: #000000;
 
     --card-section-text-bg: #e8e8e8;
+
+    --column-bg: #bfbfbf;
   }
 
   .dark {
@@ -154,6 +156,7 @@
     --select-separator: #7e7e7e;
 
     --card-section-text-bg: #3c3c3c;
+    --column-bg: #555555;
   }
 
   html,

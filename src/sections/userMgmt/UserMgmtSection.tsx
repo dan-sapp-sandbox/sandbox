@@ -25,7 +25,7 @@ const UserMgmtSection = () => {
 
   return (
     <Section config={config}>
-      <div className="h-full w-full flex flex-col justify-center items-center p-px md:p-2">
+      <div className="h-full w-full flex flex-col justify-center items-center">
         <DataGrid />
       </div>
     </Section>

@@ -14,7 +14,7 @@ const DataGrid = () => {
   const numberOfAdmins = dataGridState.data.filter((user) => user.role === "Admin").length;
 
   return (
-    <div className="h-full w-full flex flex-col gap-4 bg-(--alt-card-bg) rounded-2xl p-4">
+    <div className="h-full w-full flex flex-col gap-4 bg-(--card-section-text-bg) rounded-2xl p-4">
       <div className="w-full h-15 rounded flex flex-row justify-between">
         <Card className="p-0">
           <CardContent className="p-0 h-full w-40 flex justify-center items-center">
@@ -74,7 +74,7 @@ const DataGrid = () => {
                       onClick={header.column.getToggleSortingHandler()}
                       className={cn(
                         "cursor-pointer px-4 py-2 border-b",
-                        header.column.getIsSorted() ? "bg-(--alt-card-bg)" : "",
+                        header.column.getIsSorted() ? "bg-(--alt-card-bg)/90" : "",
                       )}
                     >
                       <div className="flex flex-row gap-4 items-center">

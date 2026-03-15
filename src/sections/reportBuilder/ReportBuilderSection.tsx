@@ -14,7 +14,6 @@ const ReportBuilderSection = () => {
     ],
     usedPreviously: [
       { where: "EarthDaily Federal", what: "Report Builder" },
-      { where: "EarthDaily Federal", what: "Map Widgets" },
       { where: "Stellar", what: "Scheduling workflow management" },
     ],
     isReversed: true,
@@ -22,7 +21,9 @@ const ReportBuilderSection = () => {
 
   return (
     <Section config={config}>
-      <ReportBuilder />
+      <div className="bg-(--card-section-text-bg) h-full w-full rounded-2xl">
+        <ReportBuilder />
+      </div>
     </Section>
   );
 };
