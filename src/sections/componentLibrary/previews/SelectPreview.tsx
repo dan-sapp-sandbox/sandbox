@@ -37,7 +37,7 @@ const SelectPreview = () => {
         </Select>
       </SelectGroup>
       <SelectGroup>
-        <SelectLabel>Test</SelectLabel>
+        <SelectLabel>With Separators</SelectLabel>
         <Select value={value} onValueChange={(val) => setValue(val)}>
           <SelectTrigger className="w-25 md:w-50">
             <SelectValue placeholder="Placeholder" />

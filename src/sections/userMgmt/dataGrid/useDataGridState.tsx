@@ -1,5 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import mockUsers from "./mockUsers";
+import toast from "react-hot-toast";
 import type { Table, SortingState } from "@tanstack/react-table";
 import {
   createColumnHelper,
@@ -87,6 +88,7 @@ const useDataGridState = () => {
     setSelected(undefined);
   };
   const sendNewUserInviteEmail = () => {
+    toast.success(`Sent Invite to ${newUserEmail}`);
     setNewUserEmail("");
   };
   return {

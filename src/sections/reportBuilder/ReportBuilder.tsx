@@ -27,7 +27,7 @@ const ReportBuilder = () => {
         onDragCancel={taskBoardState.handleDragCancel}
       >
         <div className="w-1/3 max-w-100 h-full overflow-y-auto scrollbar-hide">
-          <Column reportState={taskBoardState.reportState} />
+          <Column reportState={taskBoardState.reportState} setReportState={taskBoardState.setReportState} />
         </div>
       </DndContext>
       <PDFViewer style={{ width: "100%", height: "100%" }}>

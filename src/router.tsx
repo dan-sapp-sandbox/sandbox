@@ -1,5 +1,5 @@
 import { createRouter, createRootRoute, createRoute, Outlet } from "@tanstack/react-router";
-import ThemeToggle from "@/components/themeToggle";
+import { useTheme } from "./components/themeToggle/useTheme.ts";
 import App from "./App.tsx";
 import MapApp from "./sections/map/MapApp.tsx";
 import DataGrid from "./sections/userMgmt/dataGrid/DataGrid.tsx";
@@ -8,12 +8,14 @@ import DataVisualizations from "./sections/charts/DataVisualizations.tsx";
 import Viewer from "./sections/componentLibrary/Viewer.tsx";
 
 const rootRoute = createRootRoute({
-  component: () => (
-    <div className="h-screen w-screen">
-      <ThemeToggle />
-      <Outlet />
-    </div>
-  ),
+  component: () => {
+    useTheme();
+    return (
+      <div className="h-screen w-screen">
+        <Outlet />
+      </div>
+    );
+  },
 });
 
 const indexRoute = createRoute({

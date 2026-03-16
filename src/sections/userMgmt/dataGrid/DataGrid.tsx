@@ -36,8 +36,9 @@ const DataGrid = () => {
         <Card className="p-3 pt-1 ">
           <CardContent className="flex flex-row justify-between items-end p-0">
             <div>
-              <span className="text-sm text-(--text)">Email:</span>
+              <span className="text-sm text-(--text)">Filter:</span>
               <Input
+                id="user-filter"
                 className="w-60"
                 value={dataGridState.globalFilter}
                 onChange={(e) => dataGridState.setGlobalFilter(e.target.value)}
@@ -48,6 +49,7 @@ const DataGrid = () => {
               <div className="flex flex-col">
                 <span className="text-sm text-(--text)">Invite New User By Email:</span>
                 <Input
+                  id="new-user-email"
                   className="w-60"
                   value={dataGridState.newUserEmail}
                   onChange={(e) => dataGridState.setNewUserEmail(e.target.value)}

@@ -6,6 +6,7 @@ import "./index.css";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { registerSW } from "virtual:pwa-register";
 import "./polyfills";
+import { Toaster } from "react-hot-toast";
 
 const updateSW = registerSW({
   onNeedRefresh() {
@@ -21,6 +22,7 @@ updateSW();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <Toaster />
     <RouterProvider router={router} />
   </React.StrictMode>,
 );

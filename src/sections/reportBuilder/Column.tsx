@@ -2,7 +2,21 @@ import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import ReportSectionCard from "./ReportSectionCard";
 import type { ReportSection } from "./useReportBuilderState";
 
-const Column = ({ title, reportState }: { title?: string; reportState: ReportSection[] }) => {
+const Column = ({
+  title,
+  reportState,
+  setReportState,
+}: {
+  title?: string;
+  reportState: ReportSection[];
+  setReportState: (newState: ReportSection[]) => void;
+}) => {
+  const handleUpdateSection = (updatedSection: ReportSection) => {
+    const newReportState = reportState.map((section) =>
+      section.id === updatedSection.id ? { ...updatedSection, id: crypto.randomUUID() } : section,
+    );
+    setReportState(newReportState);
+  };
   return (
     <div className="bg-(--column-bg) rounded md:rounded-2xl shadow p-1 md:p-4 h-full transition-colors max-w-150">
       {title && (
@@ -12,9 +26,9 @@ const Column = ({ title, reportState }: { title?: string; reportState: ReportSec
       )}
 
       <SortableContext items={reportState.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-        <div className="space-y-2 md:space-y-3 h-full">
+        <div className="space-y-2 md:space-y-3 h-full overflow-y-auto scrollbar-hide">
           {reportState.map((section) => (
-            <ReportSectionCard key={section.id} section={section} />
+            <ReportSectionCard key={section.id} section={section} handleUpdateSection={handleUpdateSection} />
           ))}
         </div>
       </SortableContext>

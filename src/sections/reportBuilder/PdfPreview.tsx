@@ -21,9 +21,10 @@ const PdfPreview = ({ reportState }: { reportState: ReportSection[] }) => {
   const getSection = (section: ReportSection) => {
     switch (section.type) {
       case "text":
+        console.log("section.pdfContent", section.pdfContent);
         return (
           <View key={section.id} style={{ ...styles.section, ...section.styles }}>
-            <Text>{section.content}</Text>
+            {section.pdfContent}
           </View>
         );
       case "image":
