@@ -13,7 +13,7 @@ const DataVisualizations = () => {
   return (
     <div
       className={cn(
-        "rounded-2xl bg-(--card-section-text-bg) relative h-full w-full",
+        "rounded-2xl relative h-full w-full bg-(--demo-bg)",
         "flex flex-col justify-center items-center p-2 md:p-4",
       )}
     >

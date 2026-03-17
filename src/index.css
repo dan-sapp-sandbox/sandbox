@@ -33,8 +33,8 @@
 
     --divider: #bdbdbd;
 
-    --link: #2563eb;
-    --link-hover: #1e40af;
+    --link: #1441a3;
+    --link-hover: #5973ca;
 
     --card-bg: #aeaeae;
     --card-border: #303030;
@@ -62,8 +62,8 @@
     --button-secondary-bg-hover: #898989;
     --button-secondary-text: #ffffff;
 
-    --button-link: #027ac5;
-    --button-link-hover: #51a3d6;
+    --button-link: #005082;
+    --button-link-hover: #579fcb;
 
     --button-destructive-bg: #a10000;
     --button-destructive-bg-hover: #c90909;
@@ -76,9 +76,23 @@
     --select-bg-hover: #e8fdfd;
     --select-separator: #000000;
 
-    --card-section-text-bg: #e8e8e8;
-
     --column-bg: #bfbfbf;
+
+    --header-bg: #ffffff;
+
+    --profile-bg-1: #ff8800a7;
+    --profile-bg-2: #ff8800d3;
+    --profile-bg-3: #ff8800;
+
+    --section-bg-1: #f2f2f2a7;
+    --section-bg-2: #f2f2f2d3;
+    --section-bg-3: #f2f2f2;
+
+    --section-bg-reverse-1: #ff8800a7;
+    --section-bg-reverse-2: #ff8800d3;
+    --section-bg-reverse-3: #ff8800;
+
+    --demo-bg: #ffffff;
   }
 
   .dark {
@@ -112,8 +126,8 @@
 
     --divider: #6b6b6b;
 
-    --link: #3b82f6;
-    --link-hover: #60a5fa;
+    --link: #84b2fd;
+    --link-hover: #a5ceff;
 
     --card-bg: #0b0b0b;
     --card-border: #1f2937;
@@ -155,8 +169,23 @@
     --select-bg-hover: #42525c;
     --select-separator: #7e7e7e;
 
-    --card-section-text-bg: #3c3c3c;
     --column-bg: #555555;
+
+    --header-bg: #000000;
+
+    --profile-bg-1: #be6500;
+    --profile-bg-2: #be6500d3;
+    --profile-bg-3: #be6500a7;
+
+    --section-bg-1: #3b3b3b;
+    --section-bg-2: #3b3b3bd2;
+    --section-bg-3: #3b3b3baf;
+
+    --section-bg-reverse-1: #be6500;
+    --section-bg-reverse-2: #be6500d3;
+    --section-bg-reverse-3: #be6500a7;
+
+    --demo-bg: #000000;
   }
 
   html,
@@ -167,9 +196,6 @@
     line-height: 1.6;
     min-height: 100vh;
     margin: 0;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
   }
 
   h1,
@@ -200,7 +226,6 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.25s ease;
   }
 
   button:hover {

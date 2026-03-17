@@ -1,51 +1,30 @@
-import { ExternalLink, Download } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import useProfileState from "./useProfileState";
-
 const ProfileSection = () => {
-  const profileState = useProfileState();
-  const linkStyles =
-    "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover) transition-colors duration-200";
   return (
-    <Card className="w-full md:max-w-400 h-fit flex flex-row justify-between">
-      <CardContent className="h-full w-full p-0">
-        <div className="h-full w-full flex flex-row gap-6">
-          <img src="/me.png" className="h-30 md:h-60 rounded-2xl" alt="profile pic" />
-          <div className="h-full flex-1 flex flex-col justify-between overflow-hidden gap-4 p-2 lg:p-8 bg-(--card-section-text-bg) rounded-2xl">
-            <div className="flex flex-col gap-2 md:gap-6">
-              <span className="text-lg md:text-2xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
-              <div className="flex flex-col md:gap-1 text-(--text)">
-                <span className="text-sm md:text-base text-(--text)">
-                  I'm Software Engineer with 10 years of experience building interactive web applications and data
+    <div className="w-full px-2 py-12 md:py-24 lg:py-32 flex flex-row justify-center items-center bg-linear-to-b from-(--profile-bg-1) via-(--profile-bg-2) to-(--profile-bg-3)">
+      <div className="max-w-400">
+        <div className="w-full flex flex-row gap-12">
+          <img src="/me2.png" className="h-16 md:h-28 rounded-[120px]" alt="profile pic" />
+          <div className="h-full flex-1 flex flex-col justify-between overflow-hidden gap-4 rounded-2xl">
+            <div className="flex flex-col gap-3 md:gap-8">
+              <span className="text-xl md:text-4xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
+              <div className="flex flex-col md:gap-2 text-(--text)">
+                <span className="text-base md:text-xl text-(--text)">
+                  I'm a Software Engineer with 10 years of experience building interactive web applications and data
                   visualization systems.
                 </span>
-                <span className="text-sm md:text-base text-(--text)">
-                  My work focuses on React, TypeScript, and geospatial visualization.
+                <span className="text-base md:text-xl text-(--text)">
+                  My work focuses on React, TypeScript, and data visualization.
                 </span>
-                <span className="text-sm md:text-base text-(--text)">
+                <span className="text-base md:text-xl text-(--text)">
                   Below are interactive examples of application architecture, UI systems, and visualization tools I've
                   built.
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-10">
-              <div onClick={profileState.handleDownloadResume} className={linkStyles}>
-                <span className="text-xs md:text-sm">Resume</span>
-                <Download className="size-3 md:size-5" />
-              </div>
-              <div onClick={profileState.handleOpenLinkedInLink} className={linkStyles}>
-                <span className="text-xs md:text-sm">LinkedIn</span>
-                <ExternalLink className="size-3 md:size-5" />
-              </div>
-              <div onClick={profileState.handleOpenGithubLink} className={linkStyles}>
-                <span className="text-xs md:text-sm">GitHub</span>
-                <ExternalLink className="size-3 md:size-5" />
-              </div>
-            </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

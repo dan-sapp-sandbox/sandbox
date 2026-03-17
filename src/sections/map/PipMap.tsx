@@ -55,7 +55,7 @@ const PipMap = ({ children, pipState }: { children?: ReactNode | ReactNode[]; pi
       <div className="z-999 w-full h-full relative pointer-events-none">
         <div className="absolute top-0 w-full flex flex-row justify-center">
           <div
-            className="pointer-events-auto cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition rounded bg-black/70 p-1"
+            className="pointer-events-auto cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 rounded bg-black/70 p-1"
             {...listeners}
             {...attributes}
           >

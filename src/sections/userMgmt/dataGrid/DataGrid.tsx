@@ -99,7 +99,7 @@ const DataGrid = () => {
                 <tr
                   key={row.id}
                   onClick={() => dataGridState.handleSelect(index)}
-                  className="hover:bg-(--table-row-hover) transition-colors cursor-pointer"
+                  className="hover:bg-(--table-row-hover) cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="text-(--text) border-b p-px md:px-4 md:py-2 text-xs md:text-base">
