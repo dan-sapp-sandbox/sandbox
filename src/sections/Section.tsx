@@ -62,7 +62,7 @@ const Section = ({
     >
       <div
         className={cn(
-          `h-full w-full flex flex-col justify-between gap-16 max-w-420 p-4 lg:p-16`,
+          `h-full w-full flex flex-col justify-between gap-16 max-w-450 p-4 lg:p-16`,
           isReversed ? "lg:flex-row-reverse" : "lg:flex-row",
         )}
       >
