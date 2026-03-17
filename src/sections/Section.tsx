@@ -62,7 +62,7 @@ const Section = ({
     >
       <div
         className={cn(
-          `h-full w-full flex flex-col justify-between gap-6 lg:gap-8 max-w-400 p-4 lg:p-12`,
+          `h-full w-full flex flex-col justify-between gap-16 max-w-420 p-4 lg:p-12`,
           isReversed ? "lg:flex-row-reverse" : "lg:flex-row",
         )}
       >
@@ -71,11 +71,11 @@ const Section = ({
             <span className="text-lg lg:text-3xl font-bold">{title}</span>
           </div>
           <div className="flex flex-col justify-between gap-2 lg:gap-4 h-full">
-            <div className="flex flex-col gap-2">
-              <span className="text-xs lg:text-sm text-muted-foreground">{description}</span>
-              <div className="flex flex-col lg:gap-2">
-                <span className="text-sm lg:text-sm font-bold">Features:</span>
-                <ul className="ml-4 lg:ml-6 list-disc text-xs lg:text-sm">
+            <div className="flex flex-col gap-8">
+              <span className="text-sm lg:text-lg text-muted-foreground">{description}</span>
+              <div className="flex flex-col">
+                <span className="text-base lg:text-lg font-bold">Features:</span>
+                <ul className="ml-4 lg:ml-6 list-disc text-sm lg:text-base">
                   {features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
@@ -83,12 +83,12 @@ const Section = ({
               </div>
               {usedPreviously?.length && (
                 <div className="flex flex-col lg:gap-2">
-                  <span className="text-sm lg:text-sm font-bold">Production Experience:</span>
+                  <span className="text-base lg:text-lg font-bold">Production Experience:</span>
                   <ul className="ml-4 lg:ml-6 list-disc text-xs lg:text-sm">
                     {usedPreviously.map((use, i) => (
                       <li key={i}>
-                        <span className="text-sm lg:text-sm font-bold">{use.where}: </span>
-                        <span className="text-xs lg:text-sm">{use.what}</span>
+                        <span className="text-sm lg:text-base font-bold">{use.where}: </span>
+                        <span className="text-sm lg:text-base">{use.what}</span>
                       </li>
                     ))}
                   </ul>
@@ -104,7 +104,7 @@ const Section = ({
         <div
           ref={ref}
           style={{ display: isLg ? "flex" : "none" }}
-          className="p-8 h-full flex-1 flex flex-col lg:flex-row justify-between bg-(--demo-bg) rounded-xl"
+          className="p-6 h-full flex-1 flex flex-col lg:flex-row justify-between bg-(--demo-bg) rounded-lg overflow-hidden"
         >
           {visible && isLg && <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>}
         </div>

@@ -8,11 +8,11 @@ const Viewer = () => {
   return (
     <div
       className={cn(
-        "p-3 h-full min-h-100 w-full flex flex-row justify-center items-center",
+        "p-3 h-full w-full flex flex-row justify-center items-center",
         "bg-(--demo-bg) rounded-2xl text-(--card-foreground)",
       )}
     >
-      <div className="h-full w-30 2xl:w-50 flex flex-col gap-1 border-r">
+      <div className="h-full w-50 flex flex-col gap-1 border-r">
         <span className="text-sm xl:text-lg font-bold">Components</span>
         <div className="overflow-y-scroll scrollbar-hide">
           <div className="flex flex-col gap-1">

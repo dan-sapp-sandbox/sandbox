@@ -20,8 +20,8 @@ const Header = () => {
   };
   const linkStyles = "flex flex-row items-center gap-2 cursor-pointer text-(--link) hover:text-(--link-hover)";
   return (
-    <div className="px-4 h-14 w-full flex flex-row justify-between items-center bg-(--header-bg)">
-      <div className="flex flex-row items-center gap-10">
+    <div className="px-8 h-14 w-full flex flex-row justify-between items-center bg-(--header-bg)">
+      <div className="flex flex-row items-center gap-16">
         <div onClick={handleDownloadResume} className={linkStyles}>
           <span className="text-xs md:text-base">Resume</span>
           <Download className="size-3 md:size-5" />
