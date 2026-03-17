@@ -6,6 +6,10 @@ interface ToolbarProps {
   editor: Editor;
 }
 
+// TODO: font size
+// TODO: font color
+// TODO: handle page breaks better
+
 const Toolbar = ({ editor }: ToolbarProps) => {
   const activeStates = useMemo(() => {
     return {
@@ -15,7 +19,8 @@ const Toolbar = ({ editor }: ToolbarProps) => {
       heading: isBlockActive(editor, "heading"),
       list: isBlockActive(editor, "list-item"),
     };
-  }, [editor.selection, editor]); // Recompute when selection changes
+  }, [editor.selection, editor]);
+
   const handleClickMark = (e: MouseEvent, mark: "bold" | "italic" | "underline") => {
     e.preventDefault();
     toggleMark(editor, mark);
@@ -30,7 +35,6 @@ const Toolbar = ({ editor }: ToolbarProps) => {
 
   return (
     <div className="flex gap-1 bg-zinc-400">
-      {/* Marks */}
       <button className={buttonClass(activeStates.bold)} onMouseDown={(e) => handleClickMark(e, "bold")}>
         B
       </button>
@@ -40,8 +44,6 @@ const Toolbar = ({ editor }: ToolbarProps) => {
       <button className={buttonClass(activeStates.underline)} onMouseDown={(e) => handleClickMark(e, "underline")}>
         U
       </button>
-
-      {/* Blocks */}
       <button className={buttonClass(activeStates.heading)} onMouseDown={(e) => handleClickBlock(e, "heading")}>
         H
       </button>

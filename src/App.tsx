@@ -1,5 +1,8 @@
 import Sections from "./sections";
 
+// TODO: chatbot
+// TODO: place for theme toggle
+
 const App = () => {
   return (
     <div className="h-full w-full flex flex-col gap-4 md:gap-6 overflow-y-scroll scrollbar-hide bg-linear-to-br from-slate-900 via-blue-950 to-black">

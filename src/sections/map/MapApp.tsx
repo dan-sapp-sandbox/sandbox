@@ -13,6 +13,13 @@ import Layers from "./Layers";
 import useMapState from "./useMapState";
 import { CameraContext } from "./types";
 
+// TODO: draw mode
+// TODO: icons
+// TODO: resize widgets
+// TODO: compass
+// TODO: mobile dnd
+// TODO: snapshots
+
 const MapApp = () => {
   const mapState = useMapState();
   const {
