@@ -47,7 +47,7 @@ const MapApp = () => {
     }),
   );
   return (
-    <div ref={containerRef} className="relative h-[50vh] lg:h-full w-full overflow-hidden cursor-pointer">
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden cursor-pointer">
       <DndContext
         sensors={sensors}
         modifiers={[restrictToParentElement]}
