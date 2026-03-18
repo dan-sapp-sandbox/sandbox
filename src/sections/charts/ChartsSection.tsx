@@ -12,6 +12,8 @@ const ChartsSection = () => {
       "Client-side data visualization system for exploring datasets through multiple chart types and dynamic data import.",
     features: [
       "Multiple Chart Types: Line, bar, and other common visualizations",
+      "Zoom and Pan",
+      "Hover for Data Tooltip",
       "Reusable Chart Components",
       "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
     ],

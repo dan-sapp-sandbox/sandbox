@@ -1,7 +1,9 @@
-import ThemeToggle from "./components/themeToggle";
+import type { Dispatch, SetStateAction } from "react";
+import ThemeToggle from "@/components/themeToggle";
+import type { Theme } from "@/components/themeToggle/useTheme";
 import { ExternalLink, Download } from "lucide-react";
 
-const Header = () => {
+const Header = ({ theme, setTheme }: { theme: string; setTheme: Dispatch<SetStateAction<Theme>> }) => {
   const githubURL = "https://github.com/dan-sapp-sandbox";
   const linkedInURL = "https://www.linkedin.com/in/dan-sapp-744145b6/";
   const handleOpenGithubLink = () => {
@@ -35,7 +37,7 @@ const Header = () => {
           <ExternalLink className="size-3 md:size-5" />
         </div>
       </div>
-      <ThemeToggle />
+      <ThemeToggle theme={theme} setTheme={setTheme} />
     </div>
   );
 };

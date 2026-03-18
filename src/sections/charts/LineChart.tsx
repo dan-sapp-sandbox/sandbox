@@ -1,35 +1,22 @@
-import React from "react";
+import { useMemo } from "react";
 import { Line } from "react-chartjs-2";
-import type { ChartData, ChartOptions } from "chart.js";
+import type { ChartData, Point, ChartOptions } from "chart.js";
+import { useTheme } from "@/components/themeToggle/useTheme";
+import { lightOptions, darkOptions } from "./utils";
 
-const data: ChartData<"line"> = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May"],
-  datasets: [
-    {
-      label: "Sales",
-      data: [30, 45, 60, 50, 70],
-      borderColor: "rgb(75, 192, 192)",
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      tension: 0.4,
+const LineChart = ({ data, title }: { data: ChartData<"line", (number | Point | null)[], unknown>; title: string }) => {
+  const { theme } = useTheme();
+  const activeOptions: ChartOptions<"line"> = {
+    ...(theme === "dark" ? darkOptions : lightOptions),
+    plugins: {
+      ...(theme === "dark" ? darkOptions.plugins : lightOptions.plugins),
+      title: {
+        ...(theme === "dark" ? darkOptions.plugins.title : lightOptions.plugins.title),
+        text: title,
+      },
     },
-  ],
-};
-
-const options: ChartOptions<"line"> = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Monthly Sales",
-    },
-  },
-};
-
-const LineChart: React.FC = () => {
-  return <Line data={data} options={options} />;
+  };
+  return <Line data={data} options={activeOptions} />;
 };
 
 export default LineChart;

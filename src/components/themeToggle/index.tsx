@@ -1,10 +1,9 @@
-import { useTheme } from "@/components/themeToggle/useTheme";
+import type { Dispatch, SetStateAction } from "react";
 import { cn } from "@/lib/utils";
 import { Sun, Moon } from "lucide-react";
+import type { Theme } from "@/components/themeToggle/useTheme";
 
-const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
-
+const ThemeToggle = ({ theme, setTheme }: { theme: string; setTheme: Dispatch<SetStateAction<Theme>> }) => {
   return (
     <div className={cn("flex items-center gap-6 rounded-2xl", "px-2 md:px-4 py-1 md:py-2 text-xs md:text-sm")}>
       <Sun

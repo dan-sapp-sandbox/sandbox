@@ -1,40 +1,44 @@
 import useChartState from "./useChartState";
 import LineChart from "./LineChart";
-import BarChart from "./BarChart";
-import PieChart from "./PieChart";
-import DoughnutChart from "./DoughnutChart";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import BarChart from "./BarChart";
+// import PieChart from "./PieChart";
+// import DoughnutChart from "./DoughnutChart";
 import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const DataVisualizations = () => {
   const chartState = useChartState();
-  // TODO: replace sample data (OONI)
 
   return (
     <div
       className={cn(
         "rounded-2xl relative h-full w-full bg-(--demo-bg)",
-        "flex flex-col justify-center items-center p-2 md:p-4",
+        "flex flex-row justify-between gap-8 items-center",
       )}
     >
-      <div className="absolute top-4 right-4">
-        <Select value={chartState.activeChart} onValueChange={(value) => chartState.setActiveChart(value)}>
-          <SelectTrigger className="w-25 md:w-50">
-            <SelectValue placeholder="Chart Options" />
-          </SelectTrigger>
-          <SelectContent>
-            {chartState.chartOptions.map((option) => (
-              <SelectItem key={option.id} value={option.id}>
-                {option.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <div className="w-50 p-4 flex flex-col gap-2">
+        <div className="text-(--text)">Data Sets</div>
+        <Separator />
+        <div className="flex flex-col gap-2">
+          {chartState.chartConfigs.map((config) => (
+            <div
+              key={config.title}
+              className="text-(--text) cursor-pointer hover:text-blue-500"
+              onClick={() => chartState.changeChart(config)}
+            >
+              {config.title}
+            </div>
+          ))}
+        </div>
       </div>
-      {chartState.activeChart === "bar" && <BarChart />}
-      {chartState.activeChart === "line" && <LineChart />}
-      {chartState.activeChart === "pie" && <PieChart />}
-      {chartState.activeChart === "doughnut" && <DoughnutChart />}
+      <div className="h-full flex-1">
+        {/* {chartState.activeChart === "bar" && <BarChart data={chartState.data} />} */}
+        {chartState.data && chartState.activeChart === "line" && (
+          <LineChart data={chartState.data} title={chartState.title} />
+        )}
+        {/* {chartState.activeChart === "pie" && <PieChart data={chartState.data} />}
+        {chartState.activeChart === "doughnut" && <DoughnutChart data={chartState.data} />} */}
+      </div>
     </div>
   );
 };

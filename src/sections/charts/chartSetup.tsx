@@ -9,6 +9,20 @@ import {
   Legend,
   BarElement,
   ArcElement,
+  Filler,
 } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend);
+ChartJS.register(
+  Filler,
+  zoomPlugin,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+);
