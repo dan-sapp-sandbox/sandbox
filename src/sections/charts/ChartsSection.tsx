@@ -1,8 +1,9 @@
+import type { Theme } from "@/components/themeToggle/useTheme";
 import Section from "../Section";
 import DataVisualizations from "./DataVisualizations";
 import { useResizeObserver } from "@/components/useResizeObserver";
 
-const ChartsSection = () => {
+const ChartsSection = ({ theme }: { theme: Theme }) => {
   const { ref, size } = useResizeObserver();
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts",
@@ -21,12 +22,11 @@ const ChartsSection = () => {
       { where: "EarthDaily Federal", what: "Network measurement analytics charts" },
       { where: "Enterprise Applications", what: "Sales and operational dashboards" },
     ],
-    isReversed: true,
   };
 
   return (
     <Section resizeRef={ref} config={config}>
-      <DataVisualizations key={`${size.width}-${size.height}`} />
+      <DataVisualizations key={`${theme}-${size.width}-${size.height}`} />
     </Section>
   );
 };

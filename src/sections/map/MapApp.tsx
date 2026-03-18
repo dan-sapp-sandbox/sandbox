@@ -19,6 +19,8 @@ import { CameraContext } from "./types";
 // TODO: compass
 // TODO: mobile dnd
 // TODO: snapshots
+// TODO: 2nd pip
+// TODO: right click context menu
 
 const MapApp = () => {
   const mapState = useMapState();

@@ -19,6 +19,7 @@ export const darkOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
+      display: false,
       labels: {
         color: "#ffffff",
       },
@@ -77,6 +78,7 @@ export const lightOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
+      display: false,
       labels: {
         color: "#000000",
       },
