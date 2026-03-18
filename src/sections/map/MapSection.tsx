@@ -7,7 +7,7 @@ const MapSection = () => {
     demoURL: "/map",
     title: "Geospatial Visualization Tool",
     description:
-      "A tool used by Military Geospatial Intelligence Analysts to create content for reports regarding their Area of Responsibility.",
+      "A tool used by Military Geospatial Intelligence Analysts to create content for reports regarding their Area of Interest.",
     features: [
       "Multi-map synchronization: Main map, overview map, and picture-in-picture map share camera state",
       "Draggable map widgets with dynamic layout",
