@@ -106,7 +106,7 @@ const chartConfigs: IChartConfig[] = [
 ];
 
 const useChartState = () => {
-  //TODO: enable choosing multiple data sets at once
+  //TODO: enable choosing multiple datasets at once
   //TODO: enable changing to relevant chart types
   //TODO: enable show/hide legend
 

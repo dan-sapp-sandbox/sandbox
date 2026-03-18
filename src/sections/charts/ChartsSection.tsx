@@ -9,7 +9,7 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts",
     demoURL: "/data-visualization",
     title: "Data Visualization",
-    description: "Tool for visualizing data sets",
+    description: "Tool for visualizing datasets",
     features: [
       "Line Chart",
       "Zoom and Pan",
