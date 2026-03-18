@@ -6,15 +6,15 @@ const ReportBuilderSection = () => {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/reportBuilder",
     demoURL: "/report-builder",
     title: "Report Builder",
-    description:
-      "Interactive single-column report builder with live PDF preview. Drag-and-drop to reorder report sections and instantly see the updated PDF.",
+    description: "Used in conjuction with other tools to generate a customizable report with a live pdf preview.",
     features: [
-      "Drag & Drop: Reorder sections within the column",
+      "Expand Sections to use Rich Text Editor",
+      "Sections Drag & Drop: Reorder sections",
       "Live PDF Preview: PDF updates instantly as you reorder sections",
     ],
     usedPreviously: [
       { where: "EarthDaily Federal", what: "Report Builder" },
-      { where: "Stellar", what: "Scheduling workflow management" },
+      { where: "Stellar", what: "Boat Rental Scheduling App" },
     ],
     isReversed: true,
   };

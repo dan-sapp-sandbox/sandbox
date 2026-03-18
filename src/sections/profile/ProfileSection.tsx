@@ -16,15 +16,14 @@ const ProfileSection = () => {
               <span className="text-xl md:text-4xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
               <div className="flex flex-col md:gap-2 text-(--text)">
                 <span className="text-base md:text-xl text-(--text)">
-                  I'm a Software Engineer with 10 years of experience building interactive web applications and data
-                  visualization systems.
+                  I'm a Software Engineer with 10 years of experience building web applications and data visualization
+                  systems.
                 </span>
                 <span className="text-base md:text-xl text-(--text)">
                   My work focuses on React, TypeScript, and data visualization.
                 </span>
                 <span className="text-base md:text-xl text-(--text)">
-                  Below are interactive examples of application architecture, UI systems, and visualization tools I've
-                  built.
+                  Below are interactive examples of UI systems, and visualization tools I've built.
                 </span>
               </div>
             </div>

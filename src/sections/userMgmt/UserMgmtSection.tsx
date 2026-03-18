@@ -6,8 +6,7 @@ const UserMgmtSection = () => {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/userMgmt",
     demoURL: "/user-management",
     title: "User Management Dashboard",
-    description:
-      "Administrative interface for managing application users, featuring sortable and filterable data tables, profile editing, and account lifecycle management.",
+    description: "Administrative interface for managing application users.",
 
     features: [
       "Interactive Data Table: Client-side sorting and global filtering using TanStack Table",

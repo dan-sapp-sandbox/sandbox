@@ -8,19 +8,17 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
   const config = {
     githubURL: "https://github.com/dan-sapp-sandbox/sandbox/tree/main/src/sections/charts",
     demoURL: "/data-visualization",
-    title: "Interactive Data Visualization",
-    description:
-      "Client-side data visualization system for exploring datasets through multiple chart types and dynamic data import.",
+    title: "Data Visualization",
+    description: "Tool for visualizing data sets",
     features: [
-      "Multiple Chart Types: Line, bar, and other common visualizations",
+      "Line Chart",
       "Zoom and Pan",
       "Hover for Data Tooltip",
-      "Reusable Chart Components",
-      "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
+      // "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
     ],
     usedPreviously: [
-      { where: "EarthDaily Federal", what: "Network measurement analytics charts" },
-      { where: "Enterprise Applications", what: "Sales and operational dashboards" },
+      { where: "EarthDaily Federal", what: "Network Availability Analytics" },
+      { where: "Enterprise Applications", what: "Sales and Operational Dashboards" },
     ],
   };
 
