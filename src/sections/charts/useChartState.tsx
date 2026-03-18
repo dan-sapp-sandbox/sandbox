@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import type { ChartData, Point } from "chart.js";
 import unemploymentData from "./UNRATE.csv?raw";
-import housingData from "./MEHOINUSA672N.csv?raw";
-import salaryData from "./ASPUS.csv?raw";
+import salaryData from "./MEHOINUSA672N.csv?raw";
+import housingData from "./ASPUS.csv?raw";
 
 const formatDate = (isoDate: string) => {
   const date = new Date(isoDate);
@@ -42,7 +42,7 @@ const convertUnemploymentData = (): ChartData<"line"> => {
 
 interface HousingRecord {
   observation_date: string;
-  MEHOINUSA672N: number;
+  ASPUS: number;
 }
 const convertHousingData = (): ChartData<"line"> => {
   const jsonData = Papa.parse<HousingRecord>(housingData, {
@@ -56,7 +56,7 @@ const convertHousingData = (): ChartData<"line"> => {
     datasets: [
       {
         label: "Average House Sales Price ($)",
-        data: jsonData.map((row) => row.MEHOINUSA672N),
+        data: jsonData.map((row) => row.ASPUS),
         borderColor: "#3ba836",
         backgroundColor: "rgba(59, 168, 54, 0.3)",
         fill: true,
@@ -69,7 +69,7 @@ const convertHousingData = (): ChartData<"line"> => {
 
 interface SalaryRecord {
   observation_date: string;
-  ASPUS: number;
+  MEHOINUSA672N: number;
 }
 const convertSalaryData = (): ChartData<"line"> => {
   const jsonData = Papa.parse<SalaryRecord>(salaryData, {
@@ -83,7 +83,7 @@ const convertSalaryData = (): ChartData<"line"> => {
     datasets: [
       {
         label: "Median Household Income ($)",
-        data: jsonData.map((row) => row.ASPUS),
+        data: jsonData.map((row) => row.MEHOINUSA672N),
         borderColor: "#8437a6",
         backgroundColor: "rgba(132, 55, 166, 0.3)",
         fill: true,
