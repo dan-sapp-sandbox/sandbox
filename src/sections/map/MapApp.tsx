@@ -38,6 +38,7 @@ const MapApp = () => {
     setShowPipMap,
     widgetState,
     containerRef,
+    takeScreenshot,
   } = mapState;
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -60,7 +61,7 @@ const MapApp = () => {
           <MainMap>
             <PipViewRectangle show={showPipMap} />
             <Layers layer={layer} />
-            <CameraControls />
+            <CameraControls takeScreenshot={takeScreenshot} />
           </MainMap>
           {showOverviewMap && (
             <OverviewMap overviewState={widgetState.overview}>

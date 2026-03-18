@@ -1,13 +1,13 @@
 import { useCesium } from "resium";
 import { Cartesian3 } from "cesium";
 import { Button } from "@/components/ui/button";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Camera } from "lucide-react";
 import useLocalStorage from "use-local-storage";
 import { useContext } from "react";
 import { CameraContext } from "./types";
 import { defaultMainView, defaultPipView } from "./useMapState";
 
-const CameraControls = () => {
+const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
   const [_initMainView, setInitMainView] = useLocalStorage("main-cam-init", defaultMainView);
   const [_initPipView, setInitPipView] = useLocalStorage("pip-cam-init", defaultPipView);
   const { viewer } = useCesium();
@@ -47,6 +47,9 @@ const CameraControls = () => {
       </Button>
       <Button size="default" onClick={reset}>
         Reset
+      </Button>
+      <Button size="default" onClick={takeScreenshot}>
+        <Camera />
       </Button>
     </div>
   );

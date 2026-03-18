@@ -13,6 +13,7 @@ const MapSection = () => {
       "Draggable map widgets with dynamic layout",
       "Camera bounds visualization between map views",
       "Configurable base layer",
+      "Snapshot captures map elements for report ready image",
       // "Interactive drawing tools for points, lines, and polygons (WIP)",
       // "GeoJSON import/export pipeline (WIP)",
       // "Map icon placement system (WIP)",
