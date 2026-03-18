@@ -9,7 +9,7 @@ interface UnemploymentRecord {
   UNRATE: number;
 }
 
-export const jsonToLineChartData = (data: UnemploymentRecord[]): ChartData<"line"> => {
+export const jsonToUnemploymentData = (data: UnemploymentRecord[]): ChartData<"line"> => {
   return {
     labels: data.map((row) => row.observation_date),
     datasets: [
@@ -34,12 +34,6 @@ interface IChartConfig {
 const chartConfigs: IChartConfig[] = [{ csv: unemploymentData, title: "Federal Unemployment", chartType: "line" }];
 
 const useChartState = () => {
-  const chartOptions = [
-    { id: "bar", name: "Bar" },
-    { id: "line", name: "Line" },
-    { id: "pie", name: "Pie" },
-    { id: "doughnut", name: "Doughnut" },
-  ];
   const [title, setTitle] = useState(chartConfigs[0].title);
   const [activeChart, setActiveChart] = useState("line");
   const [data, setData] = useState<ChartData<"line", (number | Point | null)[], unknown>>();
@@ -50,7 +44,7 @@ const useChartState = () => {
       skipEmptyLines: true,
       dynamicTyping: true,
     }).data;
-    const chartData = jsonToLineChartData(jsonData);
+    const chartData = jsonToUnemploymentData(jsonData);
     setData(chartData);
     setActiveChart(chartConfig.chartType);
     setTitle(chartConfig.title);
@@ -60,7 +54,7 @@ const useChartState = () => {
     changeChart(chartConfigs[0]);
   }, []);
 
-  return { activeChart, setActiveChart, chartOptions, data, title, chartConfigs, changeChart };
+  return { activeChart, setActiveChart, data, title, chartConfigs, changeChart };
 };
 
 export default useChartState;
