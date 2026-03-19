@@ -13,7 +13,6 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
     features: [
       "Line Chart",
       "Zoom and Pan",
-      "Hover for Data Tooltip",
       "Selecting multiple timeseries datasets normalizes them for comparison",
       // "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
     ],
