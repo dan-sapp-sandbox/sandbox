@@ -3,7 +3,15 @@ import type { ChartData, Point, ChartOptions } from "chart.js";
 import { useTheme } from "@/components/themeToggle/useTheme";
 import { lightOptions, darkOptions } from "./utils";
 
-const LineChart = ({ data, title }: { data: ChartData<"line", (number | Point | null)[], unknown>; title: string }) => {
+const LineChart = ({
+  data,
+  title,
+  dataType,
+}: {
+  data: ChartData<"line", (number | Point | null)[], unknown>;
+  title: string;
+  dataType: string;
+}) => {
   const { theme } = useTheme();
   const activeOptions: ChartOptions<"line"> = {
     ...(theme === "dark" ? darkOptions : lightOptions),
@@ -12,6 +20,27 @@ const LineChart = ({ data, title }: { data: ChartData<"line", (number | Point | 
       title: {
         ...(theme === "dark" ? darkOptions.plugins.title : lightOptions.plugins.title),
         text: title,
+      },
+    },
+    scales: {
+      ...(theme === "dark" ? darkOptions.scales : lightOptions.scales),
+      y: {
+        ...(theme === "dark" ? darkOptions.scales.y : lightOptions.scales.y),
+        ticks: {
+          ...(theme === "dark" ? darkOptions.scales.y.ticks : lightOptions.scales.y.ticks),
+          callback: (value: string | number) => {
+            if (dataType === "currency") {
+              const isBig = Number(value) > 1000;
+              return new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: isBig ? 0 : 2,
+              }).format(Number(value));
+            } else {
+              return `${value}%`;
+            }
+          },
+        },
       },
     },
   };

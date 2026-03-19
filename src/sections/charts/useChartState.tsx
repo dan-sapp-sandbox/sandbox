@@ -2,121 +2,47 @@ import "./chartSetup";
 import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import type { ChartData, Point } from "chart.js";
-import unemploymentData from "./UNRATE.csv?raw";
-import salaryData from "./MEHOINUSA672N.csv?raw";
-import housingData from "./ASPUS.csv?raw";
-import mcdonaldsData from "./MCDONALDS.csv?raw";
+import unemploymentData from "./data/UNRATE.csv?raw";
+import salaryData from "./data/MEHOINUSA672N.csv?raw";
+import housingData from "./data/ASPUS.csv?raw";
+import mcdonaldsData from "./data/MCDONALDS.csv?raw";
+import inflationData from "./data/INFLATION.csv?raw";
+import fedRateData from "./data/FEDRATE.csv?raw";
+import gasData from "./data/GAS.csv?raw";
 
 const formatDate = (isoDate: string) => {
   const date = new Date(isoDate);
-  const month = date.toLocaleString("en-US", { month: "short" });
-  const year = date.getFullYear();
-  return `${month} ${year}`;
+  const year = date.getUTCFullYear();
+  return year;
 };
 
-interface UnemploymentRecord {
-  observation_date: string;
-  UNRATE: number;
-}
-const convertUnemploymentData = (): ChartData<"line"> => {
-  const jsonData = Papa.parse<UnemploymentRecord>(unemploymentData, {
-    header: true,
-    skipEmptyLines: true,
-    dynamicTyping: true,
-  }).data;
-  const labels = jsonData.map((row) => formatDate(row.observation_date));
-  return {
-    labels,
-    datasets: [
-      {
-        label: "Unemployment Rate (%)",
-        data: jsonData.map((row) => row.UNRATE),
-        borderColor: "#3b82f6",
-        backgroundColor: "rgba(59, 130, 246, 0.3)",
-        fill: true,
-        tension: 0.2, // smooth line
-        pointRadius: 1,
-      },
-    ],
-  };
-};
-
-interface HousingRecord {
-  observation_date: string;
-  ASPUS: number;
-}
-const convertHousingData = (): ChartData<"line"> => {
-  const jsonData = Papa.parse<HousingRecord>(housingData, {
-    header: true,
-    skipEmptyLines: true,
-    dynamicTyping: true,
-  }).data;
-  const labels = jsonData.map((row) => formatDate(row.observation_date));
-  return {
-    labels,
-    datasets: [
-      {
-        label: "Average House Sales Price ($)",
-        data: jsonData.map((row) => row.ASPUS),
-        borderColor: "#3ba836",
-        backgroundColor: "rgba(59, 168, 54, 0.3)",
-        fill: true,
-        tension: 0.2, // smooth line
-        pointRadius: 1,
-      },
-    ],
-  };
-};
-
-interface SalaryRecord {
-  observation_date: string;
-  MEHOINUSA672N: number;
-}
-const convertSalaryData = (): ChartData<"line"> => {
-  const jsonData = Papa.parse<SalaryRecord>(salaryData, {
-    header: true,
-    skipEmptyLines: true,
-    dynamicTyping: true,
-  }).data;
-  const labels = jsonData.map((row) => formatDate(row.observation_date));
-  return {
-    labels,
-    datasets: [
-      {
-        label: "Median Household Income ($)",
-        data: jsonData.map((row) => row.MEHOINUSA672N),
-        borderColor: "#8437a6",
-        backgroundColor: "rgba(132, 55, 166, 0.3)",
-        fill: true,
-        tension: 0.2, // smooth line
-        pointRadius: 1,
-      },
-    ],
-  };
-};
-
-interface McDonaldsRecord {
+interface DataRecord {
   date: string;
-  price: number;
+  value: number;
 }
-const convertMcDonaldsData = (): ChartData<"line"> => {
-  const jsonData = Papa.parse<McDonaldsRecord>(mcdonaldsData, {
+
+const convertChartData = (normalize: boolean, chartConfig: IChartConfig): ChartData<"line"> => {
+  const jsonData = Papa.parse<DataRecord>(chartConfig.data, {
     header: true,
     skipEmptyLines: true,
     dynamicTyping: true,
   }).data;
   const labels = jsonData.map((row) => formatDate(row.date));
+  const firstValue = jsonData[0].value;
+  const normalizeValue = (val: number) => {
+    return (100 * (val - firstValue)) / firstValue;
+  };
   return {
     labels,
     datasets: [
       {
-        label: "Median Household Income ($)",
-        data: jsonData.map((row) => row.price),
-        borderColor: "#8437a6",
-        backgroundColor: "rgba(132, 55, 166, 0.3)",
+        // label: "Cost of McDonald's Cheeseburger ($)",
+        data: jsonData.map((row) => (normalize ? normalizeValue(row.value) : row.value)),
+        borderColor: chartConfig.color,
+        backgroundColor: `${chartConfig.color}45`,
         fill: true,
-        tension: 0.2, // smooth line
-        pointRadius: 1,
+        tension: 0.2,
+        pointRadius: 2,
       },
     ],
   };
@@ -125,38 +51,124 @@ const convertMcDonaldsData = (): ChartData<"line"> => {
 interface IChartConfig {
   title: string;
   chartType: string;
-  prepUtil: () => ChartData<any>;
+  data: string;
+  color: string;
+  dataType: string;
 }
 const chartConfigs: IChartConfig[] = [
-  { title: "Federal Unemployment", chartType: "line", prepUtil: convertUnemploymentData },
-  { title: "Average House Sales Price", chartType: "line", prepUtil: convertHousingData },
-  { title: "Median Household Income", chartType: "line", prepUtil: convertSalaryData },
-  { title: "Cost of McDonald's Cheeseburger", chartType: "line", prepUtil: convertMcDonaldsData },
+  {
+    title: "Average House Sales Price",
+    chartType: "line",
+    data: housingData,
+    color: "#3ba836",
+    dataType: "currency",
+  },
+  {
+    title: "Median Household Income",
+    chartType: "line",
+    data: salaryData,
+    color: "#ab38e0",
+    dataType: "currency",
+  },
+  {
+    title: "Cost of McDonald's Cheeseburger",
+    chartType: "line",
+    data: mcdonaldsData,
+    color: "#52a6eb",
+    dataType: "currency",
+  },
+  {
+    title: "Federal Unemployment",
+    chartType: "line",
+    data: unemploymentData,
+    color: "#f5c242",
+    dataType: "percentage",
+  },
+  {
+    title: "Inflation",
+    chartType: "line",
+    data: inflationData,
+    color: "#f70511",
+    dataType: "percentage",
+  },
+  {
+    title: "Fed Rate",
+    chartType: "line",
+    data: fedRateData,
+    color: "#ff00b3",
+    dataType: "percentage",
+  },
+  {
+    title: "Gas Prices",
+    chartType: "line",
+    data: gasData,
+    color: "#f57a00",
+    dataType: "percentage",
+  },
 ];
 
 const useChartState = () => {
-  //TODO: enable choosing multiple datasets at once
-  //TODO: enable changing to relevant chart types
-  //TODO: enable show/hide legend
-
-  //TODO: when multiple sources, normalize data
-
   const [title, setTitle] = useState(chartConfigs[0].title);
-  const [activeChart, setActiveChart] = useState("line");
+  const [dataType, setDataType] = useState<string>("currency");
+  const [activeCharts, setActiveCharts] = useState<string[]>([]);
   const [data, setData] = useState<ChartData<"line", (number | Point | null)[], unknown>>();
 
   const changeChart = (chartConfig: IChartConfig) => {
-    const chartData = chartConfig.prepUtil();
-    setData(chartData);
-    setActiveChart(chartConfig.chartType);
-    setTitle(chartConfig.title);
+    const chartIsActive = activeCharts.some((title) => title === chartConfig.title);
+    if (chartIsActive) {
+      const newCharts = activeCharts.filter((title) => title !== chartConfig.title);
+      if (!newCharts.length) return;
+      setActiveCharts(newCharts);
+      if (newCharts.length === 1) {
+        const matchingChartConfig = chartConfigs.find((config) => config.title === newCharts[0]);
+        if (!matchingChartConfig) return;
+        setTitle(matchingChartConfig.title);
+        setDataType(matchingChartConfig.dataType);
+      } else {
+        setTitle("Normalized Timeseries Analysis");
+        setDataType("percentage");
+      }
+      buildChartData(newCharts);
+    } else {
+      const newCharts = [...activeCharts, chartConfig.title];
+      setActiveCharts(newCharts);
+      if (newCharts.length === 1) {
+        const matchingChartConfig = chartConfigs.find((config) => config.title === newCharts[0]);
+        if (!matchingChartConfig) return;
+        setTitle(matchingChartConfig.title);
+        setDataType(matchingChartConfig.dataType);
+      } else {
+        setTitle("Normalized Timeseries Analysis");
+        setDataType("percentage");
+      }
+      buildChartData(newCharts);
+    }
+  };
+
+  const buildChartData = (newCharts: string[]) => {
+    const chartDataArray = newCharts.map((title) => {
+      const matchingConfig = chartConfigs.find((config) => config.title === title);
+      if (!matchingConfig) return;
+      return convertChartData(newCharts.length > 1, matchingConfig);
+    });
+    const resolvedChartData = chartDataArray.reduce(
+      (acc, chartConfig, index) => {
+        if (!chartConfig || !acc) return acc;
+        return {
+          labels: index === 0 ? chartConfig.labels : acc.labels,
+          datasets: [...acc.datasets, ...chartConfig.datasets],
+        };
+      },
+      { labels: [], datasets: [] },
+    );
+    setData(resolvedChartData);
   };
 
   useEffect(() => {
     changeChart(chartConfigs[0]);
   }, []);
 
-  return { activeChart, setActiveChart, data, title, chartConfigs, changeChart };
+  return { activeCharts, setActiveCharts, data, title, chartConfigs, changeChart, dataType };
 };
 
 export default useChartState;

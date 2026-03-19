@@ -14,6 +14,7 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
       "Line Chart",
       "Zoom and Pan",
       "Hover for Data Tooltip",
+      "Selecting multiple timeseries datasets normalizes them for comparison",
       // "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",
     ],
     usedPreviously: [
@@ -24,7 +25,7 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
 
   return (
     <Section resizeRef={ref} config={config}>
-      <DataVisualizations key={`${theme}-${size.width}-${size.height}`} />
+      <DataVisualizations key={`${theme}-${size.width}-${size.height}`} theme={theme} />
     </Section>
   );
 };

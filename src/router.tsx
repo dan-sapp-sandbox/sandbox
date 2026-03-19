@@ -50,7 +50,10 @@ const reportBuilderRoute = createRoute({
 const chartsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/data-visualization",
-  component: () => <DataVisualizations />,
+  component: () => {
+    const { theme } = useTheme();
+    return <DataVisualizations theme={theme} />;
+  },
 });
 const componentLibraryRoute = createRoute({
   getParentRoute: () => rootRoute,

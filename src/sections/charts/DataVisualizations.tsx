@@ -5,42 +5,41 @@ import LineChart from "./LineChart";
 // import DoughnutChart from "./DoughnutChart";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import type { Theme } from "@/components/themeToggle/useTheme";
 
-const DataVisualizations = () => {
+const DataVisualizations = ({ theme }: { theme: Theme }) => {
   const chartState = useChartState();
-
   return (
     <div
       className={cn(
         "rounded-2xl relative h-full w-full bg-(--demo-bg)",
-        "flex flex-row justify-between gap-8 items-center",
+        "flex flex-row justify-between gap-2 items-center",
       )}
     >
       <div className="w-60 p-2 flex flex-col gap-2">
         <div className="text-(--text)">Datasets</div>
         <Separator />
         <div className="flex flex-col gap-2">
-          {chartState.chartConfigs.map((config) => (
-            <div
-              key={config.title}
-              className={cn(
-                "text-(--text) cursor-pointer hover:text-blue-400",
-                chartState.title === config.title ? "font-bold" : "",
-              )}
-              onClick={() => chartState.changeChart(config)}
-            >
-              {config.title}
-            </div>
-          ))}
+          {chartState.chartConfigs.map((config) => {
+            const isActive = chartState.activeCharts.some((title) => title === config.title);
+            const textColor = isActive ? config.color : theme === "dark" ? "white" : "black";
+            return (
+              <div
+                key={config.title}
+                style={{ color: textColor, fontWeight: isActive ? "bold" : "normal" }}
+                className="text-sm cursor-pointer hover:underline"
+                onClick={() => chartState.changeChart(config)}
+              >
+                {config.title}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="h-full flex-1">
-        {/* {chartState.activeChart === "bar" && <BarChart data={chartState.data} />} */}
-        {chartState.data && chartState.activeChart === "line" && (
-          <LineChart data={chartState.data} title={chartState.title} />
+      <div className="h-full flex-1 mr-4">
+        {chartState.data && (
+          <LineChart data={chartState.data} title={chartState.title} dataType={chartState.dataType} />
         )}
-        {/* {chartState.activeChart === "pie" && <PieChart data={chartState.data} />}
-        {chartState.activeChart === "doughnut" && <DoughnutChart data={chartState.data} />} */}
       </div>
     </div>
   );
