@@ -103,7 +103,7 @@ const chartConfigs: IChartConfig[] = [
     chartType: "line",
     data: gasData,
     color: "#f57a00",
-    dataType: "percentage",
+    dataType: "currency",
   },
 ];
 
