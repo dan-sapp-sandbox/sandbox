@@ -9,7 +9,7 @@ const ReportBuilderSection = () => {
     description: "Used in conjunction with other tools to generate a customizable report with a live pdf preview.",
     features: [
       "Expand Sections to use Rich Text Editor",
-      "Sections Drag & Drop: Reorder sections",
+      "Drag and Drop to reorder sections",
       "Live PDF Preview: PDF updates instantly as you reorder sections",
     ],
     usedPreviously: [
