@@ -6,6 +6,7 @@ import DataGrid from "./sections/userMgmt/dataGrid/DataGrid.tsx";
 import ReportBuilder from "./sections/reportBuilder/ReportBuilder.tsx";
 import DataVisualizations from "./sections/charts/DataVisualizations.tsx";
 import Viewer from "./sections/componentLibrary/Viewer.tsx";
+import { useResizeObserver } from "@/components/useResizeObserver";
 
 const rootRoute = createRootRoute({
   component: () => {
@@ -52,7 +53,12 @@ const chartsRoute = createRoute({
   path: "/data-visualization",
   component: () => {
     const { theme } = useTheme();
-    return <DataVisualizations theme={theme} />;
+    const { ref, size } = useResizeObserver();
+    return (
+      <div ref={ref} className="overflow-hidden h-screen w-screen">
+        <DataVisualizations key={`${theme}-${size.width}-${size.height}`} theme={theme} />;
+      </div>
+    );
   },
 });
 const componentLibraryRoute = createRoute({

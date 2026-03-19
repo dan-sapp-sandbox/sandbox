@@ -16,7 +16,7 @@ const DataVisualizations = ({ theme }: { theme: Theme }) => {
         "flex flex-row justify-between gap-2 items-center",
       )}
     >
-      <div className="w-60 p-2 flex flex-col gap-2">
+      <div className="min-w-60 p-2 flex flex-col gap-2">
         <div className="text-(--text)">Datasets</div>
         <Separator />
         <div className="flex flex-col gap-2">

@@ -42,7 +42,7 @@ const convertChartData = (normalize: boolean, chartConfig: IChartConfig): ChartD
         backgroundColor: `${chartConfig.color}45`,
         fill: true,
         tension: 0.2,
-        pointRadius: 2,
+        pointRadius: 1,
       },
     ],
   };
