@@ -5,6 +5,7 @@ import type { ChartData, Point } from "chart.js";
 import unemploymentData from "./UNRATE.csv?raw";
 import salaryData from "./MEHOINUSA672N.csv?raw";
 import housingData from "./ASPUS.csv?raw";
+import mcdonaldsData from "./MCDONALDS.csv?raw";
 
 const formatDate = (isoDate: string) => {
   const date = new Date(isoDate);
@@ -94,6 +95,33 @@ const convertSalaryData = (): ChartData<"line"> => {
   };
 };
 
+interface McDonaldsRecord {
+  date: string;
+  price: number;
+}
+const convertMcDonaldsData = (): ChartData<"line"> => {
+  const jsonData = Papa.parse<McDonaldsRecord>(mcdonaldsData, {
+    header: true,
+    skipEmptyLines: true,
+    dynamicTyping: true,
+  }).data;
+  const labels = jsonData.map((row) => formatDate(row.date));
+  return {
+    labels,
+    datasets: [
+      {
+        label: "Median Household Income ($)",
+        data: jsonData.map((row) => row.price),
+        borderColor: "#8437a6",
+        backgroundColor: "rgba(132, 55, 166, 0.3)",
+        fill: true,
+        tension: 0.2, // smooth line
+        pointRadius: 1,
+      },
+    ],
+  };
+};
+
 interface IChartConfig {
   title: string;
   chartType: string;
@@ -103,12 +131,15 @@ const chartConfigs: IChartConfig[] = [
   { title: "Federal Unemployment", chartType: "line", prepUtil: convertUnemploymentData },
   { title: "Average House Sales Price", chartType: "line", prepUtil: convertHousingData },
   { title: "Median Household Income", chartType: "line", prepUtil: convertSalaryData },
+  { title: "Cost of McDonald's Cheeseburger", chartType: "line", prepUtil: convertMcDonaldsData },
 ];
 
 const useChartState = () => {
   //TODO: enable choosing multiple datasets at once
   //TODO: enable changing to relevant chart types
   //TODO: enable show/hide legend
+
+  //TODO: when multiple sources, normalize data
 
   const [title, setTitle] = useState(chartConfigs[0].title);
   const [activeChart, setActiveChart] = useState("line");
