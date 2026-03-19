@@ -89,7 +89,7 @@ const chartConfigs: IChartConfig[] = [
     chartType: "line",
     data: inflationData,
     color: "#f70511",
-    dataType: "percentage",
+    dataType: "currency",
   },
   {
     title: "Fed Rate",

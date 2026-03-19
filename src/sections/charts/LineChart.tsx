@@ -36,8 +36,10 @@ const LineChart = ({
                 currency: "USD",
                 minimumFractionDigits: isBig ? 0 : 2,
               }).format(Number(value));
-            } else {
+            } else if (dataType === "percentage") {
               return `${value}%`;
+            } else {
+              return value;
             }
           },
         },
