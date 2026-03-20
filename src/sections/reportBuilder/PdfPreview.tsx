@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: "0 auto",
-    width: "50%",
+    width: "70%",
   },
 });
 
