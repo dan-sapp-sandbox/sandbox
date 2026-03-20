@@ -121,39 +121,25 @@ const useChartState = () => {
 
   const changeChart = (chartConfig: IChartConfig) => {
     const chartIsActive = activeCharts.some((title) => title === chartConfig.title);
-    if (chartIsActive) {
-      const newCharts = activeCharts.filter((title) => title !== chartConfig.title);
-      if (!newCharts.length) return;
-      setActiveCharts(newCharts);
-      if (newCharts.length === 1) {
-        const matchingChartConfig = chartConfigs.find((config) => config.title === newCharts[0]);
-        if (!matchingChartConfig) return;
-        setTitle(matchingChartConfig.title);
-        setDataType(matchingChartConfig.dataType);
-      } else {
-        setTitle("Percent Change Since 1984");
-        // setTitle("Normalized Timeseries Analysis");
-        setDataType("percentage");
-      }
-      buildChartData(newCharts);
-    } else {
-      const newCharts = [...activeCharts, chartConfig.title];
-      setActiveCharts(newCharts);
-      if (newCharts.length === 1) {
-        const matchingChartConfig = chartConfigs.find((config) => config.title === newCharts[0]);
-        if (!matchingChartConfig) return;
-        setTitle(matchingChartConfig.title);
-        setDataType(matchingChartConfig.dataType);
-      } else {
-        setTitle("Percent Change Since 1984");
-        // setTitle("Normalized Timeseries Analysis");
-        setDataType("percentage");
-      }
-      buildChartData(newCharts);
-    }
+    const newCharts = chartIsActive
+      ? activeCharts.filter((title) => title !== chartConfig.title)
+      : [...activeCharts, chartConfig.title];
+    if (!newCharts.length) return;
+    buildChartData(newCharts);
   };
 
   const buildChartData = (newCharts: string[]) => {
+    setActiveCharts(newCharts);
+    if (newCharts.length === 1) {
+      const matchingChartConfig = chartConfigs.find((config) => config.title === newCharts[0]);
+      if (!matchingChartConfig) return;
+      setTitle(matchingChartConfig.title);
+      setDataType(matchingChartConfig.dataType);
+    } else {
+      setTitle("Percent Change Since 1984");
+      // setTitle("Normalized Timeseries Analysis");
+      setDataType("percentage");
+    }
     const chartDataArray = newCharts.map((title) => {
       const matchingConfig = chartConfigs.find((config) => config.title === title);
       if (!matchingConfig) return;
