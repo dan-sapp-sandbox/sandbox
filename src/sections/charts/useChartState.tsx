@@ -114,9 +114,10 @@ const chartConfigs: IChartConfig[] = [
 ];
 
 const useChartState = () => {
-  const [title, setTitle] = useState(chartConfigs[0].title);
-  const [dataType, setDataType] = useState<string>("currency");
-  const [activeCharts, setActiveCharts] = useState<string[]>([]);
+  const relativeTitle = "Percent Increase Since 1984";
+  const [title, setTitle] = useState(relativeTitle);
+  const [dataType, setDataType] = useState<string>("percentage");
+  const [activeCharts, setActiveCharts] = useState<string[]>(["Median Household Income", "Inflation"]);
   const [data, setData] = useState<ChartData<"line", (number | Point | null)[], unknown>>();
 
   const changeChart = (chartConfig: IChartConfig) => {
@@ -136,7 +137,7 @@ const useChartState = () => {
       setTitle(matchingChartConfig.title);
       setDataType(matchingChartConfig.dataType);
     } else {
-      setTitle("Percent Change Since 1984");
+      setTitle(relativeTitle);
       // setTitle("Normalized Timeseries Analysis");
       setDataType("percentage");
     }

@@ -11,7 +11,6 @@ const ChartsSection = ({ theme }: { theme: Theme }) => {
     title: "Data Visualization",
     description: "Tool for visualizing datasets",
     features: [
-      "Line Chart",
       "Zoom and Pan",
       "Selecting multiple timeseries datasets normalizes them for comparison",
       // "Dynamic Dataset Loading: Import JSON and CSV data (WIP)",

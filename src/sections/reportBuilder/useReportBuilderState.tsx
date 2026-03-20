@@ -59,28 +59,6 @@ const initialReportState: ReportSection[] = [
     ),
   },
   {
-    id: "3",
-    type: "text",
-    content: [
-      {
-        type: "paragraph",
-        children: [
-          {
-            text: "Fusce mattis magna nec ligula faucibus, at elementum justo sagittis. Sed a tellus id erat luctus blandit. Vivamus ut libero sed elit luctus aliquet. Phasellus non nisi nec lacus posuere elementum. Etiam finibus, odio in vestibulum scelerisque, lectus erat tristique velit, a efficitur odio nisi eget orci. Integer at dolor non arcu feugiat feugiat.",
-          },
-        ],
-      },
-    ],
-    pdfContent: (
-      <Text key="3">
-        Fusce mattis magna nec ligula faucibus, at elementum justo sagittis. Sed a tellus id erat luctus blandit.
-        Vivamus ut libero sed elit luctus aliquet. Phasellus non nisi nec lacus posuere elementum. Etiam finibus, odio
-        in vestibulum scelerisque, lectus erat tristique velit, a efficitur odio nisi eget orci. Integer at dolor non
-        arcu feugiat feugiat.
-      </Text>
-    ),
-  },
-  {
     id: "4",
     type: "image",
     imageUrl: "/hormuz3.png",
@@ -110,7 +88,7 @@ const initialReportState: ReportSection[] = [
   {
     id: "6",
     type: "image",
-    imageUrl: "/hormuz2.png",
+    imageUrl: "/light-chart.png",
   },
   {
     id: "7",
