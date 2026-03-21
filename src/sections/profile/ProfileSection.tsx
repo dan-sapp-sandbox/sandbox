@@ -23,7 +23,7 @@ const ProfileSection = () => {
                   My work focuses on React, TypeScript, and data visualization.
                 </span>
                 <span className="text-base md:text-xl text-(--text)">
-                  Below are interactive examples of UI systems, and visualization tools I've built.
+                  Below are interactive examples of tools I've built for clients.
                 </span>
               </div>
             </div>
