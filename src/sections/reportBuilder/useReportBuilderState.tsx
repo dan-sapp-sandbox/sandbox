@@ -33,8 +33,8 @@ const initialReportState: ReportSection[] = [
       fontSize: 14,
     },
     type: "text",
-    content: [{ type: "paragraph", children: [{ text: "March 11, 2026" }] }],
-    pdfContent: <Text key="date">March 11, 2026</Text>,
+    content: [{ type: "paragraph", children: [{ text: "March 23, 2026" }] }],
+    pdfContent: <Text key="date">March 23, 2026</Text>,
   },
   {
     id: "2",
@@ -44,17 +44,22 @@ const initialReportState: ReportSection[] = [
         type: "paragraph",
         children: [
           {
-            text: "Praesent vel turpis eget urna tristique commodo. Integer id leo eget justo vehicula tincidunt. Nulla facilisi. Mauris consequat ligula ut eros finibus, vitae convallis lectus fermentum. Nam cursus, turpis vel tempor placerat, libero sapien varius nunc, et luctus libero sapien a ex. Donec sit amet felis vitae nulla efficitur fermentum.",
+            text: `Following U.S. and Israeli strikes, Iran has effectively restricted or halted shipping through the Strait of
+              Hormuz, using threats, mines, and attacks on vessels—causing tanker traffic to collapse and disrupting roughly
+              20% of global oil supply. This has triggered a sharp spike in oil prices, stranded ships, and rising global
+              economic concerns, while international disagreements over how to respond have complicated efforts to reopen the
+              critical waterway.`,
           },
         ],
       },
     ],
     pdfContent: (
-      <Text key="date">
-        Praesent vel turpis eget urna tristique commodo. Integer id leo eget justo vehicula tincidunt. Nulla facilisi.
-        Mauris consequat ligula ut eros finibus, vitae convallis lectus fermentum. Nam cursus, turpis vel tempor
-        placerat, libero sapien varius nunc, et luctus libero sapien a ex. Donec sit amet felis vitae nulla efficitur
-        fermentum.
+      <Text key="text">
+        Following U.S. and Israeli strikes, Iran has effectively restricted or halted shipping through the Strait of
+        Hormuz, using threats, mines, and attacks on vessels—causing tanker traffic to collapse and disrupting roughly
+        20% of global oil supply. This has triggered a sharp spike in oil prices, stranded ships, and rising global
+        economic concerns, while international disagreements over how to respond have complicated efforts to reopen the
+        critical waterway.
       </Text>
     ),
   },
@@ -71,17 +76,22 @@ const initialReportState: ReportSection[] = [
         type: "paragraph",
         children: [
           {
-            text: "Nam in lacus et lorem ultricies porttitor. Curabitur at diam ut sem scelerisque tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vitae eros eget justo viverra mollis. Praesent rhoncus, justo nec ultricies tempus, sapien nulla lacinia ex, id posuere nunc magna non odio. Quisque at mauris vitae mi vulputate mattis.",
+            text: `The U.S. airstrikes hit over 90 Iranian military targets on Kharg Island—such as missile sites and naval
+              facilities—while deliberately avoiding the critical oil export infrastructure that handles most of Iran’s crude
+              shipments. Since then, the island has remained operational but highly tense, with ongoing threats of further
+              strikes or even a possible U.S. attempt to seize or blockade it, given its importance to both Iran’s economy and
+              global oil markets.`,
           },
         ],
       },
     ],
     pdfContent: (
       <Text key="3">
-        Nam in lacus et lorem ultricies porttitor. Curabitur at diam ut sem scelerisque tincidunt. Vestibulum ante ipsum
-        primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vitae eros eget justo viverra mollis.
-        Praesent rhoncus, justo nec ultricies tempus, sapien nulla lacinia ex, id posuere nunc magna non odio. Quisque
-        at mauris vitae mi vulputate mattis.
+        The U.S. airstrikes hit over 90 Iranian military targets on Kharg Island—such as missile sites and naval
+        facilities—while deliberately avoiding the critical oil export infrastructure that handles most of Iran’s crude
+        shipments. Since then, the island has remained operational but highly tense, with ongoing threats of further
+        strikes or even a possible U.S. attempt to seize or blockade it, given its importance to both Iran’s economy and
+        global oil markets.
       </Text>
     ),
   },
