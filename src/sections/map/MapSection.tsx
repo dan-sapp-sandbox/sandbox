@@ -9,11 +9,12 @@ const MapSection = () => {
     description:
       "A tool used by Military Geospatial Intelligence Analysts to create content for reports regarding their Area of Interest.",
     features: [
-      "Multi-map synchronization: Main map, overview map, and picture-in-picture map share camera state",
+      "Multi-map synchronization: Main map, overview map, and picture-in-picture maps share camera state",
       "Draggable map widgets with dynamic layout",
       "Camera bounds visualization between map views",
       "Configurable base layer",
       "Snapshot captures map elements for report ready image",
+      "Send image to use in Report Builder",
       // "Interactive drawing tools for points, lines, and polygons (WIP)",
       // "GeoJSON import/export pipeline (WIP)",
       // "Map icon placement system (WIP)",

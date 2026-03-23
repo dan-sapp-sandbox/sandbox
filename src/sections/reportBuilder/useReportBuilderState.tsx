@@ -24,8 +24,8 @@ const initialReportState: ReportSection[] = [
       fontSize: 22,
       fontWeight: "bold",
     },
-    content: [{ type: "paragraph", children: [{ text: "Weekly Report on Area of Interest" }] }],
-    pdfContent: <Text key="title">Weekly Report on Area of Interest</Text>,
+    content: [{ type: "paragraph", children: [{ text: "Weekly Report on Persian Gulf" }] }],
+    pdfContent: <Text key="title">Weekly Report on Persian Gulf</Text>,
   },
   {
     id: "date",
