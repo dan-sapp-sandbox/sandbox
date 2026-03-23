@@ -64,7 +64,7 @@ const useMapState = (): IMapState => {
   const [_init, setInitCameraView] = useLocalStorage("main-cam-init", defaultMainView);
   const initWidgetState: IWidgetState = {
     overview: {
-      top: 70,
+      top: 65,
       left: 2,
       width: 20,
       aspect: 1,
@@ -86,7 +86,7 @@ const useMapState = (): IMapState => {
     x: number;
     y: number;
   };
-  const [widgetState, setWidgetState] = useLocalStorage<IWidgetState>("widget-state", initWidgetState);
+  const [widgetState, setWidgetState] = useLocalStorage<IWidgetState>("widget-state-v2", initWidgetState);
   const handleDragStart = (event: DragStartEvent) => {
     const { id } = event.active;
 
