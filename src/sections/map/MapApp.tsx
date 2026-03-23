@@ -28,6 +28,7 @@ const MapApp = () => {
     mainViewerRef,
     overviewViewerRef,
     pipViewerRef,
+    pipViewer2Ref,
     handleDragStart,
     handleDragEnd,
     layer,
@@ -36,6 +37,8 @@ const MapApp = () => {
     setShowOverviewMap,
     showPipMap,
     setShowPipMap,
+    showPipMap2,
+    setShowPipMap2,
     widgetState,
     containerRef,
     takeScreenshot,
@@ -57,9 +60,10 @@ const MapApp = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef }}>
+        <CameraContext.Provider value={{ mainViewerRef, overviewViewerRef, pipViewerRef, pipViewer2Ref }}>
           <MainMap>
-            <PipViewRectangle show={showPipMap} />
+            <PipViewRectangle show={showPipMap} isPip2={false} />
+            <PipViewRectangle show={showPipMap2} isPip2={true} />
             <Layers layer={layer} />
             <CameraControls takeScreenshot={takeScreenshot} />
           </MainMap>
@@ -69,14 +73,20 @@ const MapApp = () => {
             </OverviewMap>
           )}
           {showPipMap && (
-            <PipMap pipState={widgetState.pip}>
+            <PipMap pipState={widgetState.pip} isPip2={false}>
+              <Layers layer={layer} />
+            </PipMap>
+          )}
+          {showPipMap2 && (
+            <PipMap pipState={widgetState.pip2} isPip2={true}>
               <Layers layer={layer} />
             </PipMap>
           )}
           <SettingsContainer>
             <LayerSwitcher layer={layer} setLayer={setLayer} />
             <OverviewMapSwitch showOverviewMap={showOverviewMap} setShowOverviewMap={setShowOverviewMap} />
-            <PipMapSwitch showPipMap={showPipMap} setShowPipMap={setShowPipMap} />
+            <PipMapSwitch showPipMap={showPipMap} setShowPipMap={setShowPipMap} isPip2={false} />
+            <PipMapSwitch showPipMap={showPipMap2} setShowPipMap={setShowPipMap2} isPip2={true} />
           </SettingsContainer>
         </CameraContext.Provider>
       </DndContext>

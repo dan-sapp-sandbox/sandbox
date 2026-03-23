@@ -1,13 +1,15 @@
-import { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useEffect, useCallback } from "react";
 import { Entity } from "resium";
 import { CameraContext } from "./types";
 import { Cartographic, Cartesian2, Cartesian3, CallbackProperty, Color, Math, PolygonHierarchy } from "cesium";
 import useLocalStorage from "use-local-storage";
 
-const PipViewRectangle = ({ show }: { show: boolean }) => {
-  // TODO: fix so rotating doesn't twist lines
-  const { mainViewerRef, pipViewerRef } = useContext(CameraContext);
-  const [_init, setInitCameraView] = useLocalStorage("pip-cam-init", {
+const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) => {
+  const { mainViewerRef, pipViewerRef, pipViewer2Ref } = useContext(CameraContext);
+  const pipRef = isPip2 ? pipViewer2Ref : pipViewerRef;
+  const pipId = isPip2 ? "pip-2-cam-init" : "pip-cam-init";
+
+  const [_init, setInitCameraView] = useLocalStorage(pipId, {
     lat: 42,
     lon: 0,
     height: 100_000,
@@ -16,126 +18,164 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
     roll: 0,
   });
 
-  const frustum = useMemo(
-    () =>
-      new CallbackProperty(() => {
-        const pipViewer = pipViewerRef.current;
-        if (!pipViewer) return undefined;
+  useEffect(() => {
+    const pipViewer = pipRef.current;
+    if (!pipViewer || !pipViewer.scene || !pipViewer.camera) return;
 
-        const scene = pipViewer.scene;
-        const camera = pipViewer.camera;
-        const canvas = scene.canvas;
+    let frame = 0;
 
-        const corners = [
-          new Cartesian2(0, 0),
-          new Cartesian2(canvas.clientWidth, 0),
-          new Cartesian2(canvas.clientWidth, canvas.clientHeight),
-          new Cartesian2(0, canvas.clientHeight),
-        ];
+    const update = () => {
+      if (frame++ % 10 !== 0) return;
 
-        const positions: Cartesian3[] = [];
+      const camera = pipViewer.camera;
+      const carto = Cartographic.fromCartesian(camera.position);
 
-        for (const pixel of corners) {
-          const ray = camera.getPickRay(pixel);
-          if (!ray) return undefined;
-
-          let hit = scene.globe.pick(ray, scene);
-
-          if (!hit) return undefined;
-          positions.push(hit);
-        }
-
-        return new PolygonHierarchy(positions);
-      }, false),
-    [],
-  );
-
-  const createDiagonal = (rectCornerIndexA: number[], rectCornerIndexB: number[]) =>
-    new CallbackProperty(() => {
-      const mainViewer = mainViewerRef.current;
-      const pipViewer = pipViewerRef.current;
-      if (!mainViewer || !pipViewer) return [];
-
-      const { scene, camera, container } = mainViewer;
-
-      const pipScene = pipViewer.scene;
-      const pipCamera = pipScene.camera;
-      const pipCanvas = pipScene.canvas;
-
-      const cornerPixels = [
-        new Cartesian2(0, 0),
-        new Cartesian2(pipCanvas.clientWidth, 0),
-        new Cartesian2(0, pipCanvas.clientHeight),
-        new Cartesian2(pipCanvas.clientWidth, pipCanvas.clientHeight),
-      ];
-
-      let rectWorldCorners: Cartesian3[] = [];
-
-      for (const pixel of cornerPixels) {
-        const ray = pipCamera.getPickRay(pixel);
-        if (!ray) continue;
-
-        const intersection = pipScene.globe.pick(ray, pipScene);
-
-        if (intersection) {
-          rectWorldCorners.push(intersection);
-        } else {
-          return [];
-        }
-      }
-      const rect = pipViewer.camera.computeViewRectangle();
-      if (!rect) return [];
-
-      const rectCorners = rectWorldCorners.map((world) => {
-        const ray = camera.getPickRay(mainViewer.scene.cartesianToCanvasCoordinates(world) as Cartesian2);
-        return ray ? scene.globe.pick(ray, scene) : undefined;
-      });
-
-      const pipBounds = pipViewer.container.getBoundingClientRect();
-      const mainBounds = container.getBoundingClientRect();
-
-      const toCanvas = (x: number, y: number) => new Cartesian2(x - mainBounds.left, y - mainBounds.top);
-
-      const pickGlobe = (pos: Cartesian2) => {
-        const ray = camera.getPickRay(pos);
-        return ray ? scene.globe.pick(ray, scene) : undefined;
-      };
-
-      const pipCorners = [
-        pickGlobe(toCanvas(pipBounds.left, pipBounds.top)),
-        pickGlobe(toCanvas(pipBounds.right, pipBounds.top)),
-        pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom)),
-        pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom)),
-      ];
-
-      if (rectCorners.includes(undefined) || pipCorners.includes(undefined)) return [];
-
-      const rectCenterX = rectCorners.reduce((acc, corner) => acc + (corner ? corner.x / 4 : 0), 0);
-      const rectCenterY = rectCorners.reduce((acc, corner) => acc + (corner ? corner.y / 4 : 0), 0);
-      const pipCenterX = pipCorners.reduce((acc, corner) => acc + (corner ? corner.x / 4 : 0), 0);
-      const pipCenterY = pipCorners.reduce((acc, corner) => acc + (corner ? corner.y / 4 : 0), 0);
-
-      const isEvenQuadrant =
-        (rectCenterX > pipCenterX && rectCenterY > pipCenterY) ||
-        (rectCenterX < pipCenterX && rectCenterY < pipCenterY);
-
-      const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexA : rectCornerIndexB;
-
-      const carto = Cartographic.fromCartesian(pipCamera.position);
       setInitCameraView({
         lon: Math.toDegrees(carto.longitude),
         lat: Math.toDegrees(carto.latitude),
         height: carto.height,
-        heading: pipCamera.heading,
-        pitch: pipCamera.pitch,
-        roll: pipCamera.roll,
+        heading: camera.heading,
+        pitch: camera.pitch,
+        roll: camera.roll,
       });
+    };
 
-      return [rectCorners[rectIndex] as Cartesian3, pipCorners[pipIndex] as Cartesian3];
-    }, false);
+    pipViewer.camera.changed.addEventListener(update);
 
-  const diagonal1 = useMemo(() => createDiagonal([1, 1], [0, 0]), []);
-  const diagonal2 = useMemo(() => createDiagonal([2, 2], [3, 3]), []);
+    return () => {
+      pipViewer.camera.changed.removeEventListener(update);
+    };
+  }, [pipRef, setInitCameraView]);
+
+  const frustum = useMemo(
+    () =>
+      new CallbackProperty(() => {
+        try {
+          const pipViewer = pipRef.current;
+          if (!pipViewer) return undefined;
+
+          const scene = pipViewer.scene;
+          const camera = pipViewer.camera;
+          const canvas = scene.canvas;
+
+          const corners = [
+            new Cartesian2(0, 0),
+            new Cartesian2(canvas.clientWidth, 0),
+            new Cartesian2(canvas.clientWidth, canvas.clientHeight),
+            new Cartesian2(0, canvas.clientHeight),
+          ];
+
+          const positions: Cartesian3[] = [];
+
+          for (const pixel of corners) {
+            const ray = camera.getPickRay(pixel);
+            if (!ray) return undefined;
+
+            const hit = scene.globe.pick(ray, scene);
+            if (!hit) return undefined;
+
+            positions.push(hit);
+          }
+
+          return new PolygonHierarchy(positions);
+        } catch (e) {
+          console.log("e", e);
+        }
+      }, false),
+    [pipRef],
+  );
+
+  const createDiagonal = useCallback(
+    (rectCornerIndexA: number[], rectCornerIndexB: number[]) =>
+      new CallbackProperty(() => {
+        try {
+          const mainViewer = mainViewerRef.current;
+          const pipViewer = pipRef.current;
+          if (!mainViewer || !pipViewer) return [];
+
+          const { scene, camera, container } = mainViewer;
+
+          const pipScene = pipViewer.scene;
+          const pipCamera = pipScene.camera;
+          const pipCanvas = pipScene.canvas;
+
+          const cornerPixels = [
+            new Cartesian2(0, 0),
+            new Cartesian2(pipCanvas.clientWidth, 0),
+            new Cartesian2(0, pipCanvas.clientHeight),
+            new Cartesian2(pipCanvas.clientWidth, pipCanvas.clientHeight),
+          ];
+
+          const rectWorldCorners: Cartesian3[] = [];
+
+          for (const pixel of cornerPixels) {
+            const ray = pipCamera.getPickRay(pixel);
+            if (!ray) continue;
+
+            const intersection = pipScene.globe.pick(ray, pipScene);
+            if (!intersection) return [];
+
+            rectWorldCorners.push(intersection);
+          }
+
+          const rect = pipViewer.camera.computeViewRectangle();
+          if (!rect) return [];
+
+          const rectCorners = rectWorldCorners.map((world) => {
+            const screen = mainViewer.scene.cartesianToCanvasCoordinates(world);
+            if (!screen) return undefined;
+
+            const ray = camera.getPickRay(screen as Cartesian2);
+            return ray ? scene.globe.pick(ray, scene) : undefined;
+          });
+
+          const pipBounds = pipViewer.container.getBoundingClientRect();
+          const mainBounds = container.getBoundingClientRect();
+
+          const toCanvas = (x: number, y: number) => new Cartesian2(x - mainBounds.left, y - mainBounds.top);
+
+          const pickGlobe = (pos: Cartesian2) => {
+            const ray = camera.getPickRay(pos);
+            return ray ? scene.globe.pick(ray, scene) : undefined;
+          };
+
+          const pipCorners = [
+            pickGlobe(toCanvas(pipBounds.left, pipBounds.top)),
+            pickGlobe(toCanvas(pipBounds.right, pipBounds.top)),
+            pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom)),
+            pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom)),
+          ];
+
+          if (rectCorners.includes(undefined) || pipCorners.includes(undefined)) return [];
+
+          const rectCenterX = rectCorners.reduce((acc, c) => acc + (c ? c.x / 4 : 0), 0);
+          const rectCenterY = rectCorners.reduce((acc, c) => acc + (c ? c.y / 4 : 0), 0);
+          const pipCenterX = pipCorners.reduce((acc, c) => acc + (c ? c.x / 4 : 0), 0);
+          const pipCenterY = pipCorners.reduce((acc, c) => acc + (c ? c.y / 4 : 0), 0);
+
+          const isEvenQuadrant =
+            (rectCenterX > pipCenterX && rectCenterY > pipCenterY) ||
+            (rectCenterX < pipCenterX && rectCenterY < pipCenterY);
+
+          // if (isPip2) {
+          //   console.log(pipCenterX, pipCenterY);
+          //   console.log(rectCenterX, rectCenterY);
+          //   console.log("isEvenQuadrant", isEvenQuadrant);
+          // }
+
+          const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexA : rectCornerIndexB;
+
+          return [rectCorners[rectIndex] as Cartesian3, pipCorners[pipIndex] as Cartesian3];
+        } catch (e) {
+          console.log("e", e);
+        }
+      }, false),
+    [mainViewerRef, pipRef],
+  );
+
+  const diagonal1 = useMemo(() => createDiagonal([1, 1], [0, 0]), [createDiagonal]);
+
+  const diagonal2 = useMemo(() => createDiagonal([2, 2], [3, 3]), [createDiagonal]);
 
   if (!show) return null;
 
@@ -144,18 +184,17 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
       <Entity
         polygon={{
           hierarchy: frustum,
-          material: Color.RED.withAlpha(0.2),
+          material: isPip2 ? Color.RED.withAlpha(0.2) : Color.DARKMAGENTA.withAlpha(0.2),
           outline: true,
-          outlineColor: Color.RED,
+          outlineColor: isPip2 ? Color.RED : Color.DARKMAGENTA,
           outlineWidth: 1,
-          // perPositionHeight: false,
         }}
       />
       <Entity
         polyline={{
           positions: diagonal1,
           width: 1,
-          material: Color.RED,
+          material: isPip2 ? Color.RED : Color.DARKMAGENTA,
           arcType: 0,
         }}
       />
@@ -163,7 +202,7 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
         polyline={{
           positions: diagonal2,
           width: 1,
-          material: Color.RED,
+          material: isPip2 ? Color.RED : Color.DARKMAGENTA,
           arcType: 0,
         }}
       />
@@ -171,4 +210,4 @@ const PipViewRectangle = ({ show }: { show: boolean }) => {
   );
 };
 
-export default PipViewRectangle;
+export default React.memo(PipViewRectangle);

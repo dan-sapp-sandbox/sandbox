@@ -6,17 +6,25 @@ import type { ILayer, IWidgetState } from "./types";
 import useLocalStorage from "use-local-storage";
 
 export const defaultMainView = {
-  height: 1955010.9095104833,
-  lat: 24.57610852927548,
-  lon: 56.96229163370479,
+  height: 1230000,
+  lat: 27.5,
+  lon: 55,
   heading: 6.283185307179583,
   pitch: -1.5682332501783933,
   roll: 0,
 };
 export const defaultPipView = {
-  height: 322477.84575201414,
-  lat: 26.481439911520596,
-  lon: 56.217442851296504,
+  height: 8000,
+  lat: 29.24,
+  lon: 50.314,
+  heading: 6.283185307179581,
+  pitch: -1.5684928999831915,
+  roll: 0,
+};
+export const defaultPipView2 = {
+  height: 160000,
+  lat: 26.55,
+  lon: 56.45,
   heading: 6.283185307179581,
   pitch: -1.5684928999831915,
   roll: 0,
@@ -27,6 +35,7 @@ export interface IMapState {
   mainViewerRef: RefObject<Viewer | null>;
   overviewViewerRef: RefObject<Viewer | null>;
   pipViewerRef: RefObject<Viewer | null>;
+  pipViewer2Ref: RefObject<Viewer | null>;
   handleDragStart: (event: DragStartEvent) => void;
   handleDragEnd: (event: DragEndEvent) => void;
   layer: ILayer;
@@ -35,6 +44,8 @@ export interface IMapState {
   setShowOverviewMap: Dispatch<SetStateAction<boolean>>;
   showPipMap: boolean;
   setShowPipMap: Dispatch<SetStateAction<boolean>>;
+  showPipMap2: boolean;
+  setShowPipMap2: Dispatch<SetStateAction<boolean>>;
   widgetState: IWidgetState;
   takeScreenshot: () => void;
 }
@@ -44,23 +55,31 @@ const useMapState = (): IMapState => {
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
   const pipViewerRef = useRef<Viewer | null>(null);
+  const pipViewer2Ref = useRef<Viewer | null>(null);
   const startPositionRef = useRef<Position>({ x: 0, y: 0 });
   const [layer, setLayer] = useState<ILayer>("esriSat");
   const [showOverviewMap, setShowOverviewMap] = useState(true);
   const [showPipMap, setShowPipMap] = useState(true);
+  const [showPipMap2, setShowPipMap2] = useState(true);
   const [_init, setInitCameraView] = useLocalStorage("main-cam-init", defaultMainView);
   const initWidgetState: IWidgetState = {
     overview: {
-      top: 60,
-      left: 83,
-      width: 15,
+      top: 70,
+      left: 2,
+      width: 20,
       aspect: 1,
     },
     pip: {
-      top: 50,
-      left: 10,
-      width: 25,
-      aspect: 16 / 9,
+      top: 2,
+      left: 39,
+      width: 12,
+      aspect: 3 / 4,
+    },
+    pip2: {
+      top: 2,
+      left: 68,
+      width: 30,
+      aspect: 4 / 3,
     },
   };
   type Position = {
@@ -71,18 +90,27 @@ const useMapState = (): IMapState => {
   const handleDragStart = (event: DragStartEvent) => {
     const { id } = event.active;
 
-    if (id === "overview") {
-      startPositionRef.current = {
-        x: widgetState.overview.left,
-        y: widgetState.overview.top,
-      };
-    }
-
-    if (id === "pip" || id === "pip-target") {
-      startPositionRef.current = {
-        x: widgetState.pip.left,
-        y: widgetState.pip.top,
-      };
+    switch (id) {
+      case "overview":
+        startPositionRef.current = {
+          x: widgetState.overview.left,
+          y: widgetState.overview.top,
+        };
+        break;
+      case "pip":
+        startPositionRef.current = {
+          x: widgetState.pip.left,
+          y: widgetState.pip.top,
+        };
+        break;
+      case "pip-2":
+        startPositionRef.current = {
+          x: widgetState.pip2.left,
+          y: widgetState.pip2.top,
+        };
+        break;
+      default:
+        console.log("missing id");
     }
   };
   const handleDragEnd = (event: DragEndEvent) => {
@@ -96,37 +124,39 @@ const useMapState = (): IMapState => {
     let newX = startPositionRef.current.x + xDiff;
     let newY = startPositionRef.current.y + yDiff;
 
-    if (id === "overview") {
-      setWidgetState({
-        ...widgetState,
-        overview: {
-          ...widgetState.overview,
-          left: newX,
-          top: newY,
-        },
-      });
-    }
-
-    if (id === "pip") {
-      setWidgetState({
-        ...widgetState,
-        pip: {
-          ...widgetState.pip,
-          left: newX,
-          top: newY,
-        },
-      });
-    }
-
-    if (id === "pip-target") {
-      setWidgetState({
-        ...widgetState,
-        pip: {
-          ...widgetState.pip,
-          left: newX,
-          top: newY,
-        },
-      });
+    switch (id) {
+      case "overview":
+        setWidgetState({
+          ...widgetState,
+          overview: {
+            ...widgetState.overview,
+            left: newX,
+            top: newY,
+          },
+        });
+        break;
+      case "pip":
+        setWidgetState({
+          ...widgetState,
+          pip: {
+            ...widgetState.pip,
+            left: newX,
+            top: newY,
+          },
+        });
+        break;
+      case "pip-2":
+        setWidgetState({
+          ...widgetState,
+          pip2: {
+            ...widgetState.pip2,
+            left: newX,
+            top: newY,
+          },
+        });
+        break;
+      default:
+        console.log("missing id");
     }
   };
 
@@ -137,6 +167,7 @@ const useMapState = (): IMapState => {
       { ref: mainViewerRef, state: null }, // main viewer fills the canvas
       { ref: overviewViewerRef, state: widgetState.overview },
       { ref: pipViewerRef, state: widgetState.pip },
+      { ref: pipViewer2Ref, state: widgetState.pip2 },
     ];
 
     // Wait for all viewers to render
@@ -247,6 +278,7 @@ const useMapState = (): IMapState => {
     mainViewerRef,
     overviewViewerRef,
     pipViewerRef,
+    pipViewer2Ref,
     handleDragStart,
     handleDragEnd,
     layer,
@@ -255,6 +287,8 @@ const useMapState = (): IMapState => {
     setShowOverviewMap,
     showPipMap,
     setShowPipMap,
+    showPipMap2,
+    setShowPipMap2,
     widgetState,
     containerRef,
     takeScreenshot,

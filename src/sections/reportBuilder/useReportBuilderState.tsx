@@ -61,7 +61,7 @@ const initialReportState: ReportSection[] = [
   {
     id: "4",
     type: "image",
-    imageUrl: "/hormuz3.png",
+    imageUrl: "/hormuz.png",
   },
   {
     id: "5",

@@ -1,17 +1,19 @@
 import { useCesium } from "resium";
 import { Cartesian3 } from "cesium";
 import { Button } from "@/components/ui/button";
-import { Plus, Minus, Camera } from "lucide-react";
+import { ButtonTooltip } from "@/components/ui/tooltip";
+import { Plus, Minus, Camera, ListPlus } from "lucide-react";
 import useLocalStorage from "use-local-storage";
 import { useContext } from "react";
 import { CameraContext } from "./types";
-import { defaultMainView, defaultPipView } from "./useMapState";
+import { defaultMainView, defaultPipView, defaultPipView2 } from "./useMapState";
 
 const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
   const [_initMainView, setInitMainView] = useLocalStorage("main-cam-init", defaultMainView);
   const [_initPipView, setInitPipView] = useLocalStorage("pip-cam-init", defaultPipView);
+  const [_initPipView2, setInitPipView2] = useLocalStorage("pip-2-cam-init", defaultPipView2);
   const { viewer } = useCesium();
-  const { pipViewerRef } = useContext(CameraContext);
+  const { pipViewerRef, pipViewer2Ref } = useContext(CameraContext);
 
   const zoomIn = () => viewer?.camera?.zoomIn(150_000);
   const zoomOut = () => viewer?.camera?.zoomOut(150_000);
@@ -19,6 +21,7 @@ const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
   const reset = () => {
     setInitMainView(defaultMainView);
     setInitPipView(defaultPipView);
+    setInitPipView2(defaultPipView2);
     viewer?.camera?.flyTo({
       destination: Cartesian3.fromDegrees(defaultMainView.lon, defaultMainView.lat, defaultMainView.height),
       orientation: {
@@ -35,6 +38,14 @@ const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
         roll: defaultPipView.roll,
       },
     });
+    pipViewer2Ref.current?.camera?.flyTo({
+      destination: Cartesian3.fromDegrees(defaultPipView2.lon, defaultPipView2.lat, defaultPipView2.height),
+      orientation: {
+        heading: defaultPipView2.heading,
+        pitch: defaultPipView2.pitch,
+        roll: defaultPipView2.roll,
+      },
+    });
   };
 
   return (
@@ -48,9 +59,16 @@ const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
       <Button size="default" onClick={reset}>
         Reset
       </Button>
-      <Button size="default" onClick={takeScreenshot}>
-        <Camera />
-      </Button>
+      <ButtonTooltip content="Download Image">
+        <Button size="default" onClick={takeScreenshot}>
+          <Camera />
+        </Button>
+      </ButtonTooltip>
+      <ButtonTooltip content="Send to Report">
+        <Button size="default" onClick={takeScreenshot}>
+          <ListPlus />
+        </Button>
+      </ButtonTooltip>
     </div>
   );
 };
