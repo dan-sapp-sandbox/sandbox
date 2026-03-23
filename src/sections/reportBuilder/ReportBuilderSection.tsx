@@ -10,7 +10,7 @@ const ReportBuilderSection = () => {
     features: [
       "Expand Sections to use Rich Text Editor",
       "Drag and Drop to reorder sections",
-      "Live PDF Preview: PDF updates instantly as you reorder sections",
+      "Live PDF Preview updates on change",
     ],
     usedPreviously: [
       { where: "EarthDaily Federal", what: "Report Builder" },
