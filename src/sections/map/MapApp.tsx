@@ -68,17 +68,17 @@ const MapApp = () => {
             <CameraControls takeScreenshot={takeScreenshot} />
           </MainMap>
           {showOverviewMap && (
-            <OverviewMap overviewState={widgetState.overview}>
+            <OverviewMap overviewState={widgetState?.overview}>
               <Layers layer={layer} />
             </OverviewMap>
           )}
           {showPipMap && (
-            <PipMap pipState={widgetState.pip} isPip2={false}>
+            <PipMap pipState={widgetState?.pip} isPip2={false}>
               <Layers layer={layer} />
             </PipMap>
           )}
           {showPipMap2 && (
-            <PipMap pipState={widgetState.pip2} isPip2={true}>
+            <PipMap pipState={widgetState?.pip2} isPip2={true}>
               <Layers layer={layer} />
             </PipMap>
           )}

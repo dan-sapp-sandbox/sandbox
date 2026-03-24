@@ -121,13 +121,17 @@ const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) 
           const rect = pipViewer.camera.computeViewRectangle();
           if (!rect) return [];
 
-          const rectCorners = rectWorldCorners.map((world) => {
-            const screen = mainViewer.scene.cartesianToCanvasCoordinates(world);
-            if (!screen) return undefined;
+          const rectCorners = rectWorldCorners
+            .map((world) => {
+              const screen = mainViewer.scene.cartesianToCanvasCoordinates(world);
+              if (!screen) return undefined;
 
-            const ray = camera.getPickRay(screen as Cartesian2);
-            return ray ? scene.globe.pick(ray, scene) : undefined;
-          });
+              const ray = camera.getPickRay(screen);
+              return ray ? scene.globe.pick(ray, scene) : undefined;
+            })
+            .filter((c): c is Cartesian3 => c !== undefined);
+
+          if (rectCorners.length !== rectWorldCorners.length) return [];
 
           const pipBounds = pipViewer.container.getBoundingClientRect();
           const mainBounds = container.getBoundingClientRect();
@@ -140,32 +144,34 @@ const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) 
           };
 
           const pipCorners = [
-            pickGlobe(toCanvas(pipBounds.left, pipBounds.top)),
-            pickGlobe(toCanvas(pipBounds.right, pipBounds.top)),
-            pickGlobe(toCanvas(pipBounds.left, pipBounds.bottom)),
-            pickGlobe(toCanvas(pipBounds.right, pipBounds.bottom)),
-          ];
+            toCanvas(pipBounds.left, pipBounds.top),
+            toCanvas(pipBounds.right, pipBounds.top),
+            toCanvas(pipBounds.left, pipBounds.bottom),
+            toCanvas(pipBounds.right, pipBounds.bottom),
+          ]
+            .map((pos) => pickGlobe(pos))
+            .filter((c): c is Cartesian3 => c !== undefined);
 
-          if (rectCorners.includes(undefined) || pipCorners.includes(undefined)) return [];
+          if (pipCorners.length !== 4) return [];
 
-          const rectCenterX = rectCorners.reduce((acc, c) => acc + (c ? c.x / 4 : 0), 0);
-          const rectCenterY = rectCorners.reduce((acc, c) => acc + (c ? c.y / 4 : 0), 0);
-          const pipCenterX = pipCorners.reduce((acc, c) => acc + (c ? c.x / 4 : 0), 0);
-          const pipCenterY = pipCorners.reduce((acc, c) => acc + (c ? c.y / 4 : 0), 0);
+          const rectCartos = rectCorners.map((c) => Cartographic.fromCartesian(c));
+          const pipCartos = pipCorners.map((c) => Cartographic.fromCartesian(c));
+
+          const avg = (arr: number[]) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+          const rectCenterLon = avg(rectCartos.map((c) => c.longitude));
+          const rectCenterLat = avg(rectCartos.map((c) => c.latitude));
+
+          const pipCenterLon = avg(pipCartos.map((c) => c.longitude));
+          const pipCenterLat = avg(pipCartos.map((c) => c.latitude));
 
           const isEvenQuadrant =
-            (rectCenterX > pipCenterX && rectCenterY > pipCenterY) ||
-            (rectCenterX < pipCenterX && rectCenterY < pipCenterY);
+            (rectCenterLon > pipCenterLon && rectCenterLat > pipCenterLat) ||
+            (rectCenterLon < pipCenterLon && rectCenterLat < pipCenterLat);
 
-          // if (isPip2) {
-          //   console.log(pipCenterX, pipCenterY);
-          //   console.log(rectCenterX, rectCenterY);
-          //   console.log("isEvenQuadrant", isEvenQuadrant);
-          // }
+          const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexB : rectCornerIndexA;
 
-          const [rectIndex, pipIndex] = isEvenQuadrant ? rectCornerIndexA : rectCornerIndexB;
-
-          return [rectCorners[rectIndex] as Cartesian3, pipCorners[pipIndex] as Cartesian3];
+          return [rectCorners[rectIndex], pipCorners[pipIndex]];
         } catch (e) {
           console.log("e", e);
         }
