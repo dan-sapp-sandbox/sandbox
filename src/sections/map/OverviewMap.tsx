@@ -39,7 +39,8 @@ const OverviewInitializer = () => {
   return null;
 };
 
-const OverviewMap = ({ children, overviewState }: { children?: ReactNode | ReactNode[]; overviewState: IWidget }) => {
+const OverviewMap = ({ children, overviewState }: { children?: ReactNode | ReactNode[]; overviewState?: IWidget }) => {
+  if (!overviewState) return null;
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: "overview",
   });

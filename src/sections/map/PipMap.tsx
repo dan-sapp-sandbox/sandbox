@@ -88,9 +88,10 @@ const PipMap = ({
   isPip2,
 }: {
   children?: ReactNode | ReactNode[];
-  pipState: IWidget;
+  pipState?: IWidget;
   isPip2: boolean;
 }) => {
+  if (!pipState) return;
   const pipId = isPip2 ? "pip-2" : "pip";
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: pipId,
