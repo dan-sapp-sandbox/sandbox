@@ -31,10 +31,11 @@ const Toolbar = ({ editor }: ToolbarProps) => {
     toggleBlock(editor, block);
   };
 
-  const buttonClass = (active: boolean) => `border px-1 rounded ${active ? "bg-gray-300" : ""}`;
+  const buttonClass = (active: boolean) =>
+    `border px-2 py-0 rounded ${active ? "bg-gray-300 hover:bg-blue-300" : "bg-gray-500 hover:bg-blue-400"}`;
 
   return (
-    <div className="flex gap-1 bg-zinc-400">
+    <div className="flex gap-1 bg-zinc-300 p-px">
       <button className={buttonClass(activeStates.bold)} onMouseDown={(e) => handleClickMark(e, "bold")}>
         B
       </button>
@@ -48,7 +49,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
         H
       </button>
       <button className={buttonClass(activeStates.list)} onMouseDown={(e) => handleClickBlock(e, "list-item")}>
-        • List
+        List
       </button>
     </div>
   );

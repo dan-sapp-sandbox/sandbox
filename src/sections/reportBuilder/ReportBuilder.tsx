@@ -26,7 +26,7 @@ const ReportBuilder = () => {
         onDragEnd={taskBoardState.handleDragEnd}
         onDragCancel={taskBoardState.handleDragCancel}
       >
-        <div className="w-1/3 max-w-100 h-full overflow-y-auto scrollbar-hide">
+        <div className="max-w-1/3 min-w-80 h-full overflow-y-auto scrollbar-hide">
           <Column reportState={taskBoardState.reportState} setReportState={taskBoardState.setReportState} />
         </div>
       </DndContext>
