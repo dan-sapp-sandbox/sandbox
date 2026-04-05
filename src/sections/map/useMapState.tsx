@@ -86,7 +86,7 @@ const useMapState = (): IMapState => {
     x: number;
     y: number;
   };
-  const [widgetState, setWidgetState] = useLocalStorage<IWidgetState>("widget-state-v2", initWidgetState);
+  const [widgetState, setWidgetState] = useLocalStorage<IWidgetState>("widget-state-v3", initWidgetState);
   const handleDragStart = (event: DragStartEvent) => {
     const { id } = event.active;
 
