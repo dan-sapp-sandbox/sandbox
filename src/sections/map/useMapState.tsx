@@ -6,26 +6,26 @@ import type { ILayer, IWidgetState } from "./types";
 import useLocalStorage from "use-local-storage";
 
 export const defaultMainView = {
-  height: 1230000,
-  lat: 27.5,
-  lon: 55,
-  heading: 6.283185307179583,
+  heading: 6.283185307179581,
+  height: 2000101.0682877784,
+  lat: 29.927546494228835,
+  lon: 54.599629924910886,
   pitch: -1.5682332501783933,
   roll: 0,
 };
 export const defaultPipView = {
-  height: 8000,
-  lat: 29.24,
+  height: 7999.999999999899,
+  lat: 29.240000000000006,
   lon: 50.314,
   heading: 6.283185307179581,
   pitch: -1.5684928999831915,
   roll: 0,
 };
 export const defaultPipView2 = {
-  height: 160000,
-  lat: 26.55,
-  lon: 56.45,
   heading: 6.283185307179581,
+  height: 11966.533380187617,
+  lat: 35.65627462795138,
+  lon: 51.235925863136245,
   pitch: -1.5684928999831915,
   roll: 0,
 };
@@ -70,14 +70,14 @@ const useMapState = (): IMapState => {
       aspect: 1,
     },
     pip: {
-      top: 2,
-      left: 39,
+      left: 11.2,
+      top: 22.5,
       width: 12,
       aspect: 3 / 4,
     },
     pip2: {
-      top: 2,
-      left: 68,
+      left: 66.24074074074075,
+      top: 16.48863636363636,
       width: 30,
       aspect: 4 / 3,
     },
@@ -202,7 +202,7 @@ const useMapState = (): IMapState => {
         ctx.drawImage(canvas, pxLeft, pxTop, pxWidth, pxHeight);
 
         ctx.lineWidth = 1;
-        ctx.strokeStyle = i === 1 ? "white" : "red";
+        ctx.strokeStyle = i === 1 ? "white" : i === 2 ? "#8b008b" : "#0000ff";
         ctx.strokeRect(pxLeft, pxTop, pxWidth, pxHeight);
       } else {
         ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);

@@ -190,9 +190,9 @@ const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) 
       <Entity
         polygon={{
           hierarchy: frustum,
-          material: isPip2 ? Color.RED.withAlpha(0.2) : Color.DARKMAGENTA.withAlpha(0.2),
+          material: isPip2 ? Color.BLUE.withAlpha(0.2) : Color.DARKMAGENTA.withAlpha(0.2),
           outline: true,
-          outlineColor: isPip2 ? Color.RED : Color.DARKMAGENTA,
+          outlineColor: isPip2 ? Color.BLUE : Color.DARKMAGENTA,
           outlineWidth: 1,
         }}
       />
@@ -200,7 +200,7 @@ const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) 
         polyline={{
           positions: diagonal1,
           width: 1,
-          material: isPip2 ? Color.RED : Color.DARKMAGENTA,
+          material: isPip2 ? Color.BLUE : Color.DARKMAGENTA,
           arcType: 0,
         }}
       />
@@ -208,7 +208,7 @@ const PipViewRectangle = ({ show, isPip2 }: { show: boolean; isPip2: boolean }) 
         polyline={{
           positions: diagonal2,
           width: 1,
-          material: isPip2 ? Color.RED : Color.DARKMAGENTA,
+          material: isPip2 ? Color.BLUE : Color.DARKMAGENTA,
           arcType: 0,
         }}
       />

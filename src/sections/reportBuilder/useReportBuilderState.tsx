@@ -33,8 +33,8 @@ const initialReportState: ReportSection[] = [
       fontSize: 14,
     },
     type: "text",
-    content: [{ type: "paragraph", children: [{ text: "March 23, 2026" }] }],
-    pdfContent: <Text key="date">March 23, 2026</Text>,
+    content: [{ type: "paragraph", children: [{ text: "April 4, 2026" }] }],
+    pdfContent: <Text key="date">April 4, 2026</Text>,
   },
   {
     id: "2",
@@ -66,7 +66,7 @@ const initialReportState: ReportSection[] = [
   {
     id: "4",
     type: "image",
-    imageUrl: "/hormuz.png",
+    imageUrl: "/persian-gulf.png",
   },
   {
     id: "5",
