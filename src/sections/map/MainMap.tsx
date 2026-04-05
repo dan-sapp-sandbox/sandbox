@@ -46,7 +46,7 @@ const InitialCamera = () => {
 const MainMap = ({ children }: { children?: ReactNode | ReactNode[] }) => {
   const { viewer } = useCesium();
   const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
-  const terrainProvider = createWorldTerrainAsync();
+  // const terrainProvider = createWorldTerrainAsync();
 
   useEffect(() => {
     if (!viewer) return;
@@ -56,7 +56,7 @@ const MainMap = ({ children }: { children?: ReactNode | ReactNode[] }) => {
   return (
     <Viewer
       full
-      terrainProvider={terrainProvider}
+      // terrainProvider={terrainProvider}
       contextOptions={contextOptions}
       baseLayerPicker={false}
       timeline={false}

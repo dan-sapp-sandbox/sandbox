@@ -97,7 +97,7 @@ const PipMap = ({
     id: pipId,
   });
   const contextOptions = useMemo(() => ({ webgl: { alpha: true } }), []);
-  const terrainProvider = createWorldTerrainAsync();
+  // const terrainProvider = createWorldTerrainAsync();
   return (
     <div
       style={{
@@ -127,7 +127,7 @@ const PipMap = ({
       <div className="absolute top-0 left-0 h-full w-full pointer-events-auto">
         <Viewer
           full
-          terrainProvider={terrainProvider}
+          // terrainProvider={terrainProvider}
           contextOptions={contextOptions}
           baseLayerPicker={false}
           timeline={false}
