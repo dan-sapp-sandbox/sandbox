@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, type ReactNode } from "react";
 import { Viewer, useCesium } from "resium";
 import { CameraContext } from "./types";
 import { Viewer as CesiumViewer, Cartesian3, createWorldTerrainAsync } from "cesium";
+// import { Viewer as CesiumViewer, Cartesian3 } from "cesium";
 import useLocalStorage from "use-local-storage";
 
 const RegisterMainViewer = () => {
