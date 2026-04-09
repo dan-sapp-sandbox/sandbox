@@ -24,8 +24,8 @@ export const defaultPipView = {
 export const defaultPipView2 = {
   heading: 6.283185307179581,
   height: 11966.533380187617,
-  lat: 35.65627462795138,
-  lon: 51.235925863136245,
+  lat: 35.69627462795138,
+  lon: 51.38925863136245,
   pitch: -1.5684928999831915,
   roll: 0,
 };
