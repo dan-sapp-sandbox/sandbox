@@ -51,6 +51,35 @@ export interface IMapState {
 }
 
 const useMapState = (): IMapState => {
+  const tools = [
+    {
+      name: "createUser",
+      description: "Create a user",
+      parameters: {
+        name: "string",
+        email: "string",
+      },
+    },
+  ];
+  const test = async () => {
+    const res = await fetch("/api/command", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: "Create a user named Dan with email dan@test.com",
+        tools,
+      }),
+    });
+
+    const data = await res.json();
+    console.log("COMMAND RESULT:", data);
+  };
+  useEffect(() => {
+    test();
+  });
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mainViewerRef = useRef<Viewer | null>(null);
   const overviewViewerRef = useRef<Viewer | null>(null);
