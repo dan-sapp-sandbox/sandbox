@@ -25,21 +25,20 @@ export async function POST(req: Request) {
     return new Response("Missing OPENAI_API_KEY", { status: 500 });
   }
 
-  // Build readable tool context for the model
   const toolDescriptions = tools
-    .map((t) => {
-      return `
+    .map((t) =>
+      `
         Name: ${t.name}
         Description: ${t.description}
         Parameters: ${JSON.stringify(t.parameters)}
-      `.trim();
-    })
+      `.trim(),
+    )
     .join("\n\n");
 
   const systemPrompt = `
     You are an AI command router.
 
-    Your job is to convert user input into a structured function call.
+    Convert user input into a structured function call.
 
     AVAILABLE TOOLS:
     ${toolDescriptions}
@@ -48,7 +47,7 @@ export async function POST(req: Request) {
     - Choose exactly ONE tool name from the list
     - If none match, return action: null
     - Output ONLY valid JSON
-    - No explanation, no markdown
+    - No explanation
 
     OUTPUT FORMAT:
     {
@@ -83,7 +82,13 @@ export async function POST(req: Request) {
 
   const data = await response.json();
 
-  const text = data.output?.[0]?.content?.[0]?.text ?? "{}";
+  const text =
+    data.output_text ??
+    data.output?.[0]?.content
+      ?.map((c: any) => c.text)
+      .filter(Boolean)
+      .join("") ??
+    "{}";
 
   let parsed: CommandResponse;
 
