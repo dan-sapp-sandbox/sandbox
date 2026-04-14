@@ -25,12 +25,6 @@ export async function POST(req: Request) {
     return new Response("Missing OPENAI_API_KEY", { status: 500 });
   }
 
-  const toolDescriptions = tools.map((t) => ({
-    name: t.name,
-    description: t.description,
-    parameters: t.parameters,
-  }));
-
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
@@ -43,11 +37,31 @@ export async function POST(req: Request) {
       input: [
         {
           role: "system",
-          content: "You convert user input into structured tool calls.",
+          content: `
+You are a command router.
+
+Pick the best matching tool from the list.
+Only return a valid structured response.
+If user intent matches a tool, you MUST select it.
+          `.trim(),
         },
         {
           role: "user",
-          content: `User request: ${prompt}\n\nTools: ${JSON.stringify(toolDescriptions)}`,
+          content: `
+User request:
+${prompt}
+
+Tools:
+${tools
+  .map((t) =>
+    `
+${t.name}
+- description: ${t.description}
+- params: ${JSON.stringify(t.parameters)}
+    `.trim(),
+  )
+  .join("\n\n")}
+          `.trim(),
         },
       ],
 
@@ -76,12 +90,13 @@ export async function POST(req: Request) {
 
   const data = await response.json();
 
-  const command: CommandResponse | undefined = data.output?.[0]?.content?.[0]?.parsed;
+  // ✅ ONLY correct extraction for structured outputs
+  const command = data.output?.[0]?.content?.[0]?.parsed;
 
-  const safeCommand: CommandResponse = command ?? {
+  const result: CommandResponse = command ?? {
     action: null,
     args: {},
   };
 
-  return Response.json(safeCommand);
+  return Response.json(result);
 }

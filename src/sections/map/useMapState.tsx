@@ -75,7 +75,7 @@ const useMapState = (): IMapState => {
     });
 
     const data = await res.json();
-    console.log("COMMAND RESULT:", data);
+    console.log(data);
   };
 
   const containerRef = useRef<HTMLDivElement | null>(null);
