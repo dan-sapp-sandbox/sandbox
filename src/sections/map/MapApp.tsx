@@ -42,6 +42,7 @@ const MapApp = () => {
     widgetState,
     containerRef,
     takeScreenshot,
+    sendPrompt,
   } = mapState;
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -65,7 +66,7 @@ const MapApp = () => {
             <PipViewRectangle show={showPipMap} isPip2={false} />
             <PipViewRectangle show={showPipMap2} isPip2={true} />
             <Layers layer={layer} />
-            <CameraControls takeScreenshot={takeScreenshot} />
+            <CameraControls takeScreenshot={takeScreenshot} sendPrompt={sendPrompt} />
             <Entity position={Cartesian3.fromDegrees(51.1, 35.5)}>
               <LabelGraphics
                 text="Tehran"

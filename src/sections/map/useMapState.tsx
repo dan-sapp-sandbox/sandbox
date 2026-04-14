@@ -48,6 +48,7 @@ export interface IMapState {
   setShowPipMap2: Dispatch<SetStateAction<boolean>>;
   widgetState: IWidgetState;
   takeScreenshot: () => void;
+  sendPrompt: () => void;
 }
 
 const useMapState = (): IMapState => {
@@ -61,7 +62,7 @@ const useMapState = (): IMapState => {
       },
     },
   ];
-  const test = async () => {
+  const sendPrompt = async () => {
     const res = await fetch("/api/command", {
       method: "POST",
       headers: {
@@ -76,9 +77,6 @@ const useMapState = (): IMapState => {
     const data = await res.json();
     console.log("COMMAND RESULT:", data);
   };
-  useEffect(() => {
-    test();
-  });
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mainViewerRef = useRef<Viewer | null>(null);
@@ -321,6 +319,7 @@ const useMapState = (): IMapState => {
     widgetState,
     containerRef,
     takeScreenshot,
+    sendPrompt,
   };
 };
 

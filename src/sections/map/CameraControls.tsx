@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { CameraContext } from "./types";
 import { defaultMainView, defaultPipView, defaultPipView2 } from "./useMapState";
 
-const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
+const CameraControls = ({ takeScreenshot, sendPrompt }: { takeScreenshot: () => void; sendPrompt: () => void }) => {
   const [_initMainView, setInitMainView] = useLocalStorage("main-cam-init", defaultMainView);
   const [_initPipView, setInitPipView] = useLocalStorage("pip-cam-init", defaultPipView);
   const [_initPipView2, setInitPipView2] = useLocalStorage("pip-2-cam-init", defaultPipView2);
@@ -65,7 +65,7 @@ const CameraControls = ({ takeScreenshot }: { takeScreenshot: () => void }) => {
         </Button>
       </ButtonTooltip>
       <ButtonTooltip content="Send to Report">
-        <Button size="default" onClick={takeScreenshot}>
+        <Button size="default" onClick={sendPrompt}>
           <ListPlus />
         </Button>
       </ButtonTooltip>
