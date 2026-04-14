@@ -1,26 +1,35 @@
 export const runtime = "edge";
 
+type Tool = {
+  name: string;
+  description: string;
+  parameters: Record<string, string>;
+};
+
+type CommandRequest = {
+  prompt: string;
+  tools: Tool[];
+};
+
+type CommandResponse = {
+  action: string | null;
+  args: Record<string, any>;
+};
+
 export async function POST(req: Request) {
-  const { prompt, tools } = await req.json();
+  const { prompt, tools }: CommandRequest = await req.json();
 
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
-    return new Response("Missing API key", { status: 500 });
+    return new Response("Missing OPENAI_API_KEY", { status: 500 });
   }
 
-  const systemPrompt = `
-    You convert user input into JSON commands.
-
-    TOOLS:
-    ${JSON.stringify(tools)}
-
-    Return ONLY valid JSON in this format:
-    {
-      "action": "string or null",
-      "args": {}
-    }
-  `;
+  const toolDescriptions = tools.map((t) => ({
+    name: t.name,
+    description: t.description,
+    parameters: t.parameters,
+  }));
 
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
@@ -30,26 +39,49 @@ export async function POST(req: Request) {
     },
     body: JSON.stringify({
       model: "gpt-4.1-mini",
+
       input: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: prompt },
+        {
+          role: "system",
+          content: "You convert user input into structured tool calls.",
+        },
+        {
+          role: "user",
+          content: `User request: ${prompt}\n\nTools: ${JSON.stringify(toolDescriptions)}`,
+        },
       ],
+
+      response_format: {
+        type: "json_schema",
+        json_schema: {
+          name: "command",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              action: {
+                type: ["string", "null"],
+              },
+              args: {
+                type: "object",
+              },
+            },
+            required: ["action", "args"],
+          },
+        },
+      },
     }),
   });
 
   const data = await response.json();
 
-  const text = data.output?.[0]?.content?.find((c: any) => c.type === "output_text")?.text ?? "";
+  const command: CommandResponse | undefined = data.output?.[0]?.content?.[0]?.parsed;
 
-  console.log("RAW MODEL OUTPUT:", text);
+  const safeCommand: CommandResponse = command ?? {
+    action: null,
+    args: {},
+  };
 
-  let parsed;
-
-  try {
-    parsed = JSON.parse(text);
-  } catch (e) {
-    parsed = { action: null, args: {} };
-  }
-
-  return Response.json(parsed);
+  return Response.json(safeCommand);
 }
