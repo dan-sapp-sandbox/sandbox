@@ -21,6 +21,8 @@ import { CameraContext } from "./types";
 // TODO: compass
 // TODO: mobile dnd
 // TODO: right click context menu
+// TODO: finish send to report utility
+// TODO: finish ai command layer
 
 const MapApp = () => {
   const mapState = useMapState();

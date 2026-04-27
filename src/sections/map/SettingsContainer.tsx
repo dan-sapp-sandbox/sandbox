@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Settings } from "lucide-react";
 
 const SettingsContainer = ({ children }: { children?: ReactNode | ReactNode[] }) => {
   const [expanded, setExpanded] = useState(false);
@@ -7,7 +7,7 @@ const SettingsContainer = ({ children }: { children?: ReactNode | ReactNode[] })
     <div className="absolute top-0 left-0 z-2 p-3">
       <div className="flex flex-col bg-(--background)/80 p-3 rounded-xl">
         <div className="cursor-pointer flex flex-row gap-2 items-center" onClick={() => setExpanded(!expanded)}>
-          <span className="text-(--text)">Settings</span>
+          <Settings className="size-5 stroke-(--text)" />
           {expanded ? (
             <ChevronUp className="size-5 stroke-(--text)" />
           ) : (

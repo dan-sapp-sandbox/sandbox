@@ -5,6 +5,10 @@ import { PDFViewer } from "@react-pdf/renderer";
 import PdfPreview from "./PdfPreview";
 
 const ReportBuilder = () => {
+  //TODO: finish text editor
+  //TODO: hide/show section
+  //TODO: delete section
+
   const taskBoardState = useReportBuilderState();
 
   const sensors = useSensors(

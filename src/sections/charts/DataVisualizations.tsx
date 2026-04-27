@@ -9,6 +9,7 @@ import type { Theme } from "@/components/themeToggle/useTheme";
 
 const DataVisualizations = ({ theme }: { theme: Theme }) => {
   const chartState = useChartState();
+  // TODO: send to report / snapshot
   return (
     <div
       className={cn(
