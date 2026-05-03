@@ -16,13 +16,13 @@ const ProfileSection = () => {
               <span className="text-xl md:text-4xl font-bold text-(--text)">Hi, I'm Dan Sapp.</span>
               <div className="flex flex-col md:gap-4 text-(--text)">
                 <span className="text-base md:text-xl text-(--text)">
-                  I'm a Senior Front-end Software Engineer focused on building thoughtful, user-centered applications
-                  that improve people’s lives.
+                  I'm a Senior Software Engineer focused on building thoughtful, user-centered applications that improve
+                  people’s lives.
                 </span>
                 <span className="text-base md:text-xl text-(--text)">
                   I have 10+ years of software engineering experience, with a focus on React and TypeScript, building
-                  complex interfaces across a range of domains—including non-profit healthcare and geospatial systems
-                  where clarity and usability directly impact outcomes.
+                  complex interfaces across a range of domains—including non-profit healthcare and federal
+                  search-and-rescue systems where clarity and usability directly impact outcomes.
                 </span>
                 <span className="text-base md:text-xl text-(--text)">
                   Please enjoy these interactive examples of some tools I've built for clients.
